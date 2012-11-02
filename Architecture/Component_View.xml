@@ -25,7 +25,7 @@
 						<UML:TaggedValue tag="xmiver" value="Enterprise Architect XMI/UML 1.3"/>
 						<UML:TaggedValue tag="logxml" value="FALSE"/>
 						<UML:TaggedValue tag="tpos" value="7"/>
-						<UML:TaggedValue tag="packageFlags" value="isModel=1;VICON=4;Recurse=0;VCCFG=Goldenberry;CheckedOutTo=Nestor;CRC=0;"/>
+						<UML:TaggedValue tag="packageFlags" value="isModel=1;VICON=4;Recurse=0;VCCFG=Goldenberry;CRC=0;"/>
 						<UML:TaggedValue tag="batchsave" value="0"/>
 						<UML:TaggedValue tag="batchload" value="0"/>
 						<UML:TaggedValue tag="phase" value="1.0"/>
@@ -209,7 +209,7 @@
 												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 											</UML:ModelElement.taggedValue>
 										</UML:ClassifierRole>
-										<UML:ClassifierRole name="BaseFitness" xmi.id="EAID_2AA0B6AF_3CB9_4dc1_A5D2_677AC1BE7FD1" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+										<UML:ClassifierRole name="GbBaseCostFunction" xmi.id="EAID_2AA0B6AF_3CB9_4dc1_A5D2_677AC1BE7FD1" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
 											<UML:ModelElement.taggedValue>
 												<UML:TaggedValue tag="isAbstract" value="false"/>
 												<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -220,7 +220,7 @@
 												<UML:TaggedValue tag="classifier" value="EAID_C5E69DBE_31C6_4a27_88F9_219C035ABC0F"/>
 												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
 												<UML:TaggedValue tag="owner" value="EAID_563FD895_1BCB_47ae_8FB1_0930F147CC55"/>
-												<UML:TaggedValue tag="classname" value="BaseFitness"/>
+												<UML:TaggedValue tag="classname" value="GbBaseCostFunction"/>
 												<UML:TaggedValue tag="date_created" value="2012-10-29 19:28:08"/>
 												<UML:TaggedValue tag="date_modified" value="2012-10-29 19:28:13"/>
 												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
@@ -343,7 +343,7 @@
 												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 											</UML:ModelElement.taggedValue>
 										</UML:ClassifierRole>
-										<UML:ClassifierRole name="BaseFitness" xmi.id="EAID_40ACAF50_8734_4228_8821_45636D69BCB5" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+										<UML:ClassifierRole name="GbBaseCostFunction" xmi.id="EAID_40ACAF50_8734_4228_8821_45636D69BCB5" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
 											<UML:ModelElement.taggedValue>
 												<UML:TaggedValue tag="isAbstract" value="false"/>
 												<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -354,7 +354,7 @@
 												<UML:TaggedValue tag="classifier" value="EAID_C5E69DBE_31C6_4a27_88F9_219C035ABC0F"/>
 												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
 												<UML:TaggedValue tag="owner" value="EAID_F542B47B_709A_433e_84F3_0F1CA312E931"/>
-												<UML:TaggedValue tag="classname" value="BaseFitness"/>
+												<UML:TaggedValue tag="classname" value="GbBaseCostFunction"/>
 												<UML:TaggedValue tag="date_created" value="2012-10-29 19:25:36"/>
 												<UML:TaggedValue tag="date_modified" value="2012-10-29 19:28:13"/>
 												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
