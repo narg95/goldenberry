@@ -40,6 +40,7 @@
     <Compile Include="misc.py" />
     <Compile Include="searchers\baseSearcher.py" />
     <Compile Include="searchers\cga.py" />
+    <Compile Include="searchers\class1.py" />
     <Compile Include="searchers\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>

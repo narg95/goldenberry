@@ -52,6 +52,7 @@
     <Folder Include="Clasify" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Search\CGAWidget.ui" />
     <Content Include="Search\icons\cga.png">
       <Publish>True</Publish>
     </Content>

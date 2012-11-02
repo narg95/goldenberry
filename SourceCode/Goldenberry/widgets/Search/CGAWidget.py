@@ -8,15 +8,15 @@
 """
 
 from Search import *
-from MLFw.searchers.cga import *
+from MLFw.searchers.CGA import *
 from MLFw.misc import *
 
-class OWcga(OWWidget):
+class CGAWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
     settingsList = ['popsize', 'varsize', 'maxgens']
-    cgaAlgorithm = cga()
+    cgaAlgorithm = CGA()
     popsize = 20
     varsize = 10
     maxgens = None
@@ -64,9 +64,9 @@ if __name__=="__main__":
 
 def testWidget():
     appl = QApplication(sys.argv)
-    ow = OWcga()
+    ow = CGAWidget()
     #ow.fitness = onemax()
     ow.show()
-    #appl.exec_()
+    appl.exec_()
     #result = ow.cgaAlgorithm.find()
     #print(result)
