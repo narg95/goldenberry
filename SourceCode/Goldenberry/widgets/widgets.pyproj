@@ -3,9 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5d93e0b3-df02-47cd-8c38-8d7444a49559}</ProjectGuid>
+    <ProjectGuid>{46219d95-a355-494f-8792-1d1ac5c7a8f9}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Test.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,35 +31,27 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Search\OWcga.py">
-      <Publish>True</Publish>
-    </Compile>
-    <Compile Include="Search\OWFitFuncs.py">
-      <Publish>False</Publish>
-    </Compile>
-    <Compile Include="Search\__init__.py">
-      <Publish>True</Publish>
-    </Compile>
     <Compile Include="Clasify\__init__.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="Optimization\CGAWidget.py" />
+    <Compile Include="Optimization\FitnessWidget.py" />
+    <Compile Include="Optimization\__init__.py" />
     <Compile Include="Test.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Search" />
-    <Folder Include="Search\icons" />
     <Folder Include="Clasify" />
+    <Folder Include="Optimization\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Search\CGAWidget.ui" />
-    <Content Include="Search\icons\cga.png">
-      <Publish>True</Publish>
-    </Content>
-    <Content Include="Search\UIcga.ui">
-      <Publish>True</Publish>
-    </Content>
+    <Content Include="cga.png" />
+    <Content Include="CGAWidget.ui" />
+    <Content Include="Optimization\CGAUI.ui" />
+    <Content Include="Optimization\CGAWidget.ui" />
+    <Content Include="Optimization\FitnessUI.ui" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
