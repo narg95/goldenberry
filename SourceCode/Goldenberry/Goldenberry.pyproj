@@ -30,6 +30,18 @@
     <Folder Include="classification\" />
     <Folder Include="feature_selection\" />
     <Folder Include="optimization\" />
+    <Folder Include="optimization\edas\" />
+    <Folder Include="optimization\cost_functions\" />
+    <Folder Include="optimization\bioinspired\" />
+    <Folder Include="optimization\base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="optimization\base\GbBaseCostFunction.py" />
+    <Compile Include="optimization\base\GbBaseOptimizer.py" />
+    <Compile Include="optimization\base\GbSolution.py" />
+    <Compile Include="optimization\base\__init__.py" />
+    <Compile Include="optimization\edas\CGA.py" />
+    <Compile Include="optimization\edas\__init__.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
