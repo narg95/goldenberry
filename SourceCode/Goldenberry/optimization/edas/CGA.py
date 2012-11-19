@@ -1,13 +1,10 @@
-from MLFw.searchers import *
-from MLFw.searchers.BaseSearcher import *
-
-class CGA(BaseSearcher):
+class CGA(GbBaseOptimizer):
     """Compact Genetic Algorithm"""
     
-    def config(self, fitness, varsize, popsize, maxiters = None):
+    def setup(self, cost_function, varsize, popsize, maxiters = None):
         self.popsize = popsize
         self.varsize = varsize
-        self.fitness = fitness
+        self.cost_function = cost_function
         self.margprob = tile(0.5,(1,varsize))
         self.maxiters = maxiters
         self.iters = 0
@@ -23,7 +20,7 @@ class CGA(BaseSearcher):
     def isReady(self):
         return self.popsize is not None and\
                self.varsize is not None and\
-               self.fitness is not None
+               self.cost_function is not None
 
     def hasFinished(self):
         finish = not (self.maxiters is None) and self.iters > self.maxiters
@@ -32,7 +29,7 @@ class CGA(BaseSearcher):
         return (((1 - self.margprob) < 0.01) | (self.margprob < 0.01)).all()
     
     def compete(self, pop):
-        minindx = argmin(self.fitness.fitness(pop))
+        minindx = argmin(self.cost_function(pop))
         maxindx = 1 if minindx == 0 else 0
         return  pop[maxindx], pop[minindx]
 
