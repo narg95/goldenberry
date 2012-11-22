@@ -40,7 +40,7 @@
   <ItemGroup>
     <Compile Include="optimization\base\GbBaseCostFunction.py" />
     <Compile Include="optimization\base\GbBaseOptimizer.py" />
-    <Compile Include="optimization\base\GbBaseSolution.py" />
+    <Compile Include="optimization\base\GbSolution.py" />
     <Compile Include="optimization\base\__init__.py" />
     <Compile Include="optimization\cost_functions\functions.py" />
     <Compile Include="optimization\cost_functions\__init__.py" />
@@ -49,7 +49,6 @@
     <Compile Include="optimization\edas\BaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
-    <Compile Include="__init__.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
