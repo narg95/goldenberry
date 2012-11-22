@@ -1,13 +1,19 @@
 import unittest
-from optimization.edas.CgaTest import CgaTest
+import os
+import sys
+import inspect
+import imp
 
 if __name__ == "__main__":
 
-    loader = unittest.TestLoader()
-    suite = unittest.TestSuite((
-        loader.loadTestsFromTestCase(CgaTest),
-        
-        ))
-
+    test_modules = [
+                    'optimization.edas.test_cga.CgaTest',
+                    'optimization.cost_functions.tests.CostFunctionTest',
+                    'optimization.edas.test_distributions.BinomialTest']    
+    suite = unittest.TestLoader().loadTestsFromNames(test_modules)    
     runner = unittest.TextTestRunner(verbosity = 2)
     runner.run(suite)
+
+    
+
+    

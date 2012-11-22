@@ -29,13 +29,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.py" />
-    <Compile Include="optimization\edas\CgaTest.py" />
+    <Compile Include="optimization\cost_functions\tests.py" />
+    <Compile Include="optimization\cost_functions\__init__.py" />
+    <Compile Include="optimization\edas\test_distributions.py" />
+    <Compile Include="optimization\edas\test_cga.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="optimization\" />
     <Folder Include="optimization\edas\" />
+    <Folder Include="optimization\cost_functions" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
