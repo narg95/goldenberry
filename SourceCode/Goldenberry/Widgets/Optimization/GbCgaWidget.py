@@ -6,8 +6,7 @@
 <priority>100</priority>
 
 """
-
-from Goldenberry.optimization.edas.Cga import Cga
+from Optimization import *
 
 class GbCgaWidget(OWWidget):
     """Widget for cga algorithm"""
@@ -18,12 +17,12 @@ class GbCgaWidget(OWWidget):
     popsize = 20
     varsize = 10
     maxgens = None
-    fitness = None
+    cost_function = None
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent, signalManager, 'cGA')
-        self.inputs = [("Fitness Function", baseFitness, self.setFitness)]
-        self.outputs = [("Search Algorithm", baseSearcher)]
+        self.inputs = [("Fitness Function", GbBaseCostFunction, self.cost_function)]
+        self.outputs = [("Search Algorithm", GbBaseOptimizer)]
         self.setupUi() 
 
     def setupUi(self):
@@ -35,9 +34,9 @@ class GbCgaWidget(OWWidget):
         QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
 
         #set new binding controls
-        popEditor = OWGUI.lineEdit(self, self, "popsize", label="Population size", validator = QIntValidator(2,100, self.controlArea))
-        varEditor = OWGUI.lineEdit(self, self, "varsize", label="Variables size", validator = QIntValidator(2,100, self.controlArea))
-        maxEditor = OWGUI.lineEdit(self, self, "maxgens", label="Max Generations", validator = QIntValidator(0, 10000, self.controlArea))
+        popEditor = OWGUI.lineEdit(self, self, "popsize", label="Population size", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
+        varEditor = OWGUI.lineEdit(self, self, "varsize", label="Variables size", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
+        maxEditor = OWGUI.lineEdit(self, self, "maxgens", label="Max Generations", valueType = int, validator = QIntValidator(0, 100000, self.controlArea))
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(varEditor.box, varEditor)
         self.paramBox.layout().addRow(popEditor.box, popEditor)
@@ -48,8 +47,8 @@ class GbCgaWidget(OWWidget):
 
     def accepted(self):
         self.accept()
-        self.cgaAlgorithm.config(self.fitness, self.varsize, self.popsize, self.maxgens)
-        self.send(INTERFACES.SEARCH_ALGORITHM[0] , self.cgaAlgorithm )
+        self.cgaAlgorithm.setup(self.cost_function, self.varsize, self.popsize, self.maxgens)
+        self.send("Search Algorithm" , self.cgaAlgorithm )
 
     def rejected(self):
         self.reject()
@@ -59,9 +58,9 @@ if __name__=="__main__":
 
 def testWidget():
     appl = QApplication(sys.argv)
-    ow = CGAWidget()
-    #ow.fitness = onemax()
+    ow = GbCgaWidget()
+    ow.cost_function = onemax()
     ow.show()
     appl.exec_()
-    #result = ow.cgaAlgorithm.find()
-    #print(result)
+    result = ow.cgaAlgorithm.search()
+    print(result.params)
