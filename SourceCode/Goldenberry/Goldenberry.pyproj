@@ -5,10 +5,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b50bae63-032a-414c-b4fa-84ab7c14b6a8}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <StartupFile>main.py</StartupFile>
+    <SearchPath>..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Goldenberry</Name>
@@ -17,6 +15,9 @@
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>2af0f10d-7135-4994-9156-5d01c9c11b7e</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,14 +35,26 @@
     <Folder Include="optimization\cost_functions\" />
     <Folder Include="optimization\bioinspired\" />
     <Folder Include="optimization\base\" />
+    <Folder Include="optimization\unit_test" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="main.py" />
     <Compile Include="optimization\base\GbBaseCostFunction.py" />
     <Compile Include="optimization\base\GbBaseOptimizer.py" />
-    <Compile Include="optimization\base\GbSolution.py" />
+    <Compile Include="optimization\base\GbBaseSolution.py" />
     <Compile Include="optimization\base\__init__.py" />
-    <Compile Include="optimization\edas\CGA.py" />
+    <Compile Include="optimization\cost_functions\functions.py" />
+    <Compile Include="optimization\cost_functions\__init__.py" />
+    <Compile Include="optimization\edas\Cga.py" />
+    <Compile Include="optimization\edas\distributions.py" />
+    <Compile Include="optimization\edas\BaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
+    <Compile Include="optimization\unit_test\CgaTest.py" />
+    <Compile Include="optimization\unit_test\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="optimization\__init__.py" />
+    <Compile Include="__init__.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

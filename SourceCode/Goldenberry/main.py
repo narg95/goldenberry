@@ -1,12 +1,13 @@
-from fitfunctions.fitnessFuncs import onemax, zero
-from searchers.cga import *
-import sys
+import unittest
+from Goldenberry.optimization.unit_test.CgaTest import CgaTest
 
-def main():
-    c = cga()
-    c.config(zero(),10, 15)
-    result = c.find()
-    print(result)
-     
+if __name__ == "__main__":
 
-main()
+    loader = unittest.TestLoader()
+    suite = unittest.TestSuite((
+        loader.loadTestsFromTestCase(CgaTest),
+        
+        ))
+
+    runner = unittest.TextTestRunner(verbosity = 2)
+    runner.run(suite)
