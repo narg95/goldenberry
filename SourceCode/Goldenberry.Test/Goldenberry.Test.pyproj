@@ -3,15 +3,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{b50bae63-032a-414c-b4fa-84ab7c14b6a8}</ProjectGuid>
+    <ProjectGuid>{6cc780d0-fc58-4845-8382-b1b1670b0a83}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Goldenberry</Name>
-    <RootNamespace>Goldenberry</RootNamespace>
+    <Name>Goldenberry.Test</Name>
+    <RootNamespace>Goldenberry.Test</RootNamespace>
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
@@ -29,27 +28,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="classification\" />
-    <Folder Include="feature_selection\" />
-    <Folder Include="optimization\" />
-    <Folder Include="optimization\edas\" />
-    <Folder Include="optimization\cost_functions\" />
-    <Folder Include="optimization\bioinspired\" />
-    <Folder Include="optimization\base\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="optimization\base\GbBaseCostFunction.py" />
-    <Compile Include="optimization\base\GbBaseOptimizer.py" />
-    <Compile Include="optimization\base\GbBaseSolution.py" />
-    <Compile Include="optimization\base\__init__.py" />
-    <Compile Include="optimization\cost_functions\functions.py" />
-    <Compile Include="optimization\cost_functions\__init__.py" />
-    <Compile Include="optimization\edas\Cga.py" />
-    <Compile Include="optimization\edas\distributions.py" />
-    <Compile Include="optimization\edas\BaseEda.py" />
+    <Compile Include="main.py" />
+    <Compile Include="optimization\edas\CgaTest.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
-    <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="optimization\" />
+    <Folder Include="optimization\edas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

@@ -16,7 +16,7 @@ class Cga(BaseEda):
     def search(self):
         while not self.hasFinished():
             self._iters += 1
-            pop = self._distribution.sample(self._distribution, 2, self._vars_size)
+            pop = self._distribution.sample(2)
             winner, losser = self.compete(pop)
             self.estimate_distribution(winner, losser)
         
@@ -34,14 +34,13 @@ class Cga(BaseEda):
         return (((1 - self._distribution()) < 0.01) | (self._distribution() < 0.01)).all()
     
     def compete(self, pop):
-        minindx = argmin(self._cost_function(pop))
-        maxindx = 1 if minindx == 0 else 0
-        return  pop[maxindx], pop[minindx]
+        maxindx = bool(np.argmax(self._cost_function(pop)))
+        return  pop[maxindx], pop[not maxindx]
 
     def estimate_distribution(self, winner, losser):
         for x in range(0, self._vars_size):
             if 1.0 >= self._distribution[0,x] >= 0.0:
-                self._distribution[0,x] += (winner[x] - losser[x])/float(self._pop_size)
+                self._distribution[0,x] += (winner[0,x] - losser[0,x])/float(self._pop_size)
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
