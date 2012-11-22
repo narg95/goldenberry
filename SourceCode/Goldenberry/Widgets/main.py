@@ -1,4 +1,4 @@
-from Search.OWcga import testWidget
+from Optimization.GbCgaWidget import testWidget
 import sys
 def main():
     try:

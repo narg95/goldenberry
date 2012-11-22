@@ -5,8 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{46219d95-a355-494f-8792-1d1ac5c7a8f9}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>..\..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -36,7 +35,7 @@
     <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\FitnessWidget.py" />
     <Compile Include="Optimization\__init__.py" />
-    <Compile Include="Test.py">
+    <Compile Include="main.py">
       <Publish>False</Publish>
     </Compile>
   </ItemGroup>
