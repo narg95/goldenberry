@@ -7,8 +7,7 @@
     <ProjectHome>.</ProjectHome>
     <StartupFile>
     </StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <SearchPath>..\..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>OWMLFw</Name>
@@ -34,23 +33,19 @@
     <Compile Include="Clasify\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="Optimization\CGAWidget.py" />
+    <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\FitnessWidget.py" />
     <Compile Include="Optimization\__init__.py" />
     <Compile Include="Test.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Clasify" />
     <Folder Include="Optimization\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cga.png" />
-    <Content Include="CGAWidget.ui" />
-    <Content Include="Optimization\CGAUI.ui" />
-    <Content Include="Optimization\CGAWidget.ui" />
+    <Content Include="Optimization\GbCgaWidget.ui" />
     <Content Include="Optimization\FitnessUI.ui" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

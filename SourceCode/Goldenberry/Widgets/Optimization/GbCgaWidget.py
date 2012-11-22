@@ -7,16 +7,14 @@
 
 """
 
-from Search import *
-from MLFw.searchers.CGA import *
-from MLFw.misc import *
+from Goldenberry.optimization.edas.Cga import Cga
 
-class CGAWidget(OWWidget):
+class GbCgaWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
     settingsList = ['popsize', 'varsize', 'maxgens']
-    cgaAlgorithm = CGA()
+    cgaAlgorithm = Cga()
     popsize = 20
     varsize = 10
     maxgens = None
@@ -26,14 +24,11 @@ class CGAWidget(OWWidget):
         OWWidget.__init__(self, parent, signalManager, 'cGA')
         self.inputs = [("Fitness Function", baseFitness, self.setFitness)]
         self.outputs = [("Search Algorithm", baseSearcher)]
-        
-        #self.inputs = [(INTERFACES.FITNESS_FUNCTION + (self.setFitness,))]
-        #self.outputs = [(INTERFACES.SEARCH_ALGORITHM)]
         self.setupUi() 
 
     def setupUi(self):
         # Loads the UI from an .ui file.
-        self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\UIcga.ui", self)    
+        self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbCgaWidget.ui", self)    
         
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
