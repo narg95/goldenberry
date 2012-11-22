@@ -1,5 +1,5 @@
 import unittest
-from Goldenberry.optimization.unit_test.CgaTest import CgaTest
+from optimization.edas.CgaTest import CgaTest
 
 if __name__ == "__main__":
 

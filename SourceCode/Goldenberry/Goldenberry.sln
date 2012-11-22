@@ -5,9 +5,11 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Goldenberry", "Goldenberry.
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Widgets", "Widgets\Widgets.pyproj", "{46219D95-A355-494F-8792-1D1AC5C7A8F9}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Goldenberry.Test", "..\Goldenberry.Test\Goldenberry.Test.pyproj", "{6CC780D0-FC58-4845-8382-B1B1670B0A83}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs13
 		SccLocalPath0 = .
@@ -16,6 +18,9 @@ Global
 		SccProjectUniqueName2 = Widgets\\Widgets.pyproj
 		SccProjectName2 = Widgets
 		SccLocalPath2 = Widgets
+		SccProjectUniqueName3 = ..\\Goldenberry.Test\\Goldenberry.Test.pyproj
+		SccProjectName3 = ../Goldenberry.Test
+		SccLocalPath3 = ..\\Goldenberry.Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +31,8 @@ Global
 		{B50BAE63-032A-414C-B4FA-84AB7C14B6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46219D95-A355-494F-8792-1D1AC5C7A8F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46219D95-A355-494F-8792-1D1AC5C7A8F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC780D0-FC58-4845-8382-B1B1670B0A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC780D0-FC58-4845-8382-B1B1670B0A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
