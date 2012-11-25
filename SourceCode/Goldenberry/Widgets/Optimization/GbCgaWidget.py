@@ -21,7 +21,7 @@ class GbCgaWidget(OWWidget):
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent, signalManager, 'cGA')
-        self.inputs = [("Fitness Function", GbBaseCostFunction, self.cost_function)]
+        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_func)]
         self.outputs = [("Search Algorithm", GbBaseOptimizer)]
         self.setupUi() 
 
@@ -31,7 +31,7 @@ class GbCgaWidget(OWWidget):
         
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
-        QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
+        #QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
 
         #set new binding controls
         popEditor = OWGUI.lineEdit(self, self, "popsize", label="Population size", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
@@ -42,8 +42,8 @@ class GbCgaWidget(OWWidget):
         self.paramBox.layout().addRow(popEditor.box, popEditor)
         self.paramBox.layout().addRow(maxEditor.box, maxEditor)
 
-    def setFitness(self, fitness):
-        self.fitness = fitness
+    def set_cost_func(self, cost_func):
+        self.cost_func = cost_func
 
     def accepted(self):
         self.accept()
@@ -54,9 +54,9 @@ class GbCgaWidget(OWWidget):
         self.reject()
 
 if __name__=="__main__":
-    testWidget()
+    test_widget()
 
-def testWidget():
+def test_widget():
     appl = QApplication(sys.argv)
     ow = GbCgaWidget()
     ow.cost_function = onemax()
