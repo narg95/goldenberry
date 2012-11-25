@@ -4,12 +4,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{46219d95-a355-494f-8792-1d1ac5c7a8f9}</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>main.py</StartupFile>
     <SearchPath>..\..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>OWMLFw</Name>
+    <Name>Goldenberry.widgets</Name>
     <RootNamespace>OWMLFw</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <InterpreterId>2af0f10d-7135-4994-9156-5d01c9c11b7e</InterpreterId>
@@ -33,7 +34,7 @@
       <Publish>False</Publish>
     </Compile>
     <Compile Include="Optimization\GbCgaWidget.py" />
-    <Compile Include="Optimization\FitnessWidget.py" />
+    <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />
     <Compile Include="main.py">
       <Publish>False</Publish>
@@ -42,10 +43,11 @@
   <ItemGroup>
     <Folder Include="Clasify" />
     <Folder Include="Optimization\" />
+    <Folder Include="Optimization\icons\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Optimization\GbCgaWidget.ui" />
-    <Content Include="Optimization\FitnessUI.ui" />
+    <Content Include="Optimization\GbCostFuncsWidget.ui" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

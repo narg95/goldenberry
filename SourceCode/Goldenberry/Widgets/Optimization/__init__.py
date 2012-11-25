@@ -6,8 +6,12 @@ from PyQt4 import QtCore
 from PyQt4 import uic
 import os
 import sys
+import inspect
+import types
+
 
 from Goldenberry.optimization.base.GbBaseCostFunction import *
 from Goldenberry.optimization.base.GbBaseOptimizer import *
 from Goldenberry.optimization.cost_functions.functions import *
+from Goldenberry.optimization.cost_functions import functions
 from Goldenberry.optimization.edas.Cga import Cga
