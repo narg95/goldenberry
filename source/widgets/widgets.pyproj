@@ -30,30 +30,27 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Clasify\__init__.py">
-      <Publish>False</Publish>
-    </Compile>
-    <Compile Include="Optimization\GbCgaWidget.py">
+    <Compile Include="optimization\GbCgaWidget.py">
       <Publish>True</Publish>
     </Compile>
-    <Compile Include="Optimization\GbCostFuncsWidget.py">
+    <Compile Include="optimization\GbCostFuncsWidget.py">
       <Publish>True</Publish>
     </Compile>
-    <Compile Include="Optimization\__init__.py" />
+    <Compile Include="optimization\__init__.py" />
     <Compile Include="main.py">
       <Publish>False</Publish>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clasify" />
-    <Folder Include="Optimization\" />
-    <Folder Include="Optimization\icons\" />
+    <Folder Include="clasify" />
+    <Folder Include="optimization" />
+    <Folder Include="optimization\icons" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Optimization\GbCgaWidget.ui">
+    <Content Include="optimization\GbCgaWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Optimization\GbCostFuncsWidget.ui">
+    <Content Include="optimization\GbCostFuncsWidget.ui">
       <Publish>True</Publish>
     </Content>
   </ItemGroup>

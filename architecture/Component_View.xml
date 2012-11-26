@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="EA Model" xmi.id="MX_EAID_09C3A0E2_DE94_4d13_8AEA_3CF9D655DA73">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="Component View" xmi.id="EAPK_09C3A0E2_DE94_4d13_8AEA_3CF9D655DA73" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="parent" value="EAPK_2F6AE455_FC2E_417a_B3AF_48353D550F67"/>
+						<UML:TaggedValue tag="ea_package_id" value="45"/>
+						<UML:TaggedValue tag="created" value="2012-10-27 13:52:28"/>
+						<UML:TaggedValue tag="modified" value="2012-10-27 14:03:00"/>
+						<UML:TaggedValue tag="iscontrolled" value="TRUE"/>
+						<UML:TaggedValue tag="xmlpath" value="Component_View.xml"/>
+						<UML:TaggedValue tag="lastloaddate" value="2012-11-15 06:28:01"/>
+						<UML:TaggedValue tag="lastsavedate" value="2012-10-27 13:52:28"/>
+						<UML:TaggedValue tag="isprotected" value="FALSE"/>
+						<UML:TaggedValue tag="usedtd" value="FALSE"/>
+						<UML:TaggedValue tag="xmiver" value="Enterprise Architect XMI/UML 1.3"/>
+						<UML:TaggedValue tag="logxml" value="FALSE"/>
+						<UML:TaggedValue tag="tpos" value="7"/>
+						<UML:TaggedValue tag="packageFlags" value="isModel=1;VICON=4;Recurse=0;VCCFG=test;CRC=0;"/>
+						<UML:TaggedValue tag="batchsave" value="0"/>
+						<UML:TaggedValue tag="batchload" value="0"/>
+						<UML:TaggedValue tag="phase" value="1.0"/>
+						<UML:TaggedValue tag="status" value="Proposed"/>
+						<UML:TaggedValue tag="complexity" value="1"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="tpos" value="7"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Collaboration xmi.id="EAID_09C3A0E2_DE94_4d13_8AEA_3CF9D655DA73_Collaboration" name="Collaborations">
+							<UML:Namespace.ownedElement>
+								<UML:ClassifierRole name="widgets" xmi.id="EAID_7DD4CA61_830B_4726_8EEB_B41840D2C985" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isAbstract" value="false"/>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Package"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_09C3A0E2_DE94_4d13_8AEA_3CF9D655DA73"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 18:43:52"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 18:43:52"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package2" value="EAID_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="package_name" value="Component View"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="46"/>
+										<UML:TaggedValue tag="ea_eleType" value="package"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:ClassifierRole>
+							</UML:Namespace.ownedElement>
+							<UML:Collaboration.interaction/>
+						</UML:Collaboration>
+						<UML:Package name="widgets" xmi.id="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="parent" value="EAPK_09C3A0E2_DE94_4d13_8AEA_3CF9D655DA73"/>
+								<UML:TaggedValue tag="created" value="2012-10-29 18:43:52"/>
+								<UML:TaggedValue tag="modified" value="2012-10-29 18:43:52"/>
+								<UML:TaggedValue tag="iscontrolled" value="FALSE"/>
+								<UML:TaggedValue tag="lastloaddate" value="2012-11-14 18:17:14"/>
+								<UML:TaggedValue tag="lastsavedate" value="2012-11-14 18:17:14"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="isprotected" value="FALSE"/>
+								<UML:TaggedValue tag="usedtd" value="FALSE"/>
+								<UML:TaggedValue tag="logxml" value="FALSE"/>
+								<UML:TaggedValue tag="batchsave" value="0"/>
+								<UML:TaggedValue tag="batchload" value="0"/>
+								<UML:TaggedValue tag="phase" value="1.0"/>
+								<UML:TaggedValue tag="status" value="Proposed"/>
+								<UML:TaggedValue tag="author" value="Nestor"/>
+								<UML:TaggedValue tag="complexity" value="1"/>
+								<UML:TaggedValue tag="ea_stype" value="Public"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Namespace.ownedElement>
+								<UML:Class xmi.id="EAID_0C46B32A_E95C_4c17_AFBA_DF671B28509B" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Port"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="owner" value="EAID_0E40D5D3_1F9E_4897_9A17_150B9C21DEA8"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:43:58"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 22:04:47"/>
+										<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="multiplicity" value="1..*"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="544"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Component name="WKieraWidget" xmi.id="EAID_0E40D5D3_1F9E_4897_9A17_150B9C21DEA8" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:43:46"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:43:49"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="545"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Component name="KernelProvider" xmi.id="EAID_0F5BDE69_A8EF_4501_A297_3078089EFE69" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:14:36"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:14:56"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="546"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Collaboration xmi.id="EAID_7DD4CA61_830B_4726_8EEB_B41840D2C985_Collaboration" name="Collaborations">
+									<UML:Namespace.ownedElement>
+										<UML:ClassifierRole name="IClassifier" xmi.id="EAID_11038E8E_29C1_45de_95F9_CB081CDA854D" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_A9D1FC0D_C1DF_404c_9CFF_0E0AC0200D5D"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_8D5CE567_262C_4339_9F43_52B81515A78A"/>
+												<UML:TaggedValue tag="classname" value="IClassifier"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:37:01"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:37:43"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="561"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseKernel" xmi.id="EAID_17CA0F5B_3081_42b0_AC15_805D3D823DF4" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_8CA0F8E6_F7F5_4b12_A073_115AC1636734"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_3A38C1F0_01A2_418a_BB13_189079725943"/>
+												<UML:TaggedValue tag="classname" value="BaseKernel"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:15:48"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:15:54"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="562"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="GbBaseCostFunction" xmi.id="EAID_2AA0B6AF_3CB9_4dc1_A5D2_677AC1BE7FD1" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="ProvidedInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_C5E69DBE_31C6_4a27_88F9_219C035ABC0F"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_563FD895_1BCB_47ae_8FB1_0930F147CC55"/>
+												<UML:TaggedValue tag="classname" value="GbBaseCostFunction"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 19:28:08"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 19:28:13"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="563"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseKernel" xmi.id="EAID_2D7E6A8B_87C1_4ed6_921E_5E303D7523C0" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="ProvidedInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_8CA0F8E6_F7F5_4b12_A073_115AC1636734"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_0F5BDE69_A8EF_4501_A297_3078089EFE69"/>
+												<UML:TaggedValue tag="classname" value="BaseKernel"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:16:02"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:16:13"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="564"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseIDEA" xmi.id="EAID_32B7F5A4_07C9_4611_AF07_480C2371DBAA" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="ProvidedInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_1D58ED88_7224_4ba9_91E0_D9636DC041F1"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_D8FA4A4D_5AFD_494d_95E0_6A560C7629F2"/>
+												<UML:TaggedValue tag="classname" value="BaseIDEA"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 18:55:04"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 18:55:09"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="565"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseKernel" xmi.id="EAID_3649B555_07BC_4244_9EA8_AFD59BE36608" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_8CA0F8E6_F7F5_4b12_A073_115AC1636734"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_CDEA1158_252B_4c8b_ACB1_1F9879D6E45E"/>
+												<UML:TaggedValue tag="classname" value="BaseKernel"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:15:40"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:15:46"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="566"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseIDEA" xmi.id="EAID_38CE63CB_051D_4e25_BF88_3E6C8228C54B" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_A934B2E9_5F99_4f92_91AF_9EC3BBC4A5CA"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 19:17:41"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 19:24:23"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="multiplicity" value="0..*"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="567"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="GbBaseCostFunction" xmi.id="EAID_40ACAF50_8734_4228_8821_45636D69BCB5" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_C5E69DBE_31C6_4a27_88F9_219C035ABC0F"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_F542B47B_709A_433e_84F3_0F1CA312E931"/>
+												<UML:TaggedValue tag="classname" value="GbBaseCostFunction"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 19:25:36"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 19:28:13"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="568"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="Feature Selection" xmi.id="EAID_4B0393EB_2AB7_482c_9662_5FC0B7E4D405" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="Boundary"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 22:00:05"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 22:00:13"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="569"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=3;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseKernel" xmi.id="EAID_6A80B7CD_0CDA_47ae_B922_20CB9F5C4004" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_8CA0F8E6_F7F5_4b12_A073_115AC1636734"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_7C401C72_1949_407b_9740_08AEC8866E1B"/>
+												<UML:TaggedValue tag="classname" value="BaseKernel"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:15:04"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:15:17"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="570"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseIDEA" xmi.id="EAID_6B5104D3_B089_437c_9C1B_5B3FF628149B" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="ProvidedInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_1D58ED88_7224_4ba9_91E0_D9636DC041F1"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_CE1080C2_BF0E_49a4_AF62_CD897046A7C4"/>
+												<UML:TaggedValue tag="classname" value="BaseIDEA"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 18:44:34"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 18:54:47"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="571"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="IClassifier" xmi.id="EAID_7053B0AF_712E_4ab4_B71E_EDC373E18DA9" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="ProvidedInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_A9D1FC0D_C1DF_404c_9CFF_0E0AC0200D5D"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_3A38C1F0_01A2_418a_BB13_189079725943"/>
+												<UML:TaggedValue tag="classname" value="IClassifier"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:13:35"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:13:41"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="572"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="IClassifier" xmi.id="EAID_8F52E821_0741_4c57_93CD_D978035DF586" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_0C46B32A_E95C_4c17_AFBA_DF671B28509B"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:44:03"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:59:57"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="573"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="Search" xmi.id="EAID_A4ADB746_DDCC_44cf_9FDD_C11A2714F8E4" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="Boundary"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 19:24:35"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 19:24:38"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="574"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=3;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="Classification" xmi.id="EAID_A67B6BB0_D983_445c_BB73_D3D3150B50AD" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="Boundary"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 19:29:46"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 19:29:49"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="575"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=3;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="IClassifier" xmi.id="EAID_C171767F_B0DF_438d_9D2C_A496B5552E71" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="ProvidedInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_A9D1FC0D_C1DF_404c_9CFF_0E0AC0200D5D"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_CDEA1158_252B_4c8b_ACB1_1F9879D6E45E"/>
+												<UML:TaggedValue tag="classname" value="IClassifier"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:05:53"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:13:45"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="576"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseIDEA" xmi.id="EAID_CC34064F_7FE7_4f4c_8E56_1465F66C7E51" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="classifier" value="EAID_1D58ED88_7224_4ba9_91E0_D9636DC041F1"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_786FFE86_727E_42b5_9CFA_0297EE1A6212"/>
+												<UML:TaggedValue tag="classname" value="BaseIDEA"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 22:12:20"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 22:12:32"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="577"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="BaseFitness" xmi.id="EAID_F803B83A_64E4_4967_AA32_B600313F0836" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="RequiredInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="1"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_FCC119D1_B7C3_4140_9858_FF346D5B2AEB"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 22:11:35"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 22:11:54"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="578"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+										<UML:ClassifierRole name="IClassifier" xmi.id="EAID_FD5269FC_318E_423a_AA2F_F6EFABFDDA0A" visibility="public" base="EAID_11111111_5487_4080_A7F4_41526CB0AA00">
+											<UML:ModelElement.taggedValue>
+												<UML:TaggedValue tag="isAbstract" value="false"/>
+												<UML:TaggedValue tag="isSpecification" value="false"/>
+												<UML:TaggedValue tag="ea_stype" value="ProvidedInterface"/>
+												<UML:TaggedValue tag="ea_ntype" value="0"/>
+												<UML:TaggedValue tag="version" value="1.0"/>
+												<UML:TaggedValue tag="isActive" value="false"/>
+												<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+												<UML:TaggedValue tag="owner" value="EAID_7C401C72_1949_407b_9740_08AEC8866E1B"/>
+												<UML:TaggedValue tag="date_created" value="2012-10-29 21:05:25"/>
+												<UML:TaggedValue tag="date_modified" value="2012-10-29 21:05:47"/>
+												<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+												<UML:TaggedValue tag="tagged" value="0"/>
+												<UML:TaggedValue tag="package_name" value="widgets"/>
+												<UML:TaggedValue tag="phase" value="1.0"/>
+												<UML:TaggedValue tag="author" value="Nestor"/>
+												<UML:TaggedValue tag="complexity" value="1"/>
+												<UML:TaggedValue tag="status" value="Proposed"/>
+												<UML:TaggedValue tag="tpos" value="0"/>
+												<UML:TaggedValue tag="ea_localid" value="579"/>
+												<UML:TaggedValue tag="ea_eleType" value="element"/>
+												<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+											</UML:ModelElement.taggedValue>
+										</UML:ClassifierRole>
+									</UML:Namespace.ownedElement>
+									<UML:Collaboration.interaction/>
+								</UML:Collaboration>
+								<UML:Component name="BudgetPerceptron" xmi.id="EAID_3A38C1F0_01A2_418a_BB13_189079725943" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:05:09"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:05:14"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="547"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Component name="FitnessProvider" xmi.id="EAID_563FD895_1BCB_47ae_8FB1_0930F147CC55" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 19:27:09"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 19:27:12"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="548"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Class xmi.id="EAID_786FFE86_727E_42b5_9CFA_0297EE1A6212" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Port"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="owner" value="EAID_0E40D5D3_1F9E_4897_9A17_150B9C21DEA8"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 22:12:10"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 22:12:39"/>
+										<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="multiplicity" value="1..*"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="549"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Component name="ROMMA" xmi.id="EAID_7C401C72_1949_407b_9740_08AEC8866E1B" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 19:30:08"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:04:59"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="550"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Class xmi.id="EAID_8D5CE567_262C_4339_9F43_52B81515A78A" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Port"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="owner" value="EAID_99A33A54_9AFB_425d_A789_0BEE59A2F1EB"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:37:13"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:37:53"/>
+										<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="multiplicity" value="1..*"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="551"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Component name="TestLearners" xmi.id="EAID_99A33A54_9AFB_425d_A789_0BEE59A2F1EB" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.stereotype>
+										<UML:Stereotype name="Orange"/>
+									</UML:ModelElement.stereotype>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:35:41"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:36:54"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="stereotype" value="Orange"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="552"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+										<UML:TaggedValue tag="$ea_xref_property" value="$XREFPROP=$XID={AFF8FB67-AD06-4632-8A94-7A12170B4603}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Orange;GUID={A50557A3-3F92-42ba-81E0-B217268082D2};@ENDSTEREO;$DES;$CLT={99A33A54-9AFB-425d-A789-0BEE59A2F1EB}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Class xmi.id="EAID_A934B2E9_5F99_4f92_91AF_9EC3BBC4A5CA" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Port"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="owner" value="EAID_CA917A0E_78F4_489f_9480_56E9AE24B8AD"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 19:23:44"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 19:28:01"/>
+										<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="multiplicity" value="1..*"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="553"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Interface name="IClassifier" xmi.id="EAID_A9D1FC0D_C1DF_404c_9CFF_0E0AC0200D5D" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="true">
+									<UML:ModelElement.stereotype>
+										<UML:Stereotype name="interface"/>
+									</UML:ModelElement.stereotype>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Interface"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:06:16"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:06:16"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="stereotype" value="interface"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="554"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="$ea_classified" value="{C171767F-B0DF-438d-9D2C-A496B5552E71},{7053B0AF-712E-4ab4-B71E-EDC373E18DA9},{11038E8E-29C1-45de-95F9-CB081CDA854D}"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+										<UML:TaggedValue tag="$ea_xref_property" value="$XREFPROP=$XID={72B59645-80BF-40ba-8302-19B60C6AFABB}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=interface;GUID={8C45AAF2-8EB3-430d-8ADC-213AAA9BF3FE};@ENDSTEREO;$DES;$CLT={A9D1FC0D-C1DF-404c-9CFF-0E0AC0200D5D}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Interface>
+								<UML:Component name="SearchTesterWidget" xmi.id="EAID_CA917A0E_78F4_489f_9480_56E9AE24B8AD" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 19:17:31"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 19:17:36"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="555"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Component name="ALMA" xmi.id="EAID_CDEA1158_252B_4c8b_ACB1_1F9879D6E45E" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 21:05:02"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 21:05:04"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="556"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Component name="CGAWidget" xmi.id="EAID_CE1080C2_BF0E_49a4_AF62_CD897046A7C4" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 18:44:15"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 18:44:28"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="557"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Component name="UMDAWidget" xmi.id="EAID_D8FA4A4D_5AFD_494d_95E0_6A560C7629F2" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Component"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 18:54:54"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 18:55:00"/>
+										<UML:TaggedValue tag="gentype" value="Java"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="558"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Component>
+								<UML:Class xmi.id="EAID_F542B47B_709A_433e_84F3_0F1CA312E931" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Port"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="owner" value="EAID_CA917A0E_78F4_489f_9480_56E9AE24B8AD"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 19:27:34"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 19:27:51"/>
+										<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="multiplicity" value="1..*"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="559"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Class xmi.id="EAID_FCC119D1_B7C3_4140_9858_FF346D5B2AEB" visibility="public" namespace="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" isRoot="false" isLeaf="false" isAbstract="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="Port"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="isActive" value="false"/>
+										<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+										<UML:TaggedValue tag="owner" value="EAID_0E40D5D3_1F9E_4897_9A17_150B9C21DEA8"/>
+										<UML:TaggedValue tag="date_created" value="2012-10-29 22:11:29"/>
+										<UML:TaggedValue tag="date_modified" value="2012-10-29 22:12:01"/>
+										<UML:TaggedValue tag="gentype" value="&lt;none&gt;"/>
+										<UML:TaggedValue tag="tagged" value="0"/>
+										<UML:TaggedValue tag="package_name" value="widgets"/>
+										<UML:TaggedValue tag="phase" value="1.0"/>
+										<UML:TaggedValue tag="author" value="Nestor"/>
+										<UML:TaggedValue tag="complexity" value="1"/>
+										<UML:TaggedValue tag="status" value="Proposed"/>
+										<UML:TaggedValue tag="multiplicity" value="1..*"/>
+										<UML:TaggedValue tag="tpos" value="0"/>
+										<UML:TaggedValue tag="ea_localid" value="560"/>
+										<UML:TaggedValue tag="ea_eleType" value="element"/>
+										<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+							</UML:Namespace.ownedElement>
+						</UML:Package>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+		<UML:Diagram name="widgets" xmi.id="EAID_96CEC424_317E_4861_A28C_25565985EBAE" diagramType="ComponentDiagram" owner="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985" toolName="Enterprise Architect 2.5">
+			<UML:ModelElement.taggedValue>
+				<UML:TaggedValue tag="version" value="1.0"/>
+				<UML:TaggedValue tag="author" value="Nestor"/>
+				<UML:TaggedValue tag="created_date" value="2012-10-29 18:44:11"/>
+				<UML:TaggedValue tag="modified_date" value="2012-10-30 16:49:30"/>
+				<UML:TaggedValue tag="package" value="EAPK_7DD4CA61_830B_4726_8EEB_B41840D2C985"/>
+				<UML:TaggedValue tag="type" value="Component"/>
+				<UML:TaggedValue tag="swimlanes" value="locked=false;orientation=0;width=0;inbar=false;names=false;color=0;bold=false;fcol=0;;cls=0;"/>
+				<UML:TaggedValue tag="matrixitems" value="locked=false;matrixactive=false;swimlanesactive=true;width=1;"/>
+				<UML:TaggedValue tag="ea_localid" value="37"/>
+				<UML:TaggedValue tag="EAStyle" value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=1;PPgs.cy=1;DocSize.cx=850;DocSize.cy=1098;ShowDetails=0;Orientation=P;Zoom=131;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=1;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<UML:TaggedValue tag="styleex" value="SaveTag=6A4A8CDF;ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;MatrixLineWidth=1;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ProfileData=;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;"/>
+			</UML:ModelElement.taggedValue>
+			<UML:Diagram.element>
+				<UML:DiagramElement geometry="Left=379;Top=610;Right=392;Bottom=650;" subject="EAID_CC34064F_7FE7_4f4c_8E56_1465F66C7E51" seqno="1" style="DUID=989B1727;LBL=CX=47:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=379;Top=649;Right=394;Bottom=664;" subject="EAID_786FFE86_727E_42b5_9CFA_0297EE1A6212" seqno="2" style="DUID=92DD3166;LBL=CX=22:CY=13:OX=9:OY=-18:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=449;Top=674;Right=489;Bottom=687;" subject="EAID_F803B83A_64E4_4967_AA32_B600313F0836" seqno="3" style="DUID=B888872C;LBL=CX=55:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=435;Top=674;Right=450;Bottom=689;" subject="EAID_FCC119D1_B7C3_4140_9858_FF346D5B2AEB" seqno="4" style="DUID=91228629;LBL=CX=22:CY=13:OX=17:OY=-10:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=286;Top=677;Right=326;Bottom=690;" subject="EAID_8F52E821_0741_4c57_93CD_D978035DF586" seqno="5" style="DUID=2103A933;LBL=CX=45:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=325;Top=677;Right=340;Bottom=692;" subject="EAID_0C46B32A_E95C_4c17_AFBA_DF671B28509B" seqno="6" style="DUID=1EC6B85E;LBL=CX=22:CY=13:OX=-21:OY=-13:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=564;Top=418;Right=579;Bottom=433;" subject="EAID_8D5CE567_262C_4339_9F43_52B81515A78A" seqno="7" style="DUID=49CB631A;LBL=CX=22:CY=13:OX=-18:OY=-23:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=525;Top=418;Right=565;Bottom=431;" subject="EAID_11038E8E_29C1_45de_95F9_CB081CDA854D" seqno="8" style="DUID=39EC66EE;LBL=CX=45:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=187;Top=408;Right=227;Bottom=421;" subject="EAID_2D7E6A8B_87C1_4ed6_921E_5E303D7523C0" seqno="9" style="DUID=21F8FA7B;LBL=CX=54:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=263;Top=463;Right=303;Bottom=476;" subject="EAID_17CA0F5B_3081_42b0_AC15_805D3D823DF4" seqno="10" style="DUID=024E1FE8;LBL=CX=54:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=263;Top=398;Right=303;Bottom=411;" subject="EAID_3649B555_07BC_4244_9EA8_AFD59BE36608" seqno="11" style="DUID=E83E7209;LBL=CX=54:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=262;Top=334;Right=302;Bottom=347;" subject="EAID_6A80B7CD_0CDA_47ae_B922_20CB9F5C4004" seqno="12" style="DUID=D8060247;LBL=CX=54:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=411;Top=477;Right=451;Bottom=490;" subject="EAID_7053B0AF_712E_4ab4_B71E_EDC373E18DA9" seqno="13" style="DUID=4895E61B;LBL=CX=45:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=411;Top=399;Right=451;Bottom=412;" subject="EAID_C171767F_B0DF_438d_9D2C_A496B5552E71" seqno="14" style="DUID=0BA690B8;LBL=CX=45:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=410;Top=345;Right=450;Bottom=358;" subject="EAID_FD5269FC_318E_423a_AA2F_F6EFABFDDA0A" seqno="15" style="DUID=DBB5D3C8;LBL=CX=45:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=606;Top=149;Right=646;Bottom=162;" subject="EAID_2AA0B6AF_3CB9_4dc1_A5D2_677AC1BE7FD1" seqno="16" style="DUID=3526D8AB;LBL=CX=55:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=505;Top=152;Right=520;Bottom=167;" subject="EAID_F542B47B_709A_433e_84F3_0F1CA312E931" seqno="17" style="DUID=B67CD283;LBL=CX=22:CY=13:OX=15:OY=-17:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=519;Top=152;Right=559;Bottom=165;" subject="EAID_40ACAF50_8734_4228_8821_45636D69BCB5" seqno="18" style="DUID=8A69241C;LBL=CX=55:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=366;Top=139;Right=381;Bottom=154;" subject="EAID_A934B2E9_5F99_4f92_91AF_9EC3BBC4A5CA" seqno="19" style="DUID=CF5506AE;LBL=CX=22:CY=13:OX=-22:OY=-17:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=327;Top=139;Right=367;Bottom=152;" subject="EAID_38CE63CB_051D_4e25_BF88_3E6C8228C54B" seqno="20" style="DUID=D4BAB498;LBL=CX=47:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=236;Top=106;Right=276;Bottom=119;" subject="EAID_32B7F5A4_07C9_4611_AF07_480C2371DBAA" seqno="21" style="DUID=A2CDEAC4;LBL=CX=47:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=236;Top=195;Right=276;Bottom=208;" subject="EAID_6B5104D3_B089_437c_9C1B_5B3FF628149B" seqno="22" style="DUID=EE75E4A7;LBL=CX=47:CY=13:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:ALT=0:ROT=0;"/>
+				<UML:DiagramElement geometry="Left=332;Top=656;Right=442;Bottom=716;" subject="EAID_0E40D5D3_1F9E_4897_9A17_150B9C21DEA8" seqno="23" style="DUID=0C47145E;"/>
+				<UML:DiagramElement geometry="Left=571;Top=398;Right=681;Bottom=458;" subject="EAID_99A33A54_9AFB_425d_A789_0BEE59A2F1EB" seqno="24" style="DUID=D7EF320B;"/>
+				<UML:DiagramElement geometry="Left=78;Top=388;Right=188;Bottom=448;" subject="EAID_0F5BDE69_A8EF_4501_A297_3078089EFE69" seqno="25" style="DUID=7FF0B180;"/>
+				<UML:DiagramElement geometry="Left=302;Top=466;Right=412;Bottom=526;" subject="EAID_3A38C1F0_01A2_418a_BB13_189079725943" seqno="26" style="DUID=AF0000F0;"/>
+				<UML:DiagramElement geometry="Left=302;Top=395;Right=412;Bottom=455;" subject="EAID_CDEA1158_252B_4c8b_ACB1_1F9879D6E45E" seqno="27" style="DUID=06B62491;"/>
+				<UML:DiagramElement geometry="Left=301;Top=322;Right=411;Bottom=382;" subject="EAID_7C401C72_1949_407b_9740_08AEC8866E1B" seqno="28" style="DUID=9CD37C0C;"/>
+				<UML:DiagramElement geometry="Left=645;Top=117;Right=755;Bottom=177;" subject="EAID_563FD895_1BCB_47ae_8FB1_0930F147CC55" seqno="29" style="DUID=9B5B6452;"/>
+				<UML:DiagramElement geometry="Left=373;Top=130;Right=512;Bottom=189;" subject="EAID_CA917A0E_78F4_489f_9480_56E9AE24B8AD" seqno="30" style="DUID=E9AE14A9;"/>
+				<UML:DiagramElement geometry="Left=127;Top=84;Right=237;Bottom=144;" subject="EAID_D8FA4A4D_5AFD_494d_95E0_6A560C7629F2" seqno="31" style="DUID=D2F69BA5;"/>
+				<UML:DiagramElement geometry="Left=127;Top=163;Right=237;Bottom=223;" subject="EAID_CE1080C2_BF0E_49a4_AF62_CD897046A7C4" seqno="32" style="DUID=F12EB13E;"/>
+				<UML:DiagramElement geometry="Left=65;Top=34;Right=759;Bottom=275;" subject="EAID_A4ADB746_DDCC_44cf_9FDD_C11A2714F8E4" seqno="33" style="DUID=638988B3;"/>
+				<UML:DiagramElement geometry="Left=66;Top=301;Right=747;Bottom=539;" subject="EAID_A67B6BB0_D983_445c_BB73_D3D3150B50AD" seqno="34" style="DUID=D586345C;"/>
+				<UML:DiagramElement geometry="Left=65;Top=559;Right=746;Bottom=743;" subject="EAID_4B0393EB_2AB7_482c_9662_5FC0B7E4D405" seqno="35" style="DUID=14F82973;"/>
+			</UML:Diagram.element>
+		</UML:Diagram>
+	</XMI.content>
+	<XMI.difference/>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5"/>
+</XMI>
