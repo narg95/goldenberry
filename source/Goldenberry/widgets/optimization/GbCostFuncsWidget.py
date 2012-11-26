@@ -1,10 +1,10 @@
 from Optimization import *
 
 """
-<name>Fitness</name>
+<name>Cost Functions</name>
 <description>Provide a set of fitness functions</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/cGA.png</icon>
+<icon>icons/Cost.png</icon>
 <priority>200</priority>
 """
 

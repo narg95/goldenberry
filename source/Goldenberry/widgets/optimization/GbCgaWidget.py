@@ -2,31 +2,35 @@
 <name>cGA</name>
 <description>Compact Genetic Algorithm</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/cga.png</icon>
+<icon>icons/Cga.png</icon>
 <priority>100</priority>
 
 """
 
-from Goldenberry.widgets.Optimization import *
+from Optimization import *
 
 class GbCgaWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
-    #settingsList = ['popsize', 'varsize', 'maxgens']
-    #cgaAlgorithm = Cga()
-    #popsize = 20
-    #varsize = 10
-    #maxgens = None
-    #cost_function = None
+    settingsList = ['popsize', 'varsize', 'maxgens']
+    cgaAlgorithm = Cga()
+    popsize = 20
+    varsize = 10
+    maxgens = None
+    cost_function = None
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent, signalManager, 'cGA')
-        #self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_func)]
-        #self.outputs = [("Search Algorithm", GbBaseOptimizer)]
-        #self.setupUi() 
+        
+        self.setup_interfaces()
+        self.setup_ui() 
 
-    def setupUi(self):
+    def setup_interfaces(self):
+        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_func)]
+        self.outputs = [("Search Algorithm", GbBaseOptimizer)]
+
+    def setup_ui(self):
         # Loads the UI from an .ui file.
         self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbCgaWidget.ui", self)    
         

@@ -1,4 +1,4 @@
-from Optimization.GbCgaWidget import test_widget
+from Goldenberry.widgets.optimization.GbCgaWidget import test_widget
 #from Optimization.GbCostFuncsWidget import test_widget
 import sys
 
