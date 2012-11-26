@@ -6,8 +6,7 @@
     <ProjectGuid>{76d7d1ea-472a-43f4-a0d3-ea8dfd58cffc}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>widgets_test.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <SearchPath>..\..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>widgets</Name>
@@ -31,15 +30,34 @@
     <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />
-    <Compile Include="widgets_test.py" />
+    <Compile Include="widgets_test.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="__init__.py">
+      <Publish>False</Publish>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classify\" />
     <Folder Include="Optimization\" />
+    <Folder Include="Optimization\icons\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Optimization\GbCgaWidget.ui" />
-    <Content Include="Optimization\GbCostFuncsWidget.ui" />
+    <Content Include="Optimization\GbCgaWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\GbCostFuncsWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cga_16.png" />
+    <Content Include="Optimization\icons\Cga_32.png" />
+    <Content Include="Optimization\icons\Cga_40.png" />
+    <Content Include="Optimization\icons\Cga_48.png" />
+    <Content Include="Optimization\icons\Cga_60.png" />
+    <Content Include="Optimization\icons\Cost_32.png" />
+    <Content Include="Optimization\icons\Cost_40.png" />
+    <Content Include="Optimization\icons\Cost_48.png" />
+    <Content Include="Optimization\icons\Cost_60.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
