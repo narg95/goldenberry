@@ -33,8 +33,12 @@
     <Compile Include="Clasify\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="Optimization\GbCgaWidget.py" />
-    <Compile Include="Optimization\GbCostFuncsWidget.py" />
+    <Compile Include="Optimization\GbCgaWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Optimization\GbCostFuncsWidget.py">
+      <Publish>True</Publish>
+    </Compile>
     <Compile Include="Optimization\__init__.py" />
     <Compile Include="main.py">
       <Publish>False</Publish>
@@ -46,8 +50,12 @@
     <Folder Include="Optimization\icons\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Optimization\GbCgaWidget.ui" />
-    <Content Include="Optimization\GbCostFuncsWidget.ui" />
+    <Content Include="Optimization\GbCgaWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\GbCostFuncsWidget.ui">
+      <Publish>True</Publish>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

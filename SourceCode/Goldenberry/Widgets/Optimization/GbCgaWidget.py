@@ -6,24 +6,25 @@
 <priority>100</priority>
 
 """
-from Optimization import *
+
+from Goldenberry.widgets.Optimization import *
 
 class GbCgaWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
-    settingsList = ['popsize', 'varsize', 'maxgens']
-    cgaAlgorithm = Cga()
-    popsize = 20
-    varsize = 10
-    maxgens = None
-    cost_function = None
+    #settingsList = ['popsize', 'varsize', 'maxgens']
+    #cgaAlgorithm = Cga()
+    #popsize = 20
+    #varsize = 10
+    #maxgens = None
+    #cost_function = None
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent, signalManager, 'cGA')
-        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_func)]
-        self.outputs = [("Search Algorithm", GbBaseOptimizer)]
-        self.setupUi() 
+        #self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_func)]
+        #self.outputs = [("Search Algorithm", GbBaseOptimizer)]
+        #self.setupUi() 
 
     def setupUi(self):
         # Loads the UI from an .ui file.
