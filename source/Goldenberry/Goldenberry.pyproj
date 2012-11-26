@@ -52,7 +52,13 @@
     <Compile Include="optimization\edas\BaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
+    <Compile Include="widgets\Optimization\GbCgaWidget.py" />
+    <Compile Include="widgets\Optimization\GbCostFuncsWidget.py" />
     <Compile Include="widgets\Optimization\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="widgets\Optimization\GbCgaWidget.ui" />
+    <Content Include="widgets\Optimization\GbCostFuncsWidget.ui" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
