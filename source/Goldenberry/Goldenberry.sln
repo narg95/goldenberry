@@ -3,14 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Goldenberry", "Goldenberry.pyproj", "{B50BAE63-032A-414C-B4FA-84AB7C14B6A8}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "widgets", "widgets\widgets.pyproj", "{76D7D1EA-472A-43F4-A0D3-EA8DFD58CFFC}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs13
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Goldenberry.pyproj
 		SccLocalPath1 = .
+		SccProjectUniqueName2 = widgets\\widgets.pyproj
+		SccProjectName2 = widgets
+		SccLocalPath2 = widgets
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +24,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B50BAE63-032A-414C-B4FA-84AB7C14B6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B50BAE63-032A-414C-B4FA-84AB7C14B6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D7D1EA-472A-43F4-A0D3-EA8DFD58CFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D7D1EA-472A-43F4-A0D3-EA8DFD58CFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

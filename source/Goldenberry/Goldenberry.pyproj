@@ -32,12 +32,17 @@
   <ItemGroup>
     <Folder Include="classification\" />
     <Folder Include="feature_selection\" />
+    <Folder Include="test\" />
+    <Folder Include="test\optimization\" />
+    <Folder Include="test\optimization\cost_functions\" />
+    <Folder Include="test\optimization\edas\" />
     <Folder Include="widgets\" />
     <Folder Include="optimization\" />
     <Folder Include="optimization\edas\" />
     <Folder Include="optimization\cost_functions\" />
     <Folder Include="optimization\bioinspired\" />
     <Folder Include="optimization\base\" />
+    <Folder Include="widgets\Classify\" />
     <Folder Include="widgets\Optimization\" />
   </ItemGroup>
   <ItemGroup>
@@ -52,13 +57,30 @@
     <Compile Include="optimization\edas\BaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
-    <Compile Include="widgets\Optimization\GbCgaWidget.py" />
-    <Compile Include="widgets\Optimization\GbCostFuncsWidget.py" />
-    <Compile Include="widgets\Optimization\__init__.py" />
+    <Compile Include="test\optimization\cost_functions\tests.py" />
+    <Compile Include="test\optimization\cost_functions\__init__.py" />
+    <Compile Include="test\optimization\edas\test_cga.py" />
+    <Compile Include="test\optimization\edas\test_distributions.py" />
+    <Compile Include="test\optimization\edas\__init__.py" />
+    <Compile Include="test\optimization\__init__.py" />
+    <Compile Include="test\test_execution.py" />
+    <Compile Include="widgets\Optimization\GbCgaWidget.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbCostFuncsWidget.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="widgets\Optimization\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="widgets\Optimization\GbCgaWidget.ui" />
-    <Content Include="widgets\Optimization\GbCostFuncsWidget.ui" />
+    <Content Include="widgets\Optimization\GbCgaWidget.ui">
+      <Publish>False</Publish>
+    </Content>
+    <Content Include="widgets\Optimization\GbCostFuncsWidget.ui">
+      <Publish>False</Publish>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

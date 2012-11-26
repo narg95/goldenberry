@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76d7d1ea-472a-43f4-a0d3-ea8dfd58cffc}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>widgets_test.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>widgets</Name>
+    <RootNamespace>widgets</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <PublishUrl>C:\Python27\Lib\site-packages\Orange\OrangeWidgets</PublishUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Optimization\GbCgaWidget.py" />
+    <Compile Include="Optimization\GbCostFuncsWidget.py" />
+    <Compile Include="Optimization\__init__.py" />
+    <Compile Include="widgets_test.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classify\" />
+    <Folder Include="Optimization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Optimization\GbCgaWidget.ui" />
+    <Content Include="Optimization\GbCostFuncsWidget.ui" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+</Project>
