@@ -3,21 +3,24 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6cc780d0-fc58-4845-8382-b1b1670b0a83}</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectGuid>{6d844e7d-3431-4167-b5a6-0747ababe1d3}</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>main.py</StartupFile>
-    <SearchPath>..\</SearchPath>
+    <SearchPath>
+    </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Goldenberry.Test</Name>
-    <RootNamespace>Goldenberry.Test</RootNamespace>
+    <Name>MLUD</Name>
+    <RootNamespace>Thesis</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>2af0f10d-7135-4994-9156-5d01c9c11b7e</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
-    <IsWindowsApplication>False</IsWindowsApplication>
-    <InterpreterId>2af0f10d-7135-4994-9156-5d01c9c11b7e</InterpreterId>
-    <InterpreterVersion>2.7</InterpreterVersion>
+    <PublishUrl>C:\Python27\Lib\site-packages\MLFw</PublishUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,18 +31,22 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="main.py" />
-    <Compile Include="optimization\cost_functions\tests.py" />
-    <Compile Include="optimization\cost_functions\__init__.py" />
-    <Compile Include="optimization\edas\test_distributions.py" />
-    <Compile Include="optimization\edas\test_cga.py" />
-    <Compile Include="optimization\edas\__init__.py" />
-    <Compile Include="optimization\__init__.py" />
+    <Compile Include="fitfunctions\baseFitness.py" />
+    <Compile Include="fitfunctions\fitnessFuncs.py" />
+    <Compile Include="fitfunctions\__init__.py" />
+    <Compile Include="main.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="misc.py" />
+    <Compile Include="searchers\baseSearcher.py" />
+    <Compile Include="searchers\cga.py" />
+    <Compile Include="searchers\class1.py" />
+    <Compile Include="searchers\__init__.py" />
+    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="optimization\" />
-    <Folder Include="optimization\edas\" />
-    <Folder Include="optimization\cost_functions" />
+    <Folder Include="fitfunctions\" />
+    <Folder Include="searchers" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
