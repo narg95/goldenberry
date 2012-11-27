@@ -36,7 +36,7 @@ class GbCgaWidget(OWWidget):
         
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
-        #QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
+        QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
 
         #set new binding controls
         popEditor = OWGUI.lineEdit(self, self, "popsize", label="Population size", valueType = int, validator = QIntValidator(4,10000, self.controlArea))

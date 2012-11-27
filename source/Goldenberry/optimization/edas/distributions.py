@@ -10,15 +10,20 @@ class BaseDistribution:
     
     @abc.abstractproperty
     def parameters(self):
+        """Gets the distribution parameters"""
         raise NotImplementedError
 
     @abc.abstractmethod
     def sample(self, **kwargs):
+        """Samples based on the parameters in the actual distribution."""
         raise NotImplementedError
 
 class Binomial(BaseDistribution):
     """Represents a binomial distribution."""
     
+    _var_size = 0
+    _params = []
+
     def __init__(self, vars_size = None, params = None):
         """Initialize a new binomial distribution."""
         if(None != vars_size):

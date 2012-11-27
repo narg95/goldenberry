@@ -3,8 +3,8 @@ class GbBaseOptimizer(object):
 
     def setup(self, cost_function, **kwargs):
         """Setup the optimizer algorithm."""
-        pass
+        raise NotImplementedError
 
     def search(self):
         """Search for a optimal solution"""
-        pass
+        raise NotImplementedError

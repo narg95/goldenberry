@@ -49,15 +49,33 @@
     <Content Include="Optimization\GbCostFuncsWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Optimization\icons\Cga_16.png" />
-    <Content Include="Optimization\icons\Cga_32.png" />
-    <Content Include="Optimization\icons\Cga_40.png" />
-    <Content Include="Optimization\icons\Cga_48.png" />
-    <Content Include="Optimization\icons\Cga_60.png" />
-    <Content Include="Optimization\icons\Cost_32.png" />
-    <Content Include="Optimization\icons\Cost_40.png" />
-    <Content Include="Optimization\icons\Cost_48.png" />
-    <Content Include="Optimization\icons\Cost_60.png" />
+    <Content Include="Optimization\icons\Cga_16.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cga_32.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cga_40.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cga_48.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cga_60.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cost_32.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cost_40.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cost_48.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Cost_60.png">
+      <Publish>True</Publish>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
