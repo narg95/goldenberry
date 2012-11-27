@@ -15,9 +15,9 @@ class GbBaseCostFunction:
     @abc.abstractmethod
     def cost(self, solution):
         """Gets the cost of a given solution"""
-        pass
+        raise NotImplementedError()
 
     @abc.abstractmethod
     def name(self):
         """Gets the cost function name"""
-        pass
+        raise NotImplementedError()

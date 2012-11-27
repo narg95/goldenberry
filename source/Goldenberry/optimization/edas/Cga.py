@@ -5,7 +5,14 @@ from Goldenberry.optimization.base.GbSolution import *
 
 class Cga(BaseEda):
     """Compact Genetic Algorithm"""
-    
+
+    _pop_size = None
+    _vars_size = None
+    _cost_function = None
+    _distribution = None
+    _max_iters = None
+    _iters = None
+
     def setup(self, cost_function, varsize, popsize, maxiters = None):
         """Configure a Cga instance"""
         self._pop_size = popsize
