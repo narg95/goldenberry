@@ -6,19 +6,17 @@
 <priority>100</priority>
 
 """
-
-
+from Goldenberry.widgets import *
 
 class GbPerceptronWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
-    settingsList = ['popsize', 'varsize', 'maxgens']
-    cgaAlgorithm = Cga()
-    popsize = 20
-    varsize = 10
-    maxgens = None
-    cost_function = None
+    settingsList = ['learning_rate', 'max_iters']
+    learning_rate = 1.0
+    max_iters = 1000
+    learner = None
+    classifier = None
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent, signalManager, 'cGA')
@@ -27,45 +25,62 @@ class GbPerceptronWidget(OWWidget):
         self.setup_ui() 
 
     def setup_interfaces(self):
-        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_func)]
-        self.outputs = [("Search Algorithm", GbBaseOptimizer)]
+        self.inputs = [("Data", Orange.core.ExampleTable, self.setData),
+                       ("Preprocess", PreprocessedLearner, self.setPreprocessor)]
+        self.outputs = [("Learner", Orange.core.Learner),
+                        ("Classifier", Orange.core.Classifier)]
 
     def setup_ui(self):
         # Loads the UI from an .ui file.
-        self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbCgaWidget.ui", self)    
+        self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbPerceptronWidget.ui", self)    
         
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
         QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
 
         #set new binding controls
-        popEditor = OWGUI.lineEdit(self, self, "popsize", label="Population size", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
-        varEditor = OWGUI.lineEdit(self, self, "varsize", label="Variables size", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
-        maxEditor = OWGUI.lineEdit(self, self, "maxgens", label="Max Generations", valueType = int, validator = QIntValidator(0, 100000, self.controlArea))
+        learningEditor = OWGUI.lineEdit(self, self, "learning_rate", label="Learning Rage", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
+        maxiterEditor = OWGUI.lineEdit(self, self, "max_iters", label="Max. Iterations", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
         self.paramBox.setLayout(QFormLayout(self.paramBox))
-        self.paramBox.layout().addRow(varEditor.box, varEditor)
-        self.paramBox.layout().addRow(popEditor.box, popEditor)
-        self.paramBox.layout().addRow(maxEditor.box, maxEditor)
-
-    def set_cost_func(self, cost_func):
-        self.cost_func = cost_func
-
+        self.paramBox.layout().addRow(learningEditor.box, learningEditor)
+        self.paramBox.layout().addRow(maxiterEditor.box, maxiterEditor)
+        
     def accepted(self):
         self.accept()
-        self.cgaAlgorithm.setup(self.cost_function, self.varsize, self.popsize, self.maxgens)
-        self.send("Search Algorithm" , self.cgaAlgorithm )
+        self.apply_settings()
 
     def rejected(self):
         self.reject()
+
+    def setData(self,data):
+        self.data = self.isDataWithClass(data, Orange.core.VarTypes.Discrete, checkMissing=True) and data or None
+        self.applay_settings()
+
+    def setPreprocessor(self, pp):
+        self.preprocessor = pp
+
+    def applay_settings(self):
+        self.classifier = None
+        self.learner = PerceptronLearner(self.max_iters, self.learning_rate)
+        
+        if self.preprocessor:
+            self.learner = self.preprocessor.wrapLearner(self.learner)
+
+        if None == self.data:
+            self.classifier = self.learner(self.data)
+        
+        self.send("Learner", self.learner)
+        self.send("Classifier", self.classifier)
 
 if __name__=="__main__":
     test_widget()
 
 def test_widget():
     appl = QApplication(sys.argv)
-    ow = GbCgaWidget()
-    ow.cost_function = onemax()
+    ow = GbPerceptronWidget()
     ow.show()
     appl.exec_()
-    result = ow.cgaAlgorithm.search()
+    data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")
+    ow.setData(data)
+    ow.classifier(data[0])
     print(result.params)

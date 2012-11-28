@@ -46,9 +46,11 @@ class PerceptronLearner(Learner):
         """Learn from the given table of data instances."""
 
         X, Y, _ = data.to_numpy()
+        self.iters = 0
         perceptron = Perceptron()
         W, B = None, 0
         for i in range(self.max_iter):
+            self.iters += 1 
             W, B, K = perceptron.learn((X,Y), (W,B), lr = self.lr)
             if K  == 0:
                 break

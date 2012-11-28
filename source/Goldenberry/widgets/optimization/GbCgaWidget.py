@@ -7,7 +7,7 @@
 
 """
 
-import Goldenberry.widgets
+from Goldenberry.widgets import *
 
 class GbCgaWidget(OWWidget):
     """Widget for cga algorithm"""
