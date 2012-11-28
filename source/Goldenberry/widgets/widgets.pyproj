@@ -27,6 +27,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classify\GbPerceptronWidget.py" />
+    <Compile Include="Classify\__init__.py" />
     <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />

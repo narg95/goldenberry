@@ -7,9 +7,9 @@
 
 """
 
-import Goldenberry.widgets
 
-class GbCgaWidget(OWWidget):
+
+class GbPerceptronWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
