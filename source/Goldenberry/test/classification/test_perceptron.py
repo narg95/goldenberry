@@ -1,4 +1,4 @@
-from Goldenberry.classification.Perceptron import Perceptron
+from Goldenberry.classification.Perceptron import *
 import Orange
 import os
 import itertools as itert
@@ -9,7 +9,8 @@ class PerceptronTest(TestCase):
     """Perceptron tests."""
 
     def setUp(self):
-        self.X, self.Y, _ = Orange.data.Table(os.path.dirname(__file__) + "\\test_date_2d.tab").to_numpy()
+        self.training_set = Orange.data.Table(os.path.dirname(__file__) + "\\test_date_2d.tab")
+        self.X, self.Y, _ = self.training_set.to_numpy()
     
     def test_basic(self):
         perceptron = Perceptron()
@@ -21,3 +22,15 @@ class PerceptronTest(TestCase):
         for yp, yi in itert.imap(lambda y1, y2 : (y1, -1 if y2 == 0 else y2), prediction, self.Y):
             self.assertEqual(yp, yi)
 
+    def test_perceptor_learner(self):
+        learner = PerceptronLearner()
+        classifier = learner(self.training_set)
+        self.assertIsNotNone(classifier.W)
+        self.assertIsNotNone(classifier.B)
+        self.assertIsNotNone(classifier.predictor)
+
+    def test_perceptor_classifier(self):
+        learner = PerceptronLearner()
+        classifier = learner(self.training_set)
+        for item in self.training_set:
+            self.assertEqual(classifier(item), item.getclass())
