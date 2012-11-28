@@ -27,7 +27,7 @@ class PerceptronTest(TestCase):
         classifier = learner(self.training_set)
         self.assertIsNotNone(classifier.W)
         self.assertIsNotNone(classifier.B)
-        self.assertIsNotNone(classifier.predictor)
+        self.assertIsNotNone(classifier.predict)
 
     def test_perceptor_classifier(self):
         learner = PerceptronLearner()

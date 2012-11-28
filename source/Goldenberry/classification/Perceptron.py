@@ -26,6 +26,8 @@ class Perceptron:
 class PerceptronLearner(Learner):
     """Kernel perceptron learner"""
     
+    # TODO:  Only remove this code when you make sure it is not required
+    # for being integrated with Orange test learners.
     #@classmethod
     #def __new__( cls, *args, **kwargs):
     #    self = Orange.classification.Learner.__new__(cls, **kwargs)
@@ -51,7 +53,7 @@ class PerceptronLearner(Learner):
             if K  == 0:
                 break
 
-        classifier = PerceptronClassifier(predictor = perceptron.predict, W = W, B = B)
+        classifier = PerceptronClassifier(predict = perceptron.predict, W = W, B = B)
         return classifier
         
 class PerceptronClassifier:
@@ -60,5 +62,6 @@ class PerceptronClassifier:
         self.__dict__.update(**kwargs)
 
     def __call__(self,example, result_type=Orange.core.GetValue):
-        input = np.array([[float(e) for e in example]])
-        results = self.classifier(input)
+        input = np.array([[example[feature.name].value for feature in example.domain.features]])
+        result = self.predict(input,(self.W, self.B))
+        return example.domain.class_var[0 if result[0] <= 0 else 1]
