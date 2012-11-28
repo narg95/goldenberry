@@ -33,6 +33,7 @@
     <Folder Include="classification\base\" />
     <Folder Include="feature_selection\" />
     <Folder Include="test\" />
+    <Folder Include="test\classification\" />
     <Folder Include="test\optimization\" />
     <Folder Include="test\optimization\cost_functions\" />
     <Folder Include="test\optimization\edas\" />
@@ -58,6 +59,8 @@
     <Compile Include="optimization\edas\BaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
+    <Compile Include="test\classification\test_perceptron.py" />
+    <Compile Include="test\classification\__init__.py" />
     <Compile Include="test\optimization\cost_functions\tests.py" />
     <Compile Include="test\optimization\cost_functions\__init__.py" />
     <Compile Include="test\optimization\edas\test_cga.py" />
@@ -66,6 +69,9 @@
     <Compile Include="test\optimization\__init__.py" />
     <Compile Include="test\test_execution.py" />
     <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="test\classification\test_date_2d.tab" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
