@@ -1,15 +1,15 @@
 """
-<name>cGA</name>
-<description>Compact Genetic Algorithm</description>
+<name>Perceptron</name>
+<description>Canonical Perceptron Algorithm</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/Cga.png</icon>
-<priority>100</priority>
+<icon>icons/perceptron.png</icon>
+<priority>50</priority>
 
 """
 from Goldenberry.widgets import *
 
 class GbPerceptronWidget(OWWidget):
-    """Widget for cga algorithm"""
+    """Widget for the perceptron algorithm"""
     
     #attributes
     settingsList = ['learning_rate', 'max_iters']
@@ -17,9 +17,11 @@ class GbPerceptronWidget(OWWidget):
     max_iters = 1000
     learner = None
     classifier = None
+    preprocessor = None
+    data = None
 
     def __init__(self, parent=None, signalManager=None):
-        OWWidget.__init__(self, parent, signalManager, 'cGA')
+        OWWidget.__init__(self, parent, signalManager, 'Perceptron')
         
         self.setup_interfaces()
         self.setup_ui() 
@@ -54,23 +56,25 @@ class GbPerceptronWidget(OWWidget):
 
     def setData(self,data):
         self.data = self.isDataWithClass(data, Orange.core.VarTypes.Discrete, checkMissing=True) and data or None
-        self.applay_settings()
+        print "data has been set"
+        self.apply_settings()
 
     def setPreprocessor(self, pp):
         self.preprocessor = pp
 
-    def applay_settings(self):
+    def apply_settings(self):
         self.classifier = None
         self.learner = PerceptronLearner(self.max_iters, self.learning_rate)
         
         if self.preprocessor:
             self.learner = self.preprocessor.wrapLearner(self.learner)
 
-        if None == self.data:
+        if None != self.data:
             self.classifier = self.learner(self.data)
         
         self.send("Learner", self.learner)
         self.send("Classifier", self.classifier)
+        print "Learner and classifier was sent"
 
 if __name__=="__main__":
     test_widget()
@@ -79,8 +83,7 @@ def test_widget():
     appl = QApplication(sys.argv)
     ow = GbPerceptronWidget()
     ow.show()
-    appl.exec_()
+    appl.exec_()    
     data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")
     ow.setData(data)
-    ow.classifier(data[0])
-    print(result.params)
+    ow.classifier(data[0])    

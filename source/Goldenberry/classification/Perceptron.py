@@ -55,7 +55,7 @@ class PerceptronLearner(Learner):
             if K  == 0:
                 break
 
-        classifier = PerceptronClassifier(predict = perceptron.predict, W = W, B = B)
+        classifier = PerceptronClassifier(predict = perceptron.predict, W = W, B = B, domain = data.domain)
         return classifier
         
 class PerceptronClassifier:
@@ -63,7 +63,17 @@ class PerceptronClassifier:
     def __init__(self,**kwargs):
         self.__dict__.update(**kwargs)
 
-    def __call__(self,example, result_type=Orange.core.GetValue):
+    def __call__(self,example, result_type = Orange.core.GetValue):
         input = np.array([[example[feature.name].value for feature in example.domain.features]])
-        result = self.predict(input,(self.W, self.B))
-        return example.domain.class_var[0 if result[0] <= 0 else 1]
+        results = self.predict(input,(self.W, self.B))
+
+        mt_value =  self.domain.class_var[0 if results[0] <= 0 else 1]
+        mt_prob = Orange.statistics.distribution.Discrete(results.tolist())
+        mt_prob.normalize()
+
+        if result_type == Orange.core.GetValue: return tuple(mt_value) if self.domain.class_vars else mt_value
+        elif result_type == Orange.core.GetProbabilities: return tuple(mt_prob) if self.domain.class_vars else mt_prob
+        else: 
+            return [tuple(mt_value), tuple(mt_prob)] if self.domain.class_vars else [mt_value, mt_prob] 
+
+        return
