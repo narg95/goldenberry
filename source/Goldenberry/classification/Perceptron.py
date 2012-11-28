@@ -2,6 +2,7 @@ from Orange.core import Learner
 import math
 import numpy as np
 import itertools as iter
+import Orange
 
 class Perceptron:
     """Perceptron algorithm"""
@@ -22,24 +23,42 @@ class Perceptron:
     def predict(self, X, (W, B)):
         return np.sign(X.dot(W.T) + B)
                     
-#class PerceptronLearner(Learner):
-#    """Kernel perceptron learner"""
+class PerceptronLearner(Learner):
+    """Kernel perceptron learner"""
     
-#    _learning_rate = 1.0
- 
-#    @classmethod
-#    def __new__(cls, data = None, weight_id = 0, **argkw):
-#        self = Orange.classification.Learner.__new__(cls, **argkw)
-#        if data:
-#            self.__init__(**argkw)
-#            return self.__call__(data, weight_id)
-#        else:
-#            return self
+    #@classmethod
+    #def __new__( cls, *args, **kwargs):
+    #    self = Orange.classification.Learner.__new__(cls, **kwargs)
 
-#    def __init__(self, learning_rate = 1.0):
-#        self._learning_rate = learning_rate
-        
-#    def __call__(self,data,weight=0):
-#        """Learn from the given table of data instances."""
-        
+    #    if dataset is None:   
+    #        return self
+    #    else:
+    #        self.__init__(**kwargs)
+    #        return self(dataset, weight)
 
+    def __init__(self, max_iter = 1000, lr = 1.0):
+        self.max_iter = max_iter
+        self.lr = lr
+        
+    def __call__(self,data,weight=0):
+        """Learn from the given table of data instances."""
+
+        X, Y, _ = data.to_numpy()
+        perceptron = Perceptron()
+        W, B = None, 0
+        for i in range(self.max_iter):
+            W, B, K = perceptron.learn((X,Y), (W,B), lr = self.lr)
+            if K  == 0:
+                break
+
+        classifier = PerceptronClassifier(predictor = perceptron.predict, W = W, B = B)
+        return classifier
+        
+class PerceptronClassifier:
+    
+    def __init__(self,**kwargs):
+        self.__dict__.update(**kwargs)
+
+    def __call__(self,example, result_type=Orange.core.GetValue):
+        input = np.array([[float(e) for e in example]])
+        results = self.classifier(input)
