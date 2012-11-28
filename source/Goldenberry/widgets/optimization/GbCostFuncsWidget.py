@@ -1,5 +1,3 @@
-from Optimization import *
-
 """
 <name>Cost Functions</name>
 <description>Provide a set of fitness functions</description>
@@ -7,6 +5,8 @@ from Optimization import *
 <icon>icons/Cost.png</icon>
 <priority>200</priority>
 """
+
+from Goldenberry.widgets import *
 
 class GbCostFuncsWidget(OWWidget):
     """Widget for fitness functions"""

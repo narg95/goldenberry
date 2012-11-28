@@ -9,7 +9,7 @@ class PerceptronTest(TestCase):
     """Perceptron tests."""
 
     def setUp(self):
-        self.training_set = Orange.data.Table(os.path.dirname(__file__) + "\\test_date_2d.tab")
+        self.training_set = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")
         self.X, self.Y, _ = self.training_set.to_numpy()
     
     def test_basic(self):
@@ -23,8 +23,10 @@ class PerceptronTest(TestCase):
             self.assertEqual(yp, yi)
 
     def test_perceptor_learner(self):
-        learner = PerceptronLearner()
+        max_iter = 5
+        learner = PerceptronLearner(max_iter = max_iter)
         classifier = learner(self.training_set)
+        self.assertGreaterEqual(max_iter, learner.iters)
         self.assertIsNotNone(classifier.W)
         self.assertIsNotNone(classifier.B)
         self.assertIsNotNone(classifier.predict)

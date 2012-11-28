@@ -91,7 +91,7 @@
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="test\classification\test_date_2d.tab">
+    <Content Include="test\classification\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
   </ItemGroup>

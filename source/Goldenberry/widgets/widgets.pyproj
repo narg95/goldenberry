@@ -27,8 +27,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Classify\GbPerceptronWidget.py" />
-    <Compile Include="Classify\__init__.py" />
+    <Compile Include="Classify\GbPerceptronWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Classify\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
     <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />
@@ -45,6 +49,10 @@
     <Folder Include="Optimization\icons\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Classify\GbPerceptronWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Classify\test_data_2d.tab" />
     <Content Include="Optimization\GbCgaWidget.ui">
       <Publish>True</Publish>
     </Content>
