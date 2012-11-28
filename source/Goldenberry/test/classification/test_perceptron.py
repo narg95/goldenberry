@@ -30,6 +30,7 @@ class PerceptronTest(TestCase):
         self.assertIsNotNone(classifier.W)
         self.assertIsNotNone(classifier.B)
         self.assertIsNotNone(classifier.predict)
+        self.assertIsNotNone(classifier.domain)
 
     def test_perceptor_classifier(self):
         learner = PerceptronLearner()

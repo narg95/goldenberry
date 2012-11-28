@@ -45,11 +45,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classify\" />
+    <Folder Include="Classify\icons\" />
     <Folder Include="Optimization\" />
     <Folder Include="Optimization\icons\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Classify\GbPerceptronWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Classify\icons\perceptron_16.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Classify\icons\perceptron_32.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Classify\icons\perceptron_40.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Classify\icons\perceptron_48.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Classify\icons\perceptron_60.png">
       <Publish>True</Publish>
     </Content>
     <Content Include="Classify\test_data_2d.tab" />
