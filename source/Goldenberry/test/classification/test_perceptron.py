@@ -33,7 +33,25 @@ class PerceptronTest(TestCase):
         self.assertIsNotNone(classifier.domain)
 
     def test_perceptor_classifier(self):
-        learner = PerceptronLearner()
+        max_iter = 5
+        learner = PerceptronLearner(max_iter = max_iter)
         classifier = learner(self.training_set)
         for item in self.training_set:
             self.assertEqual(classifier(item), item.getclass())
+
+    def test_integration_perceptron_orange_learner(self):
+        data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")
+        max_iter = 5
+        perceptron = PerceptronLearner(max_iter = max_iter)
+        svm = Orange.classification.svm.SVMLearner()
+        bayes = Orange.classification.bayes.NaiveLearner()
+        learners = [svm, bayes, perceptron]
+        results  = Orange.evaluation.testing.cross_validation(learners,data, folds = 10)
+        
+        print "Learner  CA     IS     Brier    AUC"
+        for i in range(len(learners)):
+            print "%-8s %5.3f  %5.3f  %5.3f  %5.3f" % (learners[i].name, \
+            Orange.evaluation.scoring.CA(results)[i], Orange.evaluation.scoring.IS(results)[i],
+            Orange.evaluation.scoring.Brier_score(results)[i], Orange.evaluation.scoring.AUC(results)[i])
+
+
