@@ -38,12 +38,17 @@ class PerceptronLearner(Learner):
     #        self.__init__(**kwargs)
     #        return self(dataset, weight)
 
-    def __init__(self, max_iter = 1000, lr = 1.0):
+    def __init__(self, max_iter = 10, lr = 1.0):
         self.max_iter = max_iter
         self.lr = lr
         
     def __call__(self,data,weight=0):
         """Learn from the given table of data instances."""
+        
+        examples = Orange.core.Preprocessor_dropMissingClasses(data)
+        class_var = examples.domain.class_var
+        if len(examples) == 0:
+            raise ValueError("Example table is without any defined classes")
 
         X, Y, _ = data.to_numpy()
         self.iters = 0
@@ -68,7 +73,8 @@ class PerceptronClassifier:
         results = self.predict(input,(self.W, self.B))
 
         mt_value =  self.domain.class_var[0 if results[0] <= 0 else 1]
-        mt_prob = Orange.statistics.distribution.Discrete(results.tolist())
+        frecuencies = [1.0, 0.0] if results[0] < 0 else [0.0, 1.0] if results[0] > 0 else [0.5, 0.5]
+        mt_prob = Orange.statistics.distribution.Discrete(frecuencies)
         mt_prob.normalize()
 
         if result_type == Orange.core.GetValue: return tuple(mt_value) if self.domain.class_vars else mt_value

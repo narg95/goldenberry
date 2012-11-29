@@ -12,13 +12,14 @@ class GbPerceptronWidget(OWWidget):
     """Widget for the perceptron algorithm"""
     
     #attributes
-    settingsList = ['learning_rate', 'max_iters']
+    settingsList = ['learning_rate', 'max_iters', 'name']
     learning_rate = 1.0
-    max_iters = 1000
+    max_iters = 10
     learner = None
     classifier = None
     preprocessor = None
     data = None
+    name = "Perceptron"
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent, signalManager, 'Perceptron')
@@ -41,9 +42,12 @@ class GbPerceptronWidget(OWWidget):
         QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
 
         #set new binding controls
+        nameEditor = OWGUI.lineEdit(self, self, "name", label="Name")
         learningEditor = OWGUI.lineEdit(self, self, "learning_rate", label="Learning Rage", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
         maxiterEditor = OWGUI.lineEdit(self, self, "max_iters", label="Max. Iterations", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
+        
         self.paramBox.setLayout(QFormLayout(self.paramBox))
+        self.paramBox.layout().addRow(nameEditor.box, nameEditor)
         self.paramBox.layout().addRow(learningEditor.box, learningEditor)
         self.paramBox.layout().addRow(maxiterEditor.box, maxiterEditor)
         
@@ -75,6 +79,9 @@ class GbPerceptronWidget(OWWidget):
         self.send("Learner", self.learner)
         self.send("Classifier", self.classifier)
         print "Learner and classifier was sent"
+
+    def handleNewSignals(self):
+        self.applySettings()
 
 if __name__=="__main__":
     test_widget()
