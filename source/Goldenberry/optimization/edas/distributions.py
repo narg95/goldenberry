@@ -5,9 +5,6 @@ class BaseDistribution:
     """Represents a base clase for probability distributions."""
     __metaclass__ = abc.ABCMeta
     
-    def __call__(self):
-        return self.parameters
-    
     @abc.abstractproperty
     def parameters(self):
         """Gets the distribution parameters"""
@@ -21,36 +18,55 @@ class BaseDistribution:
 class Binomial(BaseDistribution):
     """Represents a binomial distribution."""
     
-    _var_size = 0
-    _params = []
-
-    def __init__(self, vars_size = None, params = None):
+    def __init__(self, n = None, p = None):
         """Initialize a new binomial distribution."""
-        if(None != vars_size):
-            self._vars_size = vars_size
-            self._params = np.zeros(vars_size)
+        if(None != n):
+            self._n = n
+            self._p =  np.tile(0.5,(1, n))
         elif(None != params) :
-            self._vars_size = params.size
-            self._params = params
+            self._n = p.size
+            self._p = p
         else:
             raise ValueError("provide the variables size \
                 or the parameters for initialize the binomial distribution")
     
     def __getitem__(self, key):
-        return self._params[key]
+        return self._p[key]
 
     def __setitem__(self, key, value):
-        self._params[key] = value
+        self._p[key] = value
+
+    def __call__(self):
+        return self._n
 
     @property
     def parameters(self):
-        return self._params
-
-    @property
-    def vars_size(self):
-        return self._vars_size
+        return self._n, self._p
 
     def sample(self, sample_size):
         """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
-        return np.matrix(np.random.rand(sample_size, self.vars_size) <= np.ones((sample_size, 1)) * self._params, dtype=float)
+        return np.matrix(np.random.rand(sample_size, self.vars_size) <= np.ones((sample_size, 1)) * self._p, dtype=float)
+
+class BivariateBinomial(BaseDistribution):
+    
+    def __init__(self, n, px, py, pxy):
+        if None != n:
+            self._n = n
+            self._px =  np.tile(0.5,(1, n))
+            self._py = np.tile(0.5,(2, n))
+            self._pxy = 
+
+   
+    @property
+    def parameters(self):
+        return self._n, self._p
+
+    def sample(self, sample_size):
+        """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
+        return np.matrix(np.random.rand(sample_size, self.vars_size) <= np.ones((sample_size, 1)) * self._p, dtype=float)  
+
+
+
+    
+    
 
