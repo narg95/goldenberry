@@ -18,7 +18,11 @@ class OptimizationWidgetsTest(TestCase):
         widget.set_cost_function(onemax())
 
         self.assertTrue(widget.runButton.isEnabled())
-        widget.run()        
+        widget.run()   
+        
+        # Uncomment only when testing the widget UI
+        widget.show()
+        self.app.exec_()     
 
     def tearDown(self):
        pass
