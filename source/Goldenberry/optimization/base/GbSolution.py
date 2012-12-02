@@ -19,9 +19,6 @@ class GbSolution(object):
         """Gets the solution's cost."""
         return self._cost
 
-    #TODO: There is no escenario for a setter yet
-    #@cost.setter
-    #def cost(self, cost):
-    #    """Sets the cost to the current solution."""
-    #    self._cost = cost
-
+    def __str__(self):
+        return "[cost: " + str(self.cost) + "]\n[parameters:" + str(self.params) + "]"
+   
