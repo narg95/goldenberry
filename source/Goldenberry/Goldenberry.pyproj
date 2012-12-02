@@ -55,6 +55,7 @@
     <Compile Include="optimization\base\__init__.py" />
     <Compile Include="optimization\cost_functions\functions.py" />
     <Compile Include="optimization\cost_functions\__init__.py" />
+    <Compile Include="optimization\edas\Bmda.py" />
     <Compile Include="optimization\edas\Cga.py" />
     <Compile Include="optimization\edas\distributions.py" />
     <Compile Include="optimization\edas\BaseEda.py" />
