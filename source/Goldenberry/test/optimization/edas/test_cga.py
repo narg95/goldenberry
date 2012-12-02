@@ -3,7 +3,7 @@ from Goldenberry.optimization.cost_functions.functions import *
 from unittest import *
 
 class CgaTest(TestCase):
-    
+    """Test class for the Cga algorithm"""
     def test_basic(self):
         cga = Cga()
         cga.setup(onemax(), 10, 20)

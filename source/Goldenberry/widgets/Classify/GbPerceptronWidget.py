@@ -81,7 +81,7 @@ class GbPerceptronWidget(OWWidget):
         print "Learner and classifier was sent"
 
     def handleNewSignals(self):
-        self.applySettings()
+        self.apply_settings()
 
 if __name__=="__main__":
     test_widget()

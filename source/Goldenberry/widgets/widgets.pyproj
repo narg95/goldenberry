@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{76d7d1ea-472a-43f4-a0d3-ea8dfd58cffc}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>widgets_test.py</StartupFile>
+    <StartupFile>test\test_execution.py</StartupFile>
     <SearchPath>..\..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -36,9 +36,11 @@
     <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />
-    <Compile Include="widgets_test.py">
-      <Publish>False</Publish>
-    </Compile>
+    <Compile Include="test\classify\__init__.py" />
+    <Compile Include="test\optimization\test_widgets.py" />
+    <Compile Include="test\optimization\__init__.py" />
+    <Compile Include="test\test_execution.py" />
+    <Compile Include="test\__init__.py" />
     <Compile Include="__init__.py">
       <Publish>False</Publish>
     </Compile>
@@ -46,8 +48,11 @@
   <ItemGroup>
     <Folder Include="Classify\" />
     <Folder Include="Classify\icons\" />
+    <Folder Include="test\" />
     <Folder Include="Optimization\" />
     <Folder Include="Optimization\icons\" />
+    <Folder Include="test\classify\" />
+    <Folder Include="test\optimization\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Classify\GbPerceptronWidget.ui">

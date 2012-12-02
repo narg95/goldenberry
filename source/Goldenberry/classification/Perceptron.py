@@ -38,9 +38,10 @@ class PerceptronLearner(Learner):
     #        self.__init__(**kwargs)
     #        return self(dataset, weight)
 
-    def __init__(self, max_iter = 10, lr = 1.0):
+    def __init__(self, max_iter = 10, lr = 1.0, name = "Perceptron"):
         self.max_iter = max_iter
         self.lr = lr
+        self.name = name
         
     def __call__(self,data,weight=0):
         """Learn from the given table of data instances."""

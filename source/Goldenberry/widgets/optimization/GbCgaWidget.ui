@@ -1,49 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-  <author>Nestor Rodriguez</author>
-  <class>Dialog</class>
-  <widget class="QDialog" name="Dialog">
-    <property name="windowModality">
-      <enum>Qt::NonModal</enum>
-    </property>
-    <property name="geometry">
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>236</width>
-        <height>151</height>
-      </rect>
-    </property>
-    <property name="windowTitle">
-      <string>Dialog</string>
-    </property>
-    <widget class="QDialogButtonBox" name="buttonBox">
-      <property name="geometry">
-        <rect>
-          <x>40</x>
-          <y>120</y>
-          <width>111</width>
-          <height>23</height>
-        </rect>
-      </property>
-      <property name="standardButtons">
-        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-      </property>
-    </widget>
-    <widget class="QGroupBox" name="paramBox">
-      <property name="geometry">
-        <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>211</width>
-          <height>101</height>
-        </rect>
-      </property>
+ <author>Nestor Rodriguez</author>
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>207</width>
+    <height>235</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cga</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>201</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="paramBox">
       <property name="title">
-        <string>Parameters</string>
+       <string>Parameters</string>
       </property>
-    </widget>
+      <zorder>verticalLayoutWidget</zorder>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="resultBox">
+      <property name="title">
+       <string>Result</string>
+      </property>
+      <widget class="QTextEdit" name="resultTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>181</width>
+         <height>51</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="applyButton">
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="runButton">
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <resources/>
-  <connections/>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>paramBox</zorder>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>
