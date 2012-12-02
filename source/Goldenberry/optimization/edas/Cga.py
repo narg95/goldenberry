@@ -18,7 +18,7 @@ class Cga(BaseEda):
         self._pop_size = popsize
         self._vars_size = varsize
         self._cost_function = cost_function
-        self._distribution = Binomial(params = np.tile(0.5,(1,varsize)))
+        self._distribution = Binomial(n = varsize)
         self._max_iters = maxiters
         self._iters = 0
 
