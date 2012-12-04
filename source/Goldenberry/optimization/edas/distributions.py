@@ -45,28 +45,48 @@ class Binomial(BaseDistribution):
 
     def sample(self, sample_size):
         """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
-        return np.matrix(np.random.rand(sample_size, self.vars_size) <= np.ones((sample_size, 1)) * self._p, dtype=float)
+        return np.matrix(np.random.rand(sample_size, self._n) <= np.ones((sample_size, 1)) * self._p, dtype=float)
 
 class BivariateBinomial(BaseDistribution):
     
-    def __init__(self, n, px, py, pxy):
+    def __init__(self, n, p, pxy):
         if None != n:
-            self._n = n
-            self._px =  np.tile(0.5,(1, n))
-            self._py = np.tile(0.5,(2, n))
-            self._pxy = 
-
+            self.n = n
+            self.p =  np.tile(0.5,(1, n))
+            self.pxy = np.tile(0.5,(2, n))
+            self.edges = {}
+            self.roots = [[range(n)]]
+            self.vertex = [[range(n)]]
    
     @property
     def parameters(self):
-        return self._n, self._p
+        return self.n, self._px, self._py, self.pxy, self.edges
 
     def sample(self, sample_size):
-        """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
-        return np.matrix(np.random.rand(sample_size, self.vars_size) <= np.ones((sample_size, 1)) * self._p, dtype=float)  
+        """Samples based on the current bivariate binomial parameters ."""
+        samples = np.zeros((sample_size, n))
+        
+        # samples univiariate probabilities
+        samples[:, self.roots] = np.matrix(np.random.rand(sample_size, len(self.roots)) <= np.ones((sample_size, 1)) * self.p[:, self.roots], dtype=float)
+
+        # samples conditional dependencies
+        ipars, ichln = splitter(self.vertex, lambda item: item in self.roots)
+        while ichln.count() > 0:
+            for iedg, edg in enumerate(self.edges):
+                for ip in ipars:
+                    for ic in ichln:
+                        if edg == (self.vertex[ip], self.vertex[ic]):
+                            vals = samples[:, ip]
+                            self.join[vals, iedg]/abs((vals - 1) + self.p) 
+
+        return np.matrix(np.random.rand(sample_size, self.vars_size) <= np.ones((sample_size, 1)) * self.p, dtype=float)  
 
 
-
+    def isplitter(data, pred):
+        yes, no = [], []
+        for d in data:
+            (yes if pred(d) else no).append(i)
+        return [yes, no]
     
     
 
