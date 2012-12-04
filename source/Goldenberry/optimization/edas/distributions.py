@@ -54,7 +54,7 @@ class BivariateBinomial(BaseDistribution):
             self.n = n
             self.p =  np.tile(0.5,(1, n))
             self.pxy = np.tile(0.5,(2, n))
-            self.edges = {}
+            self.edges = []
             self.roots = [[range(n)]]
             self.vertex = [[range(n)]]
    
@@ -72,15 +72,18 @@ class BivariateBinomial(BaseDistribution):
         # samples conditional dependencies
         ipars, ichln = splitter(self.vertex, lambda item: item in self.roots)
         while ichln.count() > 0:
-            for iedg, edg in enumerate(self.edges):
-                for ip in ipars:
-                    for ic in ichln:
-                        if edg == (self.vertex[ip], self.vertex[ic]):
-                            vals = samples[:, ip]
-                            self.join[vals, iedg]/abs((vals - 1) + self.p) 
-
-        return np.matrix(np.random.rand(sample_size, self.vars_size) <= np.ones((sample_size, 1)) * self.p, dtype=float)  
-
+            ic  = ichln[0]
+            for idx, (iep, iec)  in enumerate(self.edges):
+                # if found parent
+                if iec == ic:
+                    # if parent has been already processed
+                    if iep in ipars:
+                        vals = samples[:, iep]
+                        cond_prob = self.join[vals, idx]/abs((vals - 1) + self.p) 
+                        samples[:, ic] = np.matrix(np.random.rand(sample_size, 1) <= np.ones((sample_size, 1)) * cond_prob, dtype=float)
+                        del ichln[ic]
+                    break
+        return samples
 
     def isplitter(data, pred):
         yes, no = [], []
