@@ -1,4 +1,5 @@
 import numpy as np
+import itertools as it
 import abc
 
 class BaseDistribution:
@@ -23,7 +24,7 @@ class Binomial(BaseDistribution):
         if(None != n):
             self._n = n
             self._p =  np.tile(0.5,(1, n))
-        elif(None != params) :
+        elif(None != p) :
             self._n = p.size
             self._p = p
         else:
@@ -37,7 +38,7 @@ class Binomial(BaseDistribution):
         self._p[key] = value
 
     def __call__(self):
-        return self._n
+        return self._p
 
     @property
     def parameters(self):
@@ -49,47 +50,64 @@ class Binomial(BaseDistribution):
 
 class BivariateBinomial(BaseDistribution):
     
-    def __init__(self, n, p, pxy):
+    def __init__(self, n = None, p = None, pxy = None, edges = None, roots = None):
         if None != n:
             self.n = n
             self.p =  np.tile(0.5,(1, n))
             self.pxy = np.tile(0.5,(2, n))
             self.edges = []
-            self.roots = [[range(n)]]
-            self.vertex = [[range(n)]]
-   
+            self.roots = [e for e in range(n)]
+            self.vertex = range(n)
+        elif None != p and None != pxy and None != edges:
+            if pxy.shape[1] != len(edges):
+                raise AttributeError("Join probability must be the same size than the number of edges")
+            self.n = p.shape[1]
+            self.p = p
+            self.pxy = pxy
+            self.edges = edges
+            self.vertex = range(self.n)
+            if None == roots:
+                self.roots = [x for x in self.vertex if np.all([x != c for _, c in edges])]
+            else: 
+                self.roots = roots
+            
+        else:
+            raise AttributeError("Not enough parameters to create a Bivariate binomial distribution")
+    
     @property
     def parameters(self):
-        return self.n, self._px, self._py, self.pxy, self.edges
+        return self.n, self.p, self.pxy, self.edges
 
     def sample(self, sample_size):
         """Samples based on the current bivariate binomial parameters ."""
-        samples = np.zeros((sample_size, n))
+        # Bug in numpy with dtype = int and indexing arrays [].
+        samples = np.zeros((sample_size, self.n), dtype=int)
         
         # samples univiariate probabilities
-        samples[:, self.roots] = np.matrix(np.random.rand(sample_size, len(self.roots)) <= np.ones((sample_size, 1)) * self.p[:, self.roots], dtype=float)
+        samples[:, self.roots] = np.random.rand(sample_size, len(self.roots)) <= np.ones((sample_size, 1)) * self.p[:, self.roots]
 
         # samples conditional dependencies
-        ipars, ichln = splitter(self.vertex, lambda item: item in self.roots)
-        while ichln.count() > 0:
+        ipars, ichln = _splitter(self.vertex, lambda item: item in self.roots)
+        while len(ichln) > 0:
             ic  = ichln[0]
             for idx, (iep, iec)  in enumerate(self.edges):
-                # if found parent
+                # if child is in the current edge
                 if iec == ic:
-                    # if parent has been already processed
+                    # if parent from current edge has been already processed.
                     if iep in ipars:
                         vals = samples[:, iep]
-                        cond_prob = self.join[vals, idx]/abs((vals - 1) + self.p) 
-                        samples[:, ic] = np.matrix(np.random.rand(sample_size, 1) <= np.ones((sample_size, 1)) * cond_prob, dtype=float)
+                        vals.shape = (sample_size, 1)
+                        cond_prob = self.pxy[vals, idx]/abs((vals - 1) + self.p[: ,iep]) 
+                        samples[:, ic] = (np.random.rand(sample_size) <= np.ones(sample_size) , cond_prob)
                         del ichln[ic]
                     break
         return samples
-
-    def isplitter(data, pred):
-        yes, no = [], []
-        for d in data:
-            (yes if pred(d) else no).append(i)
-        return [yes, no]
+    
+def _splitter(data, pred):
+    yes, no = [], []
+    for d in data:
+        (yes if pred(d) else no).append(d)
+    return [yes, no]
     
     
 
