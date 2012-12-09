@@ -60,4 +60,13 @@ class BivariateBinomialTest(TestCase):
         samples = dist.sample(20)
         self.assertTrue(np.all(samples == 1.0))
         
+    def test_sampling_ones_and_zerps_interleaving(self):
+        n = 10
+        p = np.array([i%2 for i in range(n)])
+        pxy = np.matrix([np.zeros(n-1), np.ones(n-1)])
+        edges = [(x, x+1) for x in range(n-1)]
+        dist = BivariateBinomial(p = p, pxy = pxy, edges = edges)
+        samples = dist.sample(20)
+        self.assertTrue(np.all(samples == 1.0))
+        
 
