@@ -96,10 +96,10 @@ class BivariateBinomial(BaseDistribution):
                     # if parent from current edge has been already processed.
                     if iep in ipars:
                         vals = samples[:, iep]
-                        vals.shape = (sample_size, 1)
-                        cond_prob = self.pxy[vals, idx]/abs((vals - 1) + self.p[: ,iep]) 
-                        samples[:, ic] = (np.random.rand(sample_size) <= np.ones(sample_size) , cond_prob)
-                        del ichln[ic]
+                        cond_prob = self.pxy[vals, idx].T/abs((vals - 1) + self.p[: ,iep]) 
+                        samples[:, ic] = (np.random.rand(sample_size) <= cond_prob)
+                        ipars.append(ic)
+                        del ichln[0]
                     break
         return samples
     
