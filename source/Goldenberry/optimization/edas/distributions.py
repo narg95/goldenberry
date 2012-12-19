@@ -50,20 +50,20 @@ class Binomial(BaseDistribution):
 
 class BivariateBinomial(BaseDistribution):
     
-    def __init__(self, n = None, p = None, pxy = None, edges = None, roots = None):
+    def __init__(self, n = None, p = None, pyGx = None, edges = None, roots = None):
         if None != n:
             self.n = n
             self.p =  np.tile(0.5,(1, n))
-            self.pxy = np.tile(0.5,(2, n))
+            self.pyGx = np.tile(0.5,(2, n))
             self.edges = []
             self.roots = [e for e in range(n)]
             self.vertex = range(n)
-        elif None != p and None != pxy and None != edges:
-            if pxy.shape[1] != len(edges):
+        elif None != p and None != pyGx and None != edges:
+            if pyGx.shape[1] != len(edges):
                 raise AttributeError("Join probability must be the same size than the number of edges")
             self.n = p.shape[1]
             self.p = p
-            self.pxy = pxy
+            self.pyGx = pyGx
             self.edges = edges
             self.vertex = range(self.n)
             if None == roots:
@@ -76,7 +76,7 @@ class BivariateBinomial(BaseDistribution):
     
     @property
     def parameters(self):
-        return self.n, self.p, self.pxy, self.edges
+        return self.n, self.p, self.pyGx, self.edges
 
     def sample(self, sample_size):
         """Samples based on the current bivariate binomial parameters ."""
@@ -95,9 +95,8 @@ class BivariateBinomial(BaseDistribution):
                 if iec == ic:
                     # if parent from current edge has been already processed.
                     if iep in ipars:
-                        vals = samples[:, iep]
-                        cond_prob = self.pxy[vals, idx].T/abs((vals - 1) + self.p[: ,iep]) 
-                        samples[:, ic] = (np.random.rand(sample_size) <= cond_prob)
+                        cond_probs = self.pyGx[samples[:, iep], idx]
+                        samples[:, ic] = (np.random.rand(sample_size) <= cond_probs)
                         ipars.append(ic)
                         del ichln[0]
                     break
