@@ -39,10 +39,10 @@ class BivariateBinomialTest(TestCase):
         n = 10
         dist = BivariateBinomial(n)
         self.assertIsNotNone(dist)
-        n1, p, pxy, edges = dist.parameters 
+        n1, p, pyGx, edges = dist.parameters 
         self.assertEqual(n1, n)
         self.assertTrue(np.all(e == 0.5 for e in p))
-        self.assertTrue(np.all(e == 0.5 for e in pxy))
+        self.assertTrue(np.all(e == 0.5 for e in pyGx))
         self.assertTrue(edges == [])
 
     def test_sampling(self):
@@ -54,19 +54,21 @@ class BivariateBinomialTest(TestCase):
     def test_sampling_only_ones_no_dependencies(self):
         n = 10
         p = np.ones((1,n))
-        pxy = np.matrix([np.zeros(n-1), np.ones(n-1)])
+        pyGx = np.matrix([np.zeros(n-1), np.ones(n-1)])
         edges = [(x, x+1) for x in range(n-1)]
-        dist = BivariateBinomial(p = p, pxy = pxy, edges = edges)
+        dist = BivariateBinomial(p = p, pyGx = pyGx, edges = edges)
         samples = dist.sample(20)
         self.assertTrue(np.all(samples == 1.0))
         
     def test_sampling_ones_and_zerps_interleaving(self):
         n = 10
         p = np.array([i%2 for i in range(n)])
-        pxy = np.matrix([np.zeros(n-1), np.ones(n-1)])
+        p.shape = (1,10)
+        pyGx = np.array([[(i + 1)%2 for i in range(n-1)], [(i + 1)%2 for i in range(n-1)]])
         edges = [(x, x+1) for x in range(n-1)]
-        dist = BivariateBinomial(p = p, pxy = pxy, edges = edges)
+        dist = BivariateBinomial(p = p, pyGx = pyGx, edges = edges)
         samples = dist.sample(20)
+        # TODO:  update the assert 
         self.assertTrue(np.all(samples == 1.0))
         
 
