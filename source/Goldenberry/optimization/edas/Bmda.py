@@ -23,6 +23,7 @@ class Bmda(BaseEda):
         self._max_iters = maxiters
         self._iters = 0
         self.percentile = percentile
+        self.edges
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
@@ -62,6 +63,23 @@ class Bmda(BaseEda):
 
     def generate_graph(self, pop):
         px = np.average(a, axis = 0)
+        
+        V = range(self.vars_size)
+        A = range(self.vars_size)
+        E = []
+        R = []
+        edges = []
+
+        # We assume A is >= 1
+        v = A[0]
+        R.append(v)
+        del A[0]
+
+        while len(A) > 0:
+            
+
+
+
         #TODO: Review the NetworkX framework
 
     def hasFinished(self):
@@ -69,3 +87,12 @@ class Bmda(BaseEda):
         if finish:
             return True
         return (((1 - self.distribution()) < 0.01) | (self.distribution() < 0.01)).all()
+
+    def chi_square(self, i, V, pop):
+        parent = pop[:, i]
+        pxy = np.zeros(2, len(V) * 2)
+        for j in V:
+            child = pop[:, j]
+
+
+        
