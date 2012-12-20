@@ -72,5 +72,3 @@ class BivariateBinomialTest(TestCase):
         oddx = range(1,n,2)
         self.assertTrue(np.all(samples[:, evenx] == 0))
         self.assertTrue(np.all(samples[:, oddx] == 1.0))
-        
-

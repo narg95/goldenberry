@@ -6,14 +6,15 @@ from Goldenberry.optimization.base.GbSolution import *
 class Bmda(BaseEda):
     """Bivariate marginal distribution algorithm."""
 
-    _pop_size = None
-    _vars_size = None
-    _cost_function = None
-    _distribution = None
-    _max_iters = None
-    _iters = None
+    pop_size = None
+    vars_size = None
+    cost_function = None
+    distribution = None
+    max_iters = None
+    iters = None
+    percentile = None
 
-    def setup(self, cost_function, varsize, popsize, maxiters = None):
+    def setup(self, cost_function, varsize, popsize, maxiters = None, percentile = 50):
         """Configure a Cga instance"""
         self._pop_size = popsize
         self._vars_size = varsize
@@ -21,13 +22,50 @@ class Bmda(BaseEda):
         self._distribution = Binomial(params = np.tile(0.5,(1,varsize)))
         self._max_iters = maxiters
         self._iters = 0
+        self.percentile = percentile
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
-        pass
+
+        pass 
 
     def ready(self):
         """Informs if the algorithm is ready to execute."""
-        pass
+        return (None != self.pop_size \
+                and None != self.vars_size\
+                and None != self.cost_function \
+                and None != self.distribution \
+                and self.pop_size > 0 \
+                and self.vars_size > 0 
+                and self.percentile > 0 \
+                and self.percentile < 100)
 
+    def search(self):
+        """Search for an optimal solution."""
+        while not self.hasFinished():
+            self.iters += 1
+            pop = self.distribution.sample(_pop_size)
+            best = self.best_population(pop)
+            self.estimate_distribution(best)
+        
+        #returns the winner with its estimated cost
+        winner = self.distribution.sample(1)
+        return GbSolution(winner, self.cost_function(winner))
 
+    def best_population(self, pop):
+        fit = self.cost_function(pop)
+        minvalue = np.percentile(fit, self.percentile)
+        return pop[np.where(fit > minvalue)]
+        
+    def estimate_distribution(self, pop):
+        graph = self.generate_graph(pop, px)
+
+    def generate_graph(self, pop):
+        px = np.average(a, axis = 0)
+        #TODO: Review the NetworkX framework
+
+    def hasFinished(self):
+        finish = not (self.max_iters is None) and self.iters > self.max_iters
+        if finish:
+            return True
+        return (((1 - self.distribution()) < 0.01) | (self.distribution() < 0.01)).all()
