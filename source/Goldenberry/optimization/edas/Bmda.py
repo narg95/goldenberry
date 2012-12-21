@@ -76,7 +76,7 @@ class Bmda(BaseEda):
         del A[0]
 
         while len(A) > 0:
-            
+            break
 
 
 
@@ -90,8 +90,10 @@ class Bmda(BaseEda):
 
     def chisquare_all(self, i, V, pop):
         parent = pop[:, i]
+        children = pop[:, V]
         px = np.average(parent, axis = 0)
-        pxy = np.zeros(2, len(V) * 2)
+        pys = np.average(children, axis = 0)
+        pxys = BinomialContingencyTable(parent, children)
         for j in V:
             child = pop[:, j]
             py = np.average(child, axis = 0)
@@ -105,7 +107,14 @@ class Bmda(BaseEda):
         pxy_x_y = pxy - px_y
         return N*pxy_x_y.dot(pxy_x_y.T) / px_y
 
-    def contingency(self, X, Y):
-        table = np.zeros((2,2)) 
-        table[X, Y] += 1 
-        return table     
+class BinomialContingencyTable:
+    
+    def __new__(self, X, Y):
+        self._table = np.zeros(2, Y.shape[1] * 2)
+        self._table[X, Y] += 1
+        self._px = np.average(X, axis = 0)
+        self._pys = np.average(X, axis = 0)
+           
+    @property
+    def table(self):
+        return self._table
