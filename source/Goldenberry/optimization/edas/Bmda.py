@@ -88,11 +88,24 @@ class Bmda(BaseEda):
             return True
         return (((1 - self.distribution()) < 0.01) | (self.distribution() < 0.01)).all()
 
-    def chi_square(self, i, V, pop):
+    def chisquare_all(self, i, V, pop):
         parent = pop[:, i]
+        px = np.average(parent, axis = 0)
         pxy = np.zeros(2, len(V) * 2)
         for j in V:
             child = pop[:, j]
+            py = np.average(child, axis = 0)
+            cont = self.contingency(pop[:,x], pop[:,y])
+            chisquare(parent, child, px, py, pxy)
 
+    @classmethod
+    def chisquare(X, Y, px, py, pxy):
+        N = X.shape[0]
+        px_y = px*py
+        pxy_x_y = pxy - px_y
+        return N*pxy_x_y.dot(pxy_x_y.T) / px_y
 
-        
+    def contingency(self, X, Y):
+        table = np.zeros((2,2)) 
+        table[X, Y] += 1 
+        return table     
