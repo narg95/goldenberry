@@ -33,6 +33,7 @@
     <Folder Include="classification\base\" />
     <Folder Include="feature_selection\" />
     <Folder Include="statistics\" />
+    <Folder Include="test\statistics\" />
     <Folder Include="widgets\" />
     <Folder Include="test\" />
     <Folder Include="test\classification\" />
@@ -58,10 +59,10 @@
     <Compile Include="optimization\cost_functions\__init__.py" />
     <Compile Include="optimization\edas\Bmda.py" />
     <Compile Include="optimization\edas\Cga.py" />
-    <Compile Include="optimization\edas\distributions.py" />
     <Compile Include="optimization\edas\BaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
+    <Compile Include="statistics\distributions.py" />
     <Compile Include="statistics\__init__.py" />
     <Compile Include="test\classification\test_perceptron.py">
       <Publish>False</Publish>
@@ -78,15 +79,14 @@
     <Compile Include="test\optimization\edas\test_cga.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\optimization\edas\test_distributions.py">
-      <Publish>False</Publish>
-    </Compile>
     <Compile Include="test\optimization\edas\__init__.py">
       <Publish>False</Publish>
     </Compile>
     <Compile Include="test\optimization\__init__.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="test\statistics\test_distributions.py" />
+    <Compile Include="test\statistics\__init__.py" />
     <Compile Include="test\test_execution.py">
       <Publish>False</Publish>
     </Compile>
