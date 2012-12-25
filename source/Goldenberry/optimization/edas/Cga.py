@@ -1,5 +1,5 @@
 import numpy as np
-from Goldenberry.optimization.edas.distributions import *
+from Goldenberry.statistics.distributions import *
 from Goldenberry.optimization.edas.BaseEda import BaseEda
 from Goldenberry.optimization.base.GbSolution import *
 

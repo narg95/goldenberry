@@ -76,8 +76,8 @@ class Bmda(BaseEda):
         del A[0]
 
         while len(A) > 0:
-            break
-
+            maxidx = np.argmax(Bmda.chisquare(v, A))
+            A[maxidx]
 
 
         #TODO: Review the NetworkX framework
@@ -88,33 +88,14 @@ class Bmda(BaseEda):
             return True
         return (((1 - self.distribution()) < 0.01) | (self.distribution() < 0.01)).all()
 
-    def chisquare_all(self, i, V, pop):
+    @classmethod
+    def chisquare(i, V, pop):
         parent = pop[:, i]
         children = pop[:, V]
-        px = np.average(parent, axis = 0)
-        pys = np.average(children, axis = 0)
-        pxys = BinomialContingencyTable(parent, children)
-        for j in V:
-            child = pop[:, j]
-            py = np.average(child, axis = 0)
-            cont = self.contingency(pop[:,x], pop[:,y])
-            chisquare(parent, child, px, py, pxy)
-
-    @classmethod
-    def chisquare(X, Y, px, py, pxy):
-        N = X.shape[0]
-        px_y = px*py
-        pxy_x_y = pxy - px_y
+        N = ctable.N
+        px_y = ctable.Px * ctable.Pys
+        pxy_x_y = ctable.pxys - px_y
         return N*pxy_x_y.dot(pxy_x_y.T) / px_y
 
-class BinomialContingencyTable:
-    
-    def __new__(self, X, Y):
-        self._table = np.zeros(2, Y.shape[1] * 2)
-        self._table[X, Y] += 1
-        self._px = np.average(X, axis = 0)
-        self._pys = np.average(X, axis = 0)
-           
-    @property
-    def table(self):
-        return self._table
+       
+        
