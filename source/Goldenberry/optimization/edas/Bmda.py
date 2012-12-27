@@ -93,9 +93,11 @@ class Bmda(BaseEda):
         parent = pop[:, i]
         children = pop[:, V]
         N = ctable.N
-        px_y = ctable.Px * ctable.Pys
-        pxy_x_y = ctable.pxys - px_y
-        return N*pxy_x_y.dot(pxy_x_y.T) / px_y
+        pys = np.array([ctable.Pys[i/2] if i%2 == 1 else 1 - ctable.Pys[i/2] for i in xrange(ctable.L * 2)])
+        px = np.array([[1- ctable.Px],[ctable.Px]])
+        A = px * pys
+        B = ctable.Pxys - A
+        return N*(B/A).dot(B.T) 
 
        
         

@@ -89,5 +89,13 @@ class BinomialContingencyTableTest(TestCase):
         X = np.array([[0],[1],[0],[1]])
         Y = np.array([[0, 0, 1], [0, 1, 1], [1, 0, 0], [1, 1, 0]])
         ctable = BinomialContingencyTable(X, Y)
-        result = np.array([[1, 1, 2, 0, 1, 1], [1, 1, 0, 2, 1, 1]])
-        self.assertTrue(np.all((ctable.Table - result) == 0))
+        expected = np.array([[1, 1, 2, 0, 1, 1], [1, 1, 0, 2, 1, 1]])
+        self.assertTrue(np.all((ctable.Table - expected) == 0))
+
+    def test_chisquare_test(self):
+        X = np.array([[0],[1],[0],[1]])
+        Y = np.array([[0, 0, 1], [0, 1, 1], [1, 0, 0], [1, 1, 0]])
+        ctable = BinomialContingencyTable(X, Y)
+        chi = ctable.chisquare_test()
+        expected = np.array([0, 4, 0])
+        self.assertTrue(np.all((chi - expected )== 0))
