@@ -119,7 +119,7 @@ class BinomialContingencyTable:
             self._table[X[i], yt + Y[i]] += 1
         self._px = np.average(X, axis = 0)
         self._pys = np.average(Y, axis = 0)
-        self._pxys = self._table / self._n;
+        self._pxys = self._table / float(self._n);
            
     @property
     def Table(self):
@@ -144,3 +144,11 @@ class BinomialContingencyTable:
     @property
     def Pys(self):
         return self._pys
+
+    def chisquare_test(self):
+        N = self.N
+        pys = np.array([self.Pys[i/2] if i%2 == 1 else 1 - self.Pys[i/2] for i in xrange(self.L * 2)])
+        px = np.array([1- self.Px,self.Px])
+        A = px * pys
+        B = self.Pxys - A
+        return N*(B/A).dot(B.T)
