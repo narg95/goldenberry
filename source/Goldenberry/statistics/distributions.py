@@ -146,9 +146,11 @@ class BinomialContingencyTable:
         return self._pys
 
     def chisquare_test(self):
-        N = self.N
-        pys = np.array([self.Pys[i/2] if i%2 == 1 else 1 - self.Pys[i/2] for i in xrange(self.L * 2)])
-        px = np.array([1- self.Px,self.Px])
-        A = px * pys
-        B = self.Pxys - A
-        return N*(B/A).dot(B.T)
+        chi = np.zeros(self.L)
+        for i in xrange(self.L):
+            pxy = self.Pxys[:, [2*i, 2*i+1]]
+            px_py = np.array([1- self.Px, self.Px]) * np.array([1 - self.Pys[i], self.Pys[i]])
+            val = (pxy - px_py)
+            chi[i] = (np.sum((val * val)/px_py) if px_py != 0.0 else 0.0)
+
+        return self.N*chi
