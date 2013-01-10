@@ -1,4 +1,5 @@
 import numpy as np
+import itertools as itr
 from Goldenberry.optimization.edas.distributions import *
 from Goldenberry.optimization.edas.BaseEda import BaseEda
 from Goldenberry.optimization.base.GbSolution import *
@@ -23,7 +24,8 @@ class Bmda(BaseEda):
         self._max_iters = maxiters
         self._iters = 0
         self.percentile = percentile
-        self.edges
+        self.edges = []
+        self.D = {}
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
@@ -76,9 +78,13 @@ class Bmda(BaseEda):
         del A[0]
 
         while len(A) > 0:
-            maxidx = np.argmax(Bmda.chisquare(v, A))
-            A[maxidx]
+            v1, v2, chi = Bmda.get_max_chisquare(v, A, pop)
+            if None != chi:
+                edges.append((v1, v2))
 
+            v = A[0]
+            R.append(v)
+            del A[0]
 
         #TODO: Review the NetworkX framework
 
@@ -88,7 +94,7 @@ class Bmda(BaseEda):
             return True
         return (((1 - self.distribution()) < 0.01) | (self.distribution() < 0.01)).all()
 
-    @classmethod
+    @staticmethod
     def chisquare(i, V, pop):
         parent = pop[:, i]
         children = pop[:, V]
@@ -99,5 +105,22 @@ class Bmda(BaseEda):
         B = ctable.Pxys - A
         return N*(B/A).dot(B.T) 
 
-       
-        
+    def get_max_chisquare(self, R, A, pop):
+        max_chi = 0.0
+        max_a = max_b = None
+        for a,b in Bmda.product(R, A):
+            chi = self.D.get((a,b))
+            if None == chi:
+                chi = Bmda.chisquare(a, b, pop)
+                self.D[(a,b)] = chi
+            if chi >= 3.84 and chi > max_chi:
+                max_chi = chi
+                max_a = a
+                max_b = b
+        return max_a, max_b, None if max_a == None else max_chi
+
+    @staticmethod
+    def __product__(A, B):
+        for a in A:
+            for b in B:
+                yield a,b if b > a else b, a        
