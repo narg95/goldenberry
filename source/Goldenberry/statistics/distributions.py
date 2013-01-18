@@ -1,6 +1,7 @@
 import numpy as np
 import itertools as it
 import abc
+import math
 
 class BaseDistribution:
     """Represents a base clase for probability distributions."""
@@ -151,6 +152,7 @@ class BinomialContingencyTable:
             pxy = self.Pxys[:, [2*i, 2*i+1]]
             px_py = np.array([1- self.Px, self.Px]) * np.array([1 - self.Pys[i], self.Pys[i]])
             val = (pxy - px_py)
-            chi[i] = (np.sum((val * val)/px_py) if px_py != 0.0 else 0.0)
+            val = np.array([0 if  math.isnan(j) else j for j in ((val * val)/px_py).flat])
+            chi[i] = np.sum(val)
 
         return self.N*chi

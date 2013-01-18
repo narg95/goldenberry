@@ -24,8 +24,12 @@ class Bmda(BaseEda):
         self._max_iters = maxiters
         self._iters = 0
         self.percentile = percentile
-        self.edges = []
+        
+        #TODO: Review the NetworkX framework
+        self.E = []
         self.D = {}
+        self.R = []
+        self.V = range(self.vars_size)
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
@@ -66,27 +70,32 @@ class Bmda(BaseEda):
     def generate_graph(self, pop):
         px = np.average(a, axis = 0)
         
-        V = range(self.vars_size)
-        A = range(self.vars_size)
-        E = []
-        R = []
-        edges = []
-
+        #initialize local variables
+        A = range(self.vars_size)        
+        A_ = []
+       
         # We assume A is >= 1
+        #TODO: we take always A[0] but a random one must be used
         v = A[0]
         R.append(v)
+        A_.append(v)
         del A[0]
-
+         
         while len(A) > 0:
-            v1, v2, chi = Bmda.get_max_chisquare(v, A, pop)
+            v1, v2, chi = Bmda.get_max_chisquare(A, A_, pop)
             if None != chi:
-                edges.append((v1, v2))
-
-            v = A[0]
-            R.append(v)
-            del A[0]
-
-        #TODO: Review the NetworkX framework
+                self.E.append((v1, v2))
+                A_.append(v1)
+                A.remove(v1)
+            else:
+                #TODO: we take always A[0] but a random one must be used
+                v = A[0]
+                R.append(v)
+                A_.append(v)
+                del A[0]
+        
+        #TODO: Estimate starting from R as the roots.
+        
 
     def hasFinished(self):
         finish = not (self.max_iters is None) and self.iters > self.max_iters
