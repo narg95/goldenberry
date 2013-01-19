@@ -146,7 +146,7 @@ class BinomialContingencyTable:
     def Pys(self):
         return self._pys
 
-    def chisquare_test(self):
+    def chisquare(self):
         chi = np.zeros(self.L)
         for i in xrange(self.L):
             pxy = self.Pxys[:, [2*i, 2*i+1]]

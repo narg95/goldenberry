@@ -20,7 +20,7 @@ class Bmda(BaseEda):
         self._pop_size = popsize
         self._vars_size = varsize
         self._cost_function = cost_function
-        self._distribution = Binomial(params = np.tile(0.5,(1,varsize)))
+        self._distribution = BivariateBinomial(varsize)
         self._max_iters = maxiters
         self._iters = 0
         self.percentile = percentile
@@ -30,6 +30,8 @@ class Bmda(BaseEda):
         self.D = {}
         self.R = []
         self.V = range(self.vars_size)
+        self.PyGx = []
+        self.P = []
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
@@ -65,7 +67,9 @@ class Bmda(BaseEda):
         return pop[np.where(fit > minvalue)]
         
     def estimate_distribution(self, pop):
-        graph = self.generate_graph(pop, px)
+        self.generate_graph(pop, px)
+        self.distribution = BivariateBinomial(p = p, pyGx = self.PyGx, edges = self.E)
+        samples = dist.sample(20)
 
     def generate_graph(self, pop):
         px = np.average(a, axis = 0)
@@ -82,9 +86,11 @@ class Bmda(BaseEda):
         del A[0]
          
         while len(A) > 0:
-            v1, v2, chi = Bmda.get_max_chisquare(A, A_, pop)
+            v1, v2, chi, ctable = Bmda.get_max_chisquare(A, A_, pop)
             if None != chi:
                 self.E.append((v1, v2))
+                self.PyGx.append(ctable.pyGx)
+                self.P[v1] = ctable.
                 A_.append(v1)
                 A.remove(v1)
             else:
@@ -92,10 +98,7 @@ class Bmda(BaseEda):
                 v = A[0]
                 R.append(v)
                 A_.append(v)
-                del A[0]
-        
-        #TODO: Estimate starting from R as the roots.
-        
+                del A[0]            
 
     def hasFinished(self):
         finish = not (self.max_iters is None) and self.iters > self.max_iters
@@ -103,30 +106,22 @@ class Bmda(BaseEda):
             return True
         return (((1 - self.distribution()) < 0.01) | (self.distribution() < 0.01)).all()
 
-    @staticmethod
-    def chisquare(i, V, pop):
-        parent = pop[:, i]
-        children = pop[:, V]
-        N = ctable.N
-        pys = np.array([ctable.Pys[i/2] if i%2 == 1 else 1 - ctable.Pys[i/2] for i in xrange(ctable.L * 2)])
-        px = np.array([[1- ctable.Px],[ctable.Px]])
-        A = px * pys
-        B = ctable.Pxys - A
-        return N*(B/A).dot(B.T) 
-
     def get_max_chisquare(self, R, A, pop):
         max_chi = 0.0
         max_a = max_b = None
-        for a,b in Bmda.product(R, A):
-            chi = self.D.get((a,b))
+        max_ctable = None
+        for a, b in Bmda.product(R, A):
+            chi, table = self.D.get((a,b), d = (None, None))
             if None == chi:
-                chi = Bmda.chisquare(a, b, pop)
-                self.D[(a,b)] = chi
+                ctable = BinomialContingencyTable(pop[a], pop[b])
+                chi = ctable.chisquare()
+                self.D[(a,b)] = chi, ctable
             if chi >= 3.84 and chi > max_chi:
                 max_chi = chi
                 max_a = a
                 max_b = b
-        return max_a, max_b, None if max_a == None else max_chi
+                max_ctable = ctable
+        return max_a, max_b, None, None if max_a == None else max_a, max_b, max_chi, max_ctable
 
     @staticmethod
     def __product__(A, B):
