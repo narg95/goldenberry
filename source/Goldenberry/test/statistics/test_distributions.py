@@ -96,6 +96,6 @@ class BinomialContingencyTableTest(TestCase):
         X = np.array([[0],[1],[0],[1]])
         Y = np.array([[0, 0, 1], [0, 1, 1], [1, 0, 0], [1, 1, 0]])
         ctable = BinomialContingencyTable(X, Y)
-        chi = ctable.chisquare_test()
+        chi = ctable.chisquare()
         expected = np.array([0, 4, 0])
         self.assertTrue(np.all((chi - expected )== 0))
