@@ -1,6 +1,6 @@
 import numpy as np
 import itertools as itr
-from Goldenberry.optimization.edas.distributions import *
+from Goldenberry.statistics.distributions import BivariateBinomial
 from Goldenberry.optimization.edas.BaseEda import BaseEda
 from Goldenberry.optimization.base.GbSolution import *
 
@@ -84,7 +84,7 @@ class Bmda(BaseEda):
         del A[0]
          
         while len(A) > 0:
-            v1, v2, chi, ctable = Bmda.get_max_chisquare(A, A_, pop)
+            v1, v2, chi, ctable = Bmda.get_max_chisquare(A, A_, pop, self.D)
             if None != chi:
                 self.E.append((v1, v2))
                 self.PyGx.append(ctable.pyGx)
@@ -104,11 +104,11 @@ class Bmda(BaseEda):
         return (((1 - self.distribution.p) < 0.01) | (self.distribution.p < 0.01)).all()
 
     @staticmethod
-    def get_max_chisquare(self, R, A, pop):
+    def get_max_chisquare(R, A, pop, D):
         max_chi = 0.0
         max_a = max_b = None
         max_ctable = None
-        for a, b in Bmda.product(R, A):
+        for a, b in Bmda.__product__(R, A):
             chi, table = self.D.get((a,b), d = (None, None))
             if None == chi:
                 ctable = BinomialContingencyTable(pop[a], pop[b])
@@ -125,4 +125,4 @@ class Bmda(BaseEda):
     def __product__(A, B):
         for a in A:
             for b in B:
-                yield a,b if b > a else b, a        
+                yield a,b if b > a else b, a

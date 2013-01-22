@@ -103,13 +103,6 @@ class BivariateBinomial(BaseDistribution):
                     break
         return samples
 
-def _splitter(data, pred):
-    yes, no = [], []
-    for d in data:
-        (yes if pred(d) else no).append(d)
-    return [yes, no]
-    
-    
 class BinomialContingencyTable:
     
     def __init__(self, X, Y):
@@ -156,3 +149,11 @@ class BinomialContingencyTable:
             chi[i] = np.sum(val)
 
         return self.N*chi
+
+def _splitter(data, pred):
+    yes, no = [], []
+    for d in data:
+        (yes if pred(d) else no).append(d)
+    return [yes, no]
+    
+    
