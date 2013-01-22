@@ -76,7 +76,7 @@
     <Compile Include="test\optimization\cost_functions\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\optimization\edas\test_cga.py">
+    <Compile Include="test\optimization\edas\test_edas.py">
       <Publish>False</Publish>
     </Compile>
     <Compile Include="test\optimization\edas\__init__.py">
