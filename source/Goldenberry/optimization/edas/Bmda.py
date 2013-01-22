@@ -17,12 +17,12 @@ class Bmda(BaseEda):
 
     def setup(self, cost_function, varsize, popsize, maxiters = None, percentile = 50):
         """Configure a Cga instance"""
-        self._pop_size = popsize
-        self._vars_size = varsize
-        self._cost_function = cost_function
-        self._distribution = BivariateBinomial(varsize)
-        self._max_iters = maxiters
-        self._iters = 0
+        self.pop_size = popsize
+        self.vars_size = varsize
+        self.cost_function = cost_function
+        self.distribution = BivariateBinomial(varsize)
+        self.max_iters = maxiters
+        self.iters = 0
         self.percentile = percentile
         
         #TODO: Review the NetworkX framework
@@ -35,8 +35,7 @@ class Bmda(BaseEda):
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
-
-        pass 
+        return self.distribution
 
     def ready(self):
         """Informs if the algorithm is ready to execute."""
@@ -51,11 +50,12 @@ class Bmda(BaseEda):
 
     def search(self):
         """Search for an optimal solution."""
+        pop = self.distribution.sample(self.pop_size)
         while not self.hasFinished():
-            self.iters += 1
-            pop = self.distribution.sample(_pop_size)
+            self.iters += 1            
             best = self.best_population(pop)
             self.estimate_distribution(best)
+            pop = np.concatenate(best, self.distribution.sample(20))
         
         #returns the winner with its estimated cost
         winner = self.distribution.sample(1)
@@ -67,13 +67,11 @@ class Bmda(BaseEda):
         return pop[np.where(fit > minvalue)]
         
     def estimate_distribution(self, pop):
-        self.generate_graph(pop, px)
-        self.distribution = BivariateBinomial(p = p, pyGx = self.PyGx, edges = self.E)
-        samples = dist.sample(20)
+        self.P = np.average(pop, axis = 0)
+        self.generate_graph(pop)        
+        self.distribution = BivariateBinomial(p = self.P, pyGx = self.PyGx, edges = self.E)
 
     def generate_graph(self, pop):
-        px = np.average(a, axis = 0)
-        
         #initialize local variables
         A = range(self.vars_size)        
         A_ = []
@@ -81,7 +79,7 @@ class Bmda(BaseEda):
         # We assume A is >= 1
         #TODO: we take always A[0] but a random one must be used
         v = A[0]
-        R.append(v)
+        self.R.append(v)
         A_.append(v)
         del A[0]
          
@@ -90,13 +88,12 @@ class Bmda(BaseEda):
             if None != chi:
                 self.E.append((v1, v2))
                 self.PyGx.append(ctable.pyGx)
-                self.P[v1] = ctable.
                 A_.append(v1)
                 A.remove(v1)
             else:
                 #TODO: we take always A[0] but a random one must be used
                 v = A[0]
-                R.append(v)
+                self.R.append(v)
                 A_.append(v)
                 del A[0]            
 
@@ -104,8 +101,9 @@ class Bmda(BaseEda):
         finish = not (self.max_iters is None) and self.iters > self.max_iters
         if finish:
             return True
-        return (((1 - self.distribution()) < 0.01) | (self.distribution() < 0.01)).all()
+        return (((1 - self.distribution.p) < 0.01) | (self.distribution.p < 0.01)).all()
 
+    @staticmethod
     def get_max_chisquare(self, R, A, pop):
         max_chi = 0.0
         max_a = max_b = None

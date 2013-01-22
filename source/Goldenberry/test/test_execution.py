@@ -7,7 +7,8 @@ import imp
 if __name__ == "__main__":
 
     test_modules = [
-                    'optimization.edas.test_cga.CgaTest',
+                    'optimization.edas.test_edas.CgaTest',
+                    'optimization.edas.test_edas.BmdaTest',
                     'optimization.cost_functions.tests.CostFunctionTest',
                     'statistics.test_distributions.BinomialTest',
                     'statistics.test_distributions.BivariateBinomialTest',
