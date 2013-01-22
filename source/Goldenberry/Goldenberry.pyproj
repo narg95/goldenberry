@@ -85,8 +85,12 @@
     <Compile Include="test\optimization\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\statistics\test_distributions.py" />
-    <Compile Include="test\statistics\__init__.py" />
+    <Compile Include="test\statistics\test_distributions.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="test\statistics\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
     <Compile Include="test\test_execution.py">
       <Publish>False</Publish>
     </Compile>
