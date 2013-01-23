@@ -79,18 +79,17 @@ class BinomialContingencyTableTest(TestCase):
         X = np.array([[0],[1]])
         Y = np.array([[0, 1, 0], [0, 0, 1]])
         ctable = BinomialContingencyTable(X, Y)
-        self.assertEqual(ctable.N, 2)
-        self.assertIsNotNone(ctable.Table)
-        self.assertEqual(ctable.Px.shape, (1,))
-        self.assertEqual(ctable.Pys.shape, (3,))
-        self.assertEqual(ctable.Pxys.shape, (2,6))
+        self.assertEqual(ctable.n, 2)
+        self.assertIsNotNone(ctable.table)
+        self.assertEqual(ctable.pys.shape, (3,))
+        self.assertEqual(ctable.pxys.shape, (2,6))
 
     def test_contingency_table_basic(self):
         X = np.array([[0],[1],[0],[1]])
         Y = np.array([[0, 0, 1], [0, 1, 1], [1, 0, 0], [1, 1, 0]])
         ctable = BinomialContingencyTable(X, Y)
         expected = np.array([[1, 1, 2, 0, 1, 1], [1, 1, 0, 2, 1, 1]])
-        self.assertTrue(np.all((ctable.Table - expected) == 0))
+        self.assertTrue(np.all((ctable.table - expected) == 0))
 
     def test_chisquare_test(self):
         X = np.array([[0],[1],[0],[1]])
