@@ -6,53 +6,54 @@ from Goldenberry.optimization.base.GbSolution import *
 class Cga(BaseEda):
     """Compact Genetic Algorithm"""
 
-    _pop_size = None
-    _vars_size = None
-    _cost_function = None
-    _distribution = None
-    _max_iters = None
-    _iters = None
+    pop_size = None
+    var_size = None
+    cost_func = None
+    distr = None
+    max_iters = None
+    iter = None
 
     def setup(self, cost_function, varsize, popsize, maxiters = None):
         """Configure a Cga instance"""
-        self._pop_size = popsize
-        self._vars_size = varsize
-        self._cost_function = cost_function
-        self._distribution = Binomial(n = varsize)
-        self._max_iters = maxiters
-        self._iters = 0
+        self.pop_size = popsize
+        self.var_size = varsize
+        self.cost_func = cost_function
+        self.distr = Binomial(n = varsize)
+        self.max_iters = maxiters
+        self.iter = 0
 
     def search(self):
         """Search for an optimal solution."""
         while not self.hasFinished():
-            self._iters += 1
-            pop = self._distribution.sample(2)
+            self.iter += 1
+            pop = self.distr.sample(2)
             winner, losser = self.compete(pop)
-            self.estimate_distribution(winner, losser)
+            self.update_distribution(winner, losser)
         
         #returns the winner with its estimated cost
-        winner = self._distribution.sample(1)
-        return GbSolution(winner, self._cost_function(winner))
+        winner = self.distr.sample(1)
+        return GbSolution(winner, self.cost_func(winner))
 
     def ready(self):
         """"Checks whether the algorithm is ready or not for executiing."""
-        return self._pop_size is not None and\
-               self._vars_size is not None and\
-               self._cost_function is not None
+        return self.pop_size is not None and\
+               self.var_size is not None and\
+               self.cost_func is not None
 
     def hasFinished(self):
-        finish = not (self._max_iters is None) and self._iters > self._max_iters
+        finish = not (self.max_iters is None) and self.iter > self.max_iters
         if finish:
             return True
-        return (((1 - self._distribution()) < 0.01) | (self._distribution() < 0.01)).all()
+        return (((1 - self.distr()) < 0.01) | (self.distr() < 0.01)).all()
     
     def compete(self, pop):
-        maxindx = bool(np.argmax(self._cost_function(pop)))
+        maxindx = bool(np.argmax(self.cost_func(pop)))
         return  pop[maxindx], pop[not maxindx]
 
-    def estimate_distribution(self, winner, losser):
-        self._distribution.P = np.minimum(np.ones((1, self._vars_size)), np.maximum(np.zeros((1, self._vars_size)) ,self._distribution.P + (winner-losser)/float(self._pop_size)))
+    def update_distribution(self, winner, losser):
+        self.distr.P = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)) ,self.distr.P + (winner-losser)/float(self.pop_size)))
 
-    def result_distribution(self):
+    @property
+    def distribution(self):
         """Provides the final estimated distribution."""
-        return self._distribution
+        return self.distr

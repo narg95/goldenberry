@@ -56,7 +56,7 @@ class Binomial(BaseDistribution):
 
     def sample(self, sample_size):
         """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
-        return np.matrix(np.random.rand(sample_size, self._n) <= np.ones((sample_size, 1)) * self._p, dtype=float)
+        return np.array(np.random.rand(sample_size, self._n) <= np.ones((sample_size, 1)) * self._p, dtype=float)
 
 class BivariateBinomial(BaseDistribution):
     
@@ -118,49 +118,25 @@ class BivariateBinomial(BaseDistribution):
 class BinomialContingencyTable:
     
     def __init__(self, X, Y):
-        self._n, self.l = Y.shape
-        self._table = np.zeros((2, self.L * 2), dtype=int)
-        yt = np.array(range(0, self.L*2, 2), dtype=int)
-        for i in xrange(self.N):
-            self._table[X[i], yt + Y[i]] += 1
-        self._px = np.average(X, axis = 0)
-        self._pys = np.average(Y, axis = 0)
-        self._pxys = self._table / float(self._n);
+        self.n, self.l = Y.shape
+        self.table = np.zeros((2, self.l * 2), dtype=int)
+        yt = np.array(range(0, self.l*2, 2), dtype=int)
+        for i in xrange(self.n):
+            self.table[X[i], yt + Y[i]] += 1
+        self.px = np.average(X)
+        self.pys = np.average(Y, axis = 0)
+        self.pxys = self.table / float(self.n);
            
-    @property
-    def Table(self):
-        return self._table
-
-    @property
-    def N(self):
-        return self._n
-
-    @property
-    def L(self):
-        return self.l
-
-    @property
-    def Pxys(self):
-        return self._pxys
-
-    @property
-    def Px(self):
-        return self._px
-
-    @property
-    def Pys(self):
-        return self._pys
-
     def chisquare(self):
-        chi = np.zeros(self.L)
-        for i in xrange(self.L):
-            pxy = self.Pxys[:, [2*i, 2*i+1]]
-            px_py = np.array([1- self.Px, self.Px]) * np.array([1 - self.Pys[i], self.Pys[i]])
+        chi = np.zeros(self.l)
+        for i in xrange(self.l):
+            pxy = self.pxys[:, [2*i, 2*i+1]]
+            px_py = np.array([1- self.px, self.px]) * np.array([1 - self.pys[i], self.pys[i]])
             val = (pxy - px_py)
             val = np.array([0 if  math.isnan(j) else j for j in ((val * val)/px_py).flat])
             chi[i] = np.sum(val)
 
-        return self.N*chi
+        return self.n*chi
 
 def _splitter(data, pred):
     yes, no = [], []
