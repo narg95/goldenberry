@@ -46,6 +46,14 @@ class Binomial(BaseDistribution):
     def parameters(self):
         return self._n, self._p
 
+    @property
+    def P(self):
+        return self._p
+
+    @P.setter
+    def P(self, value):
+        self._p = value
+
     def sample(self, sample_size):
         """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
         return np.matrix(np.random.rand(sample_size, self._n) <= np.ones((sample_size, 1)) * self._p, dtype=float)
