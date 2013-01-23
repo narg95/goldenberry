@@ -2,6 +2,7 @@ import numpy as np
 import itertools as it
 import abc
 import math
+from collections import deque
 
 class BaseDistribution:
     """Represents a base clase for probability distributions."""
@@ -57,8 +58,8 @@ class BivariateBinomial(BaseDistribution):
             self.p =  np.tile(0.5,(1, n))
             self.pyGx = np.tile(0.5,(2, n))
             self.edges = []
-            self.roots = [e for e in range(n)]
-            self.vertex = range(n)
+            self.roots = range(n)
+            self.vertex = self.roots
         elif None != p and None != pyGx and None != edges:
             if pyGx.shape[1] != len(edges):
                 raise AttributeError("Join probability must be the same size than the number of edges")
@@ -79,7 +80,17 @@ class BivariateBinomial(BaseDistribution):
     def parameters(self):
         return self.n, self.p, self.pyGx, self.edges
 
-    def sample(self, sample_size):
+    def sample(self, sample_size):       
+        
+        #TODO:  Avoid transfromation by receiving this as a parameter in the constructor
+        D = [[] for i in xrange(self.n)]
+        C = [[] for i in xrange(self.n)]
+        Q = self.roots
+        for idx, (ixp, ixc) in enumerate(self.edges):
+            D[ixp].append(ixc)
+            C[ixc] = self.pyGx[:, idx]
+
+        
         """Samples based on the current bivariate binomial parameters ."""
         # Bug in numpy with dtype = int and indexing arrays [].
         samples = np.zeros((sample_size, self.n), dtype=int)
@@ -87,20 +98,13 @@ class BivariateBinomial(BaseDistribution):
         # samples univiariate probabilities
         samples[:, self.roots] = np.random.rand(sample_size, len(self.roots)) <= np.ones((sample_size, 1)) * self.p[:, self.roots]
 
-        # samples conditional dependencies
-        ipars, ichln = _splitter(self.vertex, lambda item: item in self.roots)
-        while len(ichln) > 0:
-            ic  = ichln[0]
-            for idx, (iep, iec)  in enumerate(self.edges):
-                # if child is in the current edge
-                if iec == ic:
-                    # if parent from current edge has been already processed.
-                    if iep in ipars:
-                        cond_probs = self.pyGx[samples[:, iep], idx]
-                        samples[:, ic] = (np.random.rand(sample_size) <= cond_probs)
-                        ipars.append(ic)
-                        del ichln[0]
-                    break
+        while len(Q) > 0:
+            parent = Q.pop()
+            for chl in D[parent]:
+                cond_probs = C[chl][samples[:, parent]]
+                samples[:, chl] = (np.random.rand(sample_size) <= cond_probs)
+                Q.append(chl)
+
         return samples
 
 class BinomialContingencyTable:
