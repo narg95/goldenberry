@@ -51,9 +51,7 @@ class Cga(BaseEda):
         return  pop[maxindx], pop[not maxindx]
 
     def estimate_distribution(self, winner, losser):
-        for x in range(0, self._vars_size):
-            if 1.0 >= self._distribution[0,x] >= 0.0:
-                self._distribution[0,x] += (winner[0,x] - losser[0,x])/float(self._pop_size)
+        self.P += np.minimum(np.ones((1, self._vars_size)), np.maximum(np.zeros((1, self._vars_size)) ,(winner-losser)/float(self._pop_size)))
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
