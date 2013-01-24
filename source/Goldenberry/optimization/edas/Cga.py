@@ -22,11 +22,15 @@ class Cga(BaseEda):
         self.max_iters = maxiters
         self.iter = 0
 
+    """Generates the new pair of candidates"""
+    def generate_candidates(self):
+        return self.distr.sample(2)
+
     def search(self):
         """Search for an optimal solution."""
         while not self.hasFinished():
             self.iter += 1
-            pop = self.distr.sample(2)
+            pop = self.generate_candidates()
             winner, losser = self.compete(pop)
             self.update_distribution(winner, losser)
         
@@ -51,7 +55,7 @@ class Cga(BaseEda):
         return  pop[maxindx], pop[not maxindx]
 
     def update_distribution(self, winner, losser):
-        self.distr.P = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)) ,self.distr.P + (winner-losser)/float(self.pop_size)))
+        self.distr.p = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)) ,self.distr.p + (winner-losser)/float(self.pop_size)))
 
     @property
     def distribution(self):
