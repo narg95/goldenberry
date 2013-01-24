@@ -20,3 +20,7 @@ class BaseEda(GbBaseOptimizer):
         """Updates the current distribution."""
         pass
 
+    @abc.abstractmethod
+    def generate_candidates(self):
+        """Generates the new generation of candidate solutions."""
+        pass

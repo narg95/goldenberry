@@ -24,39 +24,31 @@ class Binomial(BaseDistribution):
     def __init__(self, n = None, p = None):
         """Initialize a new binomial distribution."""
         if(None != n):
-            self._n = n
-            self._p =  np.tile(0.5,(1, n))
+            self.n = n
+            self.p =  np.tile(0.5,(1, n))
         elif(None != p) :
-            self._n = p.size
-            self._p = p
+            self.n = p.size
+            self.p = p
         else:
             raise ValueError("provide the variables size \
                 or the parameters for initialize the binomial distribution")
     
     def __getitem__(self, key):
-        return self._p[key]
+        return self.p[key]
 
     def __setitem__(self, key, value):
-        self._p[key] = value
+        self.p[key] = value
 
     def __call__(self):
-        return self._p
+        return self.p
 
     @property
     def parameters(self):
-        return self._n, self._p
-
-    @property
-    def P(self):
-        return self._p
-
-    @P.setter
-    def P(self, value):
-        self._p = value
+        return self.n, self.p
 
     def sample(self, sample_size):
         """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
-        return np.array(np.random.rand(sample_size, self._n) <= np.ones((sample_size, 1)) * self._p, dtype=float)
+        return np.array(np.random.rand(sample_size, self.n) <= np.ones((sample_size, 1)) * self.p, dtype=float)
 
 class BivariateBinomial(BaseDistribution):
     
