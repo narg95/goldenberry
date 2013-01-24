@@ -64,8 +64,8 @@ class BivariateBinomial(BaseDistribution):
         if None != n:
             self.n = n
             self.p =  np.tile(0.5,(1, n))
-            children = [[] for i in xrange(n)]
-            cond_props = [[] for i in xrange(n)]
+            self.children = [[] for i in xrange(n)]
+            self.cond_props = [[] for i in xrange(n)]
             self.roots = range(n)
             self.vertex = self.roots
         elif None != p and None != cond_props and None != children:
