@@ -67,17 +67,17 @@ class BivariateBinomial(BaseDistribution):
             self.children = [[] for i in xrange(n)]
             self.cond_props = [[] for i in xrange(n)]
             self.roots = range(n)
-            self.vertex = self.roots
+            self.vertex = range(n)
         elif None != p and None != cond_props and None != children:
-            if cond_props.shape[1] != len(children):
+            if len(cond_props) != len(children):
                 raise AttributeError("Join probability must be the same size than the number of edges")
-            self.n = p.shape[1]
+            self.n = p.size
             self.p = p
             self.cond_props = cond_props
             self.children = children
             self.vertex = range(self.n)
             if None == roots:
-                self.roots = [x for x in self.vertex if np.all([x != c for _, c in children])]
+                self.roots = [idx for idx, x in enumerate(self.cond_props) if x == []]
             else: 
                 self.roots = roots
             
@@ -90,7 +90,8 @@ class BivariateBinomial(BaseDistribution):
 
     def sample(self, sample_size):       
         
-        Q = self.roots
+        # initialize queue
+        Q = [i for i in self.roots]
         
         """Samples based on the current bivariate binomial parameters ."""
         # Bug in numpy with dtype = int and indexing arrays [].
@@ -101,9 +102,9 @@ class BivariateBinomial(BaseDistribution):
 
         while len(Q) > 0:
             parent = Q.pop()
-            for chl in children[parent]:
-                cond_probs = cond_props[chl][samples[:, parent]]
-                samples[:, chl] = (np.random.rand(sample_size) <= cond_probs)
+            for chl in self.children[parent]:
+                pyGx = self.cond_props[chl][samples[:, parent]]
+                samples[:, chl] = np.array(np.random.rand(sample_size) <= pyGx)
                 Q.append(chl)
 
         return samples
@@ -119,7 +120,11 @@ class BinomialContingencyTable:
         self.px = np.average(X)
         self.pys = np.average(Y, axis = 0)
         self.pxys = self.table / float(self.n);
-           
+    
+    @property
+    def PyGx(self):
+         return self.pxys / self.px
+              
     def chisquare(self):
         chi = np.zeros(self.l)
         for i in xrange(self.l):
