@@ -60,24 +60,24 @@ class Binomial(BaseDistribution):
 
 class BivariateBinomial(BaseDistribution):
     
-    def __init__(self, n = None, p = None, pyGx = None, edges = None, roots = None):
+    def __init__(self, n = None, p = None, cond_props = None, children = None, roots = None):
         if None != n:
             self.n = n
             self.p =  np.tile(0.5,(1, n))
-            self.pyGx = np.tile(0.5,(2, n))
-            self.edges = []
+            children = [[] for i in xrange(n)]
+            cond_props = [[] for i in xrange(n)]
             self.roots = range(n)
             self.vertex = self.roots
-        elif None != p and None != pyGx and None != edges:
-            if pyGx.shape[1] != len(edges):
+        elif None != p and None != cond_props and None != children:
+            if cond_props.shape[1] != len(children):
                 raise AttributeError("Join probability must be the same size than the number of edges")
             self.n = p.shape[1]
             self.p = p
-            self.pyGx = pyGx
-            self.edges = edges
+            self.cond_props = cond_props
+            self.children = children
             self.vertex = range(self.n)
             if None == roots:
-                self.roots = [x for x in self.vertex if np.all([x != c for _, c in edges])]
+                self.roots = [x for x in self.vertex if np.all([x != c for _, c in children])]
             else: 
                 self.roots = roots
             
@@ -86,18 +86,11 @@ class BivariateBinomial(BaseDistribution):
     
     @property
     def parameters(self):
-        return self.n, self.p, self.pyGx, self.edges
+        return self.n, self.p, self.cond_props, self.children
 
     def sample(self, sample_size):       
         
-        #TODO:  Avoid transfromation by receiving this as a parameter in the constructor
-        D = [[] for i in xrange(self.n)]
-        C = [[] for i in xrange(self.n)]
         Q = self.roots
-        for idx, (ixp, ixc) in enumerate(self.edges):
-            D[ixp].append(ixc)
-            C[ixc] = self.pyGx[:, idx]
-
         
         """Samples based on the current bivariate binomial parameters ."""
         # Bug in numpy with dtype = int and indexing arrays [].
@@ -108,8 +101,8 @@ class BivariateBinomial(BaseDistribution):
 
         while len(Q) > 0:
             parent = Q.pop()
-            for chl in D[parent]:
-                cond_probs = C[chl][samples[:, parent]]
+            for chl in children[parent]:
+                cond_probs = cond_props[chl][samples[:, parent]]
                 samples[:, chl] = (np.random.rand(sample_size) <= cond_probs)
                 Q.append(chl)
 

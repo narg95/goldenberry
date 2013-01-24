@@ -29,7 +29,6 @@ class Bmda(BaseEda):
         # Graph properties
         self.children = [[] for i in xrange(self.vars_size)]
         self.roots = []
-        self.vertex = range(self.vars_size)
         self.cond_prop = [[] for i in xrange(self.vars_size)]
         self.marginals = []
 
@@ -72,12 +71,12 @@ class Bmda(BaseEda):
     def update_distribution(self, pop):
         self.marginals = np.average(pop, axis = 0)
         Bmda.generate_graph(pop, self.roots, self.children)        
-        self.distr = BivariateBinomial(p = self.marginals, pyGx = self.cond_prop, edges = self.children, roots = self.roots)
+        self.distr = BivariateBinomial(p = self.marginals, cond_props = self.cond_prop, children = self.children, roots = self.roots)
 
     @staticmethod
-    def generate_graph(pop, roots, children):
+    def generate_graph(pop, roots, children, cond_props):
         #initialize local variables
-        A = range(self.vars_size)        
+        A = range(len(cond_props))        
         A_ = []
         
         # We assume A is >= 1
@@ -88,12 +87,12 @@ class Bmda(BaseEda):
         del A[randidx]
 
         # calculate chi_matrix
-        chi_matrix = Bmda.calculate_chisquare_matrix(pop)
+        chi_matrix = Bmda.calculate_chisquare_matrix(pop, cond_props)
          
         while len(A) > 0:
-            v1, v2, chi = Bmda.max_chisquare(A, A_, pop)
+            v1, v2, chi = Bmda.max_chisquare(A, A_, chi_matrix)
             if 0.0 != chi:
-                children[v1].append(v2)
+                children[v2].append(v1)
                 A_.append(v1)
                 A.remove(v1)
             else:
@@ -127,13 +126,15 @@ class Bmda(BaseEda):
                 cond_probs[y] = ctable.pxys
             else:
                 chi_matrix[x,y] = chi_matrix[y,x] = 0.0
-                cond_probs[y] = None
+                cond_probs[y] = []
         return chi_matrix
 
 
     @staticmethod
-    def max_chisquare(X, Y, pop, chi_matrix):
-        maxidx = np.argmax(chi_matrix[itr.product(X, Y)])
-        (x,y) = (X[maxidx % len(X)], Y[maxidx / len(Y)])
+    def max_chisquare(X, Y, chi_matrix):
+        indx = np.array([(x,y) for x,y in itr.product(X, Y)])
+        rows, cols = indx[:, 0], indx[:,1]
+        maxidx = np.argmax(chi_matrix[rows, cols])
+        (x,y) = indx[maxidx]
         max_chi = chi_matrix[x,y] 
-        return x,y,max_chi
+        return x, y, max_chi
