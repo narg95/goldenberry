@@ -1,7 +1,7 @@
 from unittest import *
 from Goldenberry.optimization.cost_functions.functions import *
 from PyQt4.QtGui import QApplication
-from Goldenberry.widgets.optimization.GbCgaWidget import GbCgaWidget
+from Optimization.GbCgaWidget import GbCgaWidget
 import sys
 
 class OptimizationWidgetsTest(TestCase):

@@ -39,7 +39,7 @@ class GbCostFuncsWidget(OWWidget):
     def accepted(self):
         self.accept()
         cost_func = self.cost_funcs[self.cost_funcs.keys()[self.cost_func_sel_index[0]]]
-        self.send("Cost Functions" , cost_func)
+        self.send("Cost Functions" , cost_func())
 
     def rejected(self):
         self.reject()

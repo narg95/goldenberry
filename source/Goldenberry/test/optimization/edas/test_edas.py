@@ -67,7 +67,7 @@ class BmdaTest(TestCase):
         self.assertTrue(np.equal(roots, 3).any())
 
     """Test class for the Bmda algorithm"""
-    def test_basic_search(self):
+    def _test_basic_search(self):
         bmda = Bmda()
         bmda.setup(onemax(), 10, 20)
         result = bmda.search()

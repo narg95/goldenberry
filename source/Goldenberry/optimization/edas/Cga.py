@@ -51,7 +51,7 @@ class Cga(BaseEda):
         return (((1 - self.distr()) < 0.01) | (self.distr() < 0.01)).all()
     
     def compete(self, pop):
-        maxindx = bool(np.argmax(self.cost_func(pop)))
+        maxindx = np.argmax(self.cost_func(pop))
         return  pop[maxindx], pop[not maxindx]
 
     def update_distribution(self, winner, losser):

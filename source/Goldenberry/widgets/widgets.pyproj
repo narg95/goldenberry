@@ -5,8 +5,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{76d7d1ea-472a-43f4-a0d3-ea8dfd58cffc}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test\test_execution.py</StartupFile>
-    <SearchPath>..\..\</SearchPath>
+    <StartupFile>test_execution.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>widgets</Name>
@@ -16,7 +17,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <PublishUrl>C:\Python27\Lib\site-packages\Orange\OrangeWidgets</PublishUrl>
+    <PublishUrl>C:\Python27\Lib\site-packages\Orange\OrangeWidgets\</PublishUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,11 +37,19 @@
     <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />
-    <Compile Include="test\classify\__init__.py" />
-    <Compile Include="test\optimization\test_widgets.py" />
-    <Compile Include="test\optimization\__init__.py" />
-    <Compile Include="test\test_execution.py" />
-    <Compile Include="test\__init__.py" />
+    <Compile Include="test\classify\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="test\optimization\test_widgets.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="test\optimization\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="test\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="test_execution.py" />
     <Compile Include="__init__.py">
       <Publish>False</Publish>
     </Compile>
@@ -55,6 +64,7 @@
     <Folder Include="test\optimization\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="before_publish.bat" />
     <Content Include="Classify\GbPerceptronWidget.ui">
       <Publish>True</Publish>
     </Content>

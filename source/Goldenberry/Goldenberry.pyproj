@@ -44,7 +44,7 @@
     <Folder Include="optimization\edas\" />
     <Folder Include="optimization\cost_functions\" />
     <Folder Include="optimization\bioinspired\" />
-    <Folder Include="optimization\base\" />
+    <Folder Include="optimization\base\" />    
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classification\base\GbBaseKernel.py" />
@@ -101,6 +101,7 @@
     <Content Include="test\classification\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
+    
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
