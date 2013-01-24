@@ -39,34 +39,35 @@ class BivariateBinomialTest(TestCase):
         n = 10
         dist = BivariateBinomial(n)
         self.assertIsNotNone(dist)
-        n1, p, pyGx, edges = dist.parameters 
+        n1, p, cond_props, children = dist.parameters 
         self.assertEqual(n1, n)
         self.assertTrue(np.all(e == 0.5 for e in p))
-        self.assertTrue(np.all(e == 0.5 for e in pyGx))
-        self.assertTrue(edges == [])
+        self.assertTrue(np.all(e == [] for e in cond_props))
+        self.assertTrue(np.all(e == [] for e in children))
 
-    def test_sampling(self):
+    def test_independency_sampling(self):
         n = 10
         dist = BivariateBinomial(n)
         samples = dist.sample(20)
         self.assertTrue(samples.shape == (20,10))
 
-    def test_sampling_only_ones_no_dependencies(self):
-        n = 10
+    def test_sampling_chain_all_ones(self):
+        n = 5
         p = np.ones((1,n))
-        pyGx = np.array([np.zeros(n-1), np.ones(n-1)])
-        edges = [(x, x+1) for x in range(n-1)]
-        dist = BivariateBinomial(p = p, pyGx = pyGx, edges = edges)
+        cond_props = [[] if i == 0 else np.array([1, 1]) for i in xrange(n)]
+        children = [[] if i == n-1 else [i + 1] for i in xrange(n)]
+        dist = BivariateBinomial(p = p, cond_props = cond_props, children = children)
         samples = dist.sample(20)
         self.assertTrue(np.all(samples == 1.0))
-        
-    def test_sampling_ones_and_zeros_interleaving(self):
+    
+        #todo Refactor with new strategy    
+    def test_sampling_chain_ones_and_zeros_interleaving(self):
         n = 10
         p = np.array([i%2 for i in range(n)])
         p.shape = (1,10)
         pyGx = np.array([[(i + 1)%2 for i in range(n-1)], [(i + 1)%2 for i in range(n-1)]])
         edges = [(x, x+1) for x in range(n-1)]
-        dist = BivariateBinomial(p = p, pyGx = pyGx, edges = edges)
+        dist = BivariateBinomial(p = p, cond_props = pyGx, children = edges)
         samples = dist.sample(20)
         evenx = range(0,n,2)
         oddx = range(1,n,2)
