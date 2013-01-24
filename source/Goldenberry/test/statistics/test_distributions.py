@@ -50,6 +50,7 @@ class BivariateBinomialTest(TestCase):
         dist = BivariateBinomial(n)
         samples = dist.sample(20)
         self.assertTrue(samples.shape == (20,10))
+        self.assertTrue(np.equal(dist.roots, range(n)).all())
 
     def test_sampling_chain_all_ones(self):
         n = 5
@@ -65,9 +66,9 @@ class BivariateBinomialTest(TestCase):
         n = 10
         p = np.array([i%2 for i in range(n)])
         p.shape = (1,10)
-        pyGx = np.array([[(i + 1)%2 for i in range(n-1)], [(i + 1)%2 for i in range(n-1)]])
-        edges = [(x, x+1) for x in range(n-1)]
-        dist = BivariateBinomial(p = p, cond_props = pyGx, children = edges)
+        cond_props = [[] if i == 0 else np.array([i%2, i%2]) for i in xrange(n)]
+        children = [[] if i == n-1 else [i + 1] for i in xrange(n)]
+        dist = BivariateBinomial(p = p, cond_props = cond_props, children = children)
         samples = dist.sample(20)
         evenx = range(0,n,2)
         oddx = range(1,n,2)

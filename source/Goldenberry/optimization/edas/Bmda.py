@@ -48,7 +48,7 @@ class Bmda(BaseEda):
                 and self.percentile < 100)
 
     def update_population(self, best):
-            pop = np.concatenate(best, self.distr.sample(20))
+            pop = np.concatenate(best, self.distr.sample(self.pop_size / 2))
         
     def search(self):
         """Search for an optimal solution."""
@@ -70,7 +70,7 @@ class Bmda(BaseEda):
         
     def update_distribution(self, pop):
         self.marginals = np.average(pop, axis = 0)
-        Bmda.generate_graph(pop, self.roots, self.children)        
+        Bmda.generate_graph(pop, self.roots, self.children, self.cond_prop)        
         self.distr = BivariateBinomial(p = self.marginals, cond_props = self.cond_prop, children = self.children, roots = self.roots)
 
     @staticmethod
@@ -83,22 +83,26 @@ class Bmda(BaseEda):
         randidx = np.random.randint(0, len(A))
         v = A[randidx]
         roots.append(v)
+        cond_props[v] = []
         A_.append(v)
         del A[randidx]
 
         # calculate chi_matrix
-        chi_matrix = Bmda.calculate_chisquare_matrix(pop, cond_props)
+        chi_matrix = Bmda.calculate_chisquare_matrix(pop)
          
         while len(A) > 0:
             v1, v2, chi = Bmda.max_chisquare(A, A_, chi_matrix)
             if 0.0 != chi:
                 children[v2].append(v1)
+                ctable = BinomialContingencyTable(pop[:,[v2]], pop[:, [v1]])
+                cond_props[v1] = ctable.PyGx
                 A_.append(v1)
                 A.remove(v1)
             else:
                 randidx = np.random.randint(0, len(A))
                 v = A[randidx]
                 roots.append(v)
+                cond_props[v] = []
                 A_.append(v)
                 del A[randidx]            
 
@@ -113,7 +117,7 @@ class Bmda(BaseEda):
         return self.distr
 
     @staticmethod
-    def calculate_chisquare_matrix(pop, cond_probs):
+    def calculate_chisquare_matrix(pop):
         _, length = pop.shape
         chi_matrix = np.empty((length, length))
         for x,y in itr.combinations(xrange(length), 2):
@@ -123,10 +127,8 @@ class Bmda(BaseEda):
             #independency threshold
             if chisquare > 3.84:
                 chi_matrix[x,y] = chi_matrix[y,x] = chisquare
-                cond_probs[y] = ctable.pxys
             else:
-                chi_matrix[x,y] = chi_matrix[y,x] = 0.0
-                cond_probs[y] = []
+                chi_matrix[x,y] = chi_matrix[y,x] = 0.0                
         return chi_matrix
 
 
