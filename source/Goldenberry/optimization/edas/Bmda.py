@@ -8,7 +8,7 @@ import math
 class Bmda(BaseEda):
     """Bivariate marginal distribution algorithm."""
 
-    pop_size = None
+    cand_size = None
     vars_size = None
     cost_function = None
     distr = None
@@ -18,7 +18,7 @@ class Bmda(BaseEda):
 
     def setup(self, cost_function, varsize, popsize, maxiters = None, percentile = 50):
         """Configure a Cga instance"""
-        self.pop_size = popsize
+        self.cand_size = popsize
         self.vars_size = varsize
         self.cost_function = cost_function
         self.distr = BivariateBinomial(varsize)
@@ -38,21 +38,21 @@ class Bmda(BaseEda):
 
     def ready(self):
         """Informs if the algorithm is ready to execute."""
-        return (None != self.pop_size \
+        return (None != self.cand_size \
                 and None != self.vars_size\
                 and None != self.cost_function \
                 and None != self.distr \
-                and self.pop_size > 0 \
+                and self.cand_size > 0 \
                 and self.vars_size > 0 
                 and self.percentile > 0 \
                 and self.percentile < 100)
 
-    def update_population(self, best):
-            pop = np.concatenate(best, self.distr.sample(self.pop_size / 2))
+    def update_candidates(self, best):
+            pop = np.concatenate(best, self.distr.sample(self.cand_size / 2))
         
     def search(self):
         """Search for an optimal solution."""
-        pop = self.distr.sample(self.pop_size)
+        pop = self.distr.sample(self.cand_size)
         while not self.hasFinished():
             self.iters += 1            
             best = self.best_population(pop)
