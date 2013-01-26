@@ -21,6 +21,6 @@ class BaseEda(GbBaseOptimizer):
         pass
 
     @abc.abstractmethod
-    def generate_candidates(self):
+    def update_candidates(self):
         """Generates the new generation of candidate solutions."""
         pass
