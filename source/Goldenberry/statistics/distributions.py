@@ -95,6 +95,8 @@ class BivariateBinomial(BaseDistribution):
         while len(Q) > 0:
             parent = Q.pop()
             for chl in self.children[parent]:
+                if self.cond_props[chl] == []:
+                    raise Exception("the given children has not a parent nor a conditional probability")
                 pyGx = self.cond_props[chl][samples[:, parent]]
                 samples[:, chl] = np.array(np.random.rand(sample_size) <= pyGx)
                 Q.append(chl)
@@ -115,7 +117,9 @@ class BinomialContingencyTable:
     
     @property
     def PyGx(self):
-         return self.pxys / self.px
+         p = self.pxys / np.array([[1 - self.px, 1 - self.px],[self.px, self.px]], dtype = float)
+         p[~np.isfinite(p)] = 0.0
+         return p
               
     def chisquare(self):
         chi = np.zeros(self.l)
@@ -123,7 +127,7 @@ class BinomialContingencyTable:
             pxy = self.pxys[:, [2*i, 2*i+1]]
             px_py = np.array([1- self.px, self.px]) * np.array([1 - self.pys[i], self.pys[i]])
             val = (pxy - px_py)
-            val = np.array([0 if  math.isnan(j) else j for j in ((val * val)/px_py).flat])
+            val = np.array([0 if  np.isnan(j) or np.isinf(j) else j for j in ((val * val)/px_py).flat])
             chi[i] = np.sum(val)
 
         return self.n*chi

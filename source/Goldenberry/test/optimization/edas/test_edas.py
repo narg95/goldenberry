@@ -49,27 +49,21 @@ class BmdaTest(TestCase):
     """Test that the algorithm generates no graph, all variables independent"""
     def test_generate_graph_all_independent(self):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
-        children = [[] for i in xrange(4)]
-        roots = []
-        cond_props = [[] for i in xrange(4)]
-        Bmda.generate_graph(pop, roots, children, cond_props)
+        Bmda.generate_graph(pop)
         roots.sort()
         self.assertTrue(np.equal(roots, [0,1,2,3]).all())
 
     """Test that the algorithm generates a graph with two root nodes"""
     def test_generate_graph_with_dependencies(self):
         pop = np.array(([[0, 0, 1, 0], [1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 0], [1, 1, 0, 0]]))
-        children = [[] for i in xrange(4)]
-        roots = []
-        cond_props = [[] for i in xrange(4)]
-        Bmda.generate_graph(pop, roots, children, cond_props)
+        Bmda.generate_graph(pop)
         self.assertEqual(len(roots), 2)
         self.assertTrue(np.equal(roots, 3).any())
 
     """Test class for the Bmda algorithm"""
     def test_basic_search(self):
         bmda = Bmda()
-        bmda.setup(onemax(), 10, 20)
+        bmda.setup(onemax(), 10, 30)
         result = bmda.search()
         #self.assertTrue(result.params.all())
         #self.assertEqual(result.cost, 10)
