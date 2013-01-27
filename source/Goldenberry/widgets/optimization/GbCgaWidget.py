@@ -13,10 +13,10 @@ class GbCgaWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
-    settingsList = ['popsize', 'varsize', 'maxgens']
+    settingsList = ['cand_size', 'var_size', 'maxgens']
     cgaAlgorithm = Cga()
-    popsize = 20
-    varsize = 10
+    cand_size = 20
+    var_size = 10
     maxgens = None
     cost_function = None
 
@@ -39,8 +39,8 @@ class GbCgaWidget(OWWidget):
         QObject.connect(self.runButton,QtCore.SIGNAL("clicked()"), self.run)
 
         #set new binding controls
-        popEditor = OWGUI.lineEdit(self, self, "popsize", label="Population", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
-        varEditor = OWGUI.lineEdit(self, self, "varsize", label="Variables", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
+        popEditor = OWGUI.lineEdit(self, self, "cand_size", label="Population", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
+        varEditor = OWGUI.lineEdit(self, self, "var_size", label="Variables", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
         maxEditor = OWGUI.lineEdit(self, self, "maxgens", label="Max Epochs", valueType = int, validator = QIntValidator(0, 100000, self.controlArea))
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(varEditor.box, varEditor)
@@ -52,7 +52,7 @@ class GbCgaWidget(OWWidget):
         self.apply()
 
     def apply(self):
-        self.cgaAlgorithm.setup(self.cost_function, self.varsize, self.popsize, self.maxgens)
+        self.cgaAlgorithm.setup(self.cost_function, self.var_size, self.cand_size, self.maxgens)
         self.send("Search Algorithm" , self.cgaAlgorithm )
         self.runButton.setEnabled(self.cgaAlgorithm.ready())
 

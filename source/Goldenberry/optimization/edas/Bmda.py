@@ -16,21 +16,20 @@ class Bmda(BaseEda):
     iters = None
     percentile = None
 
-    def setup(self, cost_function, varsize, popsize, maxiters = None, percentile = 50):
+    def setup(self, cost_function, var_size, cand_size, max_iters = None, percentile = 50):
         """Configure a Cga instance"""
-        self.cand_size = popsize
-        self.vars_size = varsize
+        self.cand_size = cand_size
+        self.vars_size = var_size
         self.cost_function = cost_function
-        self.distr = BivariateBinomial(varsize)
-        self.max_iters = maxiters
+        self.distr = BivariateBinomial(var_size)
+        self.max_iters = max_iters
         self.iters = 0
         self.percentile = percentile
         
         # Graph properties
-        self.children = [[] for i in xrange(self.vars_size)]
-        self.roots = []
-        self.cond_prop = [[] for i in xrange(self.vars_size)]
-        self.marginals = []
+        self.marginals = None
+        self.children = None
+        self.cond_props = None
 
     def result_distribution(self):
         """Provides the final estimated distribution."""
@@ -45,10 +44,11 @@ class Bmda(BaseEda):
                 and self.cand_size > 0 \
                 and self.vars_size > 0 
                 and self.percentile > 0 \
-                and self.percentile < 100)
+                and self.percentile < 100 \
+                and self.percentile > 0)
 
     def update_candidates(self, best):
-            pop = np.concatenate(best, self.distr.sample(self.cand_size / 2))
+            return np.concatenate((best, self.distr.sample(self.cand_size - best.shape[0])))
         
     def search(self):
         """Search for an optimal solution."""
@@ -57,7 +57,7 @@ class Bmda(BaseEda):
             self.iters += 1            
             best = self.best_population(pop)
             self.update_distribution(best)
-            self.update_population(best)
+            pop = self.update_candidates(best)
         
         #returns the winner with its estimated cost
         winner = self.distr.sample(1)
@@ -65,21 +65,30 @@ class Bmda(BaseEda):
 
     def best_population(self, pop):
         fit = self.cost_function(pop)
-        minvalue = np.percentile(fit, self.percentile)
-        return pop[np.where(fit > minvalue)]
+        index = np.argsort(fit)[:(self.cand_size * self.percentile/100):-1]
+        return pop[index]
         
     def update_distribution(self, pop):
         self.marginals = np.average(pop, axis = 0)
-        Bmda.generate_graph(pop, self.roots, self.children, self.cond_prop)        
-        self.distr = BivariateBinomial(p = self.marginals, cond_props = self.cond_prop, children = self.children, roots = self.roots)
+        self.roots, self.children, self.cond_props = Bmda.generate_graph(pop)        
+        self.distr = BivariateBinomial(p = self.marginals, cond_props = self.cond_props, children = self.children, roots = self.roots)
 
     @staticmethod
-    def generate_graph(pop, roots, children, cond_props):
-        #initialize local variables
-        A = range(len(cond_props))        
-        A_ = []
+    def generate_graph(pop):
         
-        # We assume A is >= 1
+        var_size = pop.shape[1]
+        
+        #Check if there are vertices.
+        if var_size < 1:
+            raise Exception("No vertex to generate the graph.")
+
+        #initialize variables
+        children = [[] for i in xrange(var_size)]
+        roots = []
+        cond_props = [[] for i in xrange(var_size)]
+                
+        A = range(len(cond_props))
+        A_ = []
         randidx = np.random.randint(0, len(A))
         v = A[randidx]
         roots.append(v)
@@ -95,7 +104,9 @@ class Bmda(BaseEda):
             if 0.0 != chi:
                 children[v2].append(v1)
                 ctable = BinomialContingencyTable(pop[:,[v2]], pop[:, [v1]])
-                cond_props[v1] = ctable.PyGx
+                cond_props[v1] = ctable.PyGx[:, 1]
+                if cond_props[v1] == []:
+                    print "error"
                 A_.append(v1)
                 A.remove(v1)
             else:
@@ -104,7 +115,9 @@ class Bmda(BaseEda):
                 roots.append(v)
                 cond_props[v] = []
                 A_.append(v)
-                del A[randidx]            
+                del A[randidx]
+        
+        return roots, children, cond_props
 
     def hasFinished(self):
         finish = not (self.max_iters is None) and self.iters > self.max_iters
@@ -125,6 +138,8 @@ class Bmda(BaseEda):
             chisquare = ctable.chisquare()
             
             #independency threshold
+            if math.isinf(chisquare):
+                print "inf"
             if chisquare > 3.84:
                 chi_matrix[x,y] = chi_matrix[y,x] = chisquare
             else:

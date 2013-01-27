@@ -13,13 +13,13 @@ class Cga(BaseEda):
     max_iters = None
     iter = None
 
-    def setup(self, cost_function, varsize, popsize, maxiters = None):
+    def setup(self, cost_function, var_size, cand_size, max_iters = None):
         """Configure a Cga instance"""
-        self.cand_size = popsize
-        self.var_size = varsize
+        self.cand_size = cand_size
+        self.var_size = var_size
         self.cost_func = cost_function
-        self.distr = Binomial(n = varsize)
-        self.max_iters = maxiters
+        self.distr = Binomial(n = var_size)
+        self.max_iters = max_iters
         self.iter = 0
 
     """Generates the new pair of candidates"""

@@ -74,7 +74,7 @@ class BivariateBinomialTest(TestCase):
         oddx = range(1,n,2)
         self.assertTrue(np.all(samples[:, evenx] == 0))
         self.assertTrue(np.all(samples[:, oddx] == 1.0))
-
+    
 class BinomialContingencyTableTest(TestCase):
     
     def test_basic(self):
@@ -100,3 +100,18 @@ class BinomialContingencyTableTest(TestCase):
         chi = ctable.chisquare()
         expected = np.array([0, 4, 0])
         self.assertTrue(np.all((chi - expected )== 0))
+
+    def test_join_and_conditional_probability(self):
+        X = np.array([[1],[0],[1],[1],[1],[1]])
+        Y = np.array([[1],[0],[0],[0],[0],[1]])
+        ctable = BinomialContingencyTable(X, Y)
+        self.assertEquals(ctable.px, 5.0/6.0)
+        self.assertEquals(ctable.pys, [2.0/6.0])
+        self.assertTrue(np.equal(ctable.pxys, [[1/6.0, 0.0],[0.5, 2/6.0]]).all())
+        self.assertTrue(((ctable.PyGx - np.array([[1.0, 0.0],[0.6, 0.4]])) < 0.001).all())       
+
+    def test_conditional_NAN_probability(self):
+        X = np.array([[1],[1],[1],[1],[1],[1]])
+        Y = np.array([[0],[0],[0],[1],[1],[1]])
+        ctable = BinomialContingencyTable(X, Y)
+        self.assertTrue(((ctable.PyGx - np.array([[0.0, 0.0],[0.5, 0.5]])) < 0.001).all())  
