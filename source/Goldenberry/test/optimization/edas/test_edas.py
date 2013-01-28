@@ -49,24 +49,32 @@ class BmdaTest(TestCase):
     """Test that the algorithm generates no graph, all variables independent"""
     def test_generate_graph_all_independent(self):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
-        Bmda.generate_graph(pop)
+        roots, _, _ = Bmda.generate_graph(pop)
         roots.sort()
         self.assertTrue(np.equal(roots, [0,1,2,3]).all())
 
     """Test that the algorithm generates a graph with two root nodes"""
     def test_generate_graph_with_dependencies(self):
         pop = np.array(([[0, 0, 1, 0], [1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 0], [1, 1, 0, 0]]))
-        Bmda.generate_graph(pop)
+        roots, _, _ = Bmda.generate_graph(pop)
         self.assertEqual(len(roots), 2)
         self.assertTrue(np.equal(roots, 3).any())
 
     """Test class for the Bmda algorithm"""
-    def test_basic_search(self):
+    def test_basic_search_onemax(self):
         bmda = Bmda()
         bmda.setup(onemax(), 10, 30)
         result = bmda.search()
-        #self.assertTrue(result.params.all())
-        #self.assertEqual(result.cost, 10)
+        self.assertTrue(result.params.all())
+        self.assertEqual(result.cost, 10)
+
+    """Test class for the Bmda algorithm"""
+    def test_basic_search_zero(self):
+        bmda = Bmda()
+        bmda.setup(zero(), 10, 30)
+        result = bmda.search()
+        self.assertTrue(~result.params.all())
+        self.assertEqual(result.cost, 0)
 
 if __name__ == '__main__':
     unittest.main()
