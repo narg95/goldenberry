@@ -8,7 +8,7 @@ class CgaTest(TestCase):
     """Test class for the Cga algorithm"""
     def test_basic(self):
         cga = Cga()
-        cga.setup(onemax(), 10, 20)
+        cga.setup(Onemax(), 10, 20)
         result = cga.search()
         self.assertTrue(result.params.all())
         self.assertEqual(result.cost, 10)
@@ -17,10 +17,11 @@ class BmdaTest(TestCase):
     
     """Test the generation of the chi square matrix"""
     def test_shape_calculate_chisquare_matrix(self):
-        pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
+        pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1],  [1,1,0,0]]))
         chi_matrix = Bmda.calculate_chisquare_matrix(pop)
         self.assertEqual(chi_matrix.shape, (4,4))
-        self.assertEquals(np.not_equal(chi_matrix,0.0).sum(), 4)
+        expected = np.array([[0, 0.414216178, 0.414216178, 0.083264517],[0.414216178,0,0.414216178,0.083264517], [0.414216178,0.414216178,0,1],[0.083264517,0.083264517,1,0]])
+        self.assertAlmostEqual(0.0, np.sum((chi_matrix - expected).abs()))
 
     """Test the max chi square algorithm"""
     def test_max_chisquare_base(self):
@@ -63,7 +64,7 @@ class BmdaTest(TestCase):
     """Test class for the Bmda algorithm"""
     def test_basic_search_onemax(self):
         bmda = Bmda()
-        bmda.setup(onemax(), 10, 30)
+        bmda.setup(Onemax(), 10, 40)
         result = bmda.search()
         self.assertTrue(result.params.all())
         self.assertEqual(result.cost, 10)
@@ -71,10 +72,19 @@ class BmdaTest(TestCase):
     """Test class for the Bmda algorithm"""
     def test_basic_search_zero(self):
         bmda = Bmda()
-        bmda.setup(zero(), 10, 30)
+        bmda.setup(Zeromax(), 10, 40)
         result = bmda.search()
-        self.assertTrue(~result.params.all())
-        self.assertEqual(result.cost, 0)
+        self.assertTrue((result.params + 1).all())
+        self.assertEqual(result.cost, 10.0)
+
+    """Test class for the Bmda algorithm"""
+    def test_basic_search_cond_onemax(self):
+        var_size = 10
+        bmda = Bmda()
+        bmda.setup(CondOnemax(var_size), var_size, 40)
+        result = bmda.search()
+        self.assertTrue((result.params + 1).all())
+        self.assertEqual(result.cost, var_size)
 
 if __name__ == '__main__':
     unittest.main()

@@ -14,9 +14,10 @@ class Bmda(BaseEda):
     distr = None
     max_iters = None
     iters = None
-    percentile = None
+    percentage = None
+    fit_evals = None
 
-    def setup(self, cost_function, var_size, cand_size, max_iters = None, percentile = 50):
+    def setup(self, cost_function, var_size, cand_size, max_iters = None, percentage = 50):
         """Configure a Cga instance"""
         self.cand_size = cand_size
         self.vars_size = var_size
@@ -24,7 +25,8 @@ class Bmda(BaseEda):
         self.distr = BivariateBinomial(var_size)
         self.max_iters = max_iters
         self.iters = 0
-        self.percentile = percentile
+        self.fit_evals = 0
+        self.percentage = percentage
         
         # Graph properties
         self.marginals = None
@@ -43,30 +45,35 @@ class Bmda(BaseEda):
                 and None != self.distr \
                 and self.cand_size > 0 \
                 and self.vars_size > 0 
-                and self.percentile > 0 \
-                and self.percentile < 100 \
-                and self.percentile > 0)
+                and self.percentage > 0 \
+                and self.percentage < 100 \
+                and self.percentage > 0)
 
     def update_candidates(self, best):
             return np.concatenate((best, self.distr.sample(self.cand_size - best.shape[0])))
         
     def search(self):
         """Search for an optimal solution."""
+        best_candidate = GbSolution(None, 0.0)
         pop = self.distr.sample(self.cand_size)
         while not self.hasFinished():
-            self.iters += 1            
-            best = self.best_population(pop)
-            self.update_distribution(best)
-            pop = self.update_candidates(best)
-        
-        #returns the winner with its estimated cost
-        winner = self.distr.sample(1)
-        return GbSolution(winner, self.cost_function(winner))
+            bests, winner = self.best_population(pop)
+            self.update_distribution(bests)
+            pop = self.update_candidates(bests)
+            
+            if best_candidate.cost < winner.cost:
+                best_candidate = winner
 
-    def best_population(self, pop):
-        fit = self.cost_function(pop)
-        index = np.argsort(fit)[:(self.cand_size * self.percentile/100):-1]
-        return pop[index]
+            self.iters += 1
+            self.fit_evals += self.cand_size
+
+        #returns the winner with its estimated cost
+        return best_candidate
+
+    def best_population(self, bests):
+        fits = self.cost_function(bests)
+        index = np.argsort(fits)[:(self.cand_size * self.percentage/100):-1]
+        return bests[index], GbSolution(bests[index[0]], fits[index[0]])
         
     def update_distribution(self, pop):
         self.marginals = np.average(pop, axis = 0)
@@ -77,6 +84,9 @@ class Bmda(BaseEda):
     def generate_graph(pop):
         
         var_size = pop.shape[1]
+        
+        # calculate chi_matrix
+        chi_matrix = Bmda.calculate_chisquare_matrix(pop)
         
         #Check if there are vertices.
         if var_size < 1:
@@ -93,12 +103,9 @@ class Bmda(BaseEda):
         v = A[randidx]
         roots.append(v)
         cond_props[v] = []
-        A_.append(v)
         del A[randidx]
+        A_.append(v)        
 
-        # calculate chi_matrix
-        chi_matrix = Bmda.calculate_chisquare_matrix(pop)
-         
         while len(A) > 0:
             v1, v2, chi = Bmda.max_chisquare(A, A_, chi_matrix)
             if 0.0 != chi:
