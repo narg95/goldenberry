@@ -3,8 +3,8 @@ class GbBaseCostFunction:
     __metaclass__ = abc.ABCMeta
 
     """This is the base class for all the cost functions"""
-    def __call__(self, solution):
-        return self.cost(solution)
+    def __call__(self, solutions):
+        return self.cost(solutions)
 
     def __str__(self):
         return self.name()
