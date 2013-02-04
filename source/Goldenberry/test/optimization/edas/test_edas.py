@@ -20,7 +20,7 @@ class BmdaTest(TestCase):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1],  [1,1,0,0]]))
         chi_matrix = Bmda.calculate_chisquare_matrix(pop)
         self.assertEqual(chi_matrix.shape, (4,4))
-        expected = np.array([[0, 0.414216178, 0.414216178, 0.083264517],[0.414216178,0,0.414216178,0.083264517], [0.414216178,0.414216178,0,1],[0.083264517,0.083264517,1,0]])
+        expected = np.array([[0, 0.66667, 0.66667, 1.5],[0.66667,0, 0.66667, 1.5], [0.66667, 0.66667,0,1],[1.5, 1.5,1,0]])
         self.assertAlmostEqual(0.0, np.sum((chi_matrix - expected).abs()))
 
     """Test the max chi square algorithm"""
