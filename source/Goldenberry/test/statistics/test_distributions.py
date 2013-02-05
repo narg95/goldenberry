@@ -94,12 +94,12 @@ class BinomialContingencyTableTest(TestCase):
         self.assertTrue(np.all((ctable.table - expected) == 0))
 
     def test_chisquare_test(self):
-        X = np.array([[0],[1],[0],[1]])
-        Y = np.array([[0, 0, 1], [0, 1, 1], [1, 0, 0], [1, 1, 0]])
+        X = np.array([[0],[1],[0],[1],[0],[1]])
+        Y = np.array([[1,0,1], [0,0,1], [0,1,0], [0,1,0],[1,1,1], [0,0,1]])
         ctable = BinomialContingencyTable(X, Y)
         chi = ctable.chisquare()
-        expected = np.array([0, 4, 0])
-        self.assertTrue(np.all((chi - expected )== 0))
+        expected = np.array([3, 0.6667, 5.54e-32])
+        self.assertAlmostEqual(np.sum(chi - expected ), 0.0, places=4)
 
     def test_join_and_conditional_probability(self):
         X = np.array([[1],[0],[1],[1],[1],[1]])
