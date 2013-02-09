@@ -1,27 +1,27 @@
 """
-<name>cGA</name>
-<description>Compact Genetic Algorithm</description>
+<name>Bmda</name>
+<description>Bivariate marginal distribution of estimation algorithm</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/Cga.png</icon>
+<icon>icons/Bmda.png</icon>
 <priority>100</priority>
 
 """
 
 from Goldenberry.widgets import *
 
-class GbCgaWidget(OWWidget):
-    """Widget for cga algorithm"""
+class GbBmdaWidget(OWWidget):
+    """Widget for Bmda algorithm"""
     
     #attributes
-    settingsList = ['cand_size', 'var_size', 'maxgens']
-    cgaAlgorithm = Cga()
+    settingsList = ['cand_size', 'var_size', 'max_evals']
+    bmdaAlgorithm = Bmda()
     cand_size = 20
     var_size = 10
-    maxgens = None
+    max_evals = None
     cost_function = None
 
     def __init__(self, parent=None, signalManager=None):
-        OWWidget.__init__(self, parent, signalManager, 'cGA')
+        OWWidget.__init__(self, parent, signalManager, 'Bmda')
         
         self.setup_interfaces()
         self.setup_ui() 
@@ -32,7 +32,7 @@ class GbCgaWidget(OWWidget):
 
     def setup_ui(self):
         # Loads the UI from an .ui file.
-        self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbCgaWidget.ui", self)    
+        self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbBmdaWidget.ui", self)    
         
         # Subscribe to signals
         QObject.connect(self.applyButton,QtCore.SIGNAL("clicked()"), self.apply)
@@ -41,7 +41,7 @@ class GbCgaWidget(OWWidget):
         #set new binding controls
         popEditor = OWGUI.lineEdit(self, self, "cand_size", label="Population", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
         varEditor = OWGUI.lineEdit(self, self, "var_size", label="Variables", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
-        maxEditor = OWGUI.lineEdit(self, self, "maxgens", label="Max Epochs", valueType = int, validator = QIntValidator(0, 100000, self.controlArea))
+        maxEditor = OWGUI.lineEdit(self, self, "max_evals", label="Max Evaluations", valueType = int, validator = QIntValidator(0, 10000000, self.controlArea))
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(varEditor.box, varEditor)
         self.paramBox.layout().addRow(popEditor.box, popEditor)
@@ -52,12 +52,11 @@ class GbCgaWidget(OWWidget):
         self.apply()
 
     def apply(self):
-        self.cgaAlgorithm.setup(self.cost_function, self.var_size, self.cand_size, self.maxgens)
-        self.send("Search Algorithm" , self.cgaAlgorithm )
-        self.runButton.setEnabled(self.cgaAlgorithm.ready())
+        self.bmdaAlgorithm.setup(self.cost_function, self.var_size, self.cand_size, max_evals = self.max_evals)
+        self.send("Search Algorithm" , self.bmdaAlgorithm)
+        self.runButton.setEnabled(self.bmdaAlgorithm.ready())
 
     def run(self):
-        self.cgaAlgorithm.setup(self.cost_function, self.var_size, self.cand_size, self.maxgens)
-        if self.cgaAlgorithm.ready():
-            result = self.cgaAlgorithm.search()
-            self.resultTextEdit.setText(str(result))
+        if self.bmdaAlgorithm.ready():
+            result = self.bmdaAlgorithm.search()
+            self.resultTextEdit.setText("Evals: " + str(self.max_evals) + "\n"+ str(result))

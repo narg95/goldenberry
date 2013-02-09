@@ -2,6 +2,7 @@ from unittest import *
 from Goldenberry.optimization.cost_functions.functions import *
 from PyQt4.QtGui import QApplication
 from Optimization.GbCgaWidget import GbCgaWidget
+from Optimization.GbBmdaWidget import GbBmdaWidget
 import sys
 
 class OptimizationWidgetsTest(TestCase):
@@ -12,6 +13,20 @@ class OptimizationWidgetsTest(TestCase):
 
     def test_cga_basic(self):        
         widget = GbCgaWidget()
+        widget.apply()
+        
+        self.assertFalse(widget.runButton.isEnabled())
+        widget.set_cost_function(Onemax())
+
+        self.assertTrue(widget.runButton.isEnabled())
+        widget.run()   
+        
+        # Uncomment only when testing the widget UI
+        widget.show()
+        self.app.exec_()   
+        
+    def test_bmda_basic(self):        
+        widget = GbBmdaWidget()
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())

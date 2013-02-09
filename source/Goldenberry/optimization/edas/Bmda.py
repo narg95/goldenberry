@@ -16,9 +16,10 @@ class Bmda(BaseEda):
     iters = None
     percentage = None
     fit_evals = None
+    max_evals = None
 
-    def setup(self, cost_function, var_size, cand_size, max_iters = None, percentage = 50):
-        """Configure a Cga instance"""
+    def setup(self, cost_function, var_size, cand_size, percentage = 50, max_iters = None, max_evals = None):
+        """Configure a Bmda instance"""
         self.cand_size = cand_size
         self.vars_size = var_size
         self.cost_function = cost_function
@@ -27,6 +28,8 @@ class Bmda(BaseEda):
         self.iters = 0
         self.fit_evals = 0
         self.percentage = percentage
+        self.max_evals = max_evals
+        self.evals_per_gens = cand_size * (100 - percentage)/100
         
         # Graph properties
         self.marginals = None
@@ -49,15 +52,13 @@ class Bmda(BaseEda):
                 and self.percentage < 100 \
                 and self.percentage > 0)
 
-    def update_candidates(self, best):
-            return np.concatenate((best, self.distr.sample(self.cand_size - best.shape[0])))
-        
     def search(self):
         """Search for an optimal solution."""
         best_candidate = GbSolution(None, 0.0)
         pop = self.distr.sample(self.cand_size)
         while not self.hasFinished():
-            bests, winner = self.best_population(pop)
+            
+            bests, winner = self.best_candidates(pop)
             self.update_distribution(bests)
             pop = self.update_candidates(bests)
             
@@ -65,12 +66,15 @@ class Bmda(BaseEda):
                 best_candidate = winner
 
             self.iters += 1
-            self.fit_evals += self.cand_size
+            self.fit_evals += self.evals_per_gens
 
         #returns the winner with its estimated cost
         return best_candidate
 
-    def best_population(self, bests):
+    def update_candidates(self, best):
+            return np.concatenate((best, self.distr.sample(self.cand_size - best.shape[0])))[np.random.permutation(self.cand_size)]
+
+    def best_candidates(self, bests):
         fits = self.cost_function(bests)
         index = np.argsort(fits)[:(self.cand_size * self.percentage/100):-1]
         return bests[index], GbSolution(bests[index[0]], fits[index[0]])

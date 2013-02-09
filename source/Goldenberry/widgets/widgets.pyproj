@@ -34,6 +34,7 @@
     <Compile Include="Classify\__init__.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="Optimization\GbBmdaWidget.py" />
     <Compile Include="Optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />
@@ -84,12 +85,20 @@
       <Publish>True</Publish>
     </Content>
     <Content Include="Classify\test_data_2d.tab" />
+    <Content Include="Optimization\GbBmdaWidget.ui">
+      <Publish>True</Publish>
+    </Content>
     <Content Include="Optimization\GbCgaWidget.ui">
       <Publish>True</Publish>
     </Content>
     <Content Include="Optimization\GbCostFuncsWidget.ui">
       <Publish>True</Publish>
     </Content>
+    <Content Include="Optimization\icons\Bmda_16.png" />
+    <Content Include="Optimization\icons\Bmda_32.png" />
+    <Content Include="Optimization\icons\Bmda_40.png" />
+    <Content Include="Optimization\icons\Bmda_48.png" />
+    <Content Include="Optimization\icons\Bmda_60.png" />
     <Content Include="Optimization\icons\Cga_16.png">
       <Publish>True</Publish>
     </Content>
