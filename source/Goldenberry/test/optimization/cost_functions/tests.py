@@ -18,18 +18,20 @@ class CostFunctionTest(TestCase):
 
     def test_condonemax_base(self):
         length = 10
-        func = CondOnemax(length)
-        self.assertTrue(np.equal(func.cond_indexes, range(length)).all())
-
-    def test_condonemax_base_1(self):
-        func = CondOnemax(cond_indexes =[9,8,7,6,5,4,3,2,1,0])
-        self.assertTrue(np.equal(func.cond_indexes, [9,8,7,6,5,4,3,2,1,0]).all())
-
-    def test_condonemax_cost_calculation(self):
+        func = CondOnemax()
         sample = np.array([0,1,1,1,1,0,1,0,1,1])
-        sample.shape = (1, 10)
-        func = CondOnemax(cond_indexes = [9,8,7,6,5,4,3,2,1,0])
-        self.assertEqual(func.cost(sample)[0], 5.0)
+        sample = sample.reshape((1,10))
+        self.assertEqual(func.cost(sample), 4.0)
+
+    #def test_condonemax_base_1(self):
+    #    func = CondOnemax(cond_indexes =[9,8,7,6,5,4,3,2,1,0])
+    #    self.assertTrue(np.equal(func.cond_indexes, [9,8,7,6,5,4,3,2,1,0]).all())
+
+    #def test_condonemax_cost_calculation(self):
+    #    sample = np.array([0,1,1,1,1,0,1,0,1,1])
+    #    sample.shape = (1, 10)
+    #    func = CondOnemax(cond_indexes = [9,8,7,6,5,4,3,2,1,0])
+    #    self.assertEqual(func.cost(sample)[0], 5.0)
         
 
 if __name__ == '__main__':

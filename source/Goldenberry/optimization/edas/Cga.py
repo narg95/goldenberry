@@ -12,9 +12,10 @@ class Cga(BaseEda):
     distr = None
     max_iters = None
     iter = None
-    fit_evals = None
+    evals = None
+    max_evals = None
 
-    def setup(self, cost_function, var_size, cand_size, max_iters = None):
+    def setup(self, cost_function, var_size, cand_size, max_iters = None, max_evals = None):
         """Configure a Cga instance"""
         self.cand_size = cand_size
         self.var_size = var_size
@@ -22,7 +23,8 @@ class Cga(BaseEda):
         self.distr = Binomial(n = var_size)
         self.max_iters = max_iters
         self.iter = 0
-        self.fit_evals = 0
+        self.evals = 0
+        self.max_evals = max_evals
 
     def update_candidates(self):
         """Generates the new pair of candidates"""
@@ -40,7 +42,7 @@ class Cga(BaseEda):
             if best_candidate.cost < winner.cost:
                 best_candidate = winner
             
-            self.fit_evals += 2
+            self.evals += 2
             self.iter += 1
 
         #returns the best candidate found so far
@@ -53,7 +55,9 @@ class Cga(BaseEda):
                self.cost_func is not None
 
     def hasFinished(self):
-        finish = not (self.max_iters is None) and self.iter > self.max_iters
+        finish = (not (self.max_iters is None) and self.iter > self.max_iters) or \
+                 (not (self.max_evals is None) and self.evals > self.max_evals)
+        
         if finish:
             return True
         return (((1 - self.distr()) < 0.01) | (self.distr() < 0.01)).all()
