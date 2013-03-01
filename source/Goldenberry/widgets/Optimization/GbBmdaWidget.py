@@ -42,14 +42,16 @@ class GbBmdaWidget(OWWidget):
         self.paramBox.layout().addRow(varEditor.box, varEditor)
         self.paramBox.layout().addRow(popEditor.box, popEditor)
         self.paramBox.layout().addRow(maxEditor.box, maxEditor)
+        self.runButton.setEnabled(False)
 
     def setup_interfaces(self):
         self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]
         
     def set_cost_function(self, cost_func):
-        self.optimizer.cost_func = cost_func
-        self.runButton.setEnabled(self.optimizer.ready())
+        if None != cost_func:
+            self.optimizer.cost_func = cost_func()
+            self.runButton.setEnabled(self.optimizer.ready())
 
     def apply(self):
         self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals)
@@ -60,4 +62,4 @@ class GbBmdaWidget(OWWidget):
         self.optimizer.reset()
         if self.optimizer.ready():
             result = self.optimizer.search()
-            self.resultTextEdit.setText("Evals: " + str(self.max_evals) + "\n"+ str(result))
+            self.resultTextEdit.setText("Best: "+ str(result) + "\nStatistics:" +str(self.optimizer.cost_func.statistics()))

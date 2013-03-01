@@ -16,7 +16,7 @@ class OptimizationWidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function(Onemax())
+        widget.set_cost_function(Onemax)
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -30,7 +30,7 @@ class OptimizationWidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function(Onemax())
+        widget.set_cost_function(Onemax)
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
