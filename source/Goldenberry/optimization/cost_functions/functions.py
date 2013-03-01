@@ -3,38 +3,25 @@ from Goldenberry.optimization.base.GbBaseCostFunction import GbBaseCostFunction
 
 class Onemax(GbBaseCostFunction):
     """ One max"""
-    def cost(self, solutions):
-        return solutions.sum(axis=1)
-
-    def name(self):
-        """Gets name"""
-        return "One max"
+    def __cost__(self, solution):
+        return solution.sum()
 
 class Zeromax(GbBaseCostFunction):
     """ Zero cost"""
-    def cost(self, solutions):
-        return solutions.shape[1] - solutions.sum(axis=1)
-
-    def name(self):
-        """Gets name"""
-        return "Zero function"
+    def __cost__(self, solution):
+        return len(solution) - solution.sum()
 
 class CondOnemax(GbBaseCostFunction):
     """ Conditional onemax cost function"""
 
-    def cost(self, solutions):
-        prev = np.ones(solutions.shape[0])
-        cost = np.zeros(solutions.shape[0])
-        cond_indexes = range(solutions.shape[1])
+    def __cost__(self, solution):
+        prev = 1.0
+        cost = 0.0
+        cond_indexes = range(len(solution))
 
-        for i in range(solutions.shape[1]):
-            curr =  solutions[:,cond_indexes[i]]
+        for i in cond_indexes:
+            curr =  solution[i]
             cost += prev * curr
             prev = curr
         
-        return cost    
-
-
-    def name(self):
-        """Gets name"""
-        return "Conditional onemax function"
+        return cost

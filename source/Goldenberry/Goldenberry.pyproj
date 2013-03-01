@@ -44,11 +44,12 @@
     <Folder Include="optimization\edas\" />
     <Folder Include="optimization\cost_functions\" />
     <Folder Include="optimization\bioinspired\" />
-    <Folder Include="optimization\base\" />    
+    <Folder Include="optimization\base\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classification\base\GbBaseKernel.py" />
     <Compile Include="classification\base\__init__.py" />
+    <Compile Include="classification\Kernels.py" />
     <Compile Include="classification\Perceptron.py" />
     <Compile Include="classification\__init__.py" />
     <Compile Include="optimization\base\GbBaseCostFunction.py" />
@@ -59,11 +60,12 @@
     <Compile Include="optimization\cost_functions\__init__.py" />
     <Compile Include="optimization\edas\Bmda.py" />
     <Compile Include="optimization\edas\Cga.py" />
-    <Compile Include="optimization\edas\BaseEda.py" />
+    <Compile Include="optimization\edas\GbBaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />
     <Compile Include="statistics\distributions.py" />
     <Compile Include="statistics\__init__.py" />
+    <Compile Include="test\classification\test_kernels.py" />
     <Compile Include="test\classification\test_perceptron.py">
       <Publish>False</Publish>
     </Compile>
@@ -101,7 +103,6 @@
     <Content Include="test\classification\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
-    
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

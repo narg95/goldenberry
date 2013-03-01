@@ -94,11 +94,21 @@
     <Content Include="Optimization\GbCostFuncsWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Optimization\icons\Bmda_16.png" />
-    <Content Include="Optimization\icons\Bmda_32.png" />
-    <Content Include="Optimization\icons\Bmda_40.png" />
-    <Content Include="Optimization\icons\Bmda_48.png" />
-    <Content Include="Optimization\icons\Bmda_60.png" />
+    <Content Include="Optimization\icons\Bmda_16.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Bmda_32.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Bmda_40.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Bmda_48.png">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\icons\Bmda_60.png">
+      <Publish>True</Publish>
+    </Content>
     <Content Include="Optimization\icons\Cga_16.png">
       <Publish>True</Publish>
     </Content>
