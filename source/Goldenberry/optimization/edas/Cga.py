@@ -11,7 +11,6 @@ class Cga(GbBaseEda):
     distr = None
     max_iters = None
     iter = None
-    evals = None
     max_evals = None
 
     def setup(self, var_size, cand_size, max_iters = None, max_evals = None):
@@ -25,7 +24,6 @@ class Cga(GbBaseEda):
 
     def reset(self):
         self.iter = 0
-        self.evals = 0
         if None != self.var_size:
             self.distr = Binomial(n = self.var_size)    
         if None != self.cost_func:
@@ -47,7 +45,6 @@ class Cga(GbBaseEda):
             if best_candidate.cost < winner.cost:
                 best_candidate = winner
             
-            self.evals += 2
             self.iter += 1
 
         #returns the best candidate found so far
@@ -61,7 +58,7 @@ class Cga(GbBaseEda):
 
     def hasFinished(self):
         finish = (not (self.max_iters is None) and self.iter > self.max_iters) or \
-                 (not (self.max_evals is None) and self.evals > self.max_evals)
+                 (not (self.max_evals is None) and self.cost_func.evals > self.max_evals)
         
         if finish:
             return True

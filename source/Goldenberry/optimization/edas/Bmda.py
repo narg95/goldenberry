@@ -14,7 +14,6 @@ class Bmda(GbBaseEda):
     max_iters = None
     iters = None
     percentage = None
-    fit_evals = None
     max_evals = None
 
     def setup(self, var_size, cand_size, percentage = 50, max_iters = None, max_evals = None):
@@ -25,13 +24,11 @@ class Bmda(GbBaseEda):
         self.max_iters = max_iters
         self.percentage = percentage
         self.max_evals = max_evals
-        self.evals_per_gens = cand_size * (100 - percentage)/100
         
         self.reset()
 
     def reset(self):
         self.iters = 0
-        self.evals = 0
         self.marginals = None
         self.children = None
         self.cond_props = None
@@ -70,7 +67,6 @@ class Bmda(GbBaseEda):
                 best_candidate = winner
 
             self.iters += 1
-            self.evals += self.evals_per_gens
 
         #returns the winner with its estimated cost
         return best_candidate
@@ -136,7 +132,7 @@ class Bmda(GbBaseEda):
 
     def hasFinished(self):
         finish = (not (self.max_iters is None) and self.iter > self.max_iters) or \
-                 (not (self.max_evals is None) and self.evals > self.max_evals)
+                 (not (self.max_evals is None) and self.cost_func.evals > self.max_evals)
         if finish:
             return True
         return (((1 - self.distr.p) < 0.01) | (self.distr.p < 0.01)).all()

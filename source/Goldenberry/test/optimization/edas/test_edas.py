@@ -22,7 +22,6 @@ class CgaTest(TestCase):
         cga.search()
         cga.reset()
         self.assertEqual(cga.iter, 0)
-        self.assertEqual(cga.evals, 0)
         self.assertNotEqual(cga.distr, None)        
         self.assertEqual(cga.cost_func.evals, 0)
 
@@ -119,7 +118,6 @@ class BmdaTest(TestCase):
         bmda.search()
         bmda.reset()
         self.assertEqual(bmda.iters, 0)
-        self.assertEqual(bmda.evals, 0)
         self.assertIsNone(bmda.marginals)
         self.assertIsNone(bmda.children)
         self.assertIsNone(bmda.cond_props)

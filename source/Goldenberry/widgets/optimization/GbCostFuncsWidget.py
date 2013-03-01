@@ -22,7 +22,7 @@ class GbCostFuncsWidget(OWWidget):
         self.setup_ui()
     
     def setup_interfaces(self):
-        self.outputs = [("Cost Functions", GbBaseCostFunction)]
+        self.outputs = [("Cost Function", GbBaseCostFunction)]
 
     def setup_ui(self):
         """Configures the user interface"""
@@ -39,7 +39,7 @@ class GbCostFuncsWidget(OWWidget):
     def accepted(self):
         self.accept()
         cost_func = self.cost_funcs[self.cost_funcs.keys()[self.cost_func_sel_index[0]]]
-        self.send("Cost Functions" , cost_func())
+        self.send("Cost Function" , cost_func)
 
     def rejected(self):
         self.reject()
