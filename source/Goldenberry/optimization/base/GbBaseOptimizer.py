@@ -3,10 +3,22 @@ import abc
 class GbBaseOptimizer(object):
     __metaclass__ = abc.ABCMeta
     """Base class for optimization algorithms."""
+    
+    cost_func = None
+    
+    @abc.abstractmethod
+    def setup(self, **kwargs):
+        """Setup the optimizer algorithm."""
+        raise NotImplementedError
 
     @abc.abstractmethod
-    def setup(self, cost_function, **kwargs):
-        """Setup the optimizer algorithm."""
+    def ready(self):
+        """Informs if the algorithm is ready to execute."""
+        return self.cost_func != None
+
+    @abc.abstractmethod
+    def reset(self):
+        """Reset the current optimizer settings to be able to start again the search."""
         raise NotImplementedError
 
     @abc.abstractmethod

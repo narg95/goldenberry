@@ -14,7 +14,7 @@ class GbBmdaWidget(OWWidget):
     
     #attributes
     settingsList = ['cand_size', 'var_size', 'max_evals']
-    bmdaAlgorithm = Bmda()
+    bmda = Bmda()
     cand_size = 20
     var_size = 10
     max_evals = None
@@ -28,7 +28,7 @@ class GbBmdaWidget(OWWidget):
 
     def setup_interfaces(self):
         self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_function)]
-        self.outputs = [("Search Algorithm", GbBaseOptimizer)]
+        self.outputs = [("Optimizer", GbBaseOptimizer)]
 
     def setup_ui(self):
         # Loads the UI from an .ui file.
@@ -52,11 +52,12 @@ class GbBmdaWidget(OWWidget):
         self.apply()
 
     def apply(self):
-        self.bmdaAlgorithm.setup(self.cost_function, self.var_size, self.cand_size, max_evals = self.max_evals)
-        self.send("Search Algorithm" , self.bmdaAlgorithm)
-        self.runButton.setEnabled(self.bmdaAlgorithm.ready())
+        self.bmda.setup(self.var_size, self.cand_size, max_evals = self.max_evals)
+        self.send("Optimizer" , self.bmda)
+        self.runButton.setEnabled(self.bmda.ready())
 
     def run(self):
-        if self.bmdaAlgorithm.ready():
-            result = self.bmdaAlgorithm.search()
+        self.bmda.reset()
+        if self.bmda.ready():
+            result = self.bmda.search()
             self.resultTextEdit.setText("Evals: " + str(self.max_evals) + "\n"+ str(result))

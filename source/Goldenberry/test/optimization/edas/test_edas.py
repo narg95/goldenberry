@@ -8,10 +8,32 @@ class CgaTest(TestCase):
     """Test class for the Cga algorithm"""
     def test_basic(self):
         cga = Cga()
-        cga.setup(Onemax(), 10, 20)
+        cga.setup(10, 20)
+        cga.cost_func = Onemax()
         result = cga.search()
         self.assertTrue(result.params.all())
         self.assertGreaterEqual(result.cost, 8)
+
+    """Test if the reset function allows a new algorithm execution."""    
+    def test_reset(self):
+        cga = Cga()
+        cga.setup(10, 20)
+        cga.cost_func = Onemax()
+        cga.search()
+        cga.reset()
+        self.assertEqual(cga.iter, 0)
+        self.assertEqual(cga.evals, 0)
+        self.assertNotEqual(cga.distr, None)        
+        self.assertEqual(cga.cost_func.evals, 0)
+
+    """"Test whether the ready function informs when the 
+    algorithm is ready to search."""
+    def test_ready(self):
+        cga = Cga()
+        cga.setup(10, 20)
+        self.assertFalse(cga.ready())
+        cga.cost_func = Onemax()
+        self.assertTrue(cga.ready())
 
 class BmdaTest(TestCase):
     
@@ -64,7 +86,8 @@ class BmdaTest(TestCase):
     """Test class for the Bmda algorithm"""
     def test_basic_search_onemax(self):
         bmda = Bmda()
-        bmda.setup(Onemax(), 10, 40)
+        bmda.setup(10, 40)
+        bmda.cost_func = Onemax()
         result = bmda.search()
         self.assertGreaterEqual(result.params.sum(), 8.0)
         self.assertGreaterEqual(result.cost, 8.0)
@@ -72,7 +95,8 @@ class BmdaTest(TestCase):
     """Test class for the Bmda algorithm"""
     def test_basic_search_zero(self):
         bmda = Bmda()
-        bmda.setup(Zeromax(), 10, 40)
+        bmda.setup(10, 40)
+        bmda.cost_func = Zeromax()
         result = bmda.search()
         self.assertTrue((result.params + 1).all())
         self.assertGreaterEqual(result.cost, 8.0)
@@ -81,10 +105,25 @@ class BmdaTest(TestCase):
     def test_basic_search_cond_onemax(self):
         var_size = 10
         bmda = Bmda()
-        bmda.setup(CondOnemax(), var_size, 40)
+        bmda.setup(var_size, 40)
+        bmda.cost_func = CondOnemax()
         result = bmda.search()
         self.assertTrue((result.params + 1).all())
         self.assertGreaterEqual(result.cost, var_size*0.8)
+     
+    """Test if the reset function allows a new algorithm execution."""    
+    def test_reset(self):
+        bmda = Bmda()
+        bmda.setup(10, 40)
+        bmda.cost_func = Onemax()
+        bmda.search()
+        bmda.reset()
+        self.assertEqual(bmda.iters, 0)
+        self.assertEqual(bmda.evals, 0)
+        self.assertIsNone(bmda.marginals)
+        self.assertIsNone(bmda.children)
+        self.assertIsNone(bmda.cond_props)
+        self.assertEqual(bmda.cost_func.evals, 0)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,30 +1,35 @@
 import numpy as np
 from Goldenberry.statistics.distributions import *
-from Goldenberry.optimization.edas.BaseEda import BaseEda
+from Goldenberry.optimization.edas.GbBaseEda import GbBaseEda
 from Goldenberry.optimization.base.GbSolution import *
 
-class Cga(BaseEda):
+class Cga(GbBaseEda):
     """Compact Genetic Algorithm"""
 
     cand_size = None
     var_size = None
-    cost_func = None
     distr = None
     max_iters = None
     iter = None
     evals = None
     max_evals = None
 
-    def setup(self, cost_function, var_size, cand_size, max_iters = None, max_evals = None):
+    def setup(self, var_size, cand_size, max_iters = None, max_evals = None):
         """Configure a Cga instance"""
         self.cand_size = cand_size
         self.var_size = var_size
-        self.cost_func = cost_function
-        self.distr = Binomial(n = var_size)
         self.max_iters = max_iters
+        self.max_evals = max_evals
+
+        self.reset()
+
+    def reset(self):
         self.iter = 0
         self.evals = 0
-        self.max_evals = max_evals
+        if None != self.var_size:
+            self.distr = Binomial(n = self.var_size)    
+        if None != self.cost_func:
+            self.cost_func.reset_statistics()
 
     def update_candidates(self):
         """Generates the new pair of candidates"""
@@ -49,10 +54,10 @@ class Cga(BaseEda):
         return best_candidate
 
     def ready(self):
-        """"Checks whether the algorithm is ready or not for executiing."""
+        """"Checks whether the algorithm is ready or not for executing."""
         return self.cand_size is not None and\
                self.var_size is not None and\
-               self.cost_func is not None
+               super(Cga, self).ready() 
 
     def hasFinished(self):
         finish = (not (self.max_iters is None) and self.iter > self.max_iters) or \

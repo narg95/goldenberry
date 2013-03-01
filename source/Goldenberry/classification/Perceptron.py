@@ -26,18 +26,6 @@ class Perceptron:
 class PerceptronLearner(Learner):
     """Kernel perceptron learner"""
     
-    # TODO:  Only remove this code when you make sure it is not required
-    # for being integrated with Orange test learners.
-    #@classmethod
-    #def __new__( cls, *args, **kwargs):
-    #    self = Orange.classification.Learner.__new__(cls, **kwargs)
-
-    #    if dataset is None:   
-    #        return self
-    #    else:
-    #        self.__init__(**kwargs)
-    #        return self(dataset, weight)
-
     def __init__(self, max_iter = 10, lr = 1.0, name = "Perceptron"):
         self.max_iter = max_iter
         self.lr = lr

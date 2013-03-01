@@ -14,7 +14,7 @@ class GbCgaWidget(OWWidget):
     
     #attributes
     settingsList = ['cand_size', 'var_size', 'maxgens']
-    cgaAlgorithm = Cga()
+    cga = Cga()
     cand_size = 20
     var_size = 10
     maxgens = None
@@ -28,7 +28,7 @@ class GbCgaWidget(OWWidget):
 
     def setup_interfaces(self):
         self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_function)]
-        self.outputs = [("Search Algorithm", GbBaseOptimizer)]
+        self.outputs = [("Optimizer", GbBaseOptimizer)]
 
     def setup_ui(self):
         # Loads the UI from an .ui file.
@@ -52,12 +52,12 @@ class GbCgaWidget(OWWidget):
         self.apply()
 
     def apply(self):
-        self.cgaAlgorithm.setup(self.cost_function, self.var_size, self.cand_size, self.maxgens)
-        self.send("Search Algorithm" , self.cgaAlgorithm )
-        self.runButton.setEnabled(self.cgaAlgorithm.ready())
+        self.cga.setup(self.var_size, self.cand_size, self.maxgens)
+        self.send("Optimizer" , self.cga )
+        self.runButton.setEnabled(self.cga.ready())
 
     def run(self):
-        self.cgaAlgorithm.setup(self.cost_function, self.var_size, self.cand_size, self.maxgens)
-        if self.cgaAlgorithm.ready():
-            result = self.cgaAlgorithm.search()
+        self.cga.reset()
+        if self.cga.ready():
+            result = self.cga.search()
             self.resultTextEdit.setText(str(result))

@@ -1,18 +1,13 @@
 import abc
 from Goldenberry.optimization.base.GbBaseOptimizer import GbBaseOptimizer
 
-class BaseEda(GbBaseOptimizer):
+class GbBaseEda(GbBaseOptimizer):
     """This class represents a solution with a cost associated."""
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractproperty
     def distr(self):
         """Provides the final estimated distribution."""
-        pass
-
-    @abc.abstractmethod
-    def ready(self):
-        """Informs if the algorithm is ready to execute."""
         pass
 
     @abc.abstractmethod
@@ -23,4 +18,8 @@ class BaseEda(GbBaseOptimizer):
     @abc.abstractmethod
     def update_candidates(self):
         """Generates the new generation of candidate solutions."""
+        pass
+
+    @abc.abstractmethod
+    def hasFinished(self):
         pass
