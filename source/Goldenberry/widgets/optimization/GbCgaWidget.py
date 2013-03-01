@@ -13,11 +13,11 @@ class GbCgaWidget(OWWidget):
     """Widget for cga algorithm"""
     
     #attributes
-    settingsList = ['cand_size', 'var_size', 'maxgens']
-    cga = Cga()
+    settingsList = ['cand_size', 'var_size', 'max_evals']
+    optimizer = Cga()
     cand_size = 20
     var_size = 10
-    maxgens = None
+    max_evals = None
     cost_function = None
 
     def __init__(self, parent=None, signalManager=None):
@@ -41,23 +41,27 @@ class GbCgaWidget(OWWidget):
         #set new binding controls
         popEditor = OWGUI.lineEdit(self, self, "cand_size", label="Population", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
         varEditor = OWGUI.lineEdit(self, self, "var_size", label="Variables", valueType = int, validator = QIntValidator(4,10000, self.controlArea))
-        maxEditor = OWGUI.lineEdit(self, self, "maxgens", label="Max Epochs", valueType = int, validator = QIntValidator(0, 100000, self.controlArea))
+        maxEditor = OWGUI.lineEdit(self, self, "max_evals", label="Max Evals.", valueType = int, validator = QIntValidator(0, 100000, self.controlArea))
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(varEditor.box, varEditor)
         self.paramBox.layout().addRow(popEditor.box, popEditor)
         self.paramBox.layout().addRow(maxEditor.box, maxEditor)
 
+    def setup_interfaces(self):
+        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_function)]
+        self.outputs = [("Optimizer", GbBaseOptimizer)]
+        
     def set_cost_function(self, cost_func):
-        self.cost_function = cost_func
-        self.apply()
+        self.optimizer.cost_func = cost_func
+        self.runButton.setEnabled(self.optimizer.ready())
 
     def apply(self):
-        self.cga.setup(self.var_size, self.cand_size, self.maxgens)
-        self.send("Optimizer" , self.cga )
-        self.runButton.setEnabled(self.cga.ready())
+        self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals)
+        self.send("Optimizer" , self.optimizer)
+        self.runButton.setEnabled(self.optimizer.ready())
 
     def run(self):
-        self.cga.reset()
-        if self.cga.ready():
-            result = self.cga.search()
-            self.resultTextEdit.setText(str(result))
+        self.optimizer.reset()
+        if self.optimizer.ready():
+            result = self.optimizer.search()
+            self.resultTextEdit.setText("Evals: " + str(self.max_evals) + "\n"+ str(result))
