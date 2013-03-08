@@ -56,12 +56,12 @@ class Bmda(GbBaseEda):
     def search(self):
         """Search for an optimal solution."""
         best_candidate = GbSolution(None, 0.0)
-        pop = self.distr.sample(self.cand_size)
+        candidates = self.distr.sample(self.cand_size)
         while not self.hasFinished():
             
-            bests, winner = self.best_candidates(pop)
+            bests, winner = self.best_candidates(candidates)
             self.update_distribution(bests)
-            pop = self.update_candidates(bests)
+            candidates = self.update_candidates(bests)
             
             if best_candidate.cost < winner.cost:
                 best_candidate = winner
@@ -79,18 +79,18 @@ class Bmda(GbBaseEda):
         index = np.argsort(fits)[:(self.cand_size * self.percentage/100):-1]
         return bests[index], GbSolution(bests[index[0]], fits[index[0]])
         
-    def update_distribution(self, pop):
-        self.marginals = np.average(pop, axis = 0)
-        self.roots, self.children, self.cond_props = Bmda.generate_graph(pop)        
+    def update_distribution(self, candidates):
+        self.marginals = np.average(candidates, axis = 0)
+        self.roots, self.children, self.cond_props = Bmda.generate_graph(candidates)        
         self.distr = BivariateBinomial(p = self.marginals, cond_props = self.cond_props, children = self.children, roots = self.roots)
 
     @staticmethod
-    def generate_graph(pop):
+    def generate_graph(candidates):
         
-        var_size = pop.shape[1]
+        var_size = candidates.shape[1]
         
         # calculate chi_matrix
-        chi_matrix = Bmda.calculate_chisquare_matrix(pop)
+        chi_matrix = Bmda.calculate_chisquare_matrix(candidates)
         
         #Check if there are vertices.
         if var_size < 1:
@@ -114,7 +114,7 @@ class Bmda(GbBaseEda):
             v1, v2, chi = Bmda.max_chisquare(A, A_, chi_matrix)
             if 0.0 != chi:
                 children[v2].append(v1)
-                ctable = BinomialContingencyTable(pop[:,[v2]], pop[:, [v1]])
+                ctable = BinomialContingencyTable(candidates[:,[v2]], candidates[:, [v1]])
                 cond_props[v1] = ctable.PyGx[:, 1]
                 if cond_props[v1] == []:
                     print "error"
@@ -142,11 +142,11 @@ class Bmda(GbBaseEda):
         return self.distr
 
     @staticmethod
-    def calculate_chisquare_matrix(pop):
-        _, length = pop.shape
+    def calculate_chisquare_matrix(candidates):
+        _, length = candidates.shape
         chi_matrix = np.empty((length, length))
         for x,y in itr.combinations(xrange(length), 2):
-            ctable = BinomialContingencyTable(pop[:,[x]], pop[:, [y]])
+            ctable = BinomialContingencyTable(candidates[:,[x]], candidates[:, [y]])
             chisquare = ctable.chisquare()
             
             #independency threshold

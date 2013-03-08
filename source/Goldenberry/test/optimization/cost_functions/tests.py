@@ -41,7 +41,11 @@ class CostFunctionTest(TestCase):
     #    sample = np.array([[0,1,1,1,1,0,1,0,1,1]])
     #    func = CondOnemax(cond_indexes = [9,8,7,6,5,4,3,2,1,0])
     #    self.assertEqual(func.cost(sample)[0], 5.0)
-        
+    
+    def test_custom_function(self):
+        sample = np.array([[0,1,0,1,0]])
+        cust = Custom("return solution.sum() - 1")
+        self.assertEqual(cust.cost(sample), 1.0)
 
 if __name__ == '__main__':
     unittest.main()

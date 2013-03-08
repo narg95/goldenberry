@@ -35,7 +35,7 @@
       <Publish>False</Publish>
     </Compile>
     <Compile Include="Optimization\GbBmdaWidget.py" />
-    <Compile Include="Optimization\GbCgaWidget.py" />
+    <Compile Include="optimization\GbCgaWidget.py" />
     <Compile Include="Optimization\GbCostFuncsWidget.py" />
     <Compile Include="Optimization\__init__.py" />
     <Compile Include="test\classify\__init__.py">

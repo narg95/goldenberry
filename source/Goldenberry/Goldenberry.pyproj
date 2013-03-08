@@ -96,6 +96,7 @@
     <Compile Include="test\test_execution.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="widgets\GbBaseEdaWidget.py" />
     <Compile Include="widgets\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>

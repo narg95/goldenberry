@@ -30,16 +30,24 @@ class GbCostFuncsWidget(OWWidget):
         self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbCostFuncsWidget.ui", self)
         
         #set up the ui controls
-        OWGUI.listBox(self.groupBox, self, "cost_func_sel_index", "cost_funcs", box="Cost Functions")
+        self.funcs_listbox = OWGUI.listBox(self.groupBox, self, "cost_func_sel_index", "cost_funcs", box="Cost Functions")
 
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
         QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
         
     def accepted(self):
-        self.accept()
-        cost_func = self.cost_funcs[self.cost_funcs.keys()[self.cost_func_sel_index[0]]]
-        self.send("Cost Function" , cost_func)
+        if len(self.cost_func_sel_index) > 0:
+            func_type = self.cost_funcs.values()[self.cost_func_sel_index[0]]
+        
+            if func_type == Custom:
+                func_text = str(self.customText.toPlainText())
+                cust = Custom(func_text)
+                self.accept()
+                self.send("Cost Function" , (func_type, (func_text,)))
+            else:
+                self.accept()
+                self.send("Cost Function" , (func_type,()))
 
     def rejected(self):
         self.reject()
