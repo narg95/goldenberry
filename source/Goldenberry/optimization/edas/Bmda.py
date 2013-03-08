@@ -55,7 +55,7 @@ class Bmda(GbBaseEda):
 
     def search(self):
         """Search for an optimal solution."""
-        best_candidate = GbSolution(None, 0.0)
+        best_candidate = GbSolution(None, float("-Inf"))
         candidates = self.distr.sample(self.cand_size)
         while not self.hasFinished():
             

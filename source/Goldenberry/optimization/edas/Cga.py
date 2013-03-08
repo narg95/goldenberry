@@ -35,7 +35,7 @@ class Cga(GbBaseEda):
 
     def search(self):
         """Search for an optimal solution."""        
-        best_candidate = GbSolution(None, 0.0)
+        best_candidate = GbSolution(None, float("-Inf"))
         
         while not self.hasFinished():
             candidates = self.update_candidates()

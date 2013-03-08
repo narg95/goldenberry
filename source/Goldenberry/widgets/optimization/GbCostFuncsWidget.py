@@ -30,12 +30,20 @@ class GbCostFuncsWidget(OWWidget):
         self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbCostFuncsWidget.ui", self)
         
         #set up the ui controls
-        self.funcs_listbox = OWGUI.listBox(self.groupBox, self, "cost_func_sel_index", "cost_funcs", box="Cost Functions")
+        self.funcs_listbox = OWGUI.listBox(self.groupBox, self, "cost_func_sel_index", "cost_funcs", box="Cost Functions", callback = self.func_selected)
+        if len(self.cost_funcs):
+            self.funcs_listbox.setCurrentRow(0)
 
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
         QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
-        
+    
+    def func_selected(self):
+        if len(self.cost_func_sel_index) > 0:
+            func_type = self.cost_funcs.values()[self.cost_func_sel_index[0]]
+            if func_type == Custom:
+                self.tabWidget.setCurrentWidget(self.customTab)
+
     def accepted(self):
         if len(self.cost_func_sel_index) > 0:
             func_type = self.cost_funcs.values()[self.cost_func_sel_index[0]]
