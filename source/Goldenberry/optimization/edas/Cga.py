@@ -38,8 +38,8 @@ class Cga(GbBaseEda):
         best_candidate = GbSolution(None, 0.0)
         
         while not self.hasFinished():
-            pop = self.update_candidates()
-            winner, losser = self.compete(pop)
+            candidates = self.update_candidates()
+            winner, losser = self.compete(candidates)
             self.update_distribution(winner, losser)
             
             if best_candidate.cost < winner.cost:
@@ -64,10 +64,10 @@ class Cga(GbBaseEda):
             return True
         return (((1 - self.distr()) < 0.01) | (self.distr() < 0.01)).all()
     
-    def compete(self, pop):
-        costs = self.cost_func(pop)
+    def compete(self, candidates):
+        costs = self.cost_func(candidates)
         maxindx = np.argmax(costs)
-        return  GbSolution(pop[maxindx], costs[maxindx]), GbSolution(pop[not maxindx], costs[not maxindx])
+        return  GbSolution(candidates[maxindx], costs[maxindx]), GbSolution(candidates[not maxindx], costs[not maxindx])
 
     def update_distribution(self, winner, losser):
         self.distr.p = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)), self.distr.p + (winner.params - losser.params) / float(self.cand_size)))
