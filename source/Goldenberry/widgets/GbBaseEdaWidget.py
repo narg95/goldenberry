@@ -52,8 +52,11 @@ class GbBaseEdaWidget(OWWidget):
             self.optimizer.cost_func = func_type(*args)
             self.runButton.setEnabled(self.optimizer.ready())
 
-    def apply(self):
+    def setup_optimizer(self):
         self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals)
+
+    def apply(self): 
+        self.setup_optimizer()       
         self.send("Optimizer" , self.optimizer)
         self.runButton.setEnabled(self.optimizer.ready())
 
@@ -61,4 +64,5 @@ class GbBaseEdaWidget(OWWidget):
         self.optimizer.reset()
         if self.optimizer.ready():
             result = self.optimizer.search()
-            self.resultTextEdit.setText("Best: "+ str(result) + "\nStatistics:" +str(self.optimizer.cost_func.statistics()))
+            evals, argmin, argmax, min, max, mean, stdev = self.optimizer.cost_func.statistics()
+            self.resultTextEdit.setText("Best: %s\ncost:$d\n#evals:%s\n#argmin:%s\nargmax:%s\nmin val:$d\nmax val:%d\nmean:%d\nstdev:%d"%(result.params, result.cost, evals, argmin, argmax, min, max, mean, stdev ))

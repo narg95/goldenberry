@@ -10,8 +10,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>209</width>
-    <height>299</height>
+    <width>301</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,8 +22,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>201</width>
-     <height>291</height>
+     <width>281</width>
+     <height>141</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -32,47 +32,62 @@
       <property name="title">
        <string>Parameters</string>
       </property>
-      <zorder>verticalLayoutWidget</zorder>
-     </widget>
-    </item>
-    <item>
-     <widget class="QGroupBox" name="resultBox">
-      <property name="title">
-       <string>Result</string>
-      </property>
-      <widget class="QTextEdit" name="resultTextEdit">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>181</width>
-         <height>81</height>
-        </rect>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOn</enum>
-       </property>
-      </widget>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="applyButton">
-      <property name="text">
-       <string>Apply</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="runButton">
-      <property name="text">
-       <string>Run</string>
-      </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <zorder>verticalLayoutWidget</zorder>
-  <zorder>paramBox</zorder>
+  <widget class="QGroupBox" name="resultBox">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>220</y>
+     <width>291</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Result</string>
+   </property>
+   <widget class="QTextEdit" name="resultTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>271</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="runButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>180</y>
+     <width>281</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Test</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="applyButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>281</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Apply</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

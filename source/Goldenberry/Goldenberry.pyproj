@@ -58,8 +58,8 @@
     <Compile Include="optimization\base\__init__.py" />
     <Compile Include="optimization\cost_functions\functions.py" />
     <Compile Include="optimization\cost_functions\__init__.py" />
-    <Compile Include="optimization\edas\Bmda.py" />
-    <Compile Include="optimization\edas\Cga.py" />
+    <Compile Include="optimization\edas\Bivariated.py" />
+    <Compile Include="optimization\edas\Univariated.py" />
     <Compile Include="optimization\edas\GbBaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
     <Compile Include="optimization\__init__.py" />

@@ -2,7 +2,7 @@
 <name>Bmda</name>
 <description>Compact Genetic Algorithm</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/Bmda.png</icon>
+<icon>icons/Eda.png</icon>
 <priority>100</priority>
 
 """

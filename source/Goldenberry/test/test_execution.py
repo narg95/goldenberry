@@ -9,6 +9,7 @@ if __name__ == "__main__":
     test_modules = [
                     'optimization.cost_functions.tests.CostFunctionTest',
                     'optimization.edas.test_edas.CgaTest',
+                    'optimization.edas.test_edas.PbilTest',
                     'optimization.edas.test_edas.BmdaTest',
                     'statistics.test_distributions.BinomialTest',
                     'statistics.test_distributions.BivariateBinomialTest',

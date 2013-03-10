@@ -1,5 +1,5 @@
-from Goldenberry.optimization.edas.Cga import Cga
-from Goldenberry.optimization.edas.Bmda import Bmda
+from Goldenberry.optimization.edas.Univariated import Cga, Pbil
+from Goldenberry.optimization.edas.Bivariated import Bmda
 from Goldenberry.optimization.cost_functions.functions import *
 from unittest import *
 import numpy as np
@@ -21,7 +21,7 @@ class CgaTest(TestCase):
         cga.cost_func = Onemax()
         cga.search()
         cga.reset()
-        self.assertEqual(cga.iter, 0)
+        self.assertEqual(cga.iters, 0)
         self.assertNotEqual(cga.distr, None)        
         self.assertEqual(cga.cost_func.evals, 0)
 
@@ -33,6 +33,36 @@ class CgaTest(TestCase):
         self.assertFalse(cga.ready())
         cga.cost_func = Onemax()
         self.assertTrue(cga.ready())
+
+class PbilTest(TestCase):
+    """Test class for the pbil algorithm"""
+    def test_basic(self):
+        pbil = Pbil()
+        pbil.setup(10, 20)
+        pbil.cost_func = Onemax()
+        result = pbil.search()
+        self.assertTrue(result.params.all())
+        self.assertGreaterEqual(result.cost, 8)
+
+    """Test if the reset function allows a new algorithm execution."""    
+    def test_reset(self):
+        pbil = Pbil()
+        pbil.setup(10, 20)
+        pbil.cost_func = Onemax()
+        pbil.search()
+        pbil.reset()
+        self.assertEqual(pbil.iters, 0)
+        self.assertNotEqual(pbil.distr, None)        
+        self.assertEqual(pbil.cost_func.evals, 0)
+
+    """"Test whether the ready function informs when the 
+    algorithm is ready to search."""
+    def test_ready(self):
+        pbil = Pbil()
+        pbil.setup(10, 20)
+        self.assertFalse(pbil.ready())
+        pbil.cost_func = Onemax()
+        self.assertTrue(pbil.ready())
 
 class BmdaTest(TestCase):
     
@@ -118,9 +148,7 @@ class BmdaTest(TestCase):
         bmda.search()
         bmda.reset()
         self.assertEqual(bmda.iters, 0)
-        self.assertIsNone(bmda.marginals)
-        self.assertIsNone(bmda.children)
-        self.assertIsNone(bmda.cond_props)
+        self.assertIsNotNone(bmda.distr)
         self.assertEqual(bmda.cost_func.evals, 0)
 
 if __name__ == '__main__':
