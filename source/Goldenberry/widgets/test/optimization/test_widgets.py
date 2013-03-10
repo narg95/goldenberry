@@ -4,6 +4,7 @@ from Goldenberry.optimization.cost_functions.functions import *
 from PyQt4.QtGui import QApplication
 from optimization.GbCgaWidget import GbCgaWidget
 from optimization.GbBmdaWidget import GbBmdaWidget
+from optimization.GbUmdaWidget import GbUmdaWidget
 from optimization.GbCostFuncsWidget import GbCostFuncsWidget
 
 import sys
@@ -16,6 +17,16 @@ class OptimizationWidgetsTest(TestCase):
 
     def test_cga_basic(self):        
         widget = GbCgaWidget()
+        widget.apply()
+        
+        self.assertFalse(widget.runButton.isEnabled())
+        widget.set_cost_function((Onemax,()))
+
+        self.assertTrue(widget.runButton.isEnabled())
+        widget.run()   
+
+    def test_umda_basic(self):        
+        widget = GbUmdaWidget()
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())

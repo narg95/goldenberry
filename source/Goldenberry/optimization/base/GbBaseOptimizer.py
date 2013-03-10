@@ -9,12 +9,12 @@ class GbBaseOptimizer(object):
     @abc.abstractmethod
     def setup(self, **kwargs):
         """Setup the optimizer algorithm."""
-        raise NotImplementedError
+        raise NotImplementedError()
 
     @abc.abstractmethod
     def ready(self):
         """Informs if the algorithm is ready to execute."""
-        return self.cost_func != None
+        raise NotImplementedError()
 
     @abc.abstractmethod
     def reset(self):
@@ -24,4 +24,4 @@ class GbBaseOptimizer(object):
     @abc.abstractmethod
     def search(self):
         """Search for a optimal solution"""
-        raise NotImplementedError
+        raise NotImplementedError()

@@ -11,12 +11,22 @@ class BaseDistribution:
     @abc.abstractproperty
     def parameters(self):
         """Gets the distribution parameters"""
-        raise NotImplementedError
+        raise NotImplementedError()
 
     @abc.abstractmethod
     def sample(self, **kwargs):
         """Samples based on the parameters in the actual distribution."""
-        raise NotImplementedError
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def has_converged(self):
+        """"Informs wheter or not the distribution has converged."""
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def reset(self):
+        """Resets the current distribution."""
+        raise NotImplementedError()
 
 class Binomial(BaseDistribution):
     """Represents a binomial distribution."""
@@ -25,7 +35,7 @@ class Binomial(BaseDistribution):
         """Initialize a new binomial distribution."""
         if(None != n):
             self.n = n
-            self.p =  np.tile(0.5,(1, n))
+            self.reset()
         elif(None != p) :
             self.n = p.size
             self.p = p
@@ -50,16 +60,18 @@ class Binomial(BaseDistribution):
         """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
         return np.array(np.random.rand(sample_size, self.n) <= np.ones((sample_size, 1)) * self.p, dtype=float)
 
+    def has_converged(self):
+        return (((1 - self.p) < 0.01) | (self.p < 0.01)).all()
+
+    def reset(self):
+        self.p =  np.tile(0.5,(1, self.n))
+
 class BivariateBinomial(BaseDistribution):
     
     def __init__(self, n = None, p = None, cond_props = None, children = None, roots = None):
         if None != n:
             self.n = n
-            self.p =  np.tile(0.5,(1, n))
-            self.children = [[] for i in xrange(n)]
-            self.cond_props = [[] for i in xrange(n)]
-            self.roots = range(n)
-            self.vertex = range(n)
+            self.reset()
         elif None != p and None != cond_props and None != children:
             if len(cond_props) != len(children):
                 raise AttributeError("Join probability must be the same size than the number of edges")
@@ -76,6 +88,16 @@ class BivariateBinomial(BaseDistribution):
         else:
             raise AttributeError("Not enough parameters to create a Bivariate binomial distribution")
     
+    def reset(self):
+        self.p =  np.tile(0.5,(1, self.n))
+        self.children = [[] for i in xrange(self.n)]
+        self.cond_props = [[] for i in xrange(self.n)]
+        self.roots = range(self.n)
+        self.vertex = range(self.n)
+
+    def has_converged(self):
+        return (((1 - self.p) < 0.01) | (self.p < 0.01)).all()
+
     @property
     def parameters(self):
         return self.n, self.p, self.cond_props, self.children

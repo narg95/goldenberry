@@ -17,8 +17,8 @@ from Goldenberry.optimization.base.GbBaseCostFunction import *
 from Goldenberry.optimization.base.GbBaseOptimizer import *
 from Goldenberry.optimization.cost_functions.functions import *
 from Goldenberry.optimization.cost_functions import functions
-from Goldenberry.optimization.edas.Cga import Cga
-from Goldenberry.optimization.edas.Bmda import Bmda
+from Goldenberry.optimization.edas.Univariated import Cga, Pbil
+from Goldenberry.optimization.edas.Bivariated import Bmda
 
 # classification imports
 from Goldenberry.classification.Perceptron import PerceptronLearner, PerceptronClassifier
