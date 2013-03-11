@@ -70,6 +70,11 @@
     <Content Include="Classify\GbPerceptronWidget.ui">
       <Publish>True</Publish>
     </Content>
+    <Content Include="Classify\icons\kernelPerceptron_16.png" />
+    <Content Include="Classify\icons\kernelPerceptron_32.png" />
+    <Content Include="Classify\icons\kernelPerceptron_40.png" />
+    <Content Include="Classify\icons\kernelPerceptron_48.png" />
+    <Content Include="Classify\icons\kernelPerceptron_60.png" />
     <Content Include="Classify\icons\perceptron_16.png">
       <Publish>True</Publish>
     </Content>
