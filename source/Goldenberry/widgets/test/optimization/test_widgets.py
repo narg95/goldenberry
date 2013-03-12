@@ -5,6 +5,7 @@ from PyQt4.QtGui import QApplication
 from optimization.GbCgaWidget import GbCgaWidget
 from optimization.GbBmdaWidget import GbBmdaWidget
 from optimization.GbUmdaWidget import GbUmdaWidget
+from optimization.GbPbilWidget import GbPbilWidget
 from optimization.GbCostFuncsWidget import GbCostFuncsWidget
 
 import sys
@@ -37,7 +38,21 @@ class OptimizationWidgetsTest(TestCase):
         
         #Uncomment only when testing the widget UI
         #widget.show()
-        #self.app.exec_()   
+        #self.app.exec_()  
+        
+    def test_pbil_basic(self):        
+        widget = GbPbilWidget()
+        widget.apply()
+        
+        self.assertFalse(widget.runButton.isEnabled())
+        widget.set_cost_function((Onemax,()))
+
+        self.assertTrue(widget.runButton.isEnabled())
+        widget.run()   
+        
+        #Uncomment only when testing the widget UI
+        #widget.show()
+        #self.app.exec_()     
         
     def test_bmda_basic(self):        
         widget = GbBmdaWidget()
