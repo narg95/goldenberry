@@ -15,7 +15,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Umda</string>
+   <string>Pbil</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">

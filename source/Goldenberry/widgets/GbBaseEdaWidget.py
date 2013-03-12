@@ -65,4 +65,4 @@ class GbBaseEdaWidget(OWWidget):
         if self.optimizer.ready():
             result = self.optimizer.search()
             evals, argmin, argmax, min, max, mean, stdev = self.optimizer.cost_func.statistics()
-            self.resultTextEdit.setText("Best: %s\ncost:$d\n#evals:%s\n#argmin:%s\nargmax:%s\nmin val:$d\nmax val:%d\nmean:%d\nstdev:%d"%(result.params, result.cost, evals, argmin, argmax, min, max, mean, stdev ))
+            self.resultTextEdit.setText("Best: %s\ncost:%s\n#evals:%s\n#argmin:%s\nargmax:%s\nmin val:%s\nmax val:%s\nmean:%s\nstdev:%s"%(result.params, result.cost, evals, argmin, argmax, min, max, mean, stdev))

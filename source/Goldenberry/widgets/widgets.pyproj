@@ -37,6 +37,9 @@
     <Compile Include="Optimization\GbBmdaWidget.py" />
     <Compile Include="optimization\GbCgaWidget.py" />
     <Compile Include="optimization\GbCostFuncsWidget.py" />
+    <Compile Include="Optimization\GbPbilWidget.py">
+      <Publish>True</Publish>
+    </Compile>
     <Compile Include="optimization\GbUmdaWidget.py" />
     <Compile Include="optimization\__init__.py" />
     <Compile Include="test\classify\__init__.py">
@@ -98,6 +101,9 @@
       <Publish>True</Publish>
     </Content>
     <Content Include="optimization\GbCostFuncsWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\GbPbilWidget.ui">
       <Publish>True</Publish>
     </Content>
     <Content Include="optimization\GbUmdaWidget.ui">

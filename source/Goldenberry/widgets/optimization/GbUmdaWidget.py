@@ -1,6 +1,6 @@
 """
 <name>Umda</name>
-<description>Compact Genetic Algorithm</description>
+<description>Univariate marginal distribution algorithm.</description>
 <contact>Nestor Rodriguez</contact>
 <icon>icons/Eda.png</icon>
 <priority>100</priority>
