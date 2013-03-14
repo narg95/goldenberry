@@ -12,6 +12,12 @@ class Zeromax(GbBaseCostFunction):
     def __cost__(self, solution):
         return len(solution) - solution.sum()
 
+class ZeromaxTruncated(GbBaseCostFunction):
+    """ Zero cost"""
+    def __cost__(self, solution):
+        return len(solution) - np.minimum(np.ones(len(solution)), np.fabs(solution)).sum()
+
+
 class CondOnemax(GbBaseCostFunction):
     """ Conditional onemax cost function"""
     

@@ -115,3 +115,30 @@ class BinomialContingencyTableTest(TestCase):
         Y = np.array([[0],[0],[0],[1],[1],[1]])
         ctable = BinomialContingencyTable(X, Y)
         self.assertTrue(((ctable.PyGx - np.array([[0.0, 0.0],[0.5, 0.5]])) < 0.001).all())  
+
+class GaussianTest(TestCase):
+    
+    def test_basic(self):
+        n = 10
+        dist = Gaussian(n = n)
+        means, stdevs = dist.parameters
+        self.assertTrue(np.equal(means, np.zeros(n)))
+        self.assertTrue(np.equal(stdevs, np.ones(n)))
+        self.assertEqual(dist.n, n)
+
+    def stdevs(self):
+        n = 10
+        means, stdevs = np.zeros(n), np.ones(n)
+        dist = Gaussian(means = means, stdevs = stdevs)
+        p_means, p_stdevs = dist.parameters
+        self.assertTrue(np.equal(p_means, means))
+        self.assertTrue(np.equal(p_stdevs, stdevs))
+        self.assertEqual(dist.n, n)
+
+    def test_sampling(self):
+        dist = Gaussian(means = np.array([0.0, 1.0, 2.0]), stdevs = np.array([0.0, 0.0, 0.1]))
+        sample = dist.sample(1)
+        self.assertTrue(\
+            sample[0, 0] == 0.0 and \
+            sample[0, 1] <= 1.0 and \
+            sample[0, 1] >= 1.0 )    

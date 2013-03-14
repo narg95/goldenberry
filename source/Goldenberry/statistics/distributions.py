@@ -14,7 +14,7 @@ class BaseDistribution:
         raise NotImplementedError()
 
     @abc.abstractmethod
-    def sample(self, **kwargs):
+    def sample(self, sample_size):
         """Samples based on the parameters in the actual distribution."""
         raise NotImplementedError()
 
@@ -40,8 +40,8 @@ class Binomial(BaseDistribution):
             self.n = p.size
             self.p = p
         else:
-            raise ValueError("provide the variables size \
-                or the parameters for initialize the binomial distribution")
+            raise ValueError("provide number of variables (candidate size) \
+                or the parameters to initialize the binomial distribution")
     
     def __getitem__(self, key):
         return self.p[key]
@@ -159,5 +159,29 @@ def _splitter(data, pred):
     for d in data:
         (yes if pred(d) else no).append(d)
     return [yes, no]
+
+class Gaussian(BaseDistribution):
     
+    def __init__(self, n = None, means = None, stdevs = None ):
+        if n != None:
+            self.n = n
+            self.reset()
+        elif means != None and stdevs != None:
+            self.n = len(mean)
+            self.means = means
+            self.stdevs = stdevs
+        else:
+            raise Exception("You must provide either the number of variables or means and stdevs.")
+
+    def parameters(self):
+        return self.means, self.variance
     
+    def sample(self, sample_size):
+        return np.random.randn(sample_size, self.n)*self.stdevs + self.means
+
+    def has_converged(self):
+        return (self.stdevs < 0.01).all()
+
+    def reset(self):
+        self.means = np.zeros(self.n)
+        self.stdevs = np.ones(self.n) 
