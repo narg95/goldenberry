@@ -103,6 +103,8 @@
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="test\classification\test_3classes_notseparable_data.tab" />
+    <Content Include="test\classification\test_3classes_separable_data.tab" />
     <Content Include="test\classification\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
