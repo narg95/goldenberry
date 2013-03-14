@@ -1,5 +1,6 @@
-from Goldenberry.optimization.edas.Univariated import Cga, Pbil
+from Goldenberry.optimization.edas.Univariated import Cga, Pbil, Tilda
 from Goldenberry.optimization.edas.Bivariated import Bmda
+from Goldenberry.optimization.base.GbSolution import GbSolution
 from Goldenberry.optimization.cost_functions.functions import *
 from unittest import *
 import numpy as np
@@ -150,6 +151,63 @@ class BmdaTest(TestCase):
         self.assertEqual(bmda.iters, 0)
         self.assertIsNotNone(bmda.distr)
         self.assertEqual(bmda.cost_func.evals, 0)
+
+class TildaTest(TestCase):
+    """Test class for the tilda algorithm"""
+    def test_basic(self):
+        tilda = Tilda()
+        tilda.setup(10, 20,learning_rate = 0.2)
+        tilda.cost_func = ZeromaxTruncated()
+        result = tilda.search()
+        self.assertTrue((result.params < 0.1).all())
+        self.assertGreaterEqual(result.cost, 8)
+
+    """Test if the reset function allows a new algorithm execution."""    
+    def test_reset(self):
+        tilda = Tilda()
+        tilda.setup(10, 20)
+        tilda.cost_func = ZeromaxTruncated()
+        result = tilda.search()
+        tilda.reset()
+        self.assertEqual(tilda.iters, 0)
+        self.assertNotEqual(tilda.distr, None)        
+        self.assertEqual(tilda.cost_func.evals, 0)
+
+    """"Test whether the ready function informs when the 
+    algorithm is ready to search."""
+    def test_ready(self):
+        tilda = Tilda()
+        tilda.setup(10, 20)
+        self.assertFalse(tilda.ready())
+        tilda.cost_func = ZeromaxTruncated()
+        self.assertTrue(tilda.ready())
+
+    def test_calculate_means_vars(self):
+        means = np.array([2.0])
+        vars = np.array([9.0])
+        acc_means = np.array([1.5])
+        acc_vars = np.array([4.0])
+        cand_size = 5
+        learning_rate = 0.6
+        best_one = GbSolution(np.array([3.0]), float("-Inf"))
+        new_means, new_vars = \
+            Tilda.calculate_means_and_vars(means, vars, acc_means, acc_vars, best_one, cand_size, learning_rate)
+        self.assertAlmostEqual(new_means[0], 1.79, 2)
+        self.assertAlmostEqual(new_vars[0], 4.026, 2)
+
+    def test_calculate_means_vars_no_best_one(self):
+        means = np.array([2.0])
+        vars = np.array([9.0])
+        acc_means = np.array([1.5])
+        acc_vars = np.array([4.0])
+        cand_size = 5
+        learning_rate = 0.6
+        best_one = GbSolution(None, float("-Inf"))
+        new_means, new_vars = \
+            Tilda.calculate_means_and_vars(means, vars, acc_means, acc_vars, best_one, cand_size, learning_rate)
+        self.assertAlmostEqual(new_means[0], 0.98, 2)
+        self.assertAlmostEqual(new_vars[0], 4.026, 2)
+    
 
 if __name__ == '__main__':
     unittest.main()

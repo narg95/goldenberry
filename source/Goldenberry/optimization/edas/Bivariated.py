@@ -18,7 +18,7 @@ class Bmda(GbBaseEda):
         candidates = GbBaseEda.generate_candidates(self,sample_size - len(best), best)
         return np.concatenate((best, candidates))[np.random.permutation(self.cand_size)]
 
-    def update_distribution(self, best):
+    def update_distribution(self, best, best_one):
         marginals = np.average(best, axis = 0)
         roots, children, cond_props = Bmda.generate_graph(best)        
         self.distr = BivariateBinomial(p = marginals, cond_props = cond_props, children = children, roots = roots)

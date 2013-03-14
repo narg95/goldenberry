@@ -60,7 +60,7 @@ class GbBaseEda(GbBaseOptimizer):
         while not self.hasFinished():
             candidates = self.generate_candidates(self.cand_size, best)
             best, winner = self.best_candidates(candidates)
-            self.update_distribution(best)
+            self.update_distribution(best, best_one)
             
             if best_one.cost < winner.cost:
                 best_one = winner
@@ -87,7 +87,7 @@ class GbBaseEda(GbBaseOptimizer):
         return candidates[index], GbSolution(candidates[index[0]], fits[index[0]])
 
     @abc.abstractmethod
-    def update_distribution(self, candidates):
+    def update_distribution(self, candidates, best_one):
         """Updates the current distribution."""
         raise NotImplementedError()
 
