@@ -1,5 +1,4 @@
 from Goldenberry.classification.KernelPerceptron import *
-from Goldenberry.classification.Perceptron import *
 from Goldenberry.classification.Kernels import *
 from time import gmtime, strftime
 import logging
@@ -40,11 +39,11 @@ class KernelPerceptronTest(TestCase):
             Yclass[i] = -1 if Y[i] == 0 else Y[i]
 
         iterations = 0
-        while None == K or K > 0 and iterations < 10:
+        while None == K or K > 0 and iterations < 15:
             sv_x, sv_y, sv_alpha, K = kernelperceptron.learn((Xdata, Yclass),(sv_x, sv_y, sv_alpha))
             iterations += 1
         
-        prediction = kernelperceptron.predict(Xdata, (sv_x, sv_y, sv_alpha))
+        prediction = kernelperceptron.predict(Xdata, (sv_x, sv_y * sv_alpha))
         for yp, yi in zip(prediction, Yclass):
             self.assertEqual(yp[0], yi)
 
@@ -83,7 +82,7 @@ class KernelPerceptronTest(TestCase):
         
         self.logger.info("Creating Learner... " )
         kernel = GaussianKernel()
-        kernel.setup(5)
+        kernel.setup(0.1)
         learner = KernelPerceptronLearner(max_iter = max_iter, kernel = kernel)
         self.logger.info("Learning... " )
         classifier = learner(training_set)
@@ -93,4 +92,3 @@ class KernelPerceptronTest(TestCase):
         for item in training_set:
             result = classifier(item)
             self.assertEqual(result, item.getclass())
-            
