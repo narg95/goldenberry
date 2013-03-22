@@ -30,7 +30,7 @@ class Pbil(GbBaseEda):
         self.distr = Binomial(self.var_size)    
 
     def estimate_distribution(self, best, best_one):
-        self.distr.p = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)), self.distr.p*(1-self.learning_rate) + self.learning_rate * np.average(best) ))
+        self.distr.p =  self.distr.p*(1-self.learning_rate) + self.learning_rate * np.average(best)
 
 class Tilda(GbBaseEda):
     """Tilda algorithm."""
