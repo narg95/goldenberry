@@ -57,10 +57,10 @@ class GbBaseEda(GbBaseOptimizer):
         best_one = GbSolution(None, float("-Inf"))
         
         best = None
-        while not self.hasFinished():
+        while not self.has_finished():
             candidates = self.generate_candidates(self.cand_size, best)
-            best, winner = self.best_candidates(candidates)
-            self.update_distribution(best, best_one)
+            best, winner = self.get_top_ranked(candidates)
+            self.estimate_distribution(best, best_one)
             
             if best_one.cost < winner.cost:
                 best_one = winner
@@ -69,7 +69,7 @@ class GbBaseEda(GbBaseOptimizer):
 
         return best_one
 
-    def hasFinished(self):
+    def has_finished(self):
         finish = (not (self.max_iters is None) and self.iters > self.max_iters) or \
                  (not (self.max_evals is None) and self.cost_func.evals > self.max_evals)
         
@@ -81,13 +81,13 @@ class GbBaseEda(GbBaseOptimizer):
         """Generates the new generation of candidate solutions."""
         return self.distr.sample(sample_size)
 
-    def best_candidates(self, candidates):
+    def get_top_ranked(self, candidates):
         fits = self.cost_func(candidates)
         index = np.argsort(fits)[:(self.cand_size * self.percentage/100):-1]
         return candidates[index], GbSolution(candidates[index[0]], fits[index[0]])
 
     @abc.abstractmethod
-    def update_distribution(self, candidates, best_one):
+    def estimate_distribution(self, candidates, best_one):
         """Updates the current distribution."""
         raise NotImplementedError()
 
