@@ -29,7 +29,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classify\GbPerceptronWidget.py">
-      <Publish>True</Publish>
+      <Publish>False</Publish>
     </Compile>
     <Compile Include="Classify\__init__.py">
       <Publish>False</Publish>
@@ -55,7 +55,9 @@
     <Compile Include="test\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test_execution.py" />
+    <Compile Include="test_execution.py">
+      <Publish>False</Publish>
+    </Compile>
     <Compile Include="__init__.py">
       <Publish>False</Publish>
     </Compile>
@@ -72,29 +74,41 @@
   <ItemGroup>
     <Content Include="before_publish.bat" />
     <Content Include="Classify\GbPerceptronWidget.ui">
-      <Publish>True</Publish>
+      <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\kernelPerceptron_16.png" />
-    <Content Include="Classify\icons\kernelPerceptron_32.png" />
-    <Content Include="Classify\icons\kernelPerceptron_40.png" />
-    <Content Include="Classify\icons\kernelPerceptron_48.png" />
-    <Content Include="Classify\icons\kernelPerceptron_60.png" />
+    <Content Include="Classify\icons\kernelPerceptron_16.png">
+      <Publish>False</Publish>
+    </Content>
+    <Content Include="Classify\icons\kernelPerceptron_32.png">
+      <Publish>False</Publish>
+    </Content>
+    <Content Include="Classify\icons\kernelPerceptron_40.png">
+      <Publish>False</Publish>
+    </Content>
+    <Content Include="Classify\icons\kernelPerceptron_48.png">
+      <Publish>False</Publish>
+    </Content>
+    <Content Include="Classify\icons\kernelPerceptron_60.png">
+      <Publish>False</Publish>
+    </Content>
     <Content Include="Classify\icons\perceptron_16.png">
-      <Publish>True</Publish>
+      <Publish>False</Publish>
     </Content>
     <Content Include="Classify\icons\perceptron_32.png">
-      <Publish>True</Publish>
+      <Publish>False</Publish>
     </Content>
     <Content Include="Classify\icons\perceptron_40.png">
-      <Publish>True</Publish>
+      <Publish>False</Publish>
     </Content>
     <Content Include="Classify\icons\perceptron_48.png">
-      <Publish>True</Publish>
+      <Publish>False</Publish>
     </Content>
     <Content Include="Classify\icons\perceptron_60.png">
-      <Publish>True</Publish>
+      <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\test_data_2d.tab" />
+    <Content Include="Classify\test_data_2d.tab">
+      <Publish>False</Publish>
+    </Content>
     <Content Include="Optimization\GbBmdaWidget.ui">
       <Publish>True</Publish>
     </Content>

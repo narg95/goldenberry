@@ -21,7 +21,7 @@ from Goldenberry.optimization.edas.Univariated import Cga, Pbil, Tilda
 from Goldenberry.optimization.edas.Bivariated import Bmda
 
 # classification imports
-from Goldenberry.classification.Perceptron import PerceptronLearner, PerceptronClassifier
+#from Goldenberry.classification.Perceptron import PerceptronLearner, PerceptronClassifier
 
 def load_widget_ui(widget):
     """Loads the widget's QT Ui file (widget.ui). The file must be located in the same
