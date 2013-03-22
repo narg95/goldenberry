@@ -1,5 +1,5 @@
-from Goldenberry.optimization.edas.Univariated import Cga, Pbil, Tilda
-from Goldenberry.optimization.edas.Bivariated import Bmda
+from Goldenberry.optimization.edas.Univariate import Cga, Pbil, Tilda
+from Goldenberry.optimization.edas.Bivariate import Bmda
 from Goldenberry.optimization.base.GbSolution import GbSolution
 from Goldenberry.optimization.cost_functions.functions import *
 from unittest import *

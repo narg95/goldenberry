@@ -2,12 +2,12 @@ from unittest import *
 from Goldenberry.widgets import QtCore
 from Goldenberry.optimization.cost_functions.functions import *
 from PyQt4.QtGui import QApplication
-from optimization.GbCgaWidget import GbCgaWidget
-from optimization.GbBmdaWidget import GbBmdaWidget
-from optimization.GbUmdaWidget import GbUmdaWidget
-from optimization.GbPbilWidget import GbPbilWidget
-from optimization.GbCostFuncsWidget import GbCostFuncsWidget
-from optimization.GbTildaWidget import GbTildaWidget
+from Edas.GbCgaWidget import GbCgaWidget
+from Edas.GbBmdaWidget import GbBmdaWidget
+from Edas.GbUmdaWidget import GbUmdaWidget
+from Edas.GbPbilWidget import GbPbilWidget
+from Edas.GbCostFuncsWidget import GbCostFuncsWidget
+from Edas.GbTildaWidget import GbTildaWidget
 
 import sys
 
