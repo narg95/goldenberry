@@ -7,6 +7,7 @@ from optimization.GbBmdaWidget import GbBmdaWidget
 from optimization.GbUmdaWidget import GbUmdaWidget
 from optimization.GbPbilWidget import GbPbilWidget
 from optimization.GbCostFuncsWidget import GbCostFuncsWidget
+from optimization.GbTildaWidget import GbTildaWidget
 
 import sys
 
@@ -39,7 +40,21 @@ class OptimizationWidgetsTest(TestCase):
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()  
+    
+    def test_tilda_basic(self):        
+        widget = GbTildaWidget()
+        widget.apply()
         
+        self.assertFalse(widget.runButton.isEnabled())
+        widget.set_cost_function((Onemax,()))
+
+        self.assertTrue(widget.runButton.isEnabled())
+        widget.run()   
+        
+        #Uncomment only when testing the widget UI
+        #widget.show()
+        #self.app.exec_()      
+            
     def test_pbil_basic(self):        
         widget = GbPbilWidget()
         widget.apply()
