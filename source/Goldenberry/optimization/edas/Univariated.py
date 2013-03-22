@@ -14,13 +14,13 @@ class Cga(GbBaseEda):
         """Generates the new pair of candidates"""
         return self.distr.sample(2)
 
-    def best_candidates(self, candidates):
+    def get_top_ranked(self, candidates):
         costs = self.cost_func(candidates)
         maxindx = np.argmax(costs)
         winner, loser = GbSolution(candidates[maxindx], costs[maxindx]), GbSolution(candidates[not maxindx], costs[not maxindx])
         return  (winner, loser), winner
 
-    def update_distribution(self, (winner, loser), best_one):
+    def estimate_distribution(self, (winner, loser), best_one):
         self.distr.p = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)), self.distr.p + (winner.params - loser.params) * self.learning_rate))
    
 class Pbil(GbBaseEda):
@@ -29,7 +29,7 @@ class Pbil(GbBaseEda):
     def initialize(self):
         self.distr = Binomial(self.var_size)    
 
-    def update_distribution(self, best, best_one):
+    def estimate_distribution(self, best, best_one):
         self.distr.p = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)), self.distr.p*(1-self.learning_rate) + self.learning_rate * np.average(best) ))
 
 class Tilda(GbBaseEda):
@@ -44,7 +44,7 @@ class Tilda(GbBaseEda):
         """Generates the new pair of candidates"""
         return self.distr.sample(2)
 
-    def update_distribution(self, winner, best_one):
+    def estimate_distribution(self, winner, best_one):
         if self.iters % (self.cand_size/2) != 0:
             self.acc_mean += winner.params
             self.acc_vars += winner.params*winner.params
@@ -63,8 +63,7 @@ class Tilda(GbBaseEda):
             self.acc_mean = np.zeros(self.var_size)
             self.acc_vars = np.zeros(self.var_size)
 
-
-    def best_candidates(self, candidates):
+    def get_top_ranked(self, candidates):
         costs = self.cost_func(candidates)
         maxindx = np.argmax(costs)
         winner, loser = GbSolution(candidates[maxindx], costs[maxindx]), GbSolution(candidates[not maxindx], costs[not maxindx])

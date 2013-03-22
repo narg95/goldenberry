@@ -4,7 +4,7 @@ import abc
 import math
 from collections import deque
 
-class BaseDistribution:
+class GbBaseDistribution:
     """Represents a base clase for probability distributions."""
     __metaclass__ = abc.ABCMeta
     
@@ -28,7 +28,7 @@ class BaseDistribution:
         """Resets the current distribution."""
         raise NotImplementedError()
 
-class Binomial(BaseDistribution):
+class Binomial(GbBaseDistribution):
     """Represents a binomial distribution."""
     
     def __init__(self, n = None, p = None):
@@ -66,7 +66,7 @@ class Binomial(BaseDistribution):
     def reset(self):
         self.p =  np.tile(0.5,(1, self.n))
 
-class BivariateBinomial(BaseDistribution):
+class BivariateBinomial(GbBaseDistribution):
     
     def __init__(self, n = None, p = None, cond_props = None, children = None, roots = None):
         if None != n:
@@ -160,7 +160,7 @@ def _splitter(data, pred):
         (yes if pred(d) else no).append(d)
     return [yes, no]
 
-class Gaussian(BaseDistribution):
+class Gaussian(GbBaseDistribution):
     
     def __init__(self, n = None, means = None, stdevs = None ):
         if n != None:
