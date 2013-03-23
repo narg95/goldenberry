@@ -45,14 +45,14 @@ class BivariateBinomialTest(TestCase):
         self.assertTrue(np.all(e == [] for e in cond_props))
         self.assertTrue(np.all(e == [] for e in children))
 
-    def test_independency_sampling(self):
+    def test_independency_sample(self):
         n = 10
         dist = BivariateBinomial(n)
         samples = dist.sample(20)
         self.assertTrue(samples.shape == (20,10))
         self.assertTrue(np.equal(dist.roots, range(n)).all())
 
-    def test_sampling_chain_all_ones(self):
+    def test_sample_chain_all_ones(self):
         n = 5
         p = np.ones((1,n))
         cond_props = [[] if i == 0 else np.array([1, 1]) for i in xrange(n)]
@@ -62,7 +62,7 @@ class BivariateBinomialTest(TestCase):
         self.assertTrue(np.all(samples == 1.0))
     
         #todo Refactor with new strategy    
-    def test_sampling_chain_ones_and_zeros_interleaving(self):
+    def test_sample_chain_ones_and_zeros_interleaving(self):
         n = 10
         p = np.array([i%2 for i in range(n)])
         p.shape = (1,10)
@@ -135,7 +135,7 @@ class GaussianTest(TestCase):
         self.assertTrue(np.equal(p_stdevs, stdevs))
         self.assertEqual(dist.n, n)
 
-    def test_sampling(self):
+    def test_sample(self):
         dist = Gaussian(means = np.array([0.0, 1.0, 2.0]), stdevs = np.array([0.0, 0.0, 0.1]))
         sample = dist.sample(1)
         self.assertTrue(\
