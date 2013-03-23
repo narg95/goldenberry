@@ -9,18 +9,15 @@ class Cga(GbBaseEda):
     def initialize(self):
         self.distr = Binomial(self.var_size)
         self.learning_rate = 1.0/float(self.cand_size)
+        self.sample_size = 2
     
-    def generate_candidates(self, sample_size, best):
-        """Generates the new pair of candidates"""
-        return self.distr.sample(2)
-
     def get_top_ranked(self, candidates):
         costs = self.cost_func(candidates)
         maxindx = np.argmax(costs)
         winner, loser = GbSolution(candidates[maxindx], costs[maxindx]), GbSolution(candidates[not maxindx], costs[not maxindx])
         return  (winner, loser), winner
 
-    def estimate_distribution(self, (winner, loser), best_one):
+    def estimate(self, (winner, loser), best):
         self.distr.p = np.minimum(np.ones((1, self.var_size)), np.maximum(np.zeros((1, self.var_size)), self.distr.p + (winner.params - loser.params) * self.learning_rate))
    
 class Pbil(GbBaseEda):
@@ -29,8 +26,8 @@ class Pbil(GbBaseEda):
     def initialize(self):
         self.distr = Binomial(self.var_size)    
 
-    def estimate_distribution(self, best, best_one):
-        self.distr.p =  self.distr.p*(1-self.learning_rate) + self.learning_rate * np.average(best)
+    def estimate(self, top_ranked, best):
+        self.distr.p =  self.distr.p*(1-self.learning_rate) + self.learning_rate * np.average(top_ranked)
 
 class Tilda(GbBaseEda):
     """Tilda algorithm."""
@@ -40,22 +37,22 @@ class Tilda(GbBaseEda):
         self.acc_mean = np.zeros(self.var_size)
         self.acc_vars = np.zeros(self.var_size)
     
-    def generate_candidates(self, sample_size, best):
+    def sample(self, sample_size, top_ranked, best):
         """Generates the new pair of candidates"""
         return self.distr.sample(2)
 
-    def estimate_distribution(self, winner, best_one):
+    def estimate(self, winner, best):
         if self.iters % (self.cand_size/2) != 0:
             self.acc_mean += winner.params
             self.acc_vars += winner.params*winner.params
         else:
             means, vars = \
-                Tilda.calculate_means_and_vars(\
+                Tilda.estimate_gaussian(\
                     self.distr.means, \
                     self.distr.stdevs * self.distr.stdevs, \
                     self.acc_mean, \
                     self.acc_vars, \
-                    best_one, \
+                    best, \
                     self.cand_size, \
                     self.learning_rate)
             self.distr.means = means
@@ -70,14 +67,12 @@ class Tilda(GbBaseEda):
         return  winner, winner
 
     @staticmethod
-    def calculate_means_and_vars(means, vars, acc_means, acc_vars, best_one, cand_size, learning_rate):
-        tmp_acc_means = acc_means.copy()
-        tmp_acc_vars = acc_vars.copy()
+    def estimate_gaussian(means, vars, acc_means, acc_vars, best, cand_size, learning_rate):
         acc_means = acc_means/float(cand_size)
         acc_vars = acc_vars/float(cand_size)
-        if None != best_one.params:
+        if None != best.params:
             means = means*(1.0 - learning_rate) + \
-                                learning_rate*((acc_means + best_one.params) / 2.0)
+                                learning_rate*((acc_means + best.params) / 2.0)
         else:
             means = means*(1.0 - learning_rate) + \
                                 learning_rate * (acc_means)

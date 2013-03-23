@@ -11,25 +11,25 @@ class Bmda(GbBaseEda):
     def initialize(self):
         self.distr = BivariateBinomial( n = self.var_size)
 
-    def generate_candidates(self, sample_size, best):
-        if best == None:
-            return GbBaseEda.generate_candidates(self, sample_size, best)
+    def sample(self, sample_size, top_ranked, best):
+        if top_ranked == None:
+            return GbBaseEda.sample(self, sample_size, top_ranked, best)
         
-        candidates = GbBaseEda.generate_candidates(self,sample_size - len(best), best)
-        return np.concatenate((best, candidates))[np.random.permutation(self.cand_size)]
+        candidates = GbBaseEda.sample(self,sample_size - len(top_ranked), top_ranked, best)
+        return np.concatenate((top_ranked, candidates))[np.random.permutation(self.cand_size)]
 
-    def estimate_distribution(self, top_ranked, best):
+    def estimate(self, top_ranked, best):
         marginals = np.average(top_ranked, axis = 0)
-        roots, children, cond_props = Bmda.generate_graph(top_ranked)        
+        roots, children, cond_props = Bmda.build_graph(top_ranked)        
         self.distr = BivariateBinomial(p = marginals, cond_props = cond_props, children = children, roots = roots)
 
     @staticmethod
-    def generate_graph(candidates):
+    def build_graph(candidates):
         
         var_size = candidates.shape[1]
         
         # calculate chi_matrix
-        chi_matrix = Bmda.calculate_chisquare_matrix(candidates)
+        chi_matrix = Bmda.get_chi_matrix(candidates)
         
         #Check if there are vertices.
         if var_size < 1:
@@ -50,7 +50,7 @@ class Bmda(GbBaseEda):
         A_.append(v)        
 
         while len(A) > 0:
-            v1, v2, chi = Bmda.max_chisquare(A, A_, chi_matrix)
+            v1, v2, chi = Bmda.max_chisqr(A, A_, chi_matrix)
             if 0.0 != chi:
                 children[v2].append(v1)
                 ctable = BinomialContingencyTable(candidates[:,[v2]], candidates[:, [v1]])
@@ -70,7 +70,7 @@ class Bmda(GbBaseEda):
         return roots, children, cond_props
 
     @staticmethod
-    def calculate_chisquare_matrix(candidates):
+    def get_chisqr_matrix(candidates):
         _, length = candidates.shape
         chi_matrix = np.empty((length, length))
         for x,y in itr.combinations(xrange(length), 2):
@@ -87,7 +87,7 @@ class Bmda(GbBaseEda):
         return chi_matrix
 
     @staticmethod
-    def max_chisquare(X, Y, chi_matrix):
+    def max_chisqr(X, Y, chi_matrix):
         indx = np.array([(x,y) for x,y in itr.product(X, Y)])
         rows, cols = indx[:, 0], indx[:,1]
         maxidx = np.argmax(chi_matrix[rows, cols])

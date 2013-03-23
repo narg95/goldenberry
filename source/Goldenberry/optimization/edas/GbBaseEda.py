@@ -9,19 +9,21 @@ class GbBaseEda(GbBaseOptimizer):
 
     distr = None
     cand_size = None
+    sample_size = None
     var_size = None
     max_iters = None
     max_evals = None
-    percentage = None
+    selection_rate = None
     learning_rate = None
 
-    def setup(self, var_size = 10, cand_size = 20, max_iters = None, max_evals = None, percentage = 50, learning_rate = 1.0, **kwargs):
+    def setup(self, var_size = 10, cand_size = 20, max_iters = None, max_evals = None, selection_rate = 50, learning_rate = 1.0, **kwargs):
         """Configure a Eda instance"""
         self.cand_size = cand_size
+        self.sample_size = cand_size
         self.var_size = var_size
         self.max_iters = max_iters
         self.max_evals = max_evals
-        self.percentage = percentage
+        self.selection_rate = selection_rate
         self.learning_rate = learning_rate
         self.__dict__.update(**kwargs)
 
@@ -48,26 +50,25 @@ class GbBaseEda(GbBaseOptimizer):
                 and None != self.distr \
                 and self.cand_size > 0 \
                 and self.var_size > 0 
-                and self.percentage > 0 \
-                and self.percentage < 100 \
-                and self.percentage > 0)
+                and self.selection_rate > 0 \
+                and self.selection_rate < 100 \
+                and self.selection_rate > 0)
 
     def search(self):
         """Search for an optimal solution."""        
-        best_one = GbSolution(None, float("-Inf"))
-        
-        best = None
+        best = GbSolution(None, float('-Inf'))
+        top_ranked = None
         while not self.has_finished():
-            candidates = self.generate_candidates(self.cand_size, best)
-            best, winner = self.get_top_ranked(candidates)
-            self.estimate_distribution(best, best_one)
+            candidates = self.sample(self.sample_size, top_ranked, best)
+            top_ranked, winner = self.get_top_ranked(candidates)
+            self.estimate(top_ranked, best)
             
-            if best_one.cost < winner.cost:
-                best_one = winner
+            if best.cost < winner.cost:
+                best = winner
             
             self.iters += 1
 
-        return best_one
+        return best
 
     def has_finished(self):
         finish = (not (self.max_iters is None) and self.iters > self.max_iters) or \
@@ -77,17 +78,17 @@ class GbBaseEda(GbBaseOptimizer):
             return True
         return self.distr.has_converged()
 
-    def generate_candidates(self, sample_size, best):
+    def sample(self, sample_size, top_ranked, best):
         """Generates the new generation of candidate solutions."""
         return self.distr.sample(sample_size)
 
     def get_top_ranked(self, candidates):
         fits = self.cost_func(candidates)
-        index = np.argsort(fits)[:(self.cand_size * self.percentage/100):-1]
+        index = np.argsort(fits)[:(self.cand_size * self.selection_rate/100):-1]
         return candidates[index], GbSolution(candidates[index[0]], fits[index[0]])
 
     @abc.abstractmethod
-    def estimate_distribution(self, candidates, best_one):
+    def estimate(self, candidates, best):
         """Updates the current distribution."""
         raise NotImplementedError()
 

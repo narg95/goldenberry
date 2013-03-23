@@ -70,7 +70,7 @@ class BmdaTest(TestCase):
     """Test the generation of the chi square matrix"""
     def test_shape_calculate_chisquare_matrix(self):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1],  [1,1,0,0]]))
-        chi_matrix = Bmda.calculate_chisquare_matrix(pop)
+        chi_matrix = Bmda.get_chi_matrix(pop)
         self.assertEqual(chi_matrix.shape, (4,4))
         expected = np.array([[0, 0, 0, 0],[0, 0, 0, 0], [0, 0, 0 , 0],[0, 0, 0, 0]])
         self.assertAlmostEqual(0.0, np.sum((chi_matrix - expected)), places=4)
@@ -78,7 +78,7 @@ class BmdaTest(TestCase):
     """Test the max chi square algorithm"""
     def test_max_chisquare_base(self):
         chi_matrix = np.array([[0.0,4.0,0.0],[4,0.0,5.0],[0.0, 5.0, 0.0]])
-        x,y,chi = Bmda.max_chisquare([0,1],[2], chi_matrix)
+        x,y,chi = Bmda.max_chisqr([0,1],[2], chi_matrix)
         self.assertEqual(x, 1)
         self.assertEqual(y, 2)
         self.assertEqual(chi, 5.0)
@@ -86,7 +86,7 @@ class BmdaTest(TestCase):
     """Test the max chi square algorithm"""
     def test_max_chisquare_base_1(self):
         chi_matrix = np.array([[0.0,4.0,0.0],[4,0.0,5.0],[0.0, 5.0, 0.0]])
-        x,y,chi = Bmda.max_chisquare([1],[0, 2], chi_matrix)
+        x,y,chi = Bmda.max_chisqr([1],[0, 2], chi_matrix)
         self.assertEqual(x, 1)
         self.assertEqual(y, 2)
         self.assertEqual(chi, 5.0)
@@ -94,7 +94,7 @@ class BmdaTest(TestCase):
     """Test the max chi square algorithm"""
     def test_max_chisquare_base_2(self):
         chi_matrix = np.array([[0.0,4.0,0.0],[4,0.0,5.0],[0.0, 5.0, 0.0]])
-        x,y,chi = Bmda.max_chisquare([0],[1, 2], chi_matrix)
+        x,y,chi = Bmda.max_chisqr([0],[1, 2], chi_matrix)
         self.assertEqual(x, 0)
         self.assertEqual(y, 1)
         self.assertEqual(chi, 4.0)
@@ -102,14 +102,14 @@ class BmdaTest(TestCase):
     """Test that the algorithm generates no graph, all variables independent"""
     def test_generate_graph_all_independent(self):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
-        roots, _, _ = Bmda.generate_graph(pop)
+        roots, _, _ = Bmda.build_graph(pop)
         roots.sort()
         self.assertTrue(np.equal(roots, [0,1,2,3]).all())
 
     """Test that the algorithm generates a graph with two root nodes"""
     def test_generate_graph_with_dependencies(self):
         pop = np.array(([[0, 0, 1, 0], [1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 0], [1, 1, 0, 0]]))
-        roots, _, _ = Bmda.generate_graph(pop)
+        roots, _, _ = Bmda.build_graph(pop)
         self.assertEqual(len(roots), 2)
         self.assertTrue(np.equal(roots, 3).any())
 
@@ -189,22 +189,22 @@ class TildaTest(TestCase):
         acc_vars = np.array([4.0])
         cand_size = 5
         learning_rate = 0.6
-        best_one = GbSolution(np.array([3.0]), float("-Inf"))
+        best = GbSolution(np.array([3.0]), float("-Inf"))
         new_means, new_vars = \
-            Tilda.calculate_means_and_vars(means, vars, acc_means, acc_vars, best_one, cand_size, learning_rate)
+            Tilda.estimate_gaussian(means, vars, acc_means, acc_vars, best, cand_size, learning_rate)
         self.assertAlmostEqual(new_means[0], 1.79, 2)
         self.assertAlmostEqual(new_vars[0], 4.026, 2)
 
-    def test_calculate_means_vars_no_best_one(self):
+    def test_calculate_means_vars_no_best(self):
         means = np.array([2.0])
         vars = np.array([9.0])
         acc_means = np.array([1.5])
         acc_vars = np.array([4.0])
         cand_size = 5
         learning_rate = 0.6
-        best_one = GbSolution(None, float("-Inf"))
+        best = GbSolution(None, float("-Inf"))
         new_means, new_vars = \
-            Tilda.calculate_means_and_vars(means, vars, acc_means, acc_vars, best_one, cand_size, learning_rate)
+            Tilda.estimate_gaussian(means, vars, acc_means, acc_vars, best, cand_size, learning_rate)
         self.assertAlmostEqual(new_means[0], 0.98, 2)
         self.assertAlmostEqual(new_vars[0], 4.026, 2)
     
