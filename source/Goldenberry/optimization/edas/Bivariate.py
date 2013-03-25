@@ -29,7 +29,7 @@ class Bmda(GbBaseEda):
         var_size = candidates.shape[1]
         
         # calculate chi_matrix
-        chi_matrix = Bmda.get_chi_matrix(candidates)
+        chi_matrix = Bmda._get_chisqr_matrix(candidates)
         
         #Check if there are vertices.
         if var_size < 1:
@@ -50,7 +50,7 @@ class Bmda(GbBaseEda):
         A_.append(v)        
 
         while len(A) > 0:
-            v1, v2, chi = Bmda.max_chisqr(A, A_, chi_matrix)
+            v1, v2, chi = Bmda._max_chisqr(A, A_, chi_matrix)
             if 0.0 != chi:
                 children[v2].append(v1)
                 ctable = BinomialContingencyTable(candidates[:,[v2]], candidates[:, [v1]])
@@ -70,7 +70,7 @@ class Bmda(GbBaseEda):
         return roots, children, cond_props
 
     @staticmethod
-    def get_chisqr_matrix(candidates):
+    def _get_chisqr_matrix(candidates):
         _, length = candidates.shape
         chi_matrix = np.empty((length, length))
         for x,y in itr.combinations(xrange(length), 2):
@@ -87,7 +87,7 @@ class Bmda(GbBaseEda):
         return chi_matrix
 
     @staticmethod
-    def max_chisqr(X, Y, chi_matrix):
+    def _max_chisqr(X, Y, chi_matrix):
         indx = np.array([(x,y) for x,y in itr.product(X, Y)])
         rows, cols = indx[:, 0], indx[:,1]
         maxidx = np.argmax(chi_matrix[rows, cols])

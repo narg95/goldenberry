@@ -32,6 +32,9 @@ class Pbil(GbBaseEda):
 class Tilda(GbBaseEda):
     """Tilda algorithm."""
 
+    low = 0.0
+    high = 1.0
+    
     def initialize(self):
         self.distr = Gaussian(n = self.var_size)
         self.acc_mean = np.zeros(self.var_size)
@@ -47,7 +50,7 @@ class Tilda(GbBaseEda):
             self.acc_vars += winner.params*winner.params
         else:
             means, vars = \
-                Tilda.estimate_gaussian(\
+                Tilda._estimate_gaussian(\
                     self.distr.means, \
                     self.distr.stdevs * self.distr.stdevs, \
                     self.acc_mean, \
@@ -67,7 +70,7 @@ class Tilda(GbBaseEda):
         return  winner, winner
 
     @staticmethod
-    def estimate_gaussian(means, vars, acc_means, acc_vars, best, cand_size, learning_rate):
+    def _estimate_gaussian(means, vars, acc_means, acc_vars, best, cand_size, learning_rate):
         acc_means = acc_means/float(cand_size)
         acc_vars = acc_vars/float(cand_size)
         if None != best.params:

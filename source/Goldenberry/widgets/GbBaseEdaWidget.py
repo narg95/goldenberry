@@ -1,6 +1,6 @@
 import abc
 import os
-from Goldenberry.widgets import OWWidget, QObject, QtCore, QFormLayout, OWGUI, QIntValidator, GbBaseCostFunction, GbBaseOptimizer, load_widget_ui
+from Goldenberry.widgets import OWWidget, QObject, QtCore, QFormLayout, OWGUI, QIntValidator, GbCostFunction, GbBaseOptimizer, load_widget_ui
 
 class GbBaseEdaWidget(OWWidget):
     """Widget for the base Eda algorithm"""
@@ -42,14 +42,13 @@ class GbBaseEdaWidget(OWWidget):
         self.runButton.setEnabled(False)
 
     def setup_interfaces(self):
-        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_function)]
+        self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]
         
-    def set_cost_function(self, cost_func):
+    def set_cost_function(self, func_args):
         self.optimizer.cost_func = None
-        if None != cost_func:
-            func_type, args = cost_func
-            self.optimizer.cost_func = func_type(*args)
+        if None != func_args:
+            self.optimizer.cost_func = GbCostFunction(*func_args)
             self.runButton.setEnabled(self.optimizer.ready())
 
     def setup_optimizer(self):

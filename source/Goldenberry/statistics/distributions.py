@@ -8,11 +8,6 @@ class GbBaseDistribution:
     """Represents a base clase for probability distributions."""
     __metaclass__ = abc.ABCMeta
     
-    @abc.abstractproperty
-    def parameters(self):
-        """Gets the distribution parameters"""
-        raise NotImplementedError()
-
     @abc.abstractmethod
     def sample(self, sample_size):
         """Samples based on the parameters in the actual distribution."""
@@ -51,10 +46,6 @@ class Binomial(GbBaseDistribution):
 
     def __call__(self):
         return self.p
-
-    @property
-    def parameters(self):
-        return self.n, self.p
 
     def sample(self, sample_size):
         """Samples based on the current binomial parameters (variables size and bernoulli parameters)."""
@@ -97,10 +88,6 @@ class BivariateBinomial(GbBaseDistribution):
 
     def has_converged(self):
         return (((1 - self.p) < 0.01) | (self.p < 0.01)).all()
-
-    @property
-    def parameters(self):
-        return self.n, self.p, self.cond_props, self.children
 
     def sample(self, sample_size):       
         
@@ -173,11 +160,8 @@ class Gaussian(GbBaseDistribution):
         else:
             raise Exception("You must provide either the number of variables or means and stdevs.")
 
-    def parameters(self):
-        return self.means, self.variance
-    
     def sample(self, sample_size):
-        return np.random.randn(sample_size, self.n)*self.stdevs + self.means
+        return np.random.randn(sample_size, self.n) * self.stdevs + self.means
 
     def has_converged(self):
         return (self.stdevs < 0.01).all()
