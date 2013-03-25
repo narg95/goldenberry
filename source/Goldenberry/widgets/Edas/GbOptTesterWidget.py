@@ -6,7 +6,7 @@
 <priority>200</priority>
 """
 
-from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbOptimizersTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt
+from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbOptimizersTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple
 import thread
 
 class GbOptTesterWidget(OWWidget):
@@ -29,7 +29,7 @@ class GbOptTesterWidget(OWWidget):
         self.resize(755,435)
         
     def setup_interfaces(self):
-         self.inputs = [("Optimizer", GbBaseOptimizer, self.set_optimizer, 0)]
+         self.inputs = [("Optimizer", GbBaseOptimizer, self.set_optimizer, Multiple)]
          self.outputs = None
     
     def set_optimizer(self, optimizer, id=None):
