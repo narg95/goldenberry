@@ -2,6 +2,7 @@ from Goldenberry.optimization.edas.Univariate import Cga, Pbil, Tilda
 from Goldenberry.optimization.edas.Bivariate import Bmda
 from Goldenberry.optimization.base.GbSolution import GbSolution
 from Goldenberry.optimization.cost_functions import *
+from Goldenberry.optimization.edas.GbOptimizerTester import GbOptimizersTester
 from Goldenberry.optimization.base.GbCostFunction import GbCostFunction
 from unittest import *
 import numpy as np
@@ -209,6 +210,10 @@ class TildaTest(TestCase):
         self.assertAlmostEqual(new_means[0], 0.98, 2)
         self.assertAlmostEqual(new_vars[0], 4.026, 2)
     
+class OptmizerTesterTest(TestCase):
+
+    def test_basic(self):
+        opttester = GbOptimizersTester()
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,10 +2,9 @@ import Orange
 from orngWrap import PreprocessedLearner
 from Orange.OrangeWidgets.OWWidget import OWWidget
 from Orange.OrangeWidgets import OWGUI
-from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator
-from PyQt4.QtCore import QObject
-from PyQt4 import QtCore
-from PyQt4 import uic
+from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget
+from PyQt4.QtCore import QObject, Qt
+from PyQt4 import QtCore, QtGui, uic
 import os
 import sys
 import abc
@@ -15,6 +14,7 @@ import types
 # optimization imports
 from Goldenberry.optimization.base.GbCostFunction import *
 from Goldenberry.optimization.base.GbBaseOptimizer import *
+from Goldenberry.optimization.edas.GbOptimizerTester import GbOptimizersTester
 import Goldenberry.optimization.cost_functions as cost_functions
 from Goldenberry.optimization.edas.Univariate import Cga, Pbil, Tilda
 from Goldenberry.optimization.edas.Bivariate import Bmda

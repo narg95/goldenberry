@@ -1,6 +1,7 @@
 from unittest import *
 from Goldenberry.widgets import QtCore
 from Goldenberry.optimization.cost_functions import *
+from Goldenberry.optimization.edas.Univariate import *
 from Goldenberry.optimization.base.GbCostFunction import *
 from PyQt4.QtGui import QApplication
 from Edas.GbCgaWidget import GbCgaWidget
@@ -9,6 +10,7 @@ from Edas.GbUmdaWidget import GbUmdaWidget
 from Edas.GbPbilWidget import GbPbilWidget
 from Edas.GbCostFuncsWidget import GbCostFuncsWidget
 from Edas.GbTildaWidget import GbTildaWidget
+from Edas.GbOptTesterWidget import GbOptTesterWidget
 
 import sys
 
@@ -103,6 +105,19 @@ class OptimizationWidgetsTest(TestCase):
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()     
+
+    def test_test_optim_base(self):        
+        var_size, cand_size = 10, 20
+        widget = GbOptTesterWidget()
+        optimizer = Cga()
+        optimizer.name= 'Cga'
+        optimizer.cost_func = GbCostFunction(OneMax)
+        optimizer.setup(var_size, cand_size, max_evals = 5)
+        optimizer.reset()
+        widget.set_optimizer(optimizer,0)
+        #Uncomment only when testing the widget UI
+        #widget.show()
+        #self.app.exec_()
 
     def tearDown(self):
        pass
