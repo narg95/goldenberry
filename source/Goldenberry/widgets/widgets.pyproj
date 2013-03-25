@@ -37,6 +37,7 @@
     <Compile Include="Edas\GbBmdaWidget.py" />
     <Compile Include="Edas\GbCgaWidget.py" />
     <Compile Include="Edas\GbCostFuncsWidget.py" />
+    <Compile Include="Edas\GbOptTesterWidget.py" />
     <Compile Include="Edas\GbTildaWidget.py" />
     <Compile Include="Edas\GbPbilWidget.py">
       <Publish>True</Publish>

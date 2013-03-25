@@ -57,6 +57,7 @@
     <Compile Include="optimization\base\GbSolution.py" />
     <Compile Include="optimization\base\__init__.py" />
     <Compile Include="optimization\edas\Bivariate.py" />
+    <Compile Include="optimization\edas\GbOptimizerTester.py" />
     <Compile Include="optimization\edas\Univariate.py" />
     <Compile Include="optimization\edas\GbBaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />

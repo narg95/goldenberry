@@ -5,6 +5,7 @@ class GbBaseOptimizer(object):
     """Base class for optimization algorithms."""
     
     cost_func = None
+    name = ""
     
     @abc.abstractmethod
     def setup(self, **kwargs):

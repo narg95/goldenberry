@@ -14,6 +14,7 @@ if __name__ == "__main__":
                     'optimization.edas.test_edas.PbilTest',
                     'optimization.edas.test_edas.BmdaTest',
                     'optimization.edas.test_edas.TildaTest',
+                    'optimization.edas.test_edas.OptmizerTesterTest',
                     'statistics.test_distributions.BinomialTest',
                     'statistics.test_distributions.BivariateBinomialTest',
                     'statistics.test_distributions.BinomialContingencyTableTest',
