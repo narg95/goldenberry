@@ -12,7 +12,7 @@ class GbCostFuncsWidget(OWWidget):
     """Widget for fitness functions"""
     
     settingsList = ['cost_func_sel_index']
-    cost_funcs = dict(inspect.getmembers(functions, lambda member: inspect.isclass(member) and not inspect.isabstract(member) ))
+    cost_funcs = dict(inspect.getmembers(cost_functions, lambda member: inspect.isfunction(member)))
     cost_func_sel_index = []
 
     def __init__(self, parent=None, signalManager=None):
@@ -22,7 +22,7 @@ class GbCostFuncsWidget(OWWidget):
         self.setup_ui()
     
     def setup_interfaces(self):
-        self.outputs = [("Cost Function", GbBaseCostFunction)]
+        self.outputs = [("Cost Function", GbCostFunction)]
 
     def setup_ui(self):
         """Configures the user interface"""
@@ -41,21 +41,24 @@ class GbCostFuncsWidget(OWWidget):
     def func_selected(self):
         if len(self.cost_func_sel_index) > 0:
             func_type = self.cost_funcs.values()[self.cost_func_sel_index[0]]
-            if func_type == Custom:
-                self.tabWidget.setCurrentWidget(self.customTab)
+            source_text = self.get_formated_source(func_type)
+            self.customText.clear()
+            self.customText.setText(source_text)
+
+    def get_formated_source(self, func_type):
+        return "".join([text[4:] if text.startswith("    ") else text for text in inspect.getsourcelines(func_type)[0][1:] ])
 
     def accepted(self):
         if len(self.cost_func_sel_index) > 0:
-            func_type = self.cost_funcs.values()[self.cost_func_sel_index[0]]
+            func = self.cost_funcs.values()[self.cost_func_sel_index[0]]
+            self.accept()
+            self.send("Cost Function" , (func, None))
         
-            if func_type == Custom:
-                func_text = str(self.customText.toPlainText())
-                cust = Custom(func_text)
-                self.accept()
-                self.send("Cost Function" , (func_type, (func_text,)))
-            else:
-                self.accept()
-                self.send("Cost Function" , (func_type,()))
+        elif len(self.customText.toPlainText().strip()) > 0:
+            func_text = str(self.customText.toPlainText())
+            cost_func = GbCostFunction(script = func_text)
+            self.accept()
+            self.send("Cost Function", (None, func_text))
 
     def rejected(self):
         self.reject()

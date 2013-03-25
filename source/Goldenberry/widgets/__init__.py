@@ -13,10 +13,9 @@ import inspect
 import types
 
 # optimization imports
-from Goldenberry.optimization.base.GbBaseCostFunction import *
+from Goldenberry.optimization.base.GbCostFunction import *
 from Goldenberry.optimization.base.GbBaseOptimizer import *
-from Goldenberry.optimization.cost_functions.functions import *
-from Goldenberry.optimization.cost_functions import functions
+import Goldenberry.optimization.cost_functions as cost_functions
 from Goldenberry.optimization.edas.Univariate import Cga, Pbil, Tilda
 from Goldenberry.optimization.edas.Bivariate import Bmda
 

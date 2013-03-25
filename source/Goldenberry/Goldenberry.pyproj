@@ -38,11 +38,9 @@
     <Folder Include="test\" />
     <Folder Include="test\classification\" />
     <Folder Include="test\optimization\" />
-    <Folder Include="test\optimization\cost_functions\" />
     <Folder Include="test\optimization\edas\" />
     <Folder Include="optimization\" />
     <Folder Include="optimization\edas\" />
-    <Folder Include="optimization\cost_functions\" />
     <Folder Include="optimization\bioinspired\" />
     <Folder Include="optimization\base\" />
   </ItemGroup>
@@ -54,16 +52,15 @@
     <Compile Include="classification\Kernels.py" />
     <Compile Include="classification\Perceptron.py" />
     <Compile Include="classification\__init__.py" />
-    <Compile Include="optimization\base\GbBaseCostFunction.py" />
+    <Compile Include="optimization\base\GbCostFunction.py" />
     <Compile Include="optimization\base\GbBaseOptimizer.py" />
     <Compile Include="optimization\base\GbSolution.py" />
     <Compile Include="optimization\base\__init__.py" />
-    <Compile Include="optimization\cost_functions\functions.py" />
-    <Compile Include="optimization\cost_functions\__init__.py" />
     <Compile Include="optimization\edas\Bivariate.py" />
     <Compile Include="optimization\edas\Univariate.py" />
     <Compile Include="optimization\edas\GbBaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
+    <Compile Include="optimization\cost_functions.py" />
     <Compile Include="optimization\__init__.py" />
     <Compile Include="statistics\distributions.py" />
     <Compile Include="statistics\__init__.py" />
@@ -76,18 +73,13 @@
     <Compile Include="test\classification\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\optimization\cost_functions\tests.py">
-      <Publish>False</Publish>
-    </Compile>
-    <Compile Include="test\optimization\cost_functions\__init__.py">
-      <Publish>False</Publish>
-    </Compile>
     <Compile Include="test\optimization\edas\test_edas.py">
       <Publish>False</Publish>
     </Compile>
     <Compile Include="test\optimization\edas\__init__.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="test\optimization\cost_functions.py" />
     <Compile Include="test\optimization\__init__.py">
       <Publish>False</Publish>
     </Compile>

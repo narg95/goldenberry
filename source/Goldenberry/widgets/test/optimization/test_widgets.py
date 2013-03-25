@@ -1,6 +1,7 @@
 from unittest import *
 from Goldenberry.widgets import QtCore
-from Goldenberry.optimization.cost_functions.functions import *
+from Goldenberry.optimization.cost_functions import *
+from Goldenberry.optimization.base.GbCostFunction import *
 from PyQt4.QtGui import QApplication
 from Edas.GbCgaWidget import GbCgaWidget
 from Edas.GbBmdaWidget import GbBmdaWidget
@@ -22,7 +23,7 @@ class OptimizationWidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((Onemax,()))
+        widget.set_cost_function((OneMax, None))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -32,7 +33,7 @@ class OptimizationWidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((Onemax,()))
+        widget.set_cost_function((OneMax, None))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -46,7 +47,7 @@ class OptimizationWidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((Onemax,()))
+        widget.set_cost_function((OneMax, None))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -60,7 +61,7 @@ class OptimizationWidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((Onemax,()))
+        widget.set_cost_function((OneMax, None))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -74,7 +75,7 @@ class OptimizationWidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((Onemax,()))
+        widget.set_cost_function((OneMax, None))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -85,20 +86,20 @@ class OptimizationWidgetsTest(TestCase):
         
     def test_cost_function_basic(self):        
         widget = GbCostFuncsWidget()
-        custom_item = widget.funcs_listbox.findItems(Onemax.__name__, QtCore.Qt.MatchExactly)[0]
+        custom_item = widget.funcs_listbox.findItems(OneMax.__name__, QtCore.Qt.MatchExactly)[0]
         widget.funcs_listbox.setCurrentItem(custom_item)
         widget.accepted()
-        self.assertEqual(widget.cost_funcs.values()[widget.cost_func_sel_index[0]], Onemax)
+        self.assertEqual(widget.cost_funcs.values()[widget.cost_func_sel_index[0]], OneMax)
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()     
 
     def test_cost_function_custom_code(self):        
         widget = GbCostFuncsWidget()
-        custom_item = widget.funcs_listbox.findItems(Custom.__name__, QtCore.Qt.MatchExactly)[0]
-        widget.funcs_listbox.setCurrentItem(custom_item)
+        zeromax = widget.funcs_listbox.findItems(ZeroMax.__name__, QtCore.Qt.MatchExactly)[0]
+        widget.funcs_listbox.setCurrentItem(zeromax)
         widget.accepted()
-        self.assertEqual(widget.cost_funcs.values()[widget.cost_func_sel_index[0]], Custom)
+        self.assertEqual(widget.cost_funcs.values()[widget.cost_func_sel_index[0]], ZeroMax)
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()     

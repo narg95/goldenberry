@@ -8,7 +8,7 @@
 """
 
 from Goldenberry.widgets.GbBaseEdaWidget import GbBaseEdaWidget
-from Goldenberry.widgets import Pbil, GbBaseCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
+from Goldenberry.widgets import Pbil, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
 
 class GbPbilWidget(GbBaseEdaWidget):
     """Widget for Pbil algorithm."""
@@ -19,7 +19,7 @@ class GbPbilWidget(GbBaseEdaWidget):
         self.optimizer = Pbil()
         self.settingsList.append("learning_rate")
         GbBaseEdaWidget.__init__(self, parent, signalManager, 'Pbil')
-        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_function)]
+        self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]
     
     def setup_ui(self):

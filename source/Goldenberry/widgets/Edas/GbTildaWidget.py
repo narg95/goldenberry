@@ -8,7 +8,7 @@
 """
 
 from Goldenberry.widgets.GbBaseEdaWidget import GbBaseEdaWidget
-from Goldenberry.widgets import Tilda, GbBaseCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
+from Goldenberry.widgets import Tilda, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
 
 class GbTildaWidget(GbBaseEdaWidget):
     """Widget for Tilda algorithm."""
@@ -19,7 +19,7 @@ class GbTildaWidget(GbBaseEdaWidget):
         self.optimizer = Tilda()
         self.settingsList.append("learning_rate")
         GbBaseEdaWidget.__init__(self, parent, signalManager, 'Tilda')
-        self.inputs = [("Cost Function", GbBaseCostFunction, self.set_cost_function)]
+        self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]
     
     def setup_ui(self):

@@ -11,7 +11,7 @@ class BinomialTest(TestCase):
     def test_vars_size(self):
         n = 10
         dist = Binomial(n = n)
-        n1, p1 = dist.parameters
+        n1, p1 = dist.n, dist.p
         self.assertEqual(n1, n)
         self.assertTrue(p1.all())
 
@@ -19,7 +19,7 @@ class BinomialTest(TestCase):
         n = 10
         p = np.tile(0.5,(1,n))
         dist = Binomial(p = p)
-        n1, p1 = dist.parameters
+        n1, p1 = dist.n, dist.p
         self.assertTrue(np.all(e == 0.5 for e in p1))
         self.assertEqual(n1, n)
 
@@ -39,7 +39,7 @@ class BivariateBinomialTest(TestCase):
         n = 10
         dist = BivariateBinomial(n)
         self.assertIsNotNone(dist)
-        n1, p, cond_props, children = dist.parameters 
+        n1, p, cond_props, children = dist.n, dist.p, dist.cond_props, dist.children 
         self.assertEqual(n1, n)
         self.assertTrue(np.all(e == 0.5 for e in p))
         self.assertTrue(np.all(e == [] for e in cond_props))
@@ -121,7 +121,7 @@ class GaussianTest(TestCase):
     def test_basic(self):
         n = 10
         dist = Gaussian(n = n)
-        means, stdevs = dist.parameters
+        means, stdevs = dist.means, dist.stdevs
         self.assertTrue(np.equal(means, np.zeros(n)))
         self.assertTrue(np.equal(stdevs, np.ones(n)))
         self.assertEqual(dist.n, n)
@@ -130,7 +130,7 @@ class GaussianTest(TestCase):
         n = 10
         means, stdevs = np.zeros(n), np.ones(n)
         dist = Gaussian(means = means, stdevs = stdevs)
-        p_means, p_stdevs = dist.parameters
+        p_means, p_stdevs = dist.means, dist.stdevs
         self.assertTrue(np.equal(p_means, means))
         self.assertTrue(np.equal(p_stdevs, stdevs))
         self.assertEqual(dist.n, n)
