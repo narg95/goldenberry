@@ -56,7 +56,7 @@ class GbBaseEdaWidget(OWWidget):
 
     def apply(self): 
         self.setup_optimizer()       
-        self.send("Optimizer" , self.optimizer)
+        self.send("Optimizer" , (self.optimizer, self.captionTitle))
         self.runButton.setEnabled(self.optimizer.ready())
 
     def run(self):

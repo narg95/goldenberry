@@ -110,11 +110,10 @@ class OptimizationWidgetsTest(TestCase):
         var_size, cand_size = 10, 20
         widget = GbOptTesterWidget()
         optimizer = Cga()
-        optimizer.name= 'Cga'
         optimizer.cost_func = GbCostFunction(OneMax)
         optimizer.setup(var_size, cand_size, max_evals = 5)
-        optimizer.reset()
-        widget.set_optimizer(optimizer,0)
+        widget.set_optimizer((optimizer, 'Cga'),0)
+        widget.execute()
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()

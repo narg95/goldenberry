@@ -39,21 +39,21 @@ class GbCostFunction:
 
             costs[idx] = cost
             self.acc_mean += cost
-            self.acc_stdev += cost*cost
+            self.acc_var += cost*cost
             
 
         return costs
 
     def statistics(self):
         """Provides the evaluations statistics in a tuple in the following order:
-           evals, argmin, argmax, min, max, mean, stdev
+           evals, argmin, argmax, min, max, mean, var
         """
         if self.evals  == 0:
             raise Exception("There are no statistics for this cost function.")
         
         mean = self.acc_mean / float(self.evals)
-        stdev = self.acc_stdev / float(self.evals) - mean*mean
-        return self.evals, self.argmin, self.argmax, self.min, self.max, mean, stdev
+        var = self.acc_var / float(self.evals) - mean*mean
+        return self.evals, self.argmin, self.argmax, self.min, self.max, mean, var
 
     def reset_statistics(self):
         self.evals = 0
@@ -62,7 +62,7 @@ class GbCostFunction:
         self.min = float("Inf")
         self.max = float("-Inf")
         self.acc_mean = 0.0
-        self.acc_stdev = 0.0
+        self.acc_var = 0.0
     
     def set_func_script(self, script):
         exec("def __temp_func__(self, solution):\n\t" + script.replace("\n","\n\t"))
