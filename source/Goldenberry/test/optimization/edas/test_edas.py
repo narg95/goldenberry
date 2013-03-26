@@ -213,7 +213,14 @@ class TildaTest(TestCase):
 class OptmizerTesterTest(TestCase):
 
     def test_basic(self):
+        total_runs = 10
         opttester = GbOptimizersTester()
+        optimizer = Cga()
+        optimizer.setup(10, 20)
+        optimizer.cost_func = GbCostFunction(OneMax)
+        run_results, test_results = opttester.run(optimizer, total_runs)
+        self.assertEqual(len(run_results), total_runs)
+        self.assertEqual(16, len(test_results))
 
 if __name__ == '__main__':
     unittest.main()
