@@ -220,7 +220,7 @@ class OptmizerTesterTest(TestCase):
         optimizer.cost_func = GbCostFunction(OneMax)
         run_results, test_results = opttester.test(optimizer, total_runs)
         self.assertEqual(len(run_results), total_runs)
-        self.assertEqual(16, len(test_results))
+        self.assertEqual(17, len(test_results))
 
 if __name__ == '__main__':
     unittest.main()

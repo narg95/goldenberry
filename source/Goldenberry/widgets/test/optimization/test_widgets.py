@@ -113,15 +113,16 @@ class OptimizationWidgetsTest(TestCase):
         optimizer.cost_func = GbCostFunction(OneMax)
         optimizer.setup(var_size, cand_size, max_evals = 5)
         widget.set_optimizer((optimizer, 'Cga'),0)
+
         widget.execute()
         self.assertEqual(widget.total_runs,widget.runs_results.__len__())
-        self.assertEqual(widget.experiments_table.columnCount(),13)
+        self.assertEqual(widget.experiments_table.columnCount(),18)
         self.assertEqual(widget.experiments_table.rowCount(),1)
-        self.assertEqual(widget.runs_table.columnCount(),11)
+        self.assertEqual(widget.runs_table.columnCount(),12)
         self.assertEqual(widget.runs_table.rowCount(),20)
         #Uncomment only when testing the widget UI
-        #widget.show()
-        #self.app.exec_()
+        widget.show()
+        self.app.exec_()
 
     def tearDown(self):
        pass

@@ -5,17 +5,15 @@
 <icon>icons/TestOptim.png</icon>
 <priority>200</priority>
 """
-
-from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbOptimizersTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple, QTableWidgetItem
-import thread
 from Tkinter import Tk
+from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbOptimizersTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple
+import thread
 
 class GbOptTesterWidget(OWWidget):
     runs_results=[]
     experiment_results=[]
     optimizers={}
     total_runs= 20
-    
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent,signalManager, title='Optimaze Tester')
@@ -38,12 +36,12 @@ class GbOptTesterWidget(OWWidget):
 
     def define_tables(self):        
         self.experiments_table = OWGUI.table(self.experimentTab, selectionMode=QTableWidget.MultiSelection)
-        self.experiments_table.setColumnCount(13)
-        self.experiments_table.setHorizontalHeaderLabels(["Name","Mean(Evals.)","Var(Evals.)","Min(Evals.)", "Max(Evals.)","Mean(Costs)","Var(Costs)","Min(Costs)", "Max(Costs)","Mean(Mean)","Var(Mean)","Min(Mean)", "Max(Mean)","Mean(Vars.)","Var(Vars.)","Min(Vars.)", "Max(Vars.)"])
+        self.experiments_table.setColumnCount(18)
+        self.experiments_table.setHorizontalHeaderLabels(["Name","Mean(Evals.)","Var(Evals.)","Min(Evals.)", "Max(Evals.)","Mean(Costs)","Var(Costs)","Min(Costs)", "Max(Costs)","Mean(Mean)","Var(Mean)","Min(Mean)", "Max(Mean)","Mean(Vars.)","Var(Vars.)","Min(Vars.)", "Max(Vars.)", "Total Time"])
         self.experiments_table.setSortingEnabled(True)
-        self.runs_table = OWGUI.table(self.runTab, selectionMode=QTableWidget.NoSelection)
-        self.runs_table.setColumnCount(11)
-        self.runs_table.setHorizontalHeaderLabels(["Name","#Run","Best","Cost"," evals", "found(min)", "found(max)", "min", "max", "mean", "variance"])
+        self.runs_table = OWGUI.table(self.runTab, selectionMode=QTableWidget.MultiSelection)
+        self.runs_table.setColumnCount(12)
+        self.runs_table.setHorizontalHeaderLabels(["Name","#Run","Best","Cost"," evals", "found(min)", "found(max)", "min", "max", "mean", "variance", "time"])
         self.runs_table.setSortingEnabled(True)
 
     def set_optimizer(self, optimizer, id=None):
@@ -67,7 +65,10 @@ class GbOptTesterWidget(OWWidget):
             
         self.show_results(self.experiments_table, self.experiment_results)
         self.show_results(self.runs_table, self.runs_results)
-        self.experiments_table.sortByColumn(3, Qt.AscendingOrder)            
+        self.experiments_table.sortByColumn(3, Qt.AscendingOrder)    
+        
+        testcase=self.experiments_table.rowCount()       
+        testcasecol=self.experiments_table.columnCount()  
 
     def show_results(self, table, results):
         total_runs = len(results)
