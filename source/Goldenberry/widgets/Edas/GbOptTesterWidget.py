@@ -6,14 +6,16 @@
 <priority>200</priority>
 """
 
-from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbOptimizersTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple
+from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbOptimizersTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple, QTableWidgetItem
 import thread
+from Tkinter import Tk
 
 class GbOptTesterWidget(OWWidget):
     runs_results=[]
     experiment_results=[]
     optimizers={}
     total_runs= 20
+    
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent,signalManager, title='Optimaze Tester')
@@ -27,20 +29,22 @@ class GbOptTesterWidget(OWWidget):
     def setup_ui(self):
         OWGUI.spin(self.controlArea, self, "total_runs", 1, 1000, box="Number of Runs")
         OWGUI.button(self.controlArea, self, "Run", callback = self.execute)
-        OWGUI.button(self.mainArea, self, "Copy", callback = self.copy)
         self.tabs = OWGUI.tabWidget(self.mainArea)
         self.experimentTab = OWGUI.createTabPage(self.tabs, "Experiment")
         self.runTab = OWGUI.createTabPage(self.tabs, "Especific Run")
         self.define_tables()
+        OWGUI.button(self.mainArea, self, "Copy Tables to Clipboard", callback = self.copy_table, tooltip ='Copy the information of the two tables to the clipboard and paste It')
         self.adjustSize()
 
     def define_tables(self):        
         self.experiments_table = OWGUI.table(self.experimentTab, selectionMode=QTableWidget.MultiSelection)
         self.experiments_table.setColumnCount(13)
         self.experiments_table.setHorizontalHeaderLabels(["Name","Mean(Evals.)","Var(Evals.)","Min(Evals.)", "Max(Evals.)","Mean(Costs)","Var(Costs)","Min(Costs)", "Max(Costs)","Mean(Mean)","Var(Mean)","Min(Mean)", "Max(Mean)","Mean(Vars.)","Var(Vars.)","Min(Vars.)", "Max(Vars.)"])
+        self.experiments_table.setSortingEnabled(True)
         self.runs_table = OWGUI.table(self.runTab, selectionMode=QTableWidget.NoSelection)
         self.runs_table.setColumnCount(11)
         self.runs_table.setHorizontalHeaderLabels(["Name","#Run","Best","Cost"," evals", "found(min)", "found(max)", "min", "max", "mean", "variance"])
+        self.runs_table.setSortingEnabled(True)
 
     def set_optimizer(self, optimizer, id=None):
         if self.optimizers.has_key(id):
@@ -73,10 +77,41 @@ class GbOptTesterWidget(OWWidget):
             for colidx, item in enumerate(result_item):
                 table.setItem(rowidx, colidx, QtGui.QTableWidgetItem(str(item)))
 
-    def copy(self):
-         range = self.experimentTab.tableselectedRange()
-         print range
+    def copy_table(self):
+        text=''
+        text=text + self.selectTableItems(self.experiments_table)
+        text=text + self.selectTableItems(self.runs_table)
+        r = Tk()
+        r.withdraw()
+        r.clipboard_clear()
+        r.clipboard_append(text)
+        r.destroy()
 
+    def selectTableItems(self, table):
+        num_rows=0
+        num_cols=0
+        num_rows, num_cols = table.rowCount(), table.columnCount()
+        #text=''
+        text=self.get_table_header(table)
+        for row in range(num_rows):
+            rows = []
+            for col in range(num_cols):
+                item = table.item(row, col)
+                text = text + '\t'+item.text()
+                rows.append(item.text() if item else '')
+            text=text+'\n'
+        return text + '\n'
+
+    def get_table_header(self,table):
+        num_cols=0
+        num_cols = table.columnCount()
+        text=''
+        rows = []
+        for col in range(num_cols):
+                item = table.horizontalHeaderItem(col)
+                text = text + '\t'+item.text()
+                rows.append(item.text() if item else '')
+        return text + '\n'
 
 if __name__=="__main__":
     test_widget()
