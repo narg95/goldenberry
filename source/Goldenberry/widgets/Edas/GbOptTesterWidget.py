@@ -12,12 +12,11 @@ import thread
 class GbOptTesterWidget(OWWidget):
     runs_results=[]
     experiment_results=[]
-    optimizers=[]
+    optimizers={}
     total_runs= 20
 
     def __init__(self, parent=None, signalManager=None):
         OWWidget.__init__(self, parent,signalManager, title='Optimaze Tester')
-        self.optimizers = []
         self.setup_interfaces()
         self.setup_ui()
         self.resize(755,435)
@@ -28,7 +27,6 @@ class GbOptTesterWidget(OWWidget):
     
     def setup_ui(self):
         OWGUI.spin(self.controlArea, self, "total_runs", 1, 1000, box="Number of Runs")
-        box = OWGUI.widgetBox(self.controlArea, "Run Number")
         OWGUI.button(self.controlArea, self, "Run", callback = self.execute)
         self.tabs = OWGUI.tabWidget(self.mainArea)
         self.experimentTab = OWGUI.createTabPage(self.tabs, "Experiment")
@@ -45,7 +43,11 @@ class GbOptTesterWidget(OWWidget):
         self.runs_table.setHorizontalHeaderLabels(["Name","#Run","Best","Cost"," evals", "found(min)", "found(max)", "min", "max", "mean", "variance"])
 
     def set_optimizer(self, optimizer, id=None):
-         self.optimizers.append(optimizer)
+        if None == optimizer:
+            return
+        if self.optimizers.has_key(id):
+            del self.optimizers[id]
+        self.optimizers[id] = optimizer
         
     def execute(self):        
         self.experiment_results=[]
@@ -53,7 +55,7 @@ class GbOptTesterWidget(OWWidget):
         self.experiments_table.setRowCount(0)
         self.runs_table.setRowCount(0)
         
-        for idx , (optimizer, optimizer_name) in enumerate([(opt, name) for opt, name in self.optimizers if opt.ready()]):
+        for idx , (optimizer, optimizer_name) in enumerate([(opt, name) for opt, name in self.optimizers.values() if opt.ready()]):
             tester = GbOptimizersTester()
             run_results, test_results = tester.run(optimizer, self.total_runs)
             self.runs_results += [(optimizer_name,) + item for item in run_results]
