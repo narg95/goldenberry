@@ -57,7 +57,7 @@ class GbOptTesterWidget(OWWidget):
         
         for idx , (optimizer, optimizer_name) in enumerate([(opt, name) for opt, name in self.optimizers.values() if opt.ready()]):
             tester = GbOptimizersTester()
-            run_results, test_results = tester.run(optimizer, self.total_runs)
+            run_results, test_results = tester.test(optimizer, self.total_runs)
             self.runs_results += [(optimizer_name,) + item for item in run_results]
             self.experiment_results.append((optimizer_name, ) + test_results)
             

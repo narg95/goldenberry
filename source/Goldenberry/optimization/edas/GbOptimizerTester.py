@@ -7,7 +7,7 @@ class GbOptimizersTester(object):
     __metaclass__ = abc.ABCMeta
     """Optmizers Tester"""
     
-    def run(self, optimizer, num_evals):
+    def test(self, optimizer, num_evals):
         if not optimizer.ready():
             return
 
