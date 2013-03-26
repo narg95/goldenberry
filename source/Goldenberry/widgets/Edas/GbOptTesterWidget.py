@@ -27,6 +27,7 @@ class GbOptTesterWidget(OWWidget):
     def setup_ui(self):
         OWGUI.spin(self.controlArea, self, "total_runs", 1, 1000, box="Number of Runs")
         OWGUI.button(self.controlArea, self, "Run", callback = self.execute)
+        OWGUI.button(self.mainArea, self, "Copy", callback = self.copy)
         self.tabs = OWGUI.tabWidget(self.mainArea)
         self.experimentTab = OWGUI.createTabPage(self.tabs, "Experiment")
         self.runTab = OWGUI.createTabPage(self.tabs, "Especific Run")
@@ -71,6 +72,11 @@ class GbOptTesterWidget(OWWidget):
             table.insertRow(rowidx)
             for colidx, item in enumerate(result_item):
                 table.setItem(rowidx, colidx, QtGui.QTableWidgetItem(str(item)))
+
+    def copy(self):
+         range = self.experimentTab.tableselectedRange()
+         print range
+
 
 if __name__=="__main__":
     test_widget()
