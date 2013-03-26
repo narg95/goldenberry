@@ -43,11 +43,11 @@ class GbOptTesterWidget(OWWidget):
         self.runs_table.setHorizontalHeaderLabels(["Name","#Run","Best","Cost"," evals", "found(min)", "found(max)", "min", "max", "mean", "variance"])
 
     def set_optimizer(self, optimizer, id=None):
-        if None == optimizer:
-            return
         if self.optimizers.has_key(id):
             del self.optimizers[id]
-        self.optimizers[id] = optimizer
+        
+        if None != optimizer:
+            self.optimizers[id] = optimizer
         
     def execute(self):        
         self.experiment_results=[]
