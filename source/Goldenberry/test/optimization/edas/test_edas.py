@@ -101,22 +101,22 @@ class BmdaTest(TestCase):
         self.assertEqual(y, 1)
         self.assertEqual(chi, 4.0)
 
-    """Test that the algorithm generates no graph, all variables independent"""
     def test_generate_graph_all_independent(self):
+        """Test that the algorithm generates no graph, all variables independent"""
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
         roots, _, _ = Bmda.build_graph(pop)
         roots.sort()
         self.assertTrue(np.equal(roots, [0,1,2,3]).all())
 
-    """Test that the algorithm generates a graph with two root nodes"""
     def test_generate_graph_with_dependencies(self):
+        """Test that the algorithm generates a graph with two root nodes"""
         pop = np.array(([[0, 0, 1, 0], [1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 0], [1, 1, 0, 0]]))
         roots, _, _ = Bmda.build_graph(pop)
         self.assertEqual(len(roots), 2)
         self.assertTrue(np.equal(roots, 3).any())
 
-    """Test class for the Bmda algorithm"""
     def test_basic_search_onemax(self):
+        """Test class for the Bmda algorithm"""
         bmda = Bmda()
         bmda.setup(10, 40)
         bmda.cost_func = GbCostFunction(OneMax)
@@ -124,8 +124,8 @@ class BmdaTest(TestCase):
         self.assertGreaterEqual(result.params.sum(), 8.0)
         self.assertGreaterEqual(result.cost, 8.0)
 
-    """Test class for the Bmda algorithm"""
     def test_basic_search_zero(self):
+        """Test class for the Bmda algorithm"""
         bmda = Bmda()
         bmda.setup(10, 40)
         bmda.cost_func = GbCostFunction(ZeroMax)
@@ -133,18 +133,18 @@ class BmdaTest(TestCase):
         self.assertTrue((result.params + 1).all())
         self.assertGreaterEqual(result.cost, 8.0)
 
-    #"""Test class for the Bmda algorithm"""
-    #def test_basic_search_onemax(self):
-    #    var_size = 10
-    #    bmda = Bmda()
-    #    bmda.setup(var_size, 40)
-    #    bmda.cost_func = GbCostFunction(OneMax)
-    #    result = bmda.search()
-    #    self.assertTrue((result.params + 1).all())
-    #    self.assertGreaterEqual(result.cost, var_size*0.8)
+    def test_basic_search_onemax(self):
+        """Test class for the Bmda algorithm"""
+        var_size = 10
+        bmda = Bmda()
+        bmda.setup(var_size, 40)
+        bmda.cost_func = GbCostFunction(OneMax)
+        result = bmda.search()
+        self.assertTrue((result.params + 1).all())
+        self.assertGreaterEqual(result.cost, var_size*0.8)
      
-    """Test if the reset function allows a new algorithm execution."""    
     def test_reset(self):
+        """Test if the reset function allows a new algorithm execution."""    
         bmda = Bmda()
         bmda.setup(10, 40)
         bmda.cost_func = GbCostFunction(OneMax)
