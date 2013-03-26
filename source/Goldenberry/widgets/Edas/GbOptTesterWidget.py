@@ -23,7 +23,6 @@ class GbOptTesterWidget(OWWidget):
         
     def setup_interfaces(self):
          self.inputs = [("Optimizer", GbBaseOptimizer, self.set_optimizer, Multiple)]
-         self.outputs = None
     
     def setup_ui(self):
         OWGUI.spin(self.controlArea, self, "total_runs", 1, 1000, box="Number of Runs")
