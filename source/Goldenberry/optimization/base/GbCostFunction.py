@@ -1,4 +1,5 @@
 import abc
+import ast
 import sys
 import numpy as np
 import inspect
@@ -65,9 +66,26 @@ class GbCostFunction:
         self.acc_var = 0.0
     
     def set_func_script(self, script):
-        exec("def __temp_func__(self, solution):\n\t" + script.replace("\n","\n\t"))
-        self._cost_ = types.MethodType(__temp_func__, self, type(self))
+        func_name = self.get_func_name(script)
+        exec(script)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        exec("self._cost_ = types.MethodType(" + func_name + ", self, type(self))")
+    
+    @staticmethod
+    def get_func_name(script):
+        parse_tree = ast.parse(script)
+        func_def = GbCostFunction.next(ast, parse_tree, ast.FunctionDef)
+        args_def = GbCostFunction.next(ast, parse_tree, ast.arguments)
+        if len(args_def.args) != 2 or args_def.args[0].id != "self" and args_def.args[1].id != "solution":
+            raise Exception("Cost function must have two arguments with the following names: [self, solution]")
+        
+        return func_def.name
 
+    @staticmethod
+    def next(ast, node, node_type):
+        for node in ast.walk(node):
+            if type(node) == node_type:
+                return node
+        raise Exception("Script is not in a correct format.")
     def set_func(self, func):
         self._cost_ = types.MethodType(func, self, type(self))
 

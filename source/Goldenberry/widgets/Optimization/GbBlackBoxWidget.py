@@ -1,15 +1,15 @@
 """
-<name>Optimizer Tester</name>
+<name>Black Box Tester</name>
 <description>Evaluates the performance of a set of optimizers.</description>
 <contact>Leidy Garzon</contact>
-<icon>icons/TestOptim.png</icon>
-<priority>200</priority>
+<icon>icons/Blackbox.svg</icon>
+<priority>1020</priority>
 """
-from Tkinter import Tk
-from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbOptimizersTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple
+
+from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbBlackBoxTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple
 import thread
 
-class GbOptTesterWidget(OWWidget):
+class GbBlackBoxWidget(OWWidget):
     runs_results=[]
     experiment_results=[]
     optimizers={}
@@ -58,7 +58,7 @@ class GbOptTesterWidget(OWWidget):
         self.runs_table.setRowCount(0)
         
         for idx , (optimizer, optimizer_name) in enumerate([(opt, name) for opt, name in self.optimizers.values() if opt.ready()]):
-            tester = GbOptimizersTester()
+            tester = GbBlackBoxTester()
             run_results, test_results = tester.test(optimizer, self.total_runs)
             self.runs_results += [(optimizer_name,) + item for item in run_results]
             self.experiment_results.append((optimizer_name, ) + test_results)
@@ -119,6 +119,6 @@ if __name__=="__main__":
 
 def test_widget():
     app = QApplication(sys.argv)
-    w = GbOptTesterWidget()
+    w = GbBlackBoxWidget()
     w.show()
     app.exec_()

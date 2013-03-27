@@ -11,6 +11,14 @@ def LeadingOnes(self, solution):
         return loc[0]
     return len(solution)
 
+def LeadingOnesBlocks(self, solution):
+    """Given a block size, we count the number of strings of ones until a zero is found."""
+    block_size = 1
+    loc = numpy.where(solution == 0.0)[0]
+    if len(loc) > 0:
+        return loc[0]
+    return len(solution)
+
 def Traps(self, solution):
     """it counts the number of ones in your vector, starting at the beginning, until a zero is encountered."""
     if solution.all():
@@ -45,19 +53,4 @@ def Linear(self, solution):
 #            prev = curr
         
 #        return cost
-
-#class Custom(GbCostFunction):
-    
-#    def __init__(self, script):
-#        super(Custom, self).__init__()
-#        self.set_func_script(script)
-    
-#    def set_func_script(self, script):
-#        exec("def __cost_func__(self, solution):\n\t" + script.replace("\n","\n\t"))
-#        self.__custom_cost__ = types.MethodType(__cost_func__, self, type(self))
-
-#    def __cost__(self, solution):
-#        if hasattr(self, '__custom_cost__'):
-#            return self.__custom_cost__(solution)
-#        return 0.0
             

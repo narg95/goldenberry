@@ -4,7 +4,7 @@ import time
 from Goldenberry.optimization.base.GbBaseOptimizer import GbBaseOptimizer
 from Goldenberry.optimization.base.GbSolution import GbSolution
 
-class GbOptimizersTester(object):
+class GbBlackBoxTester(object):
     __metaclass__ = abc.ABCMeta
     """Optmizers Tester"""
     

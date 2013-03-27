@@ -56,9 +56,11 @@ class GbBaseEda(GbBaseOptimizer):
 
     def search(self):
         """Search for an optimal solution."""        
+        if not self.ready():
+            raise Exception("The optimizer is not ready for being executed.  Please check if you have configured all the required parameters.")
         best = GbSolution(None, float('-Inf'))
         top_ranked = None
-        while not self.has_finished():
+        while not self.done():
             candidates = self.sample(self.sample_size, top_ranked, best)
             top_ranked, winner = self.get_top_ranked(candidates)
             self.estimate(top_ranked, best)
@@ -70,7 +72,7 @@ class GbBaseEda(GbBaseOptimizer):
 
         return best
 
-    def has_finished(self):
+    def done(self):
         finish = (not (self.max_iters is None) and self.iters > self.max_iters) or \
                  (not (self.max_evals is None) and self.cost_func.evals > self.max_evals)
         

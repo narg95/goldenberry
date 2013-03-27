@@ -2,7 +2,7 @@ from Goldenberry.optimization.edas.Univariate import Cga, Pbil, Tilda
 from Goldenberry.optimization.edas.Bivariate import Bmda
 from Goldenberry.optimization.base.GbSolution import GbSolution
 from Goldenberry.optimization.cost_functions import *
-from Goldenberry.optimization.edas.GbOptimizerTester import GbOptimizersTester
+from Goldenberry.optimization.edas.GbBlackBoxTester import GbBlackBoxTester
 from Goldenberry.optimization.base.GbCostFunction import GbCostFunction
 from unittest import *
 import numpy as np
@@ -156,34 +156,25 @@ class BmdaTest(TestCase):
 
 class TildaTest(TestCase):
     """Test class for the tilda algorithm"""
-    #def test_basic(self):
-    #    tilda = Tilda()
-    #    tilda.setup(10, 20,learning_rate = 0.2)
-    #    tilda.cost_func = GbCostFunction(ZeroMaxTruncated)
-    #    result = tilda.search()
-    #    self.assertTrue((result.params < 0.1).all())
-    #    self.assertGreaterEqual(result.cost, 8)
+    def test_basic(self):
+        tilda = Tilda()
+        tilda.setup(10, 30, learning_rate = 1.0)
+        tilda.cost_func = GbCostFunction(OneMax)
+        result = tilda.search()
+        #self.assertTrue((result.params < 0.1).all())
+        #self.assertGreaterEqual(result.cost, 8)
 
     """Test if the reset function allows a new algorithm execution."""    
-    #def test_reset(self):
-    #    tilda = Tilda()
-    #    tilda.setup(10, 20)
-    #    tilda.cost_func = GbCostFunction(ZeroMaxTruncated)
-    #    result = tilda.search()
-    #    tilda.reset()
-    #    self.assertEqual(tilda.iters, 0)
-    #    self.assertNotEqual(tilda.distr, None)        
-    #    self.assertEqual(tilda.cost_func.evals, 0)
-
-    """"Test whether the ready function informs when the 
-    algorithm is ready to search."""
-    #def test_ready(self):
-    #    tilda = Tilda()
-    #    tilda.setup(10, 20)
-    #    self.assertFalse(tilda.ready())
-    #    tilda.cost_func = GbCostFunction(ZeroMaxTruncated)
-    #    self.assertTrue(tilda.ready())
-
+    def test_reset(self):
+        tilda = Tilda()
+        tilda.setup(10, 20)
+        tilda.cost_func = GbCostFunction(OneMax)
+        result = tilda.search()
+        tilda.reset()
+        self.assertEqual(tilda.iters, 0)
+        self.assertNotEqual(tilda.distr, None)        
+        self.assertEqual(tilda.cost_func.evals, 0)
+   
     def test_calculate_means_vars(self):
         means = np.array([2.0])
         vars = np.array([9.0])
@@ -214,7 +205,7 @@ class OptmizerTesterTest(TestCase):
 
     def test_basic(self):
         total_runs = 10
-        opttester = GbOptimizersTester()
+        opttester = GbBlackBoxTester()
         optimizer = Cga()
         optimizer.setup(10, 20)
         optimizer.cost_func = GbCostFunction(OneMax)

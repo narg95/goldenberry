@@ -122,8 +122,8 @@ class GaussianTest(TestCase):
         n = 10
         dist = Gaussian(n = n)
         means, stdevs = dist.means, dist.stdevs
-        self.assertTrue(np.equal(means, np.zeros(n)))
-        self.assertTrue(np.equal(stdevs, np.ones(n)))
+        self.assertTrue(np.equal(means, np.zeros(n)).all())
+        self.assertTrue(np.equal(stdevs, np.ones(n)).all())
         self.assertEqual(dist.n, n)
 
     def stdevs(self):
@@ -136,9 +136,33 @@ class GaussianTest(TestCase):
         self.assertEqual(dist.n, n)
 
     def test_sample(self):
+        n = 10
+        means, stdevs = np.tile(0.5, n), np.ones(n)
+        dist = Gaussian(means = means, stdevs = stdevs)
+        samples = dist.sampletr(20, 0.0, 1.0)
+        self.assertTrue((samples < 1.0).all())
+        self.assertTrue((samples > 1.0).all())
+
+    def test_sample(self):
         dist = Gaussian(means = np.array([0.0, 1.0, 2.0]), stdevs = np.array([0.0, 0.0, 0.1]))
         sample = dist.sample(1)
         self.assertTrue(\
             sample[0, 0] == 0.0 and \
             sample[0, 1] <= 1.0 and \
             sample[0, 1] >= 1.0 )    
+
+class GaussianTruncTest(TestCase):
+    
+    def test_basic(self):
+        n = 10
+        dist = GaussianTrunc(n = n, low = 1.0, high = 2.0)
+        self.assertEqual(dist.low, 1.0)   
+        self.assertEqual(dist.high, 2.0)
+
+    def test_sample(self):
+        n = 10
+        means, stdevs = np.tile(0.5, n), np.ones(n)
+        dist = GaussianTrunc(means = means, stdevs = stdevs)
+        samples = dist.sample(100)
+        self.assertTrue((samples <= 1.0).all())
+        self.assertTrue((samples >= 0.0).all())
