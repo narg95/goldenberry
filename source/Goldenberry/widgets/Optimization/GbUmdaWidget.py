@@ -1,12 +1,11 @@
 """
-<name>Umda</name>
+<name>UMDA</name>
 <description>Univariate marginal distribution algorithm.</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/Eda.png</icon>
-<priority>100</priority>
+<icon>icons/Pbil.svg</icon>
+<priority>30</priority>
 
 """
-
 from Goldenberry.widgets.GbBaseEdaWidget import GbBaseEdaWidget
 from Goldenberry.widgets import Pbil, GbCostFunction, GbBaseOptimizer
 
@@ -15,7 +14,7 @@ class GbUmdaWidget(GbBaseEdaWidget):
     
     def __init__(self, parent=None, signalManager=None):
         self.optimizer = Pbil()
-        GbBaseEdaWidget.__init__(self, parent, signalManager, 'Umda')
+        GbBaseEdaWidget.__init__(self, parent, signalManager, 'UMDA')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]
     

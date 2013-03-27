@@ -18,6 +18,8 @@ if __name__ == "__main__":
                     'statistics.test_distributions.BinomialTest',
                     'statistics.test_distributions.BivariateBinomialTest',
                     'statistics.test_distributions.BinomialContingencyTableTest',
+                    'statistics.test_distributions.GaussianTest',
+                    'statistics.test_distributions.GaussianTruncTest',
                     'classification.test_perceptron.PerceptronTest',
                     'classification.test_kernels.KernelsTest'
                     ]    

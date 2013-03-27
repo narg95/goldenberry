@@ -34,16 +34,18 @@
     <Compile Include="Classify\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="Edas\GbBmdaWidget.py" />
-    <Compile Include="Edas\GbCgaWidget.py" />
-    <Compile Include="Edas\GbCostFuncsWidget.py" />
-    <Compile Include="Edas\GbOptTesterWidget.py" />
-    <Compile Include="Edas\GbTildaWidget.py" />
-    <Compile Include="Edas\GbPbilWidget.py">
+    <Compile Include="Optimization\GbBmdaWidget.py" />
+    <Compile Include="Optimization\GbCgaWidget.py" />
+    <Compile Include="Optimization\GbCostFuncsWidget.py" />
+    <Compile Include="Optimization\GbBlackBoxWidget.py" />
+    <Compile Include="Optimization\GbUmdaCWidget.py" />
+    <Compile Include="Optimization\GbPbilCWidget.py" />
+    <Compile Include="Optimization\GbTildaWidget.py" />
+    <Compile Include="Optimization\GbPbilWidget.py">
       <Publish>True</Publish>
     </Compile>
-    <Compile Include="Edas\GbUmdaWidget.py" />
-    <Compile Include="Edas\__init__.py" />
+    <Compile Include="Optimization\GbUmdaWidget.py" />
+    <Compile Include="Optimization\__init__.py" />
     <Compile Include="test\classify\__init__.py">
       <Publish>False</Publish>
     </Compile>
@@ -66,8 +68,8 @@
   <ItemGroup>
     <Folder Include="Classify\" />
     <Folder Include="Classify\icons\" />
-    <Folder Include="Edas" />
-    <Folder Include="Edas\Icons" />
+    <Folder Include="Optimization" />
+    <Folder Include="Optimization\Icons" />
     <Folder Include="test\" />
     <Folder Include="test\classify\" />
     <Folder Include="test\optimization\" />
@@ -110,49 +112,45 @@
     <Content Include="Classify\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Edas\GbBmdaWidget.ui">
+    <Content Include="Optimization\GbBmdaWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\GbCgaWidget.ui">
+    <Content Include="Optimization\GbCgaWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\GbCostFuncsWidget.ui">
+    <Content Include="Optimization\GbCostFuncsWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\GbTildaWidget.ui">
+    <Content Include="Optimization\GbUmdaCWidget.ui" />
+    <Content Include="Optimization\GbPbilCWidget..ui" />
+    <Content Include="Optimization\GbTildaWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\GbPbilWidget.ui">
+    <Content Include="Optimization\GbPbilWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\GbUmdaWidget.ui">
+    <Content Include="Optimization\GbUmdaWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\Icons\Cost_32.png">
+    <Content Include="Optimization\Icons\BlackBox.svg">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\Icons\Cost_40.png">
+    <Content Include="Optimization\Icons\Bmda.svg">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\Icons\Cost_48.png">
+    <Content Include="Optimization\Icons\Cga.svg">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\Icons\Cost_60.png">
+    <Content Include="Optimization\Icons\Cost.svg">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\Icons\Eda_16.png">
+    <Content Include="Optimization\Icons\Pbil.svg">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\Icons\Eda_32.png">
+    <Content Include="Optimization\Icons\Pbilc.svg">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Edas\Icons\Eda_40.png">
-      <Publish>True</Publish>
-    </Content>
-    <Content Include="Edas\Icons\Eda_48.png">
-      <Publish>True</Publish>
-    </Content>
-    <Content Include="Edas\Icons\Eda_60.png">
+    <Content Include="Optimization\Icons\Tilda.svg">
       <Publish>True</Publish>
     </Content>
   </ItemGroup>

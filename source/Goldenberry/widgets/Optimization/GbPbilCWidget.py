@@ -1,24 +1,24 @@
 """
-<name>Pbil</name>
-<description>Population-Based incremental algorithm.</description>
+<name>PBILc</name>
+<description>Continuous Population-Based incremental learning algorithm.</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/Eda.png</icon>
-<priority>100</priority>
+<icon>icons/Pbilc.svg</icon>
+<priority>50</priority>
 
 """
 
 from Goldenberry.widgets.GbBaseEdaWidget import GbBaseEdaWidget
-from Goldenberry.widgets import Pbil, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
+from Goldenberry.widgets import Tilda, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
 
-class GbPbilWidget(GbBaseEdaWidget):
-    """Widget for Pbil algorithm."""
+class GbPbilCWidget(GbBaseEdaWidget):
+    """Widget for PBILc algorithm."""
     
     learning_rate = 1.0
 
     def __init__(self, parent=None, signalManager=None):
-        self.optimizer = Pbil()
+        self.optimizer = Tilda()
         self.settingsList.append("learning_rate")
-        GbBaseEdaWidget.__init__(self, parent, signalManager, 'Pbil')
+        GbBaseEdaWidget.__init__(self, parent, signalManager, 'PBILc')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]
     

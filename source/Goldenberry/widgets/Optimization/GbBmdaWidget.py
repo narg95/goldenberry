@@ -1,9 +1,9 @@
 """
-<name>Bmda</name>
+<name>BMDA</name>
 <description>Bivariate marginal distribution algorithm.</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/Eda.png</icon>
-<priority>100</priority>
+<icon>icons/Bmda.svg</icon>
+<priority>80</priority>
 
 """
 
@@ -15,6 +15,6 @@ class GbBmdaWidget(GbBaseEdaWidget):
     
     def __init__(self, parent=None, signalManager=None):
         self.optimizer = Bmda()
-        GbBaseEdaWidget.__init__(self, parent, signalManager, 'Bmda')
+        GbBaseEdaWidget.__init__(self, parent, signalManager, 'BMDA')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]

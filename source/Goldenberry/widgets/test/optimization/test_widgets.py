@@ -4,13 +4,13 @@ from Goldenberry.optimization.cost_functions import *
 from Goldenberry.optimization.edas.Univariate import *
 from Goldenberry.optimization.base.GbCostFunction import *
 from PyQt4.QtGui import QApplication
-from Edas.GbCgaWidget import GbCgaWidget
-from Edas.GbBmdaWidget import GbBmdaWidget
-from Edas.GbUmdaWidget import GbUmdaWidget
-from Edas.GbPbilWidget import GbPbilWidget
-from Edas.GbCostFuncsWidget import GbCostFuncsWidget
-from Edas.GbTildaWidget import GbTildaWidget
-from Edas.GbOptTesterWidget import GbOptTesterWidget
+from Optimization.GbCgaWidget import GbCgaWidget
+from Optimization.GbBmdaWidget import GbBmdaWidget
+from Optimization.GbUmdaWidget import GbUmdaWidget
+from Optimization.GbPbilWidget import GbPbilWidget
+from Optimization.GbCostFuncsWidget import GbCostFuncsWidget
+from Optimization.GbTildaWidget import GbTildaWidget
+from Optimization.GbBlackBoxWidget import GbBlackBoxWidget
 
 import sys
 
@@ -98,17 +98,15 @@ class OptimizationWidgetsTest(TestCase):
 
     def test_cost_function_custom_code(self):        
         widget = GbCostFuncsWidget()
-        zeromax = widget.funcs_listbox.findItems(ZeroMax.__name__, QtCore.Qt.MatchExactly)[0]
-        widget.funcs_listbox.setCurrentItem(zeromax)
+        widget.tabs.setCurrentIndex(1)
         widget.accepted()
-        self.assertEqual(widget.cost_funcs.values()[widget.cost_func_sel_index[0]], ZeroMax)
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()     
 
     def test_test_optim_base(self):        
         var_size, cand_size = 10, 20
-        widget = GbOptTesterWidget()
+        widget = GbBlackBoxWidget()
         optimizer = Cga()
         optimizer.cost_func = GbCostFunction(OneMax)
         optimizer.setup(var_size, cand_size, max_evals = 5)
@@ -121,8 +119,8 @@ class OptimizationWidgetsTest(TestCase):
         self.assertEqual(widget.runs_table.columnCount(),12)
         self.assertEqual(widget.runs_table.rowCount(),20)
         #Uncomment only when testing the widget UI
-        widget.show()
-        self.app.exec_()
+        #widget.show()
+        #self.app.exec_()
 
     def tearDown(self):
        pass

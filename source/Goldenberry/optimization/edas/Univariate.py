@@ -1,5 +1,5 @@
 import numpy as np
-from Goldenberry.statistics.distributions import Binomial, Gaussian
+from Goldenberry.statistics.distributions import Binomial, GaussianTrunc
 from Goldenberry.optimization.edas.GbBaseEda import GbBaseEda
 from Goldenberry.optimization.base.GbSolution import GbSolution
 
@@ -36,7 +36,7 @@ class Tilda(GbBaseEda):
     high = 1.0
     
     def initialize(self):
-        self.distr = Gaussian(n = self.var_size)
+        self.distr = GaussianTrunc(n = self.var_size, low = self.low, high = self.high)
         self.acc_mean = np.zeros(self.var_size)
         self.acc_vars = np.zeros(self.var_size)
     

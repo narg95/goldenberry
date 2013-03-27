@@ -1,4 +1,5 @@
 import numpy as np
+import scipy.special as scs
 import itertools as it
 import abc
 import math
@@ -154,7 +155,7 @@ class Gaussian(GbBaseDistribution):
             self.n = n
             self.reset()
         elif means != None and stdevs != None:
-            self.n = len(mean)
+            self.n = len(means)
             self.means = means
             self.stdevs = stdevs
         else:
@@ -169,3 +170,29 @@ class Gaussian(GbBaseDistribution):
     def reset(self):
         self.means = np.zeros(self.n)
         self.stdevs = np.ones(self.n) 
+
+class GaussianTrunc(Gaussian):
+    
+    _sqrt2 = np.sqrt(2)
+
+    def __init__(self, n = None, means = None, stdevs = None, low = 0.0, high = 1.0 ):
+        Gaussian.__init__(self,n, means, stdevs)
+        if low >= high:
+            raise Exception("Low can not be greater or equals to the high threshold.")
+        self.low = low
+        self.high = high
+
+    def  sample(self, sample_size):
+        stdev_sqrt2 = (self.stdevs * self._sqrt2)
+        A= 0.5 * (1.0 + scs.erf((self.low - self.means) /stdev_sqrt2))
+        B= 0.5 * (1.0 + scs.erf((self.high - self.means) /stdev_sqrt2))
+        U= np.random.rand(sample_size, self.n)
+        Delta= B - A; 
+        R= self.stdevs * np.sqrt(2) * scs.erfinv(2 * (Delta * U + A) - 1.0) + self.means; 
+        return R
+        #stdev_sqrt2 = (self.stdevs * self._sqrt2)
+        #low_A= 0.5 * (1.0 + scs.erf((self.low - self.means)/stdev_sqrt2))
+        #high_B=  0.5 * (1 + scs.erf((self.high - self.means)/stdev_sqrt2))
+        #samplen = np.random.randn(sample_size, self.n)
+        #Delta = high_B - low_A 
+        #return stdev_sqrt2 * scs.erfinv(2.0 * (Delta * samplen + low_A) -1.0) + self.means
