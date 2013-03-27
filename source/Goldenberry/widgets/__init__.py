@@ -10,7 +10,7 @@ import sys
 import abc
 import inspect
 import types
-
+from Tkinter import Tk
 # optimization imports
 from Goldenberry.optimization.base.GbCostFunction import *
 from Goldenberry.optimization.base.GbBaseOptimizer import *

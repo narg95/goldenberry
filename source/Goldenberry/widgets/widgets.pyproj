@@ -34,17 +34,33 @@
     <Compile Include="Classify\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="Optimization\GbBmdaWidget.py" />
-    <Compile Include="Optimization\GbCgaWidget.py" />
-    <Compile Include="Optimization\GbCostFuncsWidget.py" />
-    <Compile Include="Optimization\GbBlackBoxWidget.py" />
-    <Compile Include="Optimization\GbUmdaCWidget.py" />
-    <Compile Include="Optimization\GbPbilCWidget.py" />
-    <Compile Include="Optimization\GbTildaWidget.py" />
+    <Compile Include="Optimization\GbBmdaWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Optimization\GbCgaWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Optimization\GbCostFuncsWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Optimization\GbBlackBoxWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Optimization\GbUmdaCWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Optimization\GbPbilCWidget.py">
+      <Publish>True</Publish>
+    </Compile>
+    <Compile Include="Optimization\GbTildaWidget.py">
+      <Publish>True</Publish>
+    </Compile>
     <Compile Include="Optimization\GbPbilWidget.py">
       <Publish>True</Publish>
     </Compile>
-    <Compile Include="Optimization\GbUmdaWidget.py" />
+    <Compile Include="Optimization\GbUmdaWidget.py">
+      <Publish>True</Publish>
+    </Compile>
     <Compile Include="Optimization\__init__.py" />
     <Compile Include="test\classify\__init__.py">
       <Publish>False</Publish>
@@ -112,6 +128,9 @@
     <Content Include="Classify\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
+    <Content Include="Optimization\GbBlackBoxWidget.ui">
+      <Publish>True</Publish>
+    </Content>
     <Content Include="Optimization\GbBmdaWidget.ui">
       <Publish>True</Publish>
     </Content>
@@ -121,8 +140,12 @@
     <Content Include="Optimization\GbCostFuncsWidget.ui">
       <Publish>True</Publish>
     </Content>
-    <Content Include="Optimization\GbUmdaCWidget.ui" />
-    <Content Include="Optimization\GbPbilCWidget..ui" />
+    <Content Include="Optimization\GbUmdaCWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Optimization\GbPbilCWidget..ui">
+      <Publish>True</Publish>
+    </Content>
     <Content Include="Optimization\GbTildaWidget.ui">
       <Publish>True</Publish>
     </Content>

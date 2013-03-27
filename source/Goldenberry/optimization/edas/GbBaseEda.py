@@ -4,7 +4,7 @@ from Goldenberry.optimization.base.GbBaseOptimizer import GbBaseOptimizer
 from Goldenberry.optimization.base.GbSolution import GbSolution
 
 class GbBaseEda(GbBaseOptimizer):
-    """This class represents a solution with a cost associated."""
+    """This class represents a base class for Estimation of distribution algorithm."""
     __metaclass__ = abc.ABCMeta
 
     distr = None

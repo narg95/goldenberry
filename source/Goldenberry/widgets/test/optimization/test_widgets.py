@@ -107,20 +107,25 @@ class OptimizationWidgetsTest(TestCase):
     def test_test_optim_base(self):        
         var_size, cand_size = 10, 20
         widget = GbBlackBoxWidget()
-        optimizer = Cga()
-        optimizer.cost_func = GbCostFunction(OneMax)
-        optimizer.setup(var_size, cand_size, max_evals = 5)
-        widget.set_optimizer((optimizer, 'Cga'),0)
+        optimizer1 = Cga()
+        optimizer1.cost_func = GbCostFunction(OneMax)
+        optimizer1.setup(var_size, cand_size)
+        widget.set_optimizer((optimizer1, 'Cga'),0)
+
+        optimizer2 = Tilda()
+        optimizer2.cost_func = GbCostFunction(OneMax)
+        optimizer2.setup(var_size, cand_size)
+        widget.set_optimizer((optimizer2, 'Tilda'),1)
 
         widget.execute()
-        self.assertEqual(widget.total_runs,widget.runs_results.__len__())
+        self.assertEqual(widget.total_runs * 2, len(widget.runs_results))
         self.assertEqual(widget.experiments_table.columnCount(),18)
-        self.assertEqual(widget.experiments_table.rowCount(),1)
+        self.assertEqual(widget.experiments_table.rowCount(),2)
         self.assertEqual(widget.runs_table.columnCount(),12)
-        self.assertEqual(widget.runs_table.rowCount(),20)
+        self.assertEqual(widget.runs_table.rowCount(),20 * 2)
         #Uncomment only when testing the widget UI
-        #widget.show()
-        #self.app.exec_()
+        widget.show()
+        self.app.exec_()
 
     def tearDown(self):
        pass

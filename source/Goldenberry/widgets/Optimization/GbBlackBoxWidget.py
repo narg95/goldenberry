@@ -6,7 +6,7 @@
 <priority>1020</priority>
 """
 
-from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbBlackBoxTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple
+from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbBlackBoxTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple, load_widget_ui, Tk, QObject
 import thread
 
 class GbBlackBoxWidget(OWWidget):
@@ -19,27 +19,25 @@ class GbBlackBoxWidget(OWWidget):
         OWWidget.__init__(self, parent,signalManager, title='Optimaze Tester')
         self.setup_interfaces()
         self.setup_ui()
-        self.resize(755,435)
         
     def setup_interfaces(self):
          self.inputs = [("Optimizer", GbBaseOptimizer, self.set_optimizer, Multiple)]
     
     def setup_ui(self):
-        OWGUI.spin(self.controlArea, self, "total_runs", 1, 1000, box="Number of Runs")
-        OWGUI.button(self.controlArea, self, "Run", callback = self.execute)
-        self.tabs = OWGUI.tabWidget(self.mainArea)
-        self.experimentTab = OWGUI.createTabPage(self.tabs, "Experiment")
-        self.runTab = OWGUI.createTabPage(self.tabs, "Especific Run")
+        load_widget_ui(self)
+        OWGUI.spin(self.paramBox, self, "total_runs", 1, 1000)
         self.define_tables()
-        OWGUI.button(self.mainArea, self, "Copy Tables to Clipboard", callback = self.copy_table, tooltip ='Copy the information of the two tables to the clipboard and paste It')
-        self.adjustSize()
+
+        # Subscribe to signals
+        QObject.connect(self.run_button,QtCore.SIGNAL("clicked()"), self.execute)
+        QObject.connect(self.copy_label,QtCore.SIGNAL("linkActivated()"), self.copy_table)
 
     def define_tables(self):        
-        self.experiments_table = OWGUI.table(self.experimentTab, selectionMode=QTableWidget.MultiSelection)
+        self.experiments_table = OWGUI.table(self.summary_tab, selectionMode=QTableWidget.MultiSelection)
         self.experiments_table.setColumnCount(18)
-        self.experiments_table.setHorizontalHeaderLabels(["Name","Mean(Evals.)","Var(Evals.)","Min(Evals.)", "Max(Evals.)","Mean(Costs)","Var(Costs)","Min(Costs)", "Max(Costs)","Mean(Mean)","Var(Mean)","Min(Mean)", "Max(Mean)","Mean(Vars.)","Var(Vars.)","Min(Vars.)", "Max(Vars.)", "Total Time"])
+        self.experiments_table.setHorizontalHeaderLabels(["Name","Mean(Evals)","Var(Evals)","Min(Evals)", "Max(Evals)","Mean(Costs)","Var(Costs)","Min(Costs)", "Max(Costs)","Mean(Mean)","Var(Mean)","Min(Mean)", "Max(Mean)","Mean(Vars.)","Var(Vars.)","Min(Vars.)", "Max(Vars.)", "Total Time"])
         self.experiments_table.setSortingEnabled(True)
-        self.runs_table = OWGUI.table(self.runTab, selectionMode=QTableWidget.MultiSelection)
+        self.runs_table = OWGUI.table(self.details_tab, selectionMode=QTableWidget.MultiSelection)
         self.runs_table.setColumnCount(12)
         self.runs_table.setHorizontalHeaderLabels(["Name","#Run","Best","Cost"," evals", "found(min)", "found(max)", "min", "max", "mean", "variance", "time"])
         self.runs_table.setSortingEnabled(True)
