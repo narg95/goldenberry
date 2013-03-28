@@ -54,7 +54,7 @@ class GbCostFunction:
         
         mean = self.acc_mean / float(self.evals)
         var = self.acc_var / float(self.evals) - mean*mean
-        return self.evals, self.argmin, self.argmax, self.min, self.max, mean, var
+        return self.evals, self.argmin, self.argmax, self.min, self.max, mean, np.sqrt(var)
 
     def reset_statistics(self):
         self.evals = 0

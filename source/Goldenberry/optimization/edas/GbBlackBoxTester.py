@@ -16,27 +16,26 @@ class GbBlackBoxTester(object):
         test_results = []
         means=[]
         evals=[]
-        vars=[]
+        stds=[]
         costs=[]
         times=[] 
         
         for run_id in range(num_evals):
-            start= time.time()
+            tic= time.time()
             result = optimizer.search()
-            total_time= time.time()-start
-            eval, argmin, argmax, min, max, mean, var = optimizer.cost_func.statistics()
-            run_results.append((run_id, result.params, result.cost, eval, argmin, argmax, min, max, mean, var,total_time))
-            times.append(total_time) 
+            toc= time.time()- tic
+            eval, argmin, argmax, min, max, mean, std = optimizer.cost_func.statistics()
+            run_results.append((result.params, result.cost, eval, toc, mean, std, min, max, argmin, argmax, run_id))
+            times.append(toc) 
             means.append(mean)
-            vars.append(var)
+            stds.append(std)
             costs.append(result.cost)
             evals.append(eval)
             optimizer.reset()
-            total_time=0
-            start=0
-        test_results =(np.mean(evals), np.var(evals), np.min(evals), np.max(evals), \
-                       np.mean(costs), np.var(costs), np.min(costs), np.max(costs), \
-                       np.mean(means), np.var(means), np.min(means), np.max(means), \
-                       np.mean(vars), np.var(vars), np.min(vars), np.max(vars), np.sum(times))
-        
+
+        test_results =(np.max(costs), np.average(costs), np.average(evals), np.average(times), \
+                       np.std(costs), np.std(evals), np.std(times), \
+                       np.min(costs), np.min(evals), np.min(times), \
+                       np.max(evals), np.max(times))
+
         return run_results, test_results

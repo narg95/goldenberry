@@ -119,13 +119,13 @@ class OptimizationWidgetsTest(TestCase):
 
         widget.execute()
         self.assertEqual(widget.total_runs * 2, len(widget.runs_results))
-        self.assertEqual(widget.experiments_table.columnCount(),18)
+        self.assertEqual(widget.experiments_table.columnCount(),12)
         self.assertEqual(widget.experiments_table.rowCount(),2)
         self.assertEqual(widget.runs_table.columnCount(),12)
         self.assertEqual(widget.runs_table.rowCount(),20 * 2)
         #Uncomment only when testing the widget UI
-        widget.show()
-        self.app.exec_()
+        #widget.show()
+        #self.app.exec_()
 
     def tearDown(self):
        pass
