@@ -10,46 +10,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>283</height>
+    <width>470</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Black Box Tester</string>
   </property>
-  <widget class="QLabel" name="copy_label">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>260</y>
-     <width>86</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::ClickFocus</enum>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline; color:#5500ff;&quot;&gt;Copy to Clipboard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::RichText</enum>
-   </property>
-  </widget>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QWidget" name="main_widget" native="true">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
-     <width>451</width>
-     <height>201</height>
+     <y>0</y>
+     <width>439</width>
+     <height>319</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_6">
-    <item>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="2" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -82,48 +66,61 @@
       </widget>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="expBox">
+      <property name="title">
+       <string>Experiment Repetitions</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QWidget" name="paramBox" native="true"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="run_button">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Run</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="copy_label">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline; color:#5500ff;&quot;&gt;Copy to Clipboard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::RichText</enum>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
-  <widget class="QGroupBox" name="expBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>181</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Experiment Repetition</string>
-   </property>
-   <widget class="QWidget" name="paramBox" native="true">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>120</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QPushButton" name="run_button">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>20</y>
-     <width>91</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Run</string>
-   </property>
-  </widget>
-  <zorder>expBox</zorder>
-  <zorder>widget</zorder>
-  <zorder>copy_label</zorder>
-  <zorder>run_button</zorder>
  </widget>
  <resources/>
  <connections/>

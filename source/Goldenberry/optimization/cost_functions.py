@@ -1,23 +1,23 @@
 import numpy as np
 
 def OneMax(self, solution):
-    """It calculates the total number of ones in a vector."""
+    """Computes the total number of ones in the candidate solution."""
     return solution.sum()
 
 def LeadingOnes(self, solution):
-    """it counts the number of ones in your vector, starting at the beginning, until a zero is encountered."""
+    """Counts the number of ones in the candidate solution, starting at the beginning, until a zero is encountered."""
     loc = numpy.where(solution == 0.0)[0]
     if len(loc) > 0:
         return loc[0]
     return len(solution)
 
 def LeadingOnesBlocks(self, solution):
-    """Given a block size, we count the number of strings of ones until a zero is found."""
-    block_size = 1
-    loc = numpy.where(solution == 0.0)[0]
-    if len(loc) > 0:
-        return loc[0]
-    return len(solution)
+    """Given a block size, counts the number of strings of ones until a zero is found."""
+    block_size = 3
+    score = 0.0
+    for idx in range(len(solution)/block_size):
+        score += solution[(idx)*block_size:(idx + 1)*block_size].prod()    
+    return score
 
 def Traps(self, solution):
     """it counts the number of ones in your vector, starting at the beginning, until a zero is encountered."""

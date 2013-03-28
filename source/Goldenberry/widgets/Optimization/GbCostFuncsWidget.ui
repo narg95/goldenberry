@@ -43,6 +43,9 @@
      <string>Benchmarks</string>
     </attribute>
     <widget class="QTextEdit" name="benchmark_text">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -50,6 +53,9 @@
        <width>301</width>
        <height>121</height>
       </rect>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;

@@ -20,7 +20,7 @@ class CostFunctionTest(TestCase):
         exp_cost3 = func(sample3)
         evals, argmin, argmax, min, max, mean, stdev = func.statistics()
         self.assertEqual((evals, argmin, argmax, min, max, mean), (3,2,3,cost2,cost3,3.0))
-        self.assertAlmostEqual(stdev, 2.0/3.0, 5)
+        self.assertAlmostEqual(stdev, np.sqrt(2.0/3.0), 5)
 
 
     def test_zero(self):
@@ -28,6 +28,16 @@ class CostFunctionTest(TestCase):
         func = GbCostFunction(ZeroMax)
         self.assertEqual(func(sample), 3)
 
+    def test_LeadingOnesBlocks(self):
+        sample = np.array([1, 1, 1, 0, 0, 0, 1, 0, 1])
+        self.assertEqual(LeadingOnesBlocks(None, sample), 1)
+        sample = np.array([1, 1, 1, 1, 0, 1, 1, 0, 1])
+        self.assertEqual(LeadingOnesBlocks(None, sample), 1)
+        sample = np.array([1, 1, 1, 1, 1, 1, 0, 1, 0])
+        self.assertEqual(LeadingOnesBlocks(None, sample), 2)
+        sample = np.array([1, 1, 1, 1, 1, 1, 1, 1, 1])
+        self.assertEqual(LeadingOnesBlocks(None, sample), 3)
+    
     #def test_condonemax_base(self):
     #    length = 10
     #    func = CondOnemax()

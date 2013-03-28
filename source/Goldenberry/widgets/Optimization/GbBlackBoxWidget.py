@@ -25,6 +25,8 @@ class GbBlackBoxWidget(OWWidget):
     
     def setup_ui(self):
         load_widget_ui(self)
+        self.clean_layout()
+        self.layout().addWidget(self.main_widget)
         OWGUI.spin(self.paramBox, self, "total_runs", 1, 1000)
         self.define_tables()
 
@@ -32,15 +34,27 @@ class GbBlackBoxWidget(OWWidget):
         QObject.connect(self.run_button,QtCore.SIGNAL("clicked()"), self.execute)
         QObject.connect(self.copy_label,QtCore.SIGNAL("linkActivated()"), self.copy_table)
 
+    def clean_layout(self):
+        while(self.layout().count() > 0):
+            self.layout().removeItem(self.layout().takeAt(0))
+
     def define_tables(self):        
         self.experiments_table = OWGUI.table(self.summary_tab, selectionMode=QTableWidget.MultiSelection)
-        self.experiments_table.setColumnCount(18)
-        self.experiments_table.setHorizontalHeaderLabels(["Name","Mean(Evals)","Var(Evals)","Min(Evals)", "Max(Evals)","Mean(Costs)","Var(Costs)","Min(Costs)", "Max(Costs)","Mean(Mean)","Var(Mean)","Min(Mean)", "Max(Mean)","Mean(Vars.)","Var(Vars.)","Min(Vars.)", "Max(Vars.)", "Total Time"])
-        self.experiments_table.setSortingEnabled(True)
+        self.experiments_table.setColumnCount(12)
+        self.experiments_table.setHorizontalHeaderLabels(["Name",\
+            "Cost(max)", "Cost(avg)", "#Evals(avg)", "Time[s](avg)", \
+            "Cost(std)", "#Evals(std)", "Time[s](std)", \
+            "Cost(min)", "#Evals(min)", "Time[s](min)", \
+            "#Evals(max)", "Time[s](max)"])
+        self.experiments_table.resizeColumnsToContents()
+
         self.runs_table = OWGUI.table(self.details_tab, selectionMode=QTableWidget.MultiSelection)
         self.runs_table.setColumnCount(12)
-        self.runs_table.setHorizontalHeaderLabels(["Name","#Run","Best","Cost"," evals", "found(min)", "found(max)", "min", "max", "mean", "variance", "time"])
+        self.runs_table.setHorizontalHeaderLabels([\
+            "Name","Best","Cost","#Evals", "Time[s]",\
+            "Avg", "Std", "Min", "Max", "Min(idx.)", "Max(idx.)", "#Run"])
         self.runs_table.setSortingEnabled(True)
+        self.runs_table.resizeColumnsToContents()
 
     def set_optimizer(self, optimizer, id=None):
         if self.optimizers.has_key(id):
@@ -74,7 +88,7 @@ class GbBlackBoxWidget(OWWidget):
         for rowidx, result_item in enumerate(results):
             table.insertRow(rowidx)
             for colidx, item in enumerate(result_item):
-                table.setItem(rowidx, colidx, QtGui.QTableWidgetItem(str(item)))
+                table.setItem(rowidx, colidx, QtGui.QTableWidgetItem(str(item)))            
 
     def copy_table(self):
         text=''
