@@ -37,7 +37,15 @@ class GbCostFuncsWidget(OWWidget):
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
         QObject.connect(self.buttonBox,QtCore.SIGNAL("rejected()"), self.rejected)
+        QObject.connect(self.copy_button,QtCore.SIGNAL("clicked()"), self.copy)
+        QObject.connect(self.paste_button,QtCore.SIGNAL("clicked()"), self.paste)
     
+    def copy(self):
+        QApplication.clipboard().setText(self.benchmark_text.toPlainText(), QClipboard.Clipboard)
+    
+    def paste(self):
+        self.custom_text.setText(QApplication.clipboard().text())
+
     def func_selected(self):
         self.benchmark_text.clear()
         if len(self.cost_func_sel_index) > 0:
