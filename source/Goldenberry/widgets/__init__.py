@@ -2,7 +2,7 @@ import Orange
 from orngWrap import PreprocessedLearner
 from Orange.OrangeWidgets.OWWidget import OWWidget, Multiple
 from Orange.OrangeWidgets import OWGUI
-from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget
+from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget, QClipboard
 from PyQt4.QtCore import QObject, Qt
 from PyQt4 import QtCore, QtGui, uic
 import os
