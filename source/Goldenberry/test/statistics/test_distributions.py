@@ -166,3 +166,11 @@ class GaussianTruncTest(TestCase):
         samples = dist.sample(100)
         self.assertTrue((samples <= 1.0).all())
         self.assertTrue((samples >= 0.0).all())
+
+    def test_sample_one_to_two(self):
+        n = 10
+        means, stdevs = np.tile(0.5, n), np.ones(n)
+        dist = GaussianTrunc(means = means, stdevs = stdevs, low = 1.0, high = 2.0)
+        samples = dist.sample(100)
+        self.assertTrue((samples <= 2.0).all())
+        self.assertTrue((samples >= 1.0).all())

@@ -158,7 +158,7 @@ class TildaTest(TestCase):
     """Test class for the tilda algorithm"""
     def test_basic(self):
         tilda = Tilda()
-        tilda.setup(10, 30, learning_rate = 1.0)
+        tilda.setup(10, 30, learning_rate = 0.5)
         tilda.cost_func = GbCostFunction(OneMax)
         result = tilda.search()
         #self.assertTrue((result.params < 0.1).all())
