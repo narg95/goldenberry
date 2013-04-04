@@ -190,9 +190,4 @@ class GaussianTrunc(Gaussian):
         Delta= B - A; 
         R= self.stdevs * np.sqrt(2) * scs.erfinv(2 * (Delta * U + A) - 1.0) + self.means; 
         return R
-        #stdev_sqrt2 = (self.stdevs * self._sqrt2)
-        #low_A= 0.5 * (1.0 + scs.erf((self.low - self.means)/stdev_sqrt2))
-        #high_B=  0.5 * (1 + scs.erf((self.high - self.means)/stdev_sqrt2))
-        #samplen = np.random.randn(sample_size, self.n)
-        #Delta = high_B - low_A 
-        #return stdev_sqrt2 * scs.erfinv(2.0 * (Delta * samplen + low_A) -1.0) + self.means
+  

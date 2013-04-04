@@ -61,6 +61,7 @@ class GbBaseEda(GbBaseOptimizer):
         best = GbSolution(None, float('-Inf'))
         top_ranked = None
         while not self.done():
+            self.iters += 1
             candidates = self.sample(self.sample_size, top_ranked, best)
             top_ranked, winner = self.get_top_ranked(candidates)
             self.estimate(top_ranked, best)
@@ -68,8 +69,6 @@ class GbBaseEda(GbBaseOptimizer):
             if best.cost < winner.cost:
                 best = winner
             
-            self.iters += 1
-
         return best
 
     def done(self):

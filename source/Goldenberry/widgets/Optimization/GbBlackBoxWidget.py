@@ -6,8 +6,7 @@
 <priority>1020</priority>
 """
 
-from Goldenberry.widgets import GbBaseOptimizer, uic, QtCore, GbBlackBoxTester, QtGui, OWWidget, OWGUI, QTableWidget, Qt, Multiple, load_widget_ui, Tk, QObject
-import thread
+from Goldenberry.widgets import *
 
 class GbBlackBoxWidget(OWWidget):
     runs_results=[]
@@ -32,7 +31,7 @@ class GbBlackBoxWidget(OWWidget):
 
         # Subscribe to signals
         QObject.connect(self.run_button,QtCore.SIGNAL("clicked()"), self.execute)
-        QObject.connect(self.copy_label,QtCore.SIGNAL("linkActivated()"), self.copy_table)
+        QObject.connect(self.copy_button,QtCore.SIGNAL("clicked()"), self.copy_table)
 
     def clean_layout(self):
         while(self.layout().count() > 0):
@@ -94,11 +93,7 @@ class GbBlackBoxWidget(OWWidget):
         text=''
         text=text + self.selectTableItems(self.experiments_table)
         text=text + self.selectTableItems(self.runs_table)
-        r = Tk()
-        r.withdraw()
-        r.clipboard_clear()
-        r.clipboard_append(text)
-        r.destroy()
+        QApplication.clipboard().setText(text, QClipboard.Clipboard)
 
     def selectTableItems(self, table):
         num_rows=0
