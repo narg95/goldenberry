@@ -4,7 +4,7 @@ import sys
 import inspect
 import imp
 import optimization.cost_functions
-from optimization.cost_functions import CostFunctionTest
+
 
 if __name__ == "__main__":
 
@@ -14,6 +14,7 @@ if __name__ == "__main__":
                     'optimization.edas.test_edas.PbilTest',
                     'optimization.edas.test_edas.BmdaTest',
                     'optimization.edas.test_edas.TildaTest',
+                    'optimization.edas.test_edas.PbilcTest',
                     'optimization.edas.test_edas.OptmizerTesterTest',
                     'statistics.test_distributions.BinomialTest',
                     'statistics.test_distributions.BivariateBinomialTest',
