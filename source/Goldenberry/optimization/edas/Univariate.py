@@ -82,3 +82,16 @@ class Tilda(GbBaseEda):
 
         vars = vars*(1-learning_rate) + (acc_vars - acc_means*acc_means)*learning_rate            
         return means, vars
+
+class Pbilc(GbBaseEda):
+    """PBILc algorithm."""
+
+    low = 0.0
+    high = 1.0
+    
+    def initialize(self):
+        self.distr = GaussianTrunc(n = self.var_size, low = self.low, high = self.high)
+    
+    def estimate(self, top_ranked, best):
+        self.distr.means = self.distr.means * (1 - self.learning_rate) + np.average(top_ranked) * self.learning_rate
+        self.distr.stdevs = self.distr.stdevs * (1 - self.learning_rate) + np.std(top_ranked) * self.learning_rate

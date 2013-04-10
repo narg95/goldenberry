@@ -89,7 +89,7 @@ class GbBaseEda(GbBaseOptimizer):
         return candidates[index], GbSolution(candidates[index[0]], fits[index[0]])
 
     @abc.abstractmethod
-    def estimate(self, candidates, best):
+    def estimate(self, top_ranked, best):
         """Updates the current distribution."""
         raise NotImplementedError()
 
