@@ -34,32 +34,31 @@ class Tilda(GbBaseEda):
 
     low = 0.0
     high = 1.0
-    
+        
     def initialize(self):
         self.distr = GaussianTrunc(n = self.var_size, low = self.low, high = self.high)
         self.acc_mean = np.zeros(self.var_size)
-        self.acc_vars = np.zeros(self.var_size)
+        self.acc_vars = np.zeros(self.var_size)        
     
     def sample(self, sample_size, top_ranked, best):
         """Generates the new pair of candidates"""
         return self.distr.sample(2)
 
     def estimate(self, winner, best):
-        if self.iters % (self.cand_size/2) != 0:
-            self.acc_mean += winner.params
-            self.acc_vars += winner.params*winner.params
-        else:
-            means, vars = \
+        self.acc_mean += winner.params
+        self.acc_vars += winner.params*winner.params        
+        if self.iters % (self.cand_size/2) == 0:
+            means, stds = \
                 Tilda._estimate_gaussian(\
                     self.distr.means, \
-                    self.distr.stdevs * self.distr.stdevs, \
+                    self.distr.stdevs, \
                     self.acc_mean, \
                     self.acc_vars, \
                     best, \
                     self.cand_size, \
                     self.learning_rate)
             self.distr.means = means
-            self.distr.stdevs = np.sqrt(vars)
+            self.distr.stdevs = stds
             self.acc_mean = np.zeros(self.var_size)
             self.acc_vars = np.zeros(self.var_size)
 
@@ -70,18 +69,18 @@ class Tilda(GbBaseEda):
         return  winner, winner
 
     @staticmethod
-    def _estimate_gaussian(means, vars, acc_means, acc_vars, best, cand_size, learning_rate):
-        acc_means = acc_means/float(cand_size)
-        acc_vars = acc_vars/float(cand_size)
-        if None != best.params:
-            means = means*(1.0 - learning_rate) + \
-                                learning_rate*((acc_means + best.params) / 2.0)
-        else:
-            means = means*(1.0 - learning_rate) + \
+    def _estimate_gaussian(means, stds, acc_means, acc_vars, best, cand_size, learning_rate):
+        acc_means = acc_means/float(cand_size/2.0)
+        acc_std = np.sqrt((acc_vars/float(cand_size/2.0)) - np.square(acc_means))
+        #if None != best.params:
+        #    means = means*(1.0 - learning_rate) + \
+        #                        learning_rate*((acc_means + best.params) / 2.0)
+        #else:
+        means = means*(1.0 - learning_rate) + \
                                 learning_rate * (acc_means)
 
-        vars = vars*(1-learning_rate) + (acc_vars - acc_means*acc_means)*learning_rate            
-        return means, vars
+        stds = stds * (1-learning_rate) + acc_std * learning_rate
+        return means, stds
 
 class Pbilc(GbBaseEda):
     """PBILc algorithm."""
