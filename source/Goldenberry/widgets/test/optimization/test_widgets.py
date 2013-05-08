@@ -93,8 +93,8 @@ class OptimizationWidgetsTest(TestCase):
         widget.accepted()
         self.assertEqual(widget.cost_funcs.values()[widget.cost_func_sel_index[0]], OneMax)
         #Uncomment only when testing the widget UI
-        widget.show()
-        self.app.exec_()     
+        #widget.show()
+        #self.app.exec_()     
 
     def test_cost_function_custom_code(self):        
         widget = GbCostFuncsWidget()
