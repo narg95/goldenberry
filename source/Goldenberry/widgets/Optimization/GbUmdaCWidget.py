@@ -24,7 +24,6 @@ class GbUmdaCWidget(GbBaseEdaWidget):
     
     def setup_ui(self):
         GbBaseEdaWidget.setup_ui(self)
-        self.paramBox.layout().addRow(learning_editor.box, learning_editor)
 
     def setup_optimizer(self):
         self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals, learning_rate = 1.0)   
