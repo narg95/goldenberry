@@ -28,10 +28,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Classify\GbPerceptronWidget.py">
-      <Publish>False</Publish>
+    <Compile Include="Learners\GbPerceptronWidget.py">
+      <Publish>True</Publish>
     </Compile>
-    <Compile Include="Classify\__init__.py">
+    <Compile Include="Learners\__init__.py">
       <Publish>False</Publish>
     </Compile>
     <Compile Include="Optimization\GbBmdaWidget.py">
@@ -82,8 +82,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classify\" />
-    <Folder Include="Classify\icons\" />
+    <Folder Include="Learners" />
+    <Folder Include="Learners\icons" />
     <Folder Include="Optimization" />
     <Folder Include="Optimization\Icons" />
     <Folder Include="test\" />
@@ -92,40 +92,40 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="before_publish.bat" />
-    <Content Include="Classify\GbPerceptronWidget.ui">
+    <Content Include="Learners\GbPerceptronWidget.ui">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="Learners\icons\kernelPerceptron_16.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\kernelPerceptron_16.png">
+    <Content Include="Learners\icons\kernelPerceptron_32.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\kernelPerceptron_32.png">
+    <Content Include="Learners\icons\kernelPerceptron_40.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\kernelPerceptron_40.png">
+    <Content Include="Learners\icons\kernelPerceptron_48.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\kernelPerceptron_48.png">
+    <Content Include="Learners\icons\kernelPerceptron_60.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\kernelPerceptron_60.png">
+    <Content Include="Learners\icons\perceptron_16.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\perceptron_16.png">
+    <Content Include="Learners\icons\perceptron_32.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\perceptron_32.png">
+    <Content Include="Learners\icons\perceptron_40.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\perceptron_40.png">
+    <Content Include="Learners\icons\perceptron_48.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\perceptron_48.png">
+    <Content Include="Learners\icons\perceptron_60.png">
       <Publish>False</Publish>
     </Content>
-    <Content Include="Classify\icons\perceptron_60.png">
-      <Publish>False</Publish>
-    </Content>
-    <Content Include="Classify\test_data_2d.tab">
+    <Content Include="Learners\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
     <Content Include="Optimization\GbBlackBoxWidget.ui">
