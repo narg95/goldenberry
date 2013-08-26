@@ -96,34 +96,34 @@
       <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\kernelPerceptron_16.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\kernelPerceptron_32.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\kernelPerceptron_40.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\kernelPerceptron_48.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\kernelPerceptron_60.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\perceptron_16.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\perceptron_32.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\perceptron_40.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\perceptron_48.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\icons\perceptron_60.png">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Content>
     <Content Include="Learners\test_data_2d.tab">
       <Publish>False</Publish>

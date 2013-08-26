@@ -35,7 +35,8 @@ class GbPerceptronWidget(OWWidget):
 
     def setup_ui(self):
         # Loads the UI from an .ui file.
-        self.controlArea = uic.loadUi(os.path.dirname(__file__) + "\\GbPerceptronWidget.ui", self)    
+        self.name = self.captionTitle
+        load_widget_ui(self)
         
         # Subscribe to signals
         QObject.connect(self.buttonBox,QtCore.SIGNAL("accepted()"), self.accepted)
