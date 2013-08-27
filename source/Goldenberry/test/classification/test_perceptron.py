@@ -54,4 +54,5 @@ class PerceptronTest(TestCase):
             Orange.evaluation.scoring.CA(results)[i], Orange.evaluation.scoring.IS(results)[i],
             Orange.evaluation.scoring.Brier_score(results)[i], Orange.evaluation.scoring.AUC(results)[i])
 
-
+    def test_multiclass_one_vs_one_learner():
+        data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")

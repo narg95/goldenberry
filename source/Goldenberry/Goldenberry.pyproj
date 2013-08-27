@@ -51,6 +51,7 @@
     <Compile Include="classification\OnlineKernelPerceptron.py" />
     <Compile Include="classification\KernelPerceptron.py" />
     <Compile Include="classification\Kernels.py" />
+    <Compile Include="classification\MulticlassLearner.py" />
     <Compile Include="classification\Perceptron.py" />
     <Compile Include="classification\__init__.py" />
     <Compile Include="optimization\base\GbCostFunction.py" />
