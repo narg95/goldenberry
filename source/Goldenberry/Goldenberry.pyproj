@@ -109,6 +109,7 @@
     <Content Include="test\classification\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
+    <Content Include="test\classification\test_data_3d.tab" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

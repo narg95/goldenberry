@@ -5,19 +5,21 @@ import itertools as iter
 class OneVsAllMulticlassLearner:
     """Multiclass learner algorithm."""
     
-    def learn(self, (X,Y), binary_learner_type, max_iter = 10, n_classes = 2, *args):
-        nY = np.eye(n_classes)*2 -1
-        learners = [learner_type() for i in range(n_classes)]
-        for i in range(i_classes):
+    def __init__(self, learner_type, n_classes, max_iter=10, **kargs):
+        self.nY = np.eye(n_classes,dtype= int) * 2 - 1
+        self.learners = [learner_type(**kargs) for i in range(n_classes)]
+        self.n_classes = n_classes
+        self.max_iter = max_iter
+    
+    def learn(self, (X,Y)):
+        for i in range(self.n_classes):
             index = i
-            learner = learner_type()
-            result = None
+            learner = self.learners[i]
             for j in range(self.max_iter):
-                result = learner.learn((X,nY[i][Y]), result, *args)    
-                if learner.has_learned(result):
-                    break
-            learners[index] = learner, result
+                learner.learn((X,self.nY[i][Y.astype(int)]))    
+                if learner.has_learned():
+                    break            
 
-    def predict(self, X, learners, *args):
-        
-                    
+    def predict(self, X):
+        classification = np.array([np.maximum(classifier.predict(X), 0.0) for classifier in self.learners])
+        return np.argmax(classification ,axis = 0)
