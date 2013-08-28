@@ -1,4 +1,6 @@
 from Goldenberry.classification.Perceptron import *
+from Goldenberry.classification.MulticlassLearner import *
+
 import Orange
 import os
 import itertools as itert
@@ -14,10 +16,9 @@ class PerceptronTest(TestCase):
     
     def test_basic(self):
         perceptron = Perceptron()
-        W, B, K = None, 0, None
-        while None == K or K > 0:
-            W, B, K = perceptron.learn((self.X, self.Y),(W, B))
-        prediction = perceptron.predict(self.X, (W, B))
+        while perceptron.has_learned():
+            perceptron.learn((self.X, self.Y))
+        prediction = perceptron.predict(self.X)
 
         for yp, yi in itert.imap(lambda y1, y2 : (y1, -1 if y2 == 0 else y2), prediction, self.Y):
             self.assertEqual(yp, yi)
@@ -54,5 +55,11 @@ class PerceptronTest(TestCase):
             Orange.evaluation.scoring.CA(results)[i], Orange.evaluation.scoring.IS(results)[i],
             Orange.evaluation.scoring.Brier_score(results)[i], Orange.evaluation.scoring.AUC(results)[i])
 
-    def test_multiclass_one_vs_one_learner():
-        data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")
+    def test_multiclass_one_vs_one_learner(self):
+        data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_3d.tab")
+        X, Y, _ = data.to_numpy()
+        n_classes = len(data.domain.class_var.values)
+        m_learner = OneVsAllMulticlassLearner(Perceptron, n_classes)
+        m_learner.learn((X, Y))
+        predictions = m_learner.predict(X)
+        self.assertEqual((predictions - Y).sum(),0.0)

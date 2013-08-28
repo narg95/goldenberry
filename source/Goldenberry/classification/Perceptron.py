@@ -7,29 +7,37 @@ import Orange
 class Perceptron:
     """Perceptron algorithm"""
 
-    class PerceptronResult:
-        W, B, K, R
-        
-        def __init__(self):
-            W = None
-            B = 0.0
-            K = 0
-            R = 0.0
+    def __init__(self, W = None, B= 0.0, K = None, R = 0.0, lr = 1.0):
+        self.W = W
+        self.B = B
+        self.K = K
+        self.R = R
+        self.lr = lr
 
-    def learn(self, (X, Y), p = PerceptronResult(), lr = 1.0):
-        p.W = np.zeros(X.shape[1]) if None == p.W else p.W
+    def reset():
+        self.W = None
+        self.B = 0.0
+        self.K = None
+        self.R = 0.0
+        self.lr = 1.0
+
+    def has_learned(self):
+        return self.K == 0
+
+    def learn(self, (X, Y)):
+        self.K = 0 if self.K == None else self.K
+        self.W = np.zeros(X.shape[1]) if None == self.W else self.W
         # max norm from training set.
-        p.R = np.multiply(X, X).sum(axis=1).max()
+        self.R = np.multiply(X, X).sum(axis=1).max()
 
         for xi, yi in iter.imap(lambda x,y : (x, -1 if y == 0 else y) ,X, Y):
-            if yi*(p.W.dot(xi) + p.B) <= 0 :
-                p.W += lr*yi*xi
-                p.B += lr*yi*p.R
-                p.K += 1
-        return p
+            if yi*(self.W.dot(xi) + self.B) <= 0 :
+                self.W += self.lr*yi*xi
+                self.B += self.lr*yi*self.R
+                self.K += 1
 
-    def predict(self, X, p):
-        return (X.dot(W.T) + B)/R        
+    def predict(self, X):
+        return (X.dot(self.W.T) + self.B)/self.R        
                     
 class PerceptronLearner(Learner):
     """Kernel perceptron learner"""
@@ -38,7 +46,7 @@ class PerceptronLearner(Learner):
         self.max_iter = max_iter
         self.lr = lr
         self.name = name
-        
+
     def __call__(self,data,weight=0):
         """Learn from the given table of data instances."""
         
@@ -63,8 +71,7 @@ class PerceptronLearner(Learner):
             Y = y[:,np.newaxis]
         X, Y, _ = data.to_numpy()
         self.iters = 0
-        perceptron = Perceptron()
-        W, B = None, 0
+        perceptron = Perceptron()        
         for i in range(self.max_iter):
             self.iters += 1 
             W, B, K = perceptron.learn((X,Y), (W,B), lr = self.lr)
