@@ -13,17 +13,17 @@ class PerceptronTest(TestCase):
     def setUp(self):
         self.training_set = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")
         self.X, self.Y, _ = self.training_set.to_numpy()
+        self.Y = self.Y * 2 -1
     
     def test_basic(self):
         perceptron = Perceptron()
-        while perceptron.has_learned():
+        while not perceptron.has_learned():
             perceptron.learn((self.X, self.Y))
-        prediction = perceptron.predict(self.X)
+        classes, scores = perceptron.predict(self.X)        
+        self.assertTrue((self.Y == classes).all())
+        self.assertTrue((scores != 0.0 ).all())
 
-        for yp, yi in itert.imap(lambda y1, y2 : (y1, -1 if y2 == 0 else y2), prediction, self.Y):
-            self.assertEqual(yp, yi)
-
-    def test_perceptor_learner(self):
+    def test_perceptor_learner_base(self):
         max_iter = 5
         learner = PerceptronLearner(max_iter = max_iter)
         classifier = learner(self.training_set)
@@ -33,7 +33,7 @@ class PerceptronTest(TestCase):
         self.assertIsNotNone(classifier.predict)
         self.assertIsNotNone(classifier.domain)
 
-    def test_perceptor_classifier(self):
+    def test_perceptor_learner_classifier(self):
         max_iter = 5
         learner = PerceptronLearner(max_iter = max_iter)
         classifier = learner(self.training_set)
@@ -54,12 +54,3 @@ class PerceptronTest(TestCase):
             print "%-8s %5.3f  %5.3f  %5.3f  %5.3f" % (learners[i].name, \
             Orange.evaluation.scoring.CA(results)[i], Orange.evaluation.scoring.IS(results)[i],
             Orange.evaluation.scoring.Brier_score(results)[i], Orange.evaluation.scoring.AUC(results)[i])
-
-    def test_multiclass_one_vs_one_learner(self):
-        data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_3d.tab")
-        X, Y, _ = data.to_numpy()
-        n_classes = len(data.domain.class_var.values)
-        m_learner = OneVsAllMulticlassLearner(Perceptron, n_classes)
-        m_learner.learn((X, Y))
-        predictions = m_learner.predict(X)
-        self.assertEqual((predictions - Y).sum(),0.0)

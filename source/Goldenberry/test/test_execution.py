@@ -22,6 +22,7 @@ if __name__ == "__main__":
                     'statistics.test_distributions.GaussianTest',
                     'statistics.test_distributions.GaussianTruncTest',
                     'classification.test_perceptron.PerceptronTest',
+                    'classification.test_multiclass_learner.MulticlassLearnerTest',
                     'classification.test_kernels.KernelsTest'
                     ]    
     suite = unittest.TestLoader().loadTestsFromNames(test_modules)    
