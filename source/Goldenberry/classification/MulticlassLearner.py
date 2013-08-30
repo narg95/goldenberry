@@ -25,7 +25,7 @@ class OneVsAllMulticlassLearner:
     def predict(self, X):
         classification = np.array([np.maximum(classifier.predict(X)[1], 0.0) for classifier in self.learners])
         class_index = np.argmax(classification ,axis = 0)
-        return class_index, classification[class_index, range(X.shape[0])]
+        return class_index, classification.T
 
 def mask(eye, int_Y, class_index):
     return eye[class_index][int_Y]

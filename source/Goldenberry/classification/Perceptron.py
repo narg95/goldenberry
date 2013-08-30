@@ -61,7 +61,7 @@ class PerceptronLearner(Learner):
             raise ValueError("multi-target classification is not supported.  Please provide a dataset with only class variable")
 
         if class_var == Orange.feature.Continuous:
-                    raise ValueError("non-discrete classes not supported")
+            raise ValueError("non-discrete classes not supported")
                
         if len(examples) == 0:
             raise ValueError("Example table is without any defined classes")
@@ -79,7 +79,7 @@ class PerceptronLearner(Learner):
             if learner.has_learned():
                 break            
 
-        classifier = PerceptronClassifier(predict = learner.predict, domain = data.domain)
+        classifier = PerceptronClassifier(learner = learner, domain = data.domain)
         return classifier
         
 class PerceptronClassifier:
@@ -89,34 +89,32 @@ class PerceptronClassifier:
 
     def __call__(self,example, result_type = Orange.core.GetValue):
         input = np.array([[example[feature.name].value for feature in example.domain.features]])
-        results = self.predict(input).tolist()
-
+        # takes the index 0 because it is expected to have only one result per prediction, one by one classification.
+        # it seems to be a restriction when integrating with the Orange Canvas.
+        prediction, scores = self.learner.predict(input)
+        
         mt_prob = []
         mt_value = []
 
-        # multiclass prediction
+        # multi-objective prediction
         if self.domain.class_vars:
-            cvals = [len(cv.values) if len(cv.values) > 2 else 1 for cv in self.domain.class_vars]
-            cvals = [0] + [sum(cvals[0:i]) for i in xrange(1, len(cvals) + 1)]
-
-            for cls in xrange(len(self.domain.class_vars)):
-                if cvals[cls+1]-cvals[cls] > 2:
-                    cprob = Orange.statistics.distribution.Discrete(results[cvals[cls]:cvals[cls+1]])
-                    cprob.normalize()
-                else:
-                    r = results[cvals[cls]]
-                    cprob = Orange.statistics.distribution.Discrete([1.0 - r, r])
-
-                mt_prob.append(cprob)
-                mt_value.append(Orange.data.Value(self.domain.class_vars[cls], cprob.values().index(max(cprob))))
+            raise ValueError("multi-objective prediction is not supported.")
+        
+        n_classes = len(self.domain.class_var.values)
+        if n_classes == 2:
+            results = np.maximum([0.5 - scores[0], 0.5 + scores[0]], 0.0).tolist()
         else:
-            cprob = Orange.statistics.distribution.Discrete(results)
-            cprob.normalize()
+            results = scores[0].tolist()
 
-            mt_prob = cprob
-            mt_value = Orange.data.Value(self.domain.class_var, cprob.values().index(max(cprob)))
+        cprob = Orange.statistics.distribution.Discrete(results)
+        cprob.normalize()
 
-        if result_type == Orange.core.GetValue: return tuple(mt_value) if self.domain.class_vars else mt_value
-        elif result_type == Orange.core.GetProbabilities: return tuple(mt_prob) if self.domain.class_vars else mt_prob
+        mt_prob = cprob
+        mt_value = Orange.data.Value(self.domain.class_var, cprob.values().index(max(cprob)))
+
+        if result_type == Orange.core.GetValue: 
+            return mt_value
+        elif result_type == Orange.core.GetProbabilities: 
+            return mt_prob
         else: 
-            return [tuple(mt_value), tuple(mt_prob)] if self.domain.class_vars else [mt_value, mt_prob] 
+            return [mt_value, mt_prob] 
