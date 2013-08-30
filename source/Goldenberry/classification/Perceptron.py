@@ -104,7 +104,8 @@ class PerceptronClassifier:
         if n_classes == 2:
             results = np.maximum([0.5 - scores[0], 0.5 + scores[0]], 0.0).tolist()
         else:
-            results = scores[0].tolist()
+            min = np.abs(np.min(scores))
+            results = (scores[0] + min).tolist()
 
         cprob = Orange.statistics.distribution.Discrete(results)
         cprob.normalize()

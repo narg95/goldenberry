@@ -4,6 +4,7 @@ import sys
 import inspect
 import imp
 import optimization.cost_functions
+from msvcrt import getch
 
 
 if __name__ == "__main__":
@@ -28,6 +29,7 @@ if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromNames(test_modules)    
     runner = unittest.TextTestRunner(verbosity = 2)
     runner.run(suite)
+    
 
     
 
