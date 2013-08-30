@@ -23,7 +23,7 @@ class OneVsAllMulticlassLearner:
         self.iters += 1
 
     def predict(self, X):
-        classification = np.array([np.maximum(classifier.predict(X)[1], 0.0) for classifier in self.learners])
+        classification = np.array([classifier.predict(X)[1] for classifier in self.learners])
         class_index = np.argmax(classification ,axis = 0)
         return class_index, classification.T
 
