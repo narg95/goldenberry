@@ -15,23 +15,16 @@ class MulticlassLearnerTest(TestCase):
         self.X, self.Y, _ = self.training_set.to_numpy()
         self.n_classes = len(self.training_set.domain.class_var.values)
     
-    def test_multiclass_one_vs_one_learner_basic(self):
-        m_learner = OneVsAllMulticlassLearner(Perceptron, self.n_classes)
-        self.assertEquals(len(m_learner.learners), self.n_classes)
-        self.assertEquals(m_learner.nY.shape ,(self.n_classes, self.n_classes))
-        self.assertEquals((m_learner.nY > 0).sum(),self.n_classes)
-        self.assertEquals((m_learner.nY < 0).sum(), (self.n_classes * self.n_classes - self.n_classes))
-        
     def test_multiclass_one_vs_one_mask(self):
-        m_learner = OneVsAllMulticlassLearner(Perceptron, 4)
         Y = np.array([0,1,2,3])
-        self.assertTrue((mask(m_learner.nY, Y, 0) == [1,-1,-1,-1]).all())
-        self.assertTrue((mask(m_learner.nY, Y, 1) == [-1,1,-1,-1]).all())
-        self.assertTrue((mask(m_learner.nY, Y, 2) == [-1,-1,1,-1]).all())
-        self.assertTrue((mask(m_learner.nY, Y, 3) == [-1,-1,-1,1]).all()) 
+        self.assertTrue((mask(Y, 0) == [1,-1,-1,-1]).all())
+        self.assertTrue((mask(Y, 1) == [-1,1,-1,-1]).all())
+        self.assertTrue((mask(Y, 2) == [-1,-1,1,-1]).all())
+        self.assertTrue((mask(Y, 3) == [-1,-1,-1,1]).all()) 
 
     def test_multiclass_one_vs_one_learn(self):
         m_learner = OneVsAllMulticlassLearner(Perceptron, self.n_classes)
+        self.assertEquals(len(m_learner.learners), self.n_classes)
         m_learner.learn((self.X, self.Y))
         for learner in m_learner.learners:
             self.assertTrue(learner.iters > 0)

@@ -19,7 +19,7 @@ class OneVsAllMulticlassLearner:
         for i in range(self.n_classes):
             index = i
             learner = self.learners[i]
-            learner.learn((X, mask(self.nY, int_Y, i)))
+            learner.learn((X, mask(Y, i)))
         self.iters += 1
 
     def predict(self, X):
@@ -27,5 +27,5 @@ class OneVsAllMulticlassLearner:
         class_index = np.argmax(classification ,axis = 0)
         return class_index, classification.T
 
-def mask(eye, int_Y, class_index):
-    return eye[class_index][int_Y]
+def mask(Y, i):
+    return (Y == i) * 2 - 1
