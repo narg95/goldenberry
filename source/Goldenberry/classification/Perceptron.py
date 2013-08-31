@@ -1,5 +1,6 @@
 from Orange.core import Learner
 from Goldenberry.classification.MulticlassLearner import OneVsAllMulticlassLearner
+from Goldenberry.classification.Kernels import LinealKernel
 import math
 import numpy as np
 import itertools as iter
@@ -8,15 +9,15 @@ import Orange
 class Perceptron:
     """Perceptron algorithm"""
 
-    def __init__(self, W = None, B= 0.0, K = None, lr = 1.0):
-        self.W = W
-        self.B = B
-        self.K = K
+    def __init__(self, kernel = LinealKernel, lr = 1.0):
+        self.W = None
+        self.K = None
         self.R = 0.0
         self.lr = lr
         self.iters = 0
         self.acc_K = 0
-    
+        self.kernel = kernel
+        
     def has_learned(self):
         return self.K == 0
 
@@ -24,23 +25,21 @@ class Perceptron:
         # exits if no mistakes where found in the last run
         if self.has_learned():
             return
-        
+        X = np.concatenate((X, np.ones((X.shape[0], 1))), axis = 1)        
+        if self.W == None:
+            self.W = (self.lr * Y[0] * X[0])[np.newaxis]
         self.K = 0
-        self.W = np.zeros(X.shape[1]) if None == self.W else self.W
-        
-        # max norm from training set.
-        self.R = np.multiply(X, X).sum(axis=1).max()
-
+                
         for xi, yi in iter.izip(X, Y):
-            if yi*(self.W.dot(xi) + self.B) <= 0 :
-                self.W += self.lr*yi*xi
-                self.B += self.lr*yi*self.R
+            if yi * (self.kernel(self.W, xi).sum()) <= 0 :
+                self.W = np.concatenate((self.W, [self.lr * yi * xi]))
                 self.K += 1
         self.iters += 1
         self.acc_K += self.K
 
     def predict(self, X):
-        score = (X.dot(self.W.T) + self.B)/self.R
+        X = np.concatenate((X, np.ones((X.shape[0], 1))), axis = 1)        
+        score = self.kernel(self.W, X.T).sum(axis = 0)
         return np.sign(score), score
                     
 class PerceptronLearner(Learner):
