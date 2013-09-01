@@ -9,7 +9,7 @@ import Orange
 class Perceptron:
     """Perceptron algorithm"""
 
-    def __init__(self, kernel = LinealKernel, lr = 1.0):
+    def __init__(self, kernel = LinealKernel, margin = [0, 0], lr = 1.0):
         self.W = None
         self.K = None
         self.R = 0.0
@@ -17,6 +17,10 @@ class Perceptron:
         self.iters = 0
         self.acc_K = 0
         self.kernel = kernel
+        self.B = 0.0
+        # this margin array is created to support -1 and 1 values as indexes
+        # for the margins
+        self.margin = np.array([0, margin[1], margin[0]])
         
     def has_learned(self):
         return self.K == 0
@@ -25,23 +29,25 @@ class Perceptron:
         # exits if no mistakes where found in the last run
         if self.has_learned():
             return
-        X = np.concatenate((X, np.ones((X.shape[0], 1))), axis = 1)        
         if self.W == None:
-            self.W = (self.lr * Y[0] * X[0])[np.newaxis]
+            self.W = np.array([(self.lr * Y[0] * X[0])])
         self.K = 0
                 
         for xi, yi in iter.izip(X, Y):
-            if yi * (self.kernel(self.W, xi).sum()) <= 0 :
-                self.W = np.concatenate((self.W, [self.lr * yi * xi]))
+            if yi * (self.kernel(self.W, xi).sum() + self.B) <= self.margin[yi]:
+                self.update_solution(xi, yi)
                 self.K += 1
         self.iters += 1
         self.acc_K += self.K
 
     def predict(self, X):
-        X = np.concatenate((X, np.ones((X.shape[0], 1))), axis = 1)        
-        score = self.kernel(self.W, X.T).sum(axis = 0)
+        score = self.kernel(self.W, X.T).sum(axis = 0) + self.B
         return np.sign(score), score
-                    
+
+    def update_solution(self, xi, yi):
+        self.W = np.append(self.W, [self.lr * yi * xi], axis = 0)
+        self.B += self.lr * yi
+
 class PerceptronLearner(Learner):
     """Kernel perceptron learner"""
     
@@ -49,6 +55,7 @@ class PerceptronLearner(Learner):
         self.max_iter = max_iter
         self.lr = lr
         self.name = name
+        self.one_vs_all = one_vs_all
 
     def __call__(self,data,weight=0):
         """Learn from the given table of data instances."""
@@ -68,7 +75,10 @@ class PerceptronLearner(Learner):
         X, Y, _ = data.to_numpy()
         n_classes = len(data.domain.class_var.values)
         if n_classes > 2:
-            learner = OneVsAllMulticlassLearner(Perceptron, n_classes, lr = self.lr)
+            if self.one_vs_all:    
+                learner = OneVsAllMulticlassLearner(Perceptron, n_classes, lr = self.lr)
+            else:
+                raise ValueError("Only one-vs-all is implemented.")
         else:
             Y = Y * 2 - 1
             learner = Perceptron(lr = self.lr)
@@ -78,11 +88,13 @@ class PerceptronLearner(Learner):
             if learner.has_learned():
                 break            
 
-        classifier = PerceptronClassifier(learner = learner, domain = data.domain)
+        classifier = PerceptronClassifier(learner = learner, domain = data.domain, classVar = data.domain.classVar, name = self.name)
         return classifier
         
 class PerceptronClassifier:
     
+    GetProbabilities = Orange.core.GetProbabilities
+
     def __init__(self,**kwargs):
         self.__dict__.update(**kwargs)
 
