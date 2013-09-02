@@ -1,7 +1,6 @@
 from Goldenberry.classification.Perceptron import *
-from Goldenberry.classification.MulticlassLearner import *
-
 import Orange
+from Goldenberry.classification.MulticlassLearner import OneVsAllMulticlassLearner, mask
 import os
 import itertools as itert
 
