@@ -1,6 +1,7 @@
 from Orange.core import Learner
 from Goldenberry.classification.MulticlassLearner import OneVsAllMulticlassLearner
 from Goldenberry.classification.Kernels import LinealKernel
+from Goldenberry.classification.base.GbKernel import GbKernel
 import math
 import numpy as np
 import itertools as iter
@@ -9,7 +10,7 @@ import Orange
 class Perceptron:
     """Perceptron algorithm"""
 
-    def __init__(self, kernel = LinealKernel, margin = [0, 0], lr = 1.0):
+    def __init__(self, kernel = GbKernel(LinealKernel) , margin = [0, 0], lr = 1.0):
         self.W = None
         self.K = None
         self.R = 0.0
