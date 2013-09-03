@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{76d7d1ea-472a-43f4-a0d3-ea8dfd58cffc}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test_execution.py</StartupFile>
+    <StartupFile>C:\Python27\lib\site-packages\Orange\OrangeCanvas\orngCanvas.pyw</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

@@ -29,9 +29,9 @@ class GbPerceptronWidget(OWWidget):
         self.setup_ui() 
 
     def setup_interfaces(self):
-        self.inputs = [("Data", Orange.core.ExampleTable, self.setData),
+        self.inputs = [("Data", Orange.core.ExampleTable, self.set_data),
                        ("Preprocess", PreprocessedLearner, self.set_preprocessor),
-                       ("Kernel Function", GbKernel), self.set_kernel]
+                       ("Kernel Function", GbKernel, self.set_kernel)]
         self.outputs = [("Learner", Orange.core.Learner),
                         ("Classifier", Orange.core.Classifier)]
 
@@ -61,7 +61,7 @@ class GbPerceptronWidget(OWWidget):
     def rejected(self):
         self.reject()
 
-    def setData(self,data):
+    def set_data(self,data):
         self.data = self.isDataWithClass(data, Orange.core.VarTypes.Discrete, checkMissing=True) and data or None
         print "data has been set"
         self.apply_settings()
@@ -98,5 +98,5 @@ def test_widget():
     ow.show()
     appl.exec_()    
     data = Orange.data.Table(os.path.dirname(__file__) + "\\test_data_2d.tab")
-    ow.setData(data)
+    ow.set_data(data)
     ow.classifier(data[0])    
