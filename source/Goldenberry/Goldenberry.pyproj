@@ -132,6 +132,9 @@
     <Content Include="test\classification\test_data_3d.tab">
       <Publish>False</Publish>
     </Content>
+    <Content Include="widgets\GbDynamicFunctionWidget.py">
+      <Publish>True</Publish>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

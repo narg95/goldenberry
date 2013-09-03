@@ -46,6 +46,9 @@
     <Compile Include="Optimization\GbBlackBoxWidget.py">
       <Publish>True</Publish>
     </Compile>
+    <Compile Include="Learners\GbKernelBuilderWidget.py">
+      <Publish>True</Publish>
+    </Compile>
     <Compile Include="Optimization\GbUmdaCWidget.py">
       <Publish>True</Publish>
     </Compile>
@@ -62,15 +65,7 @@
       <Publish>True</Publish>
     </Compile>
     <Compile Include="Optimization\__init__.py" />
-    <Compile Include="test\classify\__init__.py">
-      <Publish>False</Publish>
-    </Compile>
-    <Compile Include="test\optimization\test_widgets.py">
-      <Publish>False</Publish>
-    </Compile>
-    <Compile Include="test\optimization\__init__.py">
-      <Publish>False</Publish>
-    </Compile>
+    <Compile Include="test\test_widgets.py" />
     <Compile Include="test\__init__.py">
       <Publish>False</Publish>
     </Compile>
@@ -92,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="before_publish.bat" />
+    <Content Include="Learners\GbKernelBuilderWidget.ui">
+      <Publish>True</Publish>
+    </Content>
     <Content Include="Learners\GbPerceptronWidget.ui">
       <Publish>True</Publish>
     </Content>
