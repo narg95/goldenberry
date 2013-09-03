@@ -14,9 +14,9 @@ class GbKernelBuilderWidget(GbDynamicFunctionWidget):
     
     def __init__(self, parent=None, signalManager=None):
         super(GbKernelBuilderWidget, self).__init__(Kernels, GbKernel, parent, signalManager, 'Kernel Function', "Kernel Function")
-        
-        self.setup_interfaces()
-        self.setup_ui()
+
+    def setup_interfaces(self):
+        self.outputs = [("Kernel Function", GbKernel)]
 
 if __name__=="__main__":
     test_widget()

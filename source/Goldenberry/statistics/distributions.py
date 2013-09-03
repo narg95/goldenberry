@@ -29,10 +29,10 @@ class Binomial(GbBaseDistribution):
     
     def __init__(self, n = None, p = None):
         """Initialize a new binomial distribution."""
-        if(None != n):
+        if(None is not n):
             self.n = n
             self.reset()
-        elif(None != p) :
+        elif(None is not p) :
             self.n = p.size
             self.p = p
         else:
@@ -61,10 +61,10 @@ class Binomial(GbBaseDistribution):
 class BivariateBinomial(GbBaseDistribution):
     
     def __init__(self, n = None, p = None, cond_props = None, children = None, roots = None):
-        if None != n:
+        if None is not n:
             self.n = n
             self.reset()
-        elif None != p and None != cond_props and None != children:
+        elif None is not p and None is not cond_props and None is not children:
             if len(cond_props) != len(children):
                 raise AttributeError("Join probability must be the same size than the number of edges")
             self.n = p.size
@@ -72,7 +72,7 @@ class BivariateBinomial(GbBaseDistribution):
             self.cond_props = cond_props
             self.children = children
             self.vertex = range(self.n)
-            if None == roots:
+            if roots is None:
                 self.roots = [idx for idx, x in enumerate(self.cond_props) if x == []]
             else: 
                 self.roots = roots
@@ -151,10 +151,10 @@ def _splitter(data, pred):
 class Gaussian(GbBaseDistribution):
     
     def __init__(self, n = None, means = None, stdevs = None ):
-        if n != None:
+        if n is not None:
             self.n = n
             self.reset()
-        elif means != None and stdevs != None:
+        elif means is not None and stdevs is not None:
             self.n = len(means)
             self.means = means
             self.stdevs = stdevs

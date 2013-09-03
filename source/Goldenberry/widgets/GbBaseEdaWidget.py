@@ -50,7 +50,7 @@ class GbBaseEdaWidget(OWWidget):
         
     def set_cost_function(self, func_args):
         self.optimizer.cost_func = None
-        if None != func_args:
+        if None is not func_args:
             self.optimizer.cost_func = GbCostFunction(*func_args)
             self.runButton.setEnabled(self.optimizer.ready())
 

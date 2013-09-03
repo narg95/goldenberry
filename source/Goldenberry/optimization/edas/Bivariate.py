@@ -12,7 +12,7 @@ class Bmda(GbBaseEda):
         self.distr = BivariateBinomial( n = self.var_size)
 
     def sample(self, sample_size, top_ranked, best):
-        if top_ranked == None:
+        if top_ranked is None:
             return GbBaseEda.sample(self, sample_size, top_ranked, best)
         
         candidates = GbBaseEda.sample(self,sample_size - len(top_ranked), top_ranked, best)

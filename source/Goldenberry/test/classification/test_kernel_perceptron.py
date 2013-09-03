@@ -39,7 +39,7 @@ class KernelPerceptronTest(TestCase):
             Yclass[i] = -1 if Y[i] == 0 else Y[i]
 
         iterations = 0
-        while None == K or K > 0 and iterations < 15:
+        while K is None or K > 0 and iterations < 15:
             sv_x, sv_y, sv_alpha, K = kernelperceptron.learn((Xdata, Yclass),(sv_x, sv_y, sv_alpha))
             iterations += 1
         

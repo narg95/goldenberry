@@ -72,7 +72,7 @@ class Tilda(GbBaseEda):
     def _estimate_gaussian(means, stds, acc_means, acc_vars, best, cand_size, learning_rate):
         acc_means = acc_means/float(cand_size/2.0)
         acc_std = np.sqrt((acc_vars/float(cand_size/2.0)) - np.square(acc_means))
-        #if None != best.params:
+        #if None is not best.params:
         #    means = means*(1.0 - learning_rate) + \
         #                        learning_rate*((acc_means + best.params) / 2.0)
         #else:

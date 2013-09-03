@@ -10,9 +10,9 @@ class GbDynamicFunction:
 
     def __init__(self, func = None, script = None):
         self.reset_statistics()
-        if func != None:
+        if func is not None:
             self.set_func(func)
-        elif script != None:
+        elif script is not None:
             self.set_func_script(script)
         else:
             raise Exception("Please provide either a function or function script.")

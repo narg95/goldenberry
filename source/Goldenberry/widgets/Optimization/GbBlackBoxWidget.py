@@ -59,7 +59,7 @@ class GbBlackBoxWidget(OWWidget):
         if self.optimizers.has_key(id):
             del self.optimizers[id]
         
-        if None != optimizer:
+        if None is not optimizer:
             self.optimizers[id] = optimizer
         
     def execute(self):        
