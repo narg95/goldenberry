@@ -1,5 +1,5 @@
 from unittest import *
-from Goldenberry.widgets import QtCore
+from Goldenberry.widgets import QtCore, Kernels
 from Goldenberry.optimization.cost_functions import *
 from Goldenberry.optimization.edas.Univariate import *
 from Goldenberry.optimization.base.GbCostFunction import *
@@ -11,10 +11,11 @@ from Optimization.GbPbilWidget import GbPbilWidget
 from Optimization.GbCostFuncsWidget import GbCostFuncsWidget
 from Optimization.GbTildaWidget import GbTildaWidget
 from Optimization.GbBlackBoxWidget import GbBlackBoxWidget
+from Learners.GbKernelBuilderWidget import GbKernelBuilderWidget
 
 import sys
 
-class OptimizationWidgetsTest(TestCase):
+class WidgetsTest(TestCase):
     """Test the widgets for the optimization part."""
 
     def setUp(self):
@@ -75,7 +76,6 @@ class OptimizationWidgetsTest(TestCase):
     def test_bmda_basic(self):        
         widget = GbBmdaWidget()
         widget.apply()
-        
         self.assertFalse(widget.runButton.isEnabled())
         widget.set_cost_function((OneMax, None))
 
@@ -91,7 +91,7 @@ class OptimizationWidgetsTest(TestCase):
         custom_item = widget.funcs_listbox.findItems(OneMax.__name__, QtCore.Qt.MatchExactly)[0]
         widget.funcs_listbox.setCurrentItem(custom_item)
         widget.accepted()
-        self.assertEqual(widget.cost_funcs.values()[widget.cost_func_sel_index[0]], OneMax)
+        self.assertEqual(widget.functions.values()[widget.func_sel_index[0]], OneMax)
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()     
@@ -103,6 +103,24 @@ class OptimizationWidgetsTest(TestCase):
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()     
+
+    def test_kernel_builder_basic(self):        
+        widget = GbKernelBuilderWidget()
+        custom_item = widget.funcs_listbox.findItems(Kernels.LinealKernel.__name__, QtCore.Qt.MatchExactly)[0]
+        widget.funcs_listbox.setCurrentItem(custom_item)
+        widget.accepted()
+        self.assertEqual(widget.functions.values()[widget.func_sel_index[0]], Kernels.LinealKernel)
+        #Uncomment only when testing the widget UI
+        widget.show()
+        self.app.exec_()     
+
+    def test_kernel_builder_custom_code(self):        
+        widget = GbKernelBuilderWidget()
+        widget.tabs.setCurrentIndex(1)
+        widget.accepted()
+        #Uncomment only when testing the widget UI
+        widget.show()
+        self.app.exec_()     
 
     def test_test_optim_base(self):        
         var_size, cand_size = 10, 20
