@@ -18,6 +18,7 @@ class GbPerceptronWidget(OWWidget):
     learner = None
     classifier = None
     preprocessor = None
+    kernel = None
     data = None
     name = "Perceptron"
 
@@ -29,7 +30,8 @@ class GbPerceptronWidget(OWWidget):
 
     def setup_interfaces(self):
         self.inputs = [("Data", Orange.core.ExampleTable, self.setData),
-                       ("Preprocess", PreprocessedLearner, self.setPreprocessor)]
+                       ("Preprocess", PreprocessedLearner, self.set_preprocessor),
+                       ("Kernel Function", GbKernel), self.set_kernel]
         self.outputs = [("Learner", Orange.core.Learner),
                         ("Classifier", Orange.core.Classifier)]
 
@@ -64,17 +66,20 @@ class GbPerceptronWidget(OWWidget):
         print "data has been set"
         self.apply_settings()
 
-    def setPreprocessor(self, pp):
+    def set_preprocessor(self, pp):
         self.preprocessor = pp
+
+    def set_kernel(self, kernel):
+        self.kernel = kernel
 
     def apply_settings(self):
         self.classifier = None
-        self.learner = PerceptronLearner(self.max_iters, self.learning_rate)
+        self.learner = PerceptronLearner(self.kernel, self.max_iters, self.learning_rate)        
         
         if self.preprocessor:
             self.learner = self.preprocessor.wrapLearner(self.learner)
 
-        if None != self.data:
+        if None is not self.data:
             self.classifier = self.learner(self.data)
         
         self.send("Learner", self.learner)

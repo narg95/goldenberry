@@ -10,14 +10,14 @@ import Orange
 class Perceptron:
     """Perceptron algorithm"""
 
-    def __init__(self, kernel = GbKernel(LinealKernel) , margin = [0, 0], lr = 1.0):
+    def __init__(self, kernel = None , margin = [0, 0], lr = 1.0):
         self.W = None
         self.K = None
         self.R = 0.0
         self.lr = lr
         self.iters = 0
         self.acc_K = 0
-        self.kernel = kernel
+        self.kernel = kernel if kernel is not None else GbKernel(LinealKernel)
         self.B = 0.0
         # this margin array is created to support -1 and 1 values as indexes
         # for the margins
@@ -26,11 +26,14 @@ class Perceptron:
     def has_learned(self):
         return self.K == 0
 
+    def set_kernel(self, kernel):
+        self.kernel = kernel
+
     def learn(self, (X, Y)):
         # exits if no mistakes where found in the last run
         if self.has_learned():
             return
-        if self.W == None:
+        if self.W is None:
             self.W = np.array([(self.lr * Y[0] * X[0])])
         self.K = 0
                 
@@ -52,10 +55,11 @@ class Perceptron:
 class PerceptronLearner(Learner):
     """Kernel perceptron learner"""
     
-    def __init__(self, max_iter = 10, lr = 1.0, name = "Perceptron", one_vs_all = True):
+    def __init__(self, kernel = None, max_iter = 10, lr = 1.0, name = "Perceptron", one_vs_all = True):
         self.max_iter = max_iter
         self.lr = lr
         self.name = name
+        self.kernel = kernel
         self.one_vs_all = one_vs_all
 
     def __call__(self,data,weight=0):
@@ -77,12 +81,12 @@ class PerceptronLearner(Learner):
         n_classes = len(data.domain.class_var.values)
         if n_classes > 2:
             if self.one_vs_all:    
-                learner = OneVsAllMulticlassLearner(Perceptron, n_classes, lr = self.lr)
+                learner = OneVsAllMulticlassLearner(Perceptron, n_classes, kernel = self.kernel, lr = self.lr)
             else:
                 raise ValueError("Only one-vs-all is implemented.")
         else:
             Y = Y * 2 - 1
-            learner = Perceptron(lr = self.lr)
+            learner = Perceptron(kernel = self.kernel, lr = self.lr)
         
         for j in range(self.max_iter):
             learner.learn((X, Y))

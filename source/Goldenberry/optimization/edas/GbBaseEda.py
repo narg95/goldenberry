@@ -32,9 +32,9 @@ class GbBaseEda(GbBaseOptimizer):
 
     def reset(self):
         self.iters = 0
-        if None != self.cost_func:
+        if None is not self.cost_func:
             self.cost_func.reset_statistics()
-        if None != self.distr:
+        if None is not self.distr:
             self.distr.reset()            
         
     @abc.abstractmethod
@@ -44,10 +44,10 @@ class GbBaseEda(GbBaseOptimizer):
 
     def ready(self):
         """"Checks whether the algorithm is ready or not for executing."""
-        return (self.cost_func != None \
-                and None != self.cand_size \
-                and None != self.var_size\
-                and None != self.distr \
+        return (self.cost_func is not None \
+                and None is not self.cand_size \
+                and None is not self.var_size\
+                and None is not self.distr \
                 and self.cand_size > 0 \
                 and self.var_size > 0 
                 and self.selection_rate > 0 \
