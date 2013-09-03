@@ -12,6 +12,9 @@ import inspect
 import types
 # optimization imports
 from Goldenberry.optimization.base.GbCostFunction import *
+from Goldenberry.base.GbDynamicFunction import *
+from Goldenberry.classification.base.GbKernel import GbKernel
+import Goldenberry.classification.Kernels as Kernels
 from Goldenberry.optimization.base.GbBaseOptimizer import *
 from Goldenberry.optimization.edas.GbBlackBoxTester import GbBlackBoxTester
 import Goldenberry.optimization.cost_functions as cost_functions
