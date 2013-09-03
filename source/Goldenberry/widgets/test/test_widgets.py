@@ -1,3 +1,4 @@
+import Orange
 from unittest import *
 from Goldenberry.widgets import QtCore, Kernels
 from Goldenberry.optimization.cost_functions import *
@@ -12,6 +13,7 @@ from Optimization.GbCostFuncsWidget import GbCostFuncsWidget
 from Optimization.GbTildaWidget import GbTildaWidget
 from Optimization.GbBlackBoxWidget import GbBlackBoxWidget
 from Learners.GbKernelBuilderWidget import GbKernelBuilderWidget
+from Learners.GbPerceptronWidget import GbPerceptronWidget
 
 import sys
 
@@ -111,16 +113,16 @@ class WidgetsTest(TestCase):
         widget.accepted()
         self.assertEqual(widget.functions.values()[widget.func_sel_index[0]], Kernels.LinealKernel)
         #Uncomment only when testing the widget UI
-        widget.show()
-        self.app.exec_()     
+        #widget.show()
+        #self.app.exec_()     
 
     def test_kernel_builder_custom_code(self):        
         widget = GbKernelBuilderWidget()
         widget.tabs.setCurrentIndex(1)
         widget.accepted()
         #Uncomment only when testing the widget UI
-        widget.show()
-        self.app.exec_()     
+        #widget.show()
+        #self.app.exec_()     
 
     def test_test_optim_base(self):        
         var_size, cand_size = 10, 20
@@ -145,5 +147,14 @@ class WidgetsTest(TestCase):
         #widget.show()
         #self.app.exec_()
 
+    def test_perceptron_basic(self):        
+        widget = GbPerceptronWidget()       
+        widget.set_kernel(None)
+        widget.set_data(Orange.data.Table('Iris'))
+
+        #Uncomment only when testing the widget UI
+        #widget.show()
+        #self.app.exec_()
+    
     def tearDown(self):
        pass
