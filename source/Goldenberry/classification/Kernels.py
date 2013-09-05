@@ -1,13 +1,13 @@
 import numpy as np
 
-def LinealKernel(self, x, y):
+def LinealKernel(x, y):
     return x.dot(y)
 
-def PolynomialKernel(self, x, y):
+def PolynomialKernel(x, y):
     degree = 3    
     return x.dot(y)**degree
 
-def GaussianKernel(self, x, y):
+def GaussianKernel(x, y):
     gamma = 1.0
     val = (x-y)
     return np.exp(-val.dot(val.T)/gamma)

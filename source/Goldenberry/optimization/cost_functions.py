@@ -1,17 +1,17 @@
 import numpy as np
 
-def OneMax(self, solution):
+def OneMax(solution):
     """Computes the total number of ones in the candidate solution."""
     return solution.sum()
 
-def LeadingOnes(self, solution):
+def LeadingOnes(solution):
     """Counts the number of ones in the candidate solution, starting at the beginning, until a zero is encountered."""
     loc = numpy.where(solution == 0.0)[0]
     if len(loc) > 0:
         return loc[0]
     return len(solution)
 
-def LeadingOnesBlocks(self, solution):
+def LeadingOnesBlocks(solution):
     """Given a block size, counts the number of strings of ones until a zero is found."""
     block_size = 3
     score = 0.0
@@ -19,16 +19,16 @@ def LeadingOnesBlocks(self, solution):
         score += solution[(idx)*block_size:(idx + 1)*block_size].prod()    
     return score
 
-def Traps(self, solution):
+def Traps(solution):
     """it counts the number of ones in your vector, starting at the beginning, until a zero is encountered."""
     if solution.all():
         return len(solution) + 1.0
     return len(np.nonzero(solution == 0.0))
 
-def ZeroMax(self, solution):
+def ZeroMax(solution):
     """It calculates the total number of zeros in a vector."""
     return len(solution) - solution.sum()
 
-def Linear(self, solution):
+def Linear(solution):
     """It calculates the total number of zeros in a vector."""
     return len(solution) - solution.sum()

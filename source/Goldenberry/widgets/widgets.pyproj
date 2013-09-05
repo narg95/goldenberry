@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{76d7d1ea-472a-43f4-a0d3-ea8dfd58cffc}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>C:\Python27\lib\site-packages\Orange\OrangeCanvas\orngCanvas.pyw</StartupFile>
+    <StartupFile>test_execution.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -31,8 +31,9 @@
     <Compile Include="Learners\GbPerceptronWidget.py">
       <Publish>True</Publish>
     </Compile>
+    <Compile Include="Learners\GbSvmWidget.py" />
     <Compile Include="Learners\__init__.py">
-      <Publish>False</Publish>
+      <Publish>True</Publish>
     </Compile>
     <Compile Include="Optimization\GbBmdaWidget.py">
       <Publish>True</Publish>
