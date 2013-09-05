@@ -30,13 +30,13 @@ class CostFunctionTest(TestCase):
 
     def test_LeadingOnesBlocks(self):
         sample = np.array([1, 1, 1, 0, 0, 0, 1, 0, 1])
-        self.assertEqual(LeadingOnesBlocks(None, sample), 1)
+        self.assertEqual(LeadingOnesBlocks(sample), 1)
         sample = np.array([1, 1, 1, 1, 0, 1, 1, 0, 1])
-        self.assertEqual(LeadingOnesBlocks(None, sample), 1)
+        self.assertEqual(LeadingOnesBlocks(sample), 1)
         sample = np.array([1, 1, 1, 1, 1, 1, 0, 1, 0])
-        self.assertEqual(LeadingOnesBlocks(None, sample), 2)
+        self.assertEqual(LeadingOnesBlocks(sample), 2)
         sample = np.array([1, 1, 1, 1, 1, 1, 1, 1, 1])
-        self.assertEqual(LeadingOnesBlocks(None, sample), 3)
+        self.assertEqual(LeadingOnesBlocks(sample), 3)
     
     #def test_condonemax_base(self):
     #    length = 10
@@ -55,7 +55,7 @@ class CostFunctionTest(TestCase):
     
     def test_custom_function(self):
         sample = np.array([[0,1,0,1,0]])
-        cust = GbCostFunction(script = "def mycustomfunction(self, solution):\n\treturn solution.sum() - 1.0")
+        cust = GbCostFunction(script = "def mycustomfunction(solution):\n\treturn solution.sum() - 1.0")
         self.assertEqual(cust.cost(sample), 1.0)
 
 if __name__ == '__main__':

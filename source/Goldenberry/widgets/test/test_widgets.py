@@ -14,6 +14,7 @@ from Optimization.GbTildaWidget import GbTildaWidget
 from Optimization.GbBlackBoxWidget import GbBlackBoxWidget
 from Learners.GbKernelBuilderWidget import GbKernelBuilderWidget
 from Learners.GbPerceptronWidget import GbPerceptronWidget
+from Learners.GbSvmWidget import GbSvmWidget
 
 import sys
 
@@ -158,3 +159,10 @@ class WidgetsTest(TestCase):
     
     def tearDown(self):
        pass
+
+    def test_perceptron_basic(self):        
+        widget = GbSvmWidget()        
+
+        #Uncomment only when testing the widget UI
+        widget.show()
+        self.app.exec_()
