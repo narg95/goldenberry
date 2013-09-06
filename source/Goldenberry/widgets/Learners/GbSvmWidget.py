@@ -1,13 +1,30 @@
+# coding=utf-8
+"""
+<name>SVM</name>
+<description>Support Vector Machines learner/classifier.</description>
+<icon>icons/SVM.svg</icon>
+<priority>100</priority>
+"""
+
 from Orange.OrangeWidgets.Classify.OWSVM import OWSVM
 from Goldenberry.widgets import GbKernel
 from Orange.OrangeWidgets.OWGUI import appendRadioButton
+from orange import ExampleTable, Learner, Classifier
+from orngWrap import PreprocessedLearner
+from Orange.OrangeWidgets.OWWidget import Default
 
 class GbSvmWidget(OWSVM):
     
     def __init__(self, parent=None, signalManager=None):
         super(GbSvmWidget, self).__init__(parent=parent, signalManager=None, name="SVM")
         appendRadioButton(self.kernelradio, self,"kernel_type","Custom")
-        self.inputs.append(('Kernel Function', GbKernel, self.set_kernel))
+        self.inputs = [('Kernel Function', GbKernel, self.set_kernel), ("Data", ExampleTable, self.setData),
+                       ("Preprocess", PreprocessedLearner, self.setPreprocessor)]
+
+        self.outputs = [("Learner", Learner, Default),
+                        ("Classifier", Classifier, Default),
+                        ("Support Vectors", ExampleTable)]
+
         self.settingsList.append("kernel_func")
         self.kernel_func = None
 
