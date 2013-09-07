@@ -45,7 +45,7 @@ class Perceptron:
         self.acc_K += self.K
 
     def predict(self, X):
-        score = self.kernel(self.W, X.T).sum(axis = 0) + self.B
+        score = self.kernel(self.W, X).sum(axis = 0) + self.B
         return np.sign(score), score
 
     def update_solution(self, xi, yi):
@@ -104,7 +104,7 @@ class PerceptronClassifier:
         self.__dict__.update(**kwargs)
 
     def __call__(self,example, result_type = Orange.core.GetValue):
-        input = np.array([[example[feature.name].value for feature in example.domain.features]])
+        input = np.array([[float(example[feature.name].value) for feature in example.domain.features]])
         # takes the index 0 because it is expected to have only one result per prediction, one by one classification.
         # it seems to be a restriction when integrating with the Orange Canvas.
         prediction, scores = self.learner.predict(input)
