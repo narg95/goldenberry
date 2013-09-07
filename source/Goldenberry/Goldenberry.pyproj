@@ -43,6 +43,7 @@
     <Folder Include="feature_selection\" />
     <Folder Include="base\" />
     <Folder Include="statistics\" />
+    <Folder Include="test\feature_selection\" />
     <Folder Include="test\statistics\" />
     <Folder Include="widgets\" />
     <Folder Include="test\" />
@@ -63,6 +64,8 @@
     <Compile Include="classification\MulticlassLearner.py" />
     <Compile Include="classification\Perceptron.py" />
     <Compile Include="classification\__init__.py" />
+    <Compile Include="feature_selection\WKiera.py" />
+    <Compile Include="feature_selection\__init__.py" />
     <Compile Include="optimization\base\GbCostFunction.py" />
     <Compile Include="optimization\base\GbBaseOptimizer.py" />
     <Compile Include="optimization\base\GbSolution.py" />
@@ -89,6 +92,12 @@
       <Publish>False</Publish>
     </Compile>
     <Compile Include="test\classification\__init__.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="test\feature_selection\test.py">
+      <Publish>False</Publish>
+    </Compile>
+    <Compile Include="test\feature_selection\__init__.py">
       <Publish>False</Publish>
     </Compile>
     <Compile Include="test\optimization\edas\test_edas.py">

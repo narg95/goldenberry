@@ -27,7 +27,7 @@ class Pbil(GbBaseEda):
         self.distr = Binomial(self.var_size)    
 
     def estimate(self, top_ranked, best):
-        self.distr.p =  self.distr.p*(1-self.learning_rate) + self.learning_rate * np.average(top_ranked)
+        self.distr.p =  self.distr.p*(1-self.learning_rate) + self.learning_rate * np.average(top_ranked, axis = 0)
 
 class Tilda(GbBaseEda):
     """Tilda algorithm."""
@@ -92,5 +92,5 @@ class Pbilc(GbBaseEda):
         self.distr = GaussianTrunc(n = self.var_size, low = self.low, high = self.high)
     
     def estimate(self, top_ranked, best):
-        self.distr.means = self.distr.means * (1 - self.learning_rate) + np.average(top_ranked) * self.learning_rate
-        self.distr.stdevs = self.distr.stdevs * (1 - self.learning_rate) + np.std(top_ranked) * self.learning_rate
+        self.distr.means = self.distr.means * (1 - self.learning_rate) + np.average(top_ranked, axis = 0) * self.learning_rate
+        self.distr.stdevs = self.distr.stdevs * (1 - self.learning_rate) + np.std(top_ranked, axis = 0) * self.learning_rate

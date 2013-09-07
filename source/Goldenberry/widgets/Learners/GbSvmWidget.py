@@ -31,6 +31,8 @@ class GbSvmWidget(OWSVM):
     def set_kernel(self, kernel):
         self.kernel_func = kernel
 
+    ##TODO: Wrap kernel into a SVM kernel
+        
     def search_(self):
         learner=orngSVM.SVMLearner()
         for attr in ("name", "kernel_type", "degree", "shrinking", "probability", "normalization"):
