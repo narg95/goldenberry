@@ -3,22 +3,23 @@ from Goldenberry.classification.Kernels import WeightedKernel
 from Orange.evaluation.testing import cross_validation
 from Orange.evaluation.scoring import CA
 import numpy as np
+from copy import deepcopy
 
 class WKieraCostFunction(GbCostFunction):
     """WKiera cost function."""
 
-    def __init__(self, kernel, data,  learner_type, **learner_args):
+    def __init__(self, kernel, data,  learner):
         self.kernel = kernel
-        self.learner_type = learner_type
-        self.learner_args = learner_args
+        self.learner = learner
         self.data = data
 
     def execute(self, solutions):
         #TODO Omptimize for parallel execution
         learners = [None]*len(solutions)
         for idx, weight in enumerate(solutions):
-            weigted_kernel = WeightedKernel(weight, self.kernel)
-            learner = self.learner_type(kernel = weigted_kernel, **self.learner_args)
+            weighted_kernel = WeightedKernel(weight, self.kernel)
+            learner = deepcopy(self.learner)
+            learner.kernel = weighted_kernel
             learners[idx] = learner
 
         results = np.array(CA(cross_validation(learners, self.data, folds = 10)))

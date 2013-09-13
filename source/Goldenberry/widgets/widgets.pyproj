@@ -18,6 +18,10 @@
     <SccLocalPath>SAK</SccLocalPath>
     <IsWindowsApplication>False</IsWindowsApplication>
     <PublishUrl>C:\Python27\Lib\site-packages\Orange\OrangeWidgets\</PublishUrl>
+    <InterpreterId>
+    </InterpreterId>
+    <InterpreterVersion>
+    </InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +32,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Optimization\GbWKieraWidget.py" />
     <Compile Include="Learners\GbPerceptronWidget.py">
       <Publish>True</Publish>
     </Compile>

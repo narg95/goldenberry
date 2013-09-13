@@ -20,6 +20,7 @@ from Goldenberry.optimization.edas.GbBlackBoxTester import GbBlackBoxTester
 import Goldenberry.optimization.cost_functions as cost_functions
 from Goldenberry.optimization.edas.Univariate import Cga, Pbil, Tilda, Pbilc
 from Goldenberry.optimization.edas.Bivariate import Bmda
+from Goldenberry.feature_selection.WKiera import *
 
 # classification imports
 from Goldenberry.classification.Perceptron import PerceptronLearner, PerceptronClassifier
