@@ -158,7 +158,7 @@ class TildaTest(TestCase):
     """Test class for the tilda algorithm"""
     def test_basic(self):
         tilda = Tilda()
-        tilda.setup(10, 30, learning_rate = 0.5)
+        tilda.setup(10, 30, learning_rate = 0.5, max_evals = 1000)
         tilda.cost_func = GbCostFunction(OneMax)
         result = tilda.search()
         self.assertGreaterEqual(result.cost, 8.0)
@@ -204,7 +204,7 @@ class PbilcTest(TestCase):
     """Test class for the pbilc algorithm"""
     def test_basic(self):
         pbilc = Pbilc()
-        pbilc.setup(10, 30, learning_rate = 0.5)
+        pbilc.setup(10, 30, learning_rate = 0.5, max_evals = 1000)
         pbilc.cost_func = GbCostFunction(OneMax)
         result = pbilc.search()        
         self.assertGreaterEqual(result.cost, 8)

@@ -12,9 +12,9 @@ class GbPerceptronWidget(OWWidget):
     """Widget for the perceptron algorithm"""
     
     #attributes
-    settingsList = ['learning_rate', 'max_iters', 'name']
+    settingsList = ['learning_rate', 'max_evals', 'name']
     learning_rate = 1.0
-    max_iters = 10
+    max_evals = 10
     learner = None
     classifier = None
     preprocessor = None
@@ -47,7 +47,7 @@ class GbPerceptronWidget(OWWidget):
         #set new binding controls
         nameEditor = OWGUI.lineEdit(self, self, "name", label="Name")
         learningEditor = OWGUI.lineEdit(self, self, "learning_rate", label="Learning Rage", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
-        maxiterEditor = OWGUI.lineEdit(self, self, "max_iters", label="Max. Iterations", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
+        maxiterEditor = OWGUI.lineEdit(self, self, "max_evals", label="Max. Evaluations", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
         
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(nameEditor.box, nameEditor)
@@ -74,7 +74,7 @@ class GbPerceptronWidget(OWWidget):
 
     def apply_settings(self):
         self.classifier = None
-        self.learner = PerceptronLearner(self.kernel, self.max_iters, self.learning_rate)        
+        self.learner = PerceptronLearner(self.kernel, self.max_evals, self.learning_rate)        
         
         if self.preprocessor:
             self.learner = self.preprocessor.wrapLearner(self.learner)

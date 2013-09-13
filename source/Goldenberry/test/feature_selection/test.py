@@ -10,10 +10,10 @@ class WKieraTest(TestCase):
     
     def test_basic(self):
         data = Orange.data.Table("zoo")
-        cost_func = WKieraCostFunction(GbKernel(func = LinealKernel), data, PerceptronLearner, max_iter = 1)
+        cost_func = WKieraCostFunction(GbKernel(func = LinealKernel), data, PerceptronLearner(max_iter = 1))
         opt = Pbil()
         opt.cost_func = cost_func
-        opt.setup(var_size = len(data.domain.features), cand_size = 2, learning_rate = 0.8)
+        opt.setup(var_size = len(data.domain.features), cand_size = 10, learning_rate = 0.8)
         #best_weights = opt.search()
 
 

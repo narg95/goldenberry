@@ -11,20 +11,20 @@ class GbBaseEda(GbBaseOptimizer):
     cand_size = None
     sample_size = None
     var_size = None
-    max_iters = None
-    max_evals = None
+    max_evals = 100
     selection_rate = None
     learning_rate = None
+    callback_func = None
 
-    def setup(self, var_size = 10, cand_size = 20, max_iters = None, max_evals = None, selection_rate = 50, learning_rate = 1.0, **kwargs):
+    def setup(self, var_size = 10, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1.0, callback_func = None, **kwargs):
         """Configure a Eda instance"""
         self.cand_size = cand_size
         self.sample_size = cand_size
         self.var_size = var_size
-        self.max_iters = max_iters
         self.max_evals = max_evals
         self.selection_rate = selection_rate
         self.learning_rate = learning_rate
+        self.callback_func = callback_func
         self.__dict__.update(**kwargs)
 
         self.reset()
@@ -60,6 +60,7 @@ class GbBaseEda(GbBaseOptimizer):
             raise Exception("The optimizer is not ready for being executed.  Please check if you have configured all the required parameters.")
         best = GbSolution(None, float('-Inf'))
         top_ranked = None
+
         while not self.done():
             self.iters += 1
             candidates = self.sample(self.sample_size, top_ranked, best)
@@ -68,12 +69,16 @@ class GbBaseEda(GbBaseOptimizer):
             
             if best.cost < winner.cost:
                 best = winner
-            
+
+            if self.callback_func is not None:
+                self.callback_func(self.cost_func.evals / float(self.max_evals))
+        
+        if self.callback_func is not None:
+                self.callback_func(1.0)    
         return best
 
     def done(self):
-        finish = (not (self.max_iters is None) and self.iters > self.max_iters) or \
-                 (not (self.max_evals is None) and self.cost_func.evals > self.max_evals)
+        finish = (self.cost_func.evals > self.max_evals)
         
         if finish:
             return True
