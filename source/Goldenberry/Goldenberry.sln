@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Goldenberry", "Goldenberry.pyproj", "{B50BAE63-032A-414C-B4FA-84AB7C14B6A8}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "widgets", "widgets\widgets.pyproj", "{76D7D1EA-472A-43F4-A0D3-EA8DFD58CFFC}"
-EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 3
@@ -24,8 +22,6 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B50BAE63-032A-414C-B4FA-84AB7C14B6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B50BAE63-032A-414C-B4FA-84AB7C14B6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76D7D1EA-472A-43F4-A0D3-EA8DFD58CFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76D7D1EA-472A-43F4-A0D3-EA8DFD58CFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
