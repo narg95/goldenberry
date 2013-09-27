@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(name="Goldenberry",
-      packages= ["Goldenberry", "Goldenberry.widgets"],      
-      entry_points={"orange.widgets": ("Goldenberry = Goldenberry.widgets.optimization")},
-      package_data = {'': ['icons/*.svg']},
-      zip_safe = False,
+      packages= find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),    
+      entry_points={'orange.widgets': ('Optimization = Goldenberry.widgets.optimization','Learners = Goldenberry.widgets.learners' )},
+      package_data = {'': ['icons/*.svg', '*.ui']},
+      zip_safe = False
       )

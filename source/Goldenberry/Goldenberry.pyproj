@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b50bae63-032a-414c-b4fa-84ab7c14b6a8}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test\test_execution.py</StartupFile>
+    <StartupFile>tests\test_execution.py</StartupFile>
     <SearchPath>..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -43,22 +43,22 @@
     <Folder Include="feature_selection\" />
     <Folder Include="base\" />
     <Folder Include="statistics\" />
-    <Folder Include="test\feature_selection\" />
-    <Folder Include="test\statistics\" />
-    <Folder Include="test\widgets\" />
+    <Folder Include="tests\feature_selection\" />
+    <Folder Include="tests\statistics\" />
+    <Folder Include="tests\widgets\" />
     <Folder Include="widgets\" />
-    <Folder Include="test\" />
-    <Folder Include="test\classification\" />
-    <Folder Include="test\optimization\" />
-    <Folder Include="test\optimization\edas\" />
+    <Folder Include="tests\" />
+    <Folder Include="tests\classification\" />
+    <Folder Include="tests\optimization\" />
+    <Folder Include="tests\optimization\edas\" />
     <Folder Include="optimization\" />
     <Folder Include="optimization\edas\" />
     <Folder Include="optimization\bioinspired\" />
     <Folder Include="optimization\base\" />
-    <Folder Include="widgets\Learners\" />
-    <Folder Include="widgets\Learners\icons\" />
-    <Folder Include="widgets\Optimization\" />
-    <Folder Include="widgets\Optimization\icons\" />
+    <Folder Include="widgets\learners\" />
+    <Folder Include="widgets\learners\icons\" />
+    <Folder Include="widgets\optimization\" />
+    <Folder Include="widgets\optimization\icons\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="base\GbDynamicFunction.py" />
@@ -76,7 +76,7 @@
     <Compile Include="optimization\base\GbSolution.py" />
     <Compile Include="optimization\base\__init__.py" />
     <Compile Include="optimization\edas\Bivariate.py" />
-    <Compile Include="optimization\edas\GbBlackBoxTester.py" />
+    <Compile Include="optimization\edas\GbBlackBoxtestser.py" />
     <Compile Include="optimization\edas\Univariate.py" />
     <Compile Include="optimization\edas\GbBaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
@@ -84,238 +84,208 @@
     <Compile Include="optimization\__init__.py" />
     <Compile Include="statistics\distributions.py" />
     <Compile Include="statistics\__init__.py" />
-    <Compile Include="test\classification\test_budget_kernel_perceptron.py">
+    <Compile Include="tests\classification\test_budget_kernel_perceptron.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\classification\test_kernels.py">
+    <Compile Include="tests\classification\test_kernels.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\classification\test_kernel_perceptron.py">
+    <Compile Include="tests\classification\test_kernel_perceptron.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\classification\test_perceptron.py">
+    <Compile Include="tests\classification\test_perceptron.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\classification\__init__.py">
+    <Compile Include="tests\classification\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\feature_selection\test.py">
+    <Compile Include="tests\feature_selection\test.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\feature_selection\__init__.py">
+    <Compile Include="tests\feature_selection\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\optimization\edas\test_edas.py">
+    <Compile Include="tests\optimization\edas\test_edas.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\optimization\edas\__init__.py">
+    <Compile Include="tests\optimization\edas\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\optimization\cost_functions.py">
+    <Compile Include="tests\optimization\cost_functions.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\optimization\__init__.py">
+    <Compile Include="tests\optimization\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\statistics\test_distributions.py">
+    <Compile Include="tests\statistics\test_distributions.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\statistics\__init__.py">
+    <Compile Include="tests\statistics\__init__.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\test_execution.py">
+    <Compile Include="tests\test_execution.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\classification\test_multiclass_learner.py">
+    <Compile Include="tests\classification\test_multiclass_learner.py">
       <Publish>False</Publish>
     </Compile>
-    <Compile Include="test\widgets\test_widgets.py">
+    <Compile Include="tests\widgets\test_widgets.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test\widgets\__init__.py" />
+    <Compile Include="tests\widgets\__init__.py" />
     <Compile Include="widgets\GbBaseEdaWidget.py" />
-    <Compile Include="widgets\Learners\GbKernelBuilderWidget.py">
+    <Compile Include="widgets\learners\GbKernelBuilderWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Learners\GbPerceptronWidget.py">
+    <Compile Include="widgets\learners\GbPerceptronWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Learners\GbSvmWidget.py">
+    <Compile Include="widgets\learners\GbSvmWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Learners\__init__.py">
+    <Compile Include="widgets\learners\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbBlackBoxWidget.py">
+    <Compile Include="widgets\optimization\GbBlackBoxWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbBmdaWidget.py">
+    <Compile Include="widgets\optimization\GbBmdaWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbCgaWidget.py">
+    <Compile Include="widgets\optimization\GbCgaWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbCostFuncsWidget.py">
+    <Compile Include="widgets\optimization\GbCostFuncsWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbPbilCWidget.py">
+    <Compile Include="widgets\optimization\GbPbilCWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbPbilWidget.py">
+    <Compile Include="widgets\optimization\GbPbilWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbTildaWidget.py">
+    <Compile Include="widgets\optimization\GbTildaWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbUmdaCWidget.py">
+    <Compile Include="widgets\optimization\GbUmdaCWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbUmdaWidget.py">
+    <Compile Include="widgets\optimization\GbUmdaWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\GbWKieraWidget.py">
+    <Compile Include="widgets\optimization\GbWKieraWidget.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="widgets\Optimization\__init__.py">
+    <Compile Include="widgets\optimization\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="widgets\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="test\classification\test_3classes_notseparable_data.tab">
+    <Content Include="tests\classification\test_3classes_notseparable_data.tab">
       <Publish>False</Publish>
     </Content>
-    <Content Include="test\classification\test_3classes_separable_data.tab">
+    <Content Include="tests\classification\test_3classes_separable_data.tab">
       <Publish>False</Publish>
     </Content>
-    <Content Include="test\classification\test_data_2d.tab">
+    <Content Include="tests\classification\test_data_2d.tab">
       <Publish>False</Publish>
     </Content>
-    <Content Include="test\classification\test_data_3d.tab">
+    <Content Include="tests\classification\test_data_3d.tab">
       <Publish>False</Publish>
     </Content>
     <Content Include="widgets\GbDynamicFunctionWidget.py">
       <Publish>True</Publish>
     </Content>
-    <Content Include="widgets\Learners\GbKernelBuilderWidget.pyc">
+    <Content Include="widgets\learners\GbKernelBuilderWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\GbKernelBuilderWidget.ui">
+    <Content Include="widgets\learners\GbKernelBuilderWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\GbPerceptronWidget.pyc">
+    <Content Include="widgets\learners\GbPerceptronWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\GbPerceptronWidget.ui">
+    <Content Include="widgets\learners\GbPerceptronWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\kernelPerceptron_16.png">
+    <Content Include="widgets\learners\test_data_2d.tab">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\kernelPerceptron_32.png">
+    <Content Include="widgets\learners\__init__.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\kernelPerceptron_40.png">
+    <Content Include="widgets\optimization\GbBlackBoxWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\kernelPerceptron_48.png">
+    <Content Include="widgets\optimization\GbBlackBoxWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\kernelPerceptron_60.png">
+    <Content Include="widgets\optimization\GbBmdaWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\perceptron_16.png">
+    <Content Include="widgets\optimization\GbBmdaWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\perceptron_32.png">
+    <Content Include="widgets\optimization\GbCgaWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\perceptron_40.png">
+    <Content Include="widgets\optimization\GbCgaWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\perceptron_48.png">
+    <Content Include="widgets\optimization\GbCostFuncsWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\icons\perceptron_60.png">
+    <Content Include="widgets\optimization\GbCostFuncsWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\test_data_2d.tab">
+    <Content Include="widgets\optimization\GbPbilCWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Learners\__init__.pyc">
+    <Content Include="widgets\optimization\GbPbilWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbBlackBoxWidget.pyc">
+    <Content Include="widgets\optimization\GbPbilWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbBlackBoxWidget.ui">
+    <Content Include="widgets\optimization\GbTildaWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbBmdaWidget.pyc">
+    <Content Include="widgets\optimization\GbTildaWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbBmdaWidget.ui">
+    <Content Include="widgets\optimization\GbUmdaCWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbCgaWidget.pyc">
+    <Content Include="widgets\optimization\GbUmdaWidget.pyc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbCgaWidget.ui">
+    <Content Include="widgets\optimization\GbUmdaWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbCostFuncsWidget.pyc">
+    <Content Include="widgets\optimization\icons\BlackBox.svg">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbCostFuncsWidget.ui">
+    <Content Include="widgets\optimization\icons\Bmda.svg">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbPbilCWidget.ui">
+    <Content Include="widgets\optimization\icons\Cga.svg">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbPbilWidget.pyc">
+    <Content Include="widgets\optimization\icons\Cost.svg">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbPbilWidget.ui">
+    <Content Include="widgets\optimization\icons\Pbil.svg">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbTildaWidget.pyc">
+    <Content Include="widgets\optimization\icons\Pbilc.svg">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbTildaWidget.ui">
+    <Content Include="widgets\optimization\icons\Tilda.svg">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\Optimization\GbUmdaCWidget.ui">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\GbUmdaWidget.pyc">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\GbUmdaWidget.ui">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\icons\BlackBox.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\icons\Bmda.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\icons\Cga.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\icons\Cost.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\icons\Pbil.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\icons\Pbilc.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\icons\Tilda.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\Optimization\__init__.pyc">
+    <Content Include="widgets\optimization\__init__.pyc">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
