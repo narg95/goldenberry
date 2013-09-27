@@ -45,6 +45,7 @@
     <Folder Include="statistics\" />
     <Folder Include="test\feature_selection\" />
     <Folder Include="test\statistics\" />
+    <Folder Include="test\widgets\" />
     <Folder Include="widgets\" />
     <Folder Include="test\" />
     <Folder Include="test\classification\" />
@@ -54,6 +55,10 @@
     <Folder Include="optimization\edas\" />
     <Folder Include="optimization\bioinspired\" />
     <Folder Include="optimization\base\" />
+    <Folder Include="widgets\Learners\" />
+    <Folder Include="widgets\Learners\icons\" />
+    <Folder Include="widgets\Optimization\" />
+    <Folder Include="widgets\Optimization\icons\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="base\GbDynamicFunction.py" />
@@ -124,7 +129,56 @@
     <Compile Include="test\classification\test_multiclass_learner.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="test\widgets\test_widgets.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test\widgets\__init__.py" />
     <Compile Include="widgets\GbBaseEdaWidget.py" />
+    <Compile Include="widgets\Learners\GbKernelBuilderWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Learners\GbPerceptronWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Learners\GbSvmWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Learners\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbBlackBoxWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbBmdaWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbCgaWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbCostFuncsWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbPbilCWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbPbilWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbTildaWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbUmdaCWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbUmdaWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\GbWKieraWidget.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="widgets\Optimization\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="widgets\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>
@@ -143,6 +197,126 @@
     </Content>
     <Content Include="widgets\GbDynamicFunctionWidget.py">
       <Publish>True</Publish>
+    </Content>
+    <Content Include="widgets\Learners\GbKernelBuilderWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\GbKernelBuilderWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\GbPerceptronWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\GbPerceptronWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\kernelPerceptron_16.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\kernelPerceptron_32.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\kernelPerceptron_40.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\kernelPerceptron_48.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\kernelPerceptron_60.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\perceptron_16.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\perceptron_32.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\perceptron_40.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\perceptron_48.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\icons\perceptron_60.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\test_data_2d.tab">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Learners\__init__.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbBlackBoxWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbBlackBoxWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbBmdaWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbBmdaWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbCgaWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbCgaWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbCostFuncsWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbCostFuncsWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbPbilCWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbPbilWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbPbilWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbTildaWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbTildaWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbUmdaCWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbUmdaWidget.pyc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\GbUmdaWidget.ui">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\icons\BlackBox.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\icons\Bmda.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\icons\Cga.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\icons\Cost.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\icons\Pbil.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\icons\Pbilc.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\icons\Tilda.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="widgets\Optimization\__init__.pyc">
+      <SubType>Content</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
