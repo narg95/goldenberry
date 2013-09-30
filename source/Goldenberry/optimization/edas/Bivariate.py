@@ -51,12 +51,10 @@ class Bmda(GbBaseEda):
 
         while len(A) > 0:
             v1, v2, chi = Bmda._max_chisqr(A, A_, chi_matrix)
-            if 0.0 != chi:
+            if chi > 3.84:
                 children[v2].append(v1)
                 ctable = BinomialContingencyTable(candidates[:,[v2]], candidates[:, [v1]])
-                cond_props[v1] = ctable.PyGx[:, 1]
-                if cond_props[v1] == []:
-                    print "error"
+                cond_props[v1] = ctable.PyGx[:, 1]                
                 A_.append(v1)
                 A.remove(v1)
             else:
@@ -76,14 +74,7 @@ class Bmda(GbBaseEda):
         for x,y in itr.combinations(xrange(length), 2):
             ctable = BinomialContingencyTable(candidates[:,[x]], candidates[:, [y]])
             chisquare = ctable.chisquare()
-            
-            #independency threshold
-            if math.isinf(chisquare):
-                print "inf"
-            if chisquare > 3.84:
-                chi_matrix[x,y] = chi_matrix[y,x] = chisquare
-            else:
-                chi_matrix[x,y] = chi_matrix[y,x] = 0.0                
+            chi_matrix[x,y] = chi_matrix[y,x] = chisquare            
         return chi_matrix
 
     @staticmethod
