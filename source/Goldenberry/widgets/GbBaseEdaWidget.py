@@ -77,9 +77,23 @@ class GbBaseEdaWidget(OWWidget):
     def run(self):
         self.optimizer.reset()
         if self.optimizer.ready():
-            thread.start_new_thread(self.search,())
+            search = Search(self.optimizer)
+            self.connect(search, QtCore.SIGNAL('Finished(QString)'), self.search_finished)
+            self.runButton.setEnabled(False)
+            search.start()
             
-    def search(self):
+    def search_finished(self, text):
+        self.runButton.setEnabled(True)
+        self.resultTextEdit.setText(text)
+
+class Search(QtCore.QThread):
+    
+    def __init__(self, optimizer):    
+        QtCore.QThread.__init__(self)       
+        self.optimizer = optimizer
+     
+    def run(self):
         result = self.optimizer.search()
         evals, argmin, argmax, min, max, mean, stdev = self.optimizer.cost_func.statistics()
-        self.resultTextEdit.setText("Best: %s\ncost:%s\n#evals:%s\n#argmin:%s\nargmax:%s\nmin val:%s\nmax val:%s\nmean:%s\nstdev:%s"%(result.params, result.cost, evals, argmin, argmax, min, max, mean, stdev))
+        text = "Best: %s\ncost:%s\n#evals:%s\n#argmin:%s\nargmax:%s\nmin val:%s\nmax val:%s\nmean:%s\nstdev:%s"%(result.params, result.cost, evals, argmin, argmax, min, max, mean, stdev)
+        self.emit( QtCore.SIGNAL('Finished(QString)'),  text)     
