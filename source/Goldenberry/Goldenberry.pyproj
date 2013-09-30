@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b50bae63-032a-414c-b4fa-84ab7c14b6a8}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>C:\Python27\lib\site-packages\Orange\OrangeCanvas\main.py</StartupFile>
+    <StartupFile>tests\test_execution.py</StartupFile>
     <SearchPath>..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -200,43 +200,27 @@
     <Content Include="widgets\GbDynamicFunctionWidget.py">
       <Publish>True</Publish>
     </Content>
-    <Content Include="widgets\learners\GbKernelBuilderWidget.pyc">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="widgets\learners\GbKernelBuilderWidget.ui">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\learners\GbPerceptronWidget.pyc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="widgets\learners\GbPerceptronWidget.ui">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="widgets\learners\icons\Cost.svg" />
+    <Content Include="widgets\learners\icons\perceptron.svg" />
+    <Content Include="widgets\learners\icons\SVM.svg">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="widgets\learners\test_data_2d.tab">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\learners\__init__.pyc">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\optimization\GbBlackBoxWidget.pyc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="widgets\optimization\GbBlackBoxWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\optimization\GbBmdaWidget.pyc">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="widgets\optimization\GbBmdaWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\optimization\GbCgaWidget.pyc">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="widgets\optimization\GbCgaWidget.ui">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\optimization\GbCostFuncsWidget.pyc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="widgets\optimization\GbCostFuncsWidget.ui">
@@ -245,22 +229,13 @@
     <Content Include="widgets\optimization\GbPbilCWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\optimization\GbPbilWidget.pyc">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="widgets\optimization\GbPbilWidget.ui">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\optimization\GbTildaWidget.pyc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="widgets\optimization\GbTildaWidget.ui">
       <SubType>Content</SubType>
     </Content>
     <Content Include="widgets\optimization\GbUmdaCWidget.ui">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\optimization\GbUmdaWidget.pyc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="widgets\optimization\GbUmdaWidget.ui">
@@ -285,9 +260,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="widgets\optimization\icons\Tilda.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="widgets\optimization\__init__.pyc">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

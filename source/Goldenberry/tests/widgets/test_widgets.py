@@ -5,16 +5,16 @@ from Goldenberry.optimization.cost_functions import *
 from Goldenberry.optimization.edas.Univariate import *
 from Goldenberry.optimization.base.GbCostFunction import *
 from PyQt4.QtGui import QApplication
-from optimization.GbCgaWidget import GbCgaWidget
-from optimization.GbBmdaWidget import GbBmdaWidget
-from optimization.GbUmdaWidget import GbUmdaWidget
-from optimization.GbPbilWidget import GbPbilWidget
-from optimization.GbCostFuncsWidget import GbCostFuncsWidget
-from optimization.GbTildaWidget import GbTildaWidget
-from optimization.GbBlackBoxWidget import GbBlackBoxWidget
-from Learners.GbKernelBuilderWidget import GbKernelBuilderWidget
-from Learners.GbPerceptronWidget import GbPerceptronWidget
-from Learners.GbSvmWidget import GbSvmWidget
+from Goldenberry.widgets.optimization.GbCgaWidget import GbCgaWidget
+from Goldenberry.widgets.optimization.GbBmdaWidget import GbBmdaWidget
+from Goldenberry.widgets.optimization.GbUmdaWidget import GbUmdaWidget
+from Goldenberry.widgets.optimization.GbPbilWidget import GbPbilWidget
+from Goldenberry.widgets.optimization.GbCostFuncsWidget import GbCostFuncsWidget
+from Goldenberry.widgets.optimization.GbTildaWidget import GbTildaWidget
+from Goldenberry.widgets.optimization.GbBlackBoxWidget import GbBlackBoxWidget
+from Goldenberry.widgets.learners.GbKernelBuilderWidget import GbKernelBuilderWidget
+from Goldenberry.widgets.learners.GbPerceptronWidget import GbPerceptronWidget
+from Goldenberry.widgets.learners.GbSvmWidget import GbSvmWidget
 
 import sys
 
@@ -33,6 +33,10 @@ class WidgetsTest(TestCase):
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
+
+        #Uncomment only when testing the widget UI
+        #widget.show()
+        #self.app.exec_() 
 
     def test_umda_basic(self):        
         widget = GbUmdaWidget()
@@ -156,13 +160,14 @@ class WidgetsTest(TestCase):
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()
-    
-    def tearDown(self):
-       pass
 
     def test_perceptron_basic(self):        
         widget = GbSvmWidget()        
 
         #Uncomment only when testing the widget UI
-        widget.show()
-        self.app.exec_()
+        #widget.show()
+        #self.app.exec_()
+    
+    def tearDown(self):
+       pass
+    

@@ -2,7 +2,7 @@
 <name>Perceptron</name>
 <description>Canonical Perceptron Algorithm</description>
 <contact>Nestor Rodriguez</contact>
-<icon>icons/perceptron.png</icon>
+<icon>icons/perceptron.svg</icon>
 <priority>50</priority>
 
 """
