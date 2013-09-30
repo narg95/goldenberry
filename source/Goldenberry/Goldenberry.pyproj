@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b50bae63-032a-414c-b4fa-84ab7c14b6a8}</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tests\test_execution.py</StartupFile>
+    <StartupFile>C:\Python27\lib\site-packages\Orange\OrangeCanvas\main.py</StartupFile>
     <SearchPath>..\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -76,7 +76,9 @@
     <Compile Include="optimization\base\GbSolution.py" />
     <Compile Include="optimization\base\__init__.py" />
     <Compile Include="optimization\edas\Bivariate.py" />
-    <Compile Include="optimization\edas\GbBlackBoxtestser.py" />
+    <Compile Include="optimization\edas\GbBlackBoxTester.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="optimization\edas\Univariate.py" />
     <Compile Include="optimization\edas\GbBaseEda.py" />
     <Compile Include="optimization\edas\__init__.py" />
