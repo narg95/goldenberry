@@ -142,6 +142,17 @@ class BinomialContingencyTable:
 
         return self.n*chi
 
+    def chisquare(self):
+        chi = np.zeros(self.l)
+        for i in xrange(self.l):
+            pxy = self.pxys[:, [2*i, 2*i+1]]
+            px_py = np.array([[1- self.px],[self.px]]).dot(np.array([[1 - self.pys[i]], [self.pys[i]]]).T)
+            val = (pxy - px_py)
+            val = np.array([0 if  np.isnan(j) or np.isinf(j) else j for j in ((val * val)/px_py).flat])
+            chi[i] = np.sum(val)
+
+        return self.n*chi
+
 def _splitter(data, pred):
     yes, no = [], []
     for d in data:

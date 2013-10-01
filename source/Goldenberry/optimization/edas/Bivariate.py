@@ -20,11 +20,12 @@ class Bmda(GbBaseEda):
 
     def estimate(self, top_ranked, best):
         marginals = np.average(top_ranked, axis = 0)
-        roots, children, cond_props = Bmda.build_graph(top_ranked)        
+        entropy =  - marginals * np.log2(marginals) - (1 - marginals) * np.log2(1 - marginals)
+        roots, children, cond_props = Bmda.build_graph(top_ranked, entropy)        
         self.distr = BivariateBinomial(p = marginals, cond_props = cond_props, children = children, roots = roots)
 
     @staticmethod
-    def build_graph(candidates):
+    def build_graph(candidates, sort):
         
         var_size = candidates.shape[1]
         
@@ -42,11 +43,11 @@ class Bmda(GbBaseEda):
                 
         A = range(len(cond_props))
         A_ = []
-        randidx = np.random.randint(0, len(A))
-        v = A[randidx]
+        idx = np.argmin(sort)
+        v = A[idx]
         roots.append(v)
         cond_props[v] = []
-        del A[randidx]
+        del A[idx]
         A_.append(v)        
 
         while len(A) > 0:
@@ -58,12 +59,13 @@ class Bmda(GbBaseEda):
                 A_.append(v1)
                 A.remove(v1)
             else:
-                randidx = np.random.randint(0, len(A))
-                v = A[randidx]
+                idx = np.argmin(sort[A])
+                v = A[idx]
                 roots.append(v)
                 cond_props[v] = []
-                A_.append(v)
-                del A[randidx]
+                #TODO:  Review if a memory problem is caused for reinitializing the list.
+                A_ = [v]
+                del A[idx]
         
         return roots, children, cond_props
 
