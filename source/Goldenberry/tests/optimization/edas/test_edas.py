@@ -75,7 +75,8 @@ class BmdaTest(TestCase):
         chi_matrix = Bmda._get_chisqr_matrix(pop)
         self.assertEqual(chi_matrix.shape, (4,4))
         expected = np.array([[0, 0, 0, 0],[0, 0, 0, 0], [0, 0, 0 , 0],[0, 0, 0, 0]])
-        self.assertAlmostEqual(0.0, np.sum((chi_matrix - expected)), places=4)
+        #Test for a total independent chi matrix.
+        self.assertTrue((chi_matrix < 3.84).all())
 
     """Test the max chi square algorithm"""
     def test_max_chisquare_base(self):
@@ -104,14 +105,14 @@ class BmdaTest(TestCase):
     def test_generate_graph_all_independent(self):
         """Test that the algorithm generates no graph, all variables independent"""
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
-        roots, _, _ = Bmda.build_graph(pop)
+        roots, _, _ = Bmda.build_graph(pop, np.zeros(4))
         roots.sort()
         self.assertTrue(np.equal(roots, [0,1,2,3]).all())
 
     def test_generate_graph_with_dependencies(self):
         """Test that the algorithm generates a graph with two root nodes"""
         pop = np.array(([[0, 0, 1, 0], [1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 0], [1, 1, 0, 0]]))
-        roots, _, _ = Bmda.build_graph(pop)
+        roots, _, _ = Bmda.build_graph(pop, np.zeros(4))
         self.assertEqual(len(roots), 2)
         self.assertTrue(np.equal(roots, 3).any())
 
