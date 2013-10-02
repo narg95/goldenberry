@@ -76,6 +76,7 @@ class GbBaseEdaWidget(OWWidget):
 
     def run(self):
         self.optimizer.reset()
+        self.resultTextEdit.setText("")
         if self.optimizer.ready():
             search = Search(self.optimizer)
             self.connect(search, QtCore.SIGNAL('Finished(QString)'), self.search_finished)

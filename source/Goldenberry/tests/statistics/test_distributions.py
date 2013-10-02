@@ -1,5 +1,6 @@
 from Goldenberry.statistics.distributions import *
 import numpy as np
+from scipy import stats
 
 from unittest import *
 
@@ -101,6 +102,24 @@ class BinomialContingencyTableTest(TestCase):
         expected = np.array([3, 0.6667, 5.54e-32])
         self.assertAlmostEqual(np.sum(chi - expected ), 0.0, places=4)
 
+    def test_chisquare_mutual_inf_test(self):
+        X = np.array([[0],[1],[0],[1],[0],[1]])
+        Y = np.array([[1,0,1], [0,0,1], [0,1,0], [0,1,0],[1,1,1], [0,0,1]])
+        ctable = BinomialContingencyTable(X, Y)
+        chi, mi = ctable.chi_and_mutual_inf()
+        expected_chi = np.array([3, 0.6667, 0])
+        expected_mi = np.array([4.591479e-01, 8.170417e-02, 0])
+        self.assertAlmostEqual(np.sum(chi - expected_chi ), 0.0, places=4)
+        self.assertAlmostEqual(np.sum(mi - expected_mi), 0.0, places=4)
+
+    def test_sim_test(self):
+        X = np.array([[0],[1],[0],[1],[0],[1]])
+        Y = np.array([[1,0,1], [0,0,1], [0,1,0], [0,1,0],[1,1,1], [0,0,1]])
+        ctable = BinomialContingencyTable(X, Y)
+        sim = ctable.sim()
+        expected = np.array([4.20917e-01,   4.78609e-02,  0])
+        self.assertAlmostEqual(np.sum(sim - expected), 0.0, places=4)
+        
     def test_join_and_conditional_probability(self):
         X = np.array([[1],[0],[1],[1],[1],[1]])
         Y = np.array([[1],[0],[0],[0],[0],[1]])

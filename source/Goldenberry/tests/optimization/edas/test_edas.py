@@ -1,5 +1,5 @@
 from Goldenberry.optimization.edas.Univariate import Cga, Pbil, Tilda, Pbilc
-from Goldenberry.optimization.edas.Bivariate import Bmda
+from Goldenberry.optimization.edas.Bivariate import Bmda, DependencyMethod
 from Goldenberry.optimization.base.GbSolution import GbSolution
 from Goldenberry.optimization.cost_functions import *
 from Goldenberry.optimization.edas.GbBlackBoxTester import GbBlackBoxTester
@@ -72,7 +72,7 @@ class BmdaTest(TestCase):
     """Test the generation of the chi square matrix"""
     def test_shape_calculate_chisquare_matrix(self):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1],  [1,1,0,0]]))
-        chi_matrix = Bmda._get_chisqr_matrix(pop)
+        chi_matrix = Bmda.build_chi2_dependency_matrix(pop)
         self.assertEqual(chi_matrix.shape, (4,4))
         expected = np.array([[0, 0, 0, 0],[0, 0, 0, 0], [0, 0, 0 , 0],[0, 0, 0, 0]])
         #Test for a total independent chi matrix.
@@ -81,7 +81,7 @@ class BmdaTest(TestCase):
     """Test the max chi square algorithm"""
     def test_max_chisquare_base(self):
         chi_matrix = np.array([[0.0,4.0,0.0],[4,0.0,5.0],[0.0, 5.0, 0.0]])
-        x,y,chi = Bmda._max_chisqr([0,1],[2], chi_matrix)
+        x,y,chi = Bmda.get_max_dependency([0,1],[2], chi_matrix)
         self.assertEqual(x, 1)
         self.assertEqual(y, 2)
         self.assertEqual(chi, 5.0)
@@ -89,7 +89,7 @@ class BmdaTest(TestCase):
     """Test the max chi square algorithm"""
     def test_max_chisquare_base_1(self):
         chi_matrix = np.array([[0.0,4.0,0.0],[4,0.0,5.0],[0.0, 5.0, 0.0]])
-        x,y,chi = Bmda._max_chisqr([1],[0, 2], chi_matrix)
+        x,y,chi = Bmda.get_max_dependency([1],[0, 2], chi_matrix)
         self.assertEqual(x, 1)
         self.assertEqual(y, 2)
         self.assertEqual(chi, 5.0)
@@ -97,7 +97,7 @@ class BmdaTest(TestCase):
     """Test the max chi square algorithm"""
     def test_max_chisquare_base_2(self):
         chi_matrix = np.array([[0.0,4.0,0.0],[4,0.0,5.0],[0.0, 5.0, 0.0]])
-        x,y,chi = Bmda._max_chisqr([0],[1, 2], chi_matrix)
+        x,y,chi = Bmda.get_max_dependency([0],[1, 2], chi_matrix)
         self.assertEqual(x, 0)
         self.assertEqual(y, 1)
         self.assertEqual(chi, 4.0)
@@ -105,16 +105,25 @@ class BmdaTest(TestCase):
     def test_generate_graph_all_independent(self):
         """Test that the algorithm generates no graph, all variables independent"""
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
-        roots, _, _ = Bmda.build_graph(pop, np.zeros(4))
+        roots, _, _ = Bmda.build_graph(pop, np.zeros(4), DependencyMethod.chi2_test)
         roots.sort()
         self.assertTrue(np.equal(roots, [0,1,2,3]).all())
 
     def test_generate_graph_with_dependencies(self):
         """Test that the algorithm generates a graph with two root nodes"""
         pop = np.array(([[0, 0, 1, 0], [1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 0], [1, 1, 0, 0]]))
-        roots, _, _ = Bmda.build_graph(pop, np.zeros(4))
+        roots, _, _ = Bmda.build_graph(pop, np.zeros(4), DependencyMethod.chi2_test)
         self.assertEqual(len(roots), 2)
         self.assertTrue(np.equal(roots, 3).any())
+
+    def test_basic_search_onemax_sim_method(self):
+        """Test class for the Bmda algorithm"""
+        bmda = Bmda()
+        bmda.setup(10, 40, dependency_method = DependencyMethod.sim)
+        bmda.cost_func = GbCostFunction(OneMax)
+        result = bmda.search()
+        self.assertGreaterEqual(result.params.sum(), 8.0)
+        self.assertGreaterEqual(result.cost, 8.0)
 
     def test_basic_search_onemax(self):
         """Test class for the Bmda algorithm"""
