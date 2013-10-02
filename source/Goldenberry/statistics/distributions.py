@@ -1,5 +1,6 @@
 import numpy as np
 import scipy.special as scs
+from scipy import stats
 import itertools as it
 import abc
 import math
@@ -142,16 +143,23 @@ class BinomialContingencyTable:
 
         return self.n*chi
 
-    def chisquare(self):
+    def chi_and_mutual_inf(self):
+        mi = np.zeros(self.l)
         chi = np.zeros(self.l)
         for i in xrange(self.l):
             pxy = self.pxys[:, [2*i, 2*i+1]]
             px_py = np.array([[1- self.px],[self.px]]).dot(np.array([[1 - self.pys[i]], [self.pys[i]]]).T)
             val = (pxy - px_py)
             val = np.array([0 if  np.isnan(j) or np.isinf(j) else j for j in ((val * val)/px_py).flat])
-            chi[i] = np.sum(val)
+            chi[i] = np.nansum(val)
+            mi[i] = np.nansum(pxy*np.log2(pxy/px_py))
 
-        return self.n*chi
+        return self.n*chi, mi
+
+    def sim(self):
+        """This is a novel method for calculating the dependency among variables"""
+        chi, mi = self.chi_and_mutual_inf()
+        return mi*stats.chi2.cdf(chi, 1)
 
 def _splitter(data, pred):
     yes, no = [], []
