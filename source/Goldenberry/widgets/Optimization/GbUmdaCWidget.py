@@ -7,7 +7,7 @@
 
 """
 
-from Goldenberry.widgets.GbBaseEdaWidget import GbBaseEdaWidget
+from Goldenberry.widgets.optimization.GbBaseEdaWidget import GbBaseEdaWidget
 from Goldenberry.widgets import Pbilc, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
 
 class GbUmdaCWidget(GbBaseEdaWidget):
