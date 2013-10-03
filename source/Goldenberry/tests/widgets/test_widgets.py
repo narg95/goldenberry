@@ -15,6 +15,7 @@ from Goldenberry.widgets.optimization.GbBlackBoxWidget import GbBlackBoxWidget
 from Goldenberry.widgets.learners.GbKernelBuilderWidget import GbKernelBuilderWidget
 from Goldenberry.widgets.learners.GbPerceptronWidget import GbPerceptronWidget
 from Goldenberry.widgets.learners.GbSvmWidget import GbSvmWidget
+from Goldenberry.widgets.optimization.GbFilterAttributeWidget import GbFilterAttributeWidget
 
 import sys
 
@@ -168,6 +169,14 @@ class WidgetsTest(TestCase):
         #widget.show()
         #self.app.exec_()
     
+    def test_filter_attributes_basic(self):        
+        widget = GbFilterAttributeWidget()       
+        widget.set_data(Orange.data.Table('Iris'))
+
+        #Uncomment only when testing the widget UI
+        #widget.show()
+        #self.app.exec_()
+
     def tearDown(self):
        pass
     

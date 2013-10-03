@@ -157,6 +157,7 @@
     <Compile Include="widgets\optimization\GbCgaWidget.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="widgets\optimization\GbFilterAttributeWidget.py" />
     <Compile Include="widgets\optimization\GbCostFuncsWidget.py">
       <SubType>Code</SubType>
     </Compile>
@@ -259,6 +260,7 @@
     <Content Include="widgets\optimization\icons\Pbilc.svg">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="widgets\optimization\icons\FilterAttributes.svg" />
     <Content Include="widgets\optimization\icons\Tilda.svg">
       <SubType>Content</SubType>
     </Content>

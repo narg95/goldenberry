@@ -13,7 +13,7 @@ class KernelsTest(TestCase):
     def test_poly_kernel(self):
         x = np.array([2,3,4])
         y = np.array([1,2,3])
-        self.assertEqual(PolynomialKernel(x, y), (20.0**3))
+        self.assertEqual(PolynomialKernel(x, y), (20.0**2))
 
     def test_integration_SVM(self):
         data = orange.ExampleTable("iris.tab")
