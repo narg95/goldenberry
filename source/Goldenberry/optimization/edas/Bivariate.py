@@ -6,6 +6,7 @@ from Goldenberry.optimization.base.GbSolution import GbSolution
 import math
 
 class DependencyMethod:
+    """ This is an enumeration for the supported dependency methods"""
     chi2_test = 0,
     sim = 1
 

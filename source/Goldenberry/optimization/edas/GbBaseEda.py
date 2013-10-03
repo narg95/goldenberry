@@ -35,7 +35,7 @@ class GbBaseEda(GbBaseOptimizer):
         if None is not self.cost_func:
             self.cost_func.reset_statistics()
         if None is not self.distr:
-            self.distr.reset()            
+            self.initialize()
         
     @abc.abstractmethod
     def initialize(self):
@@ -71,10 +71,10 @@ class GbBaseEda(GbBaseOptimizer):
                 best = winner
 
             if self.callback_func is not None:
-                self.callback_func(self.cost_func.evals / float(self.max_evals))
+                self.callback_func(best, self.cost_func.evals / float(self.max_evals))
         
         if self.callback_func is not None:
-                self.callback_func(1.0)    
+                self.callback_func(best, 1.0)    
         return best
 
     def done(self):

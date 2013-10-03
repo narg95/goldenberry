@@ -21,6 +21,7 @@ class GbBlackBoxWidget(OWWidget):
         
     def setup_interfaces(self):
          self.inputs = [("Optimizer", GbBaseOptimizer, self.set_optimizer, Multiple)]
+         self.outputs = [("Solution", GbSolution)]
     
     def setup_ui(self):
         load_widget_ui(self)
