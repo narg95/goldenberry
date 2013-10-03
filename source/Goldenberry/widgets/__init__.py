@@ -3,7 +3,7 @@ from orngWrap import PreprocessedLearner
 from Orange.OrangeWidgets.OWWidget import OWWidget, Multiple
 from Orange.OrangeWidgets import OWGUI
 from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget, QClipboard
-from PyQt4.QtCore import QObject, Qt
+from PyQt4.QtCore import QObject, Qt, pyqtSignal
 from PyQt4 import QtCore, QtGui, uic
 import os
 import sys
@@ -12,6 +12,7 @@ import inspect
 import types
 # optimization imports
 from Goldenberry.optimization.base.GbCostFunction import *
+from Goldenberry.optimization.base.GbSolution import GbSolution
 from Goldenberry.base.GbDynamicFunction import *
 from Goldenberry.classification.base.GbKernel import GbKernel
 import Goldenberry.classification.Kernels as Kernels

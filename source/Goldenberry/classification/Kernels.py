@@ -4,7 +4,7 @@ def LinealKernel(x, y):
     return x.dot(y.T)
 
 def PolynomialKernel(x, y):
-    degree = 3    
+    degree = 2
     return x.dot(y.T)**degree
 
 def GaussianKernel(x, y):

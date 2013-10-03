@@ -13,9 +13,8 @@ from Goldenberry.widgets import Cga, GbCostFunction, GbBaseOptimizer
 class GbCgaWidget(GbBaseEdaWidget):
     """Widget for cga algorithm"""
     
-    def __init__(self, parent=None, signalManager=None):
+    def __init__(self, parent=None, signalManager=None, title = "Cga"):
         self.optimizer = Cga()
-        GbBaseEdaWidget.__init__(self, parent, signalManager, 'cGA')
+        super(GbCgaWidget, self).__init__(parent, signalManager, title)
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer)]
-            
