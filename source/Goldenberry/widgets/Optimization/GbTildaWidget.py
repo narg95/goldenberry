@@ -7,7 +7,7 @@
 
 """
 
-from Goldenberry.widgets.GbBaseEdaWidget import GbBaseEdaWidget
+from Goldenberry.widgets.optimization.GbBaseEdaWidget import GbBaseEdaWidget
 from Goldenberry.widgets import Tilda, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
 
 class GbTildaWidget(GbBaseEdaWidget):

@@ -135,7 +135,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tests\widgets\__init__.py" />
-    <Compile Include="widgets\GbBaseEdaWidget.py" />
     <Compile Include="widgets\learners\GbKernelBuilderWidget.py">
       <SubType>Code</SubType>
     </Compile>
@@ -148,6 +147,7 @@
     <Compile Include="widgets\learners\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="widgets\optimization\GbBaseEdaWidget.py" />
     <Compile Include="widgets\optimization\GbBlackBoxWidget.py">
       <SubType>Code</SubType>
     </Compile>
