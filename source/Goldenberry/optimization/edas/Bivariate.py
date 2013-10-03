@@ -26,6 +26,9 @@ class Bmda(GbBaseEda):
         candidates = GbBaseEda.sample(self,sample_size - len(top_ranked), top_ranked, best)
         return np.concatenate((top_ranked, candidates))[np.random.permutation(self.cand_size)]
 
+    def build_solution(self, params, cost):
+        return GbSolution(params, cost, self.distr.roots, self.distr.children)
+
     def estimate(self, top_ranked, best):
         marginals = np.average(top_ranked, axis = 0)
         entropy =  - marginals * np.log2(marginals) - (1 - marginals) * np.log2(1 - marginals)

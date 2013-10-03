@@ -91,7 +91,10 @@ class GbBaseEda(GbBaseOptimizer):
     def get_top_ranked(self, candidates):
         fits = self.cost_func(candidates)
         index = np.argsort(fits)[:(self.cand_size * self.selection_rate/100):-1]
-        return candidates[index], GbSolution(candidates[index[0]], fits[index[0]])
+        return candidates[index], self.build_solution(candidates[index[0]], fits[index[0]])
+
+    def build_solution(self, params, cost):
+        return GbSolution(params, cost)
 
     @abc.abstractmethod
     def estimate(self, top_ranked, best):
