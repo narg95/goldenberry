@@ -31,14 +31,11 @@ INSTALL_REQUIRES = ('Orange',
 ENTRY_POINTS = {'orange.addons': ('goldenberry = Goldenberry'),
                 'orange.widgets': ('Optimization = Goldenberry.widgets.optimization','Learners = Goldenberry.widgets.learners' )}
 
-
-
 if __name__ == '__main__':
     setup(
             name = NAME,
             version = VERSION,
             description = DESCRIPTION,
-            long_description = LONG_DESCRIPTION,
             author = AUTHOR,
             author_email = AUTHOR_EMAIL,
             url = URL,
