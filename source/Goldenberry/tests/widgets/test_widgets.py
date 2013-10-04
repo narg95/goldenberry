@@ -183,8 +183,8 @@ class WidgetsTest(TestCase):
         widget.apply()
 
         #Uncomment only when testing the widget UI
-        widget.show()
-        self.app.exec_()
+        #widget.show()
+        #self.app.exec_()
 
     def tearDown(self):
        pass

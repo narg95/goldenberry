@@ -8,7 +8,7 @@
 """
 
 from Goldenberry.widgets.optimization.GbBaseEdaWidget import GbBaseEdaWidget
-from Goldenberry.widgets import Bmda, GbCostFunction, GbBaseOptimizer, OWGUI, Qt, DependencyMethod
+from Goldenberry.widgets import Bmda, GbCostFunction, GbBaseOptimizer, OWGUI, Qt, DependencyMethod, GbSolution
 
 class GbBmdaWidget(GbBaseEdaWidget):
     """Widget for Bmda algorithm"""
@@ -18,7 +18,7 @@ class GbBmdaWidget(GbBaseEdaWidget):
         self.optimizer = Bmda()
         GbBaseEdaWidget.__init__(self, parent, signalManager, 'BMDA')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
-        self.outputs = [("Optimizer", GbBaseOptimizer)]
+        self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
 
         #UI Buttons
         radio_box = OWGUI.radioButtonsInBox(self, self, "method",

@@ -18,6 +18,8 @@ class GbFilterAttributeWidget(OWWidget):
         self.threshold = 0.0
         self.parttition_level = 1
         self.solution = None
+        self.data = None
+        self.att_items_list = None
         self.scores = None
         self.setup_ui()
         self.setup_interfaces()
