@@ -255,6 +255,10 @@
     <Content Include="widgets\optimization\icons\Cost.svg">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="widgets\optimization\icons\disabled.png" />
+    <Content Include="widgets\optimization\icons\disabled.svg" />
+    <Content Include="widgets\optimization\icons\enabled.png" />
+    <Content Include="widgets\optimization\icons\enabled.svg" />
     <Content Include="widgets\optimization\icons\Pbil.svg">
       <SubType>Content</SubType>
     </Content>
@@ -265,6 +269,7 @@
     <Content Include="widgets\optimization\icons\Tilda.svg">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="widgets\Qt.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

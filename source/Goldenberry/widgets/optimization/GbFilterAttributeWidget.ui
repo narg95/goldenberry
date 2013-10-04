@@ -11,38 +11,45 @@
         <x>0</x>
         <y>0</y>
         <width>505</width>
-        <height>600</height>
+        <height>510</height>
       </rect>
     </property>
     <property name="windowTitle">
       <string>Filter Attributes</string>
     </property>
-    <widget class="QPushButton" name="applyButton">
-      <property name="geometry">
-        <rect>
-          <x>450</x>
-          <y>540</y>
-          <width>55</width>
-          <height>25</height>
-        </rect>
-      </property>
-      <property name="text">
-        <string>Apply</string>
-      </property>
-    </widget>
     <widget class="QGroupBox" name="attributesBox">
       <property name="geometry">
         <rect>
           <x>5</x>
           <y>5</y>
           <width>245</width>
-          <height>480</height>
+          <height>500</height>
         </rect>
       </property>
       <property name="title">
         <string>Attributes</string>
       </property>
-    </widget>
+      <layout class="QVBoxLayout" name="verticalAttributesLayout">
+        <item>
+          <widget class="QTreeView" name="attributesTree">
+            <property name="geometry">
+              <rect>
+                <x>10</x>
+                <y>20</y>
+                <width>230</width>
+                <height>500</height>
+              </rect>
+            </property>
+          </widget>
+        </item>
+        <item>
+          <widget class="QWidget" name="actionswidget">
+            <layout class="QFormLayout" name="formlayoutattributes">
+            </layout>
+          </widget>
+        </item>
+      </layout>
+    </widget>    
     <widget class="QGroupBox" name="filterAttributesBox">
       <property name="geometry">
         <rect>
@@ -55,27 +62,28 @@
       <property name="title">
         <string>Filtered Attributes</string>
       </property>
-    </widget>
-    <widget class="QTreeView" name="attributesTree">
-      <property name="geometry">
-        <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>230</width>
-          <height>450</height>
-        </rect>
-      </property>      
-    </widget>
-    <widget class="QTreeView" name="filteredTree">
-      <property name="geometry">
-        <rect>
-          <x>260</x>
-          <y>20</y>
-          <width>230</width>
-          <height>450</height>
-        </rect>
-      </property>
-    </widget>
+      <layout class="QVBoxLayout" name="verticalFilterLayout">
+        <item>
+          <widget class="QTreeView" name="filteredTree">
+            <property name="geometry">
+              <rect>
+                <x>260</x>
+                <y>20</y>
+                <width>230</width>
+                <height>450</height>
+              </rect>
+            </property>
+          </widget>
+        </item>
+        <item>
+          <widget class="QPushButton" name="applyButton">
+            <property name="text">
+              <string>Apply</string>
+            </property>
+          </widget>
+        </item>
+      </layout>
+    </widget> 
   </widget>
   <resources/>
   <connections/>
