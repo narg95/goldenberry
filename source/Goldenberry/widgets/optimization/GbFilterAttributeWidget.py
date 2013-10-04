@@ -32,8 +32,7 @@ class GbFilterAttributeWidget(OWWidget):
 
         parttionEditor = OWGUI.lineEdit(self, self, "parttition_level", "Partition Level",valueType = int, validator = QIntValidator(1,10000, self.controlArea))
         thresholdEditor = OWGUI.lineEdit(self, self, "threshold", "Threshold", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
-        filter_button = OWGUI.button(self, self, "Filter",callback = self.filter_attributes)
-        self.applyButton.clicked.connect(self.apply)
+        filter_button = OWGUI.button(self, self, "Filter",callback = self.filter_attributes)        
         
         self.actionswidget.layout().addRow(parttionEditor.box, parttionEditor)
         self.actionswidget.layout().addRow(thresholdEditor.box, thresholdEditor)        
@@ -45,6 +44,7 @@ class GbFilterAttributeWidget(OWWidget):
 
     def setup_interfaces(self):
         self.inputs = [("Data", Orange.core.ExampleTable, self.set_data), ("Attributes Filter", GbSolution, self.set_solution)]
+        self.outputs = [("Data", Orange.core.ExampleTable), ("Features", AttributeList)]
 
     def set_data(self, data):
         self.data = data
@@ -126,7 +126,8 @@ class GbFilterAttributeWidget(OWWidget):
                     yield att
 
     def filter_attributes(self):
-        self.update_navigation()        
+        self.update_navigation()
+        self.apply()
 
     def apply(self):
         if self.data is None or self.solution is None or self.scores is None:
