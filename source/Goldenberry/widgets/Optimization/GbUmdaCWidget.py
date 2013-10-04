@@ -8,7 +8,7 @@
 """
 
 from Goldenberry.widgets.optimization.GbBaseEdaWidget import GbBaseEdaWidget
-from Goldenberry.widgets import Pbilc, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI
+from Goldenberry.widgets import Pbilc, GbCostFunction, GbBaseOptimizer, QDoubleValidator, OWGUI, GbSolution
 
 class GbUmdaCWidget(GbBaseEdaWidget):
     """Widget for UMDAc algorithm."""
@@ -20,7 +20,7 @@ class GbUmdaCWidget(GbBaseEdaWidget):
         self.settingsList.append("learning_rate")
         GbBaseEdaWidget.__init__(self, parent, signalManager, 'UMDAc')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
-        self.outputs = [("Optimizer", GbBaseOptimizer)]
+        self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
     
     def setup_ui(self):
         GbBaseEdaWidget.setup_ui(self)
