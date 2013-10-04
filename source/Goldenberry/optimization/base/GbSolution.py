@@ -9,7 +9,7 @@ class GbSolution(object):
         self.children = children
         if None is roots and None is not params:
             self.roots = range(len(params))
-            children = [[] for i in self.roots]
+            self.children = [[] for i in self.roots]
 
     def __getitem__(self, i):
         return self.params[i]    
