@@ -233,6 +233,7 @@
     <Content Include="widgets\optimization\GbPbilWidget.ui">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="widgets\optimization\GbFilterAttributeWidget.ui" />
     <Content Include="widgets\optimization\GbTildaWidget.ui">
       <SubType>Content</SubType>
     </Content>
