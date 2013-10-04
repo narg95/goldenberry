@@ -5,12 +5,14 @@ class GbSolution(object):
         """initializes a new solution."""
         self.params = params
         self.cost = cost
+        self.roots = roots
+        self.children = children
         if None is roots and None is not params:
             self.roots = range(len(params))
             children = [[] for i in self.roots]
 
     def __getitem__(self, i):
-        return self._params[i]    
+        return self.params[i]    
 
     def __str__(self):
         return "[cost: " + str(self.cost) + "]\n[parameters:" + str(self.params) + "]"

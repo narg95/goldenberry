@@ -170,12 +170,21 @@ class WidgetsTest(TestCase):
         #self.app.exec_()
     
     def test_filter_attributes_basic(self):        
-        widget = GbFilterAttributeWidget()       
-        widget.set_data(Orange.data.Table('Iris'))
+        data = Orange.data.Table('Iris')
+        att_len = len(data.domain.attributes)
+        att_range = range(att_len)
+        roots = [0]
+        children = [[i + 1] if i < att_len - 1 else [] for i in att_range]
+        solution = GbSolution([(idx + 1)%2  for idx in att_range], 1.0, roots, children)
+
+        widget = GbFilterAttributeWidget()               
+        widget.set_data(data)
+        widget.set_solution(solution)
+        widget.apply()
 
         #Uncomment only when testing the widget UI
-        #widget.show()
-        #self.app.exec_()
+        widget.show()
+        self.app.exec_()
 
     def tearDown(self):
        pass

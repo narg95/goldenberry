@@ -3,7 +3,7 @@ from orngWrap import PreprocessedLearner
 from Orange.OrangeWidgets.OWWidget import OWWidget, Multiple
 from Orange.OrangeWidgets.OWBaseWidget import AttributeList
 from Orange.OrangeWidgets import OWGUI
-from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget, QClipboard, QStandardItemModel, QStandardItem
+from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget, QClipboard, QStandardItemModel, QStandardItem, QIcon
 from PyQt4.QtCore import QObject, Qt, pyqtSignal, QString
 from PyQt4 import QtCore, QtGui, uic
 import os
@@ -31,7 +31,7 @@ def load_widget_ui(widget):
     """Loads the widget's QT Ui file (widget.ui). The file must be located in the same
     directory of the widget and with the same name with the .ui extension."""
     widget_type = type(widget)
-    path = os.path.dirname(inspect.getfile(widget_type)) + "\\" + widget_type.__name__ + ".ui"
+    path = os.path.dirname(inspect.getfile(widget_type)) + "/" + widget_type.__name__ + ".ui"
     if os.path.isfile(path):
         widget.controlArea = uic.loadUi(path, widget)
     else:
