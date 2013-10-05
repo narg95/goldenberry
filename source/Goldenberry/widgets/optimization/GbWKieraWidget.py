@@ -27,7 +27,7 @@ class GbWKieraWidget(OWWidget):
                        ("Data", ExampleTable, self.set_data)]
 
     def set_kernel(self, kernel):
-        self.kernel = kernel
+        self.kernel = kernel(None)
         self.apply()
 
     def set_learner(self, learner):
@@ -40,7 +40,7 @@ class GbWKieraWidget(OWWidget):
 
     def apply(self):
         if self.kernel is not None and self.learner is not None and self.data is not None:
-            wkiera_cost_func = lambda _: WKieraCostFunction(GbKernel(*self.kernel), self.data, self.learner)
+            wkiera_cost_func = lambda _: WKieraCostFunction(GbKernel(self.kernel), self.data, self.learner)
             self.send("Cost Function", wkiera_cost_func)
             
     

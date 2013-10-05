@@ -1,5 +1,5 @@
 """
-<name>Cost Function</name>
+<name>Cost Function Builder</name>
 <description>Provide a set of fitness functions</description>
 <contact>Nestor Rodriguez</contact>
 <icon>icons/Cost.svg</icon>
