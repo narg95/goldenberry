@@ -8,6 +8,9 @@ class Cga(GbBaseEda):
 
     def initialize(self):
         self.distr = Binomial(self.var_size)
+
+    def setup(self, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1, callback_func = None, **kwargs):
+        super(Cga, self).setup(cand_size, max_evals, selection_rate, learning_rate, callback_func, **kwargs)
         self.learning_rate = 1.0/float(self.cand_size)
         self.sample_size = 2
     

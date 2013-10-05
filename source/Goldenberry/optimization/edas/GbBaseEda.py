@@ -10,17 +10,16 @@ class GbBaseEda(GbBaseOptimizer):
     distr = None
     cand_size = None
     sample_size = None
-    var_size = None
     max_evals = 100
     selection_rate = None
     learning_rate = None
     callback_func = None
+    _cost_func = None
 
-    def setup(self, var_size = 10, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1.0, callback_func = None, **kwargs):
+    def setup(self, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1.0, callback_func = None, **kwargs):
         """Configure a Eda instance"""
         self.cand_size = cand_size
         self.sample_size = cand_size
-        self.var_size = var_size
         self.max_evals = max_evals
         self.selection_rate = selection_rate
         self.learning_rate = learning_rate
@@ -28,14 +27,28 @@ class GbBaseEda(GbBaseOptimizer):
         self.__dict__.update(**kwargs)
 
         self.reset()
-        self.initialize()
+
+    @property
+    def cost_func(self):
+        return self._cost_func
+
+    @cost_func.setter
+    def cost_func(self, value):
+        self._cost_func = value         
+        if None is not value:
+            self.initialize()
+
+    @property
+    def var_size(self):
+        if None is not self.cost_func:
+            return self.cost_func.var_size
+        return None
 
     def reset(self):
         self.iters = 0
         if None is not self.cost_func:
             self.cost_func.reset_statistics()
-        if None is not self.distr:
-            self.initialize()
+            self.initialize()            
         
     @abc.abstractmethod
     def initialize(self):

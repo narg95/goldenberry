@@ -27,4 +27,4 @@ class GbBmdaWidget(GbBaseEdaWidget):
         self.verticalLayoutWidget.layout().addWidget(radio_box)
 
     def setup_optimizer(self):
-        self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals, dependency_method = DependencyMethod.chi2_test if self.method == 0 else DependencyMethod.sim)
+        self.optimizer.setup(self.cand_size, max_evals = self.max_evals, dependency_method = DependencyMethod.chi2_test if self.method == 0 else DependencyMethod.sim)

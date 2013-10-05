@@ -4,7 +4,6 @@
 <contact>Nestor Rodriguez</contact>
 <icon>icons/Pbil.svg</icon>
 <priority>30</priority>
-
 """
 from Goldenberry.widgets.optimization.GbBaseEdaWidget import GbBaseEdaWidget
 from Goldenberry.widgets import Pbil, GbCostFunction, GbBaseOptimizer, GbSolution
@@ -19,4 +18,4 @@ class GbUmdaWidget(GbBaseEdaWidget):
         self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
     
     def setup_optimizer(self):
-        self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals, learning_rate = 1.0)   
+        self.optimizer.setup(self.cand_size, max_evals = self.max_evals, learning_rate = 1.0)   

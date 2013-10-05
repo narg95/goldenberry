@@ -13,10 +13,9 @@ class GbBaseEdaWidget(OWWidget):
         self.setup_ui() 
 
     #attributes
-    settingsList = ['cand_size', 'var_size', 'max_evals', 'name']
+    settingsList = ['cand_size', 'max_evals', 'name']
     optimizer = None
     cand_size = 20
-    var_size = 10
     max_evals = 100
     cost_function = None
     name = None
@@ -35,12 +34,11 @@ class GbBaseEdaWidget(OWWidget):
 
         #set new binding controls
         nameEditor = OWGUI.lineEdit(self, self, "name", label="Name")
-        popEditor = OWGUI.lineEdit(self, self, "cand_size", label="# Candidates", valueType = int, validator = QIntValidator(4,1000000, self.controlArea))
-        varEditor = OWGUI.lineEdit(self, self, "var_size", label="Variables", valueType = int, validator = QIntValidator(4,1000000, self.controlArea))
+        popEditor = OWGUI.lineEdit(self, self, "cand_size", label="# Candidates", valueType = int, validator = QIntValidator(4,1000000, self.controlArea))        
         maxEditor = OWGUI.lineEdit(self, self, "max_evals", label="Max Evals.", valueType = int, validator = QIntValidator(0, 1000000, self.controlArea))
+
         self.paramBox.setLayout(QFormLayout(self.paramBox))
-        self.paramBox.layout().addRow(nameEditor.box, nameEditor)
-        self.paramBox.layout().addRow(varEditor.box, varEditor)
+        self.paramBox.layout().addRow(nameEditor.box, nameEditor)        
         self.paramBox.layout().addRow(popEditor.box, popEditor)
         self.paramBox.layout().addRow(maxEditor.box, maxEditor)
         self.runButton.setEnabled(False)        
@@ -60,7 +58,7 @@ class GbBaseEdaWidget(OWWidget):
             self.runButton.setEnabled(self.optimizer.ready())
 
     def setup_optimizer(self):
-        self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals)
+        self.optimizer.setup(self.cand_size, max_evals = self.max_evals)
 
     def apply(self): 
         self.setup_optimizer()       

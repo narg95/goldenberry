@@ -28,4 +28,4 @@ class GbPbilWidget(GbBaseEdaWidget):
         self.paramBox.layout().addRow(learning_editor.box, learning_editor)
 
     def setup_optimizer(self):
-        self.optimizer.setup(self.var_size, self.cand_size, max_evals = self.max_evals, learning_rate = self.learning_rate)   
+        self.optimizer.setup(self.cand_size, max_evals = self.max_evals, learning_rate = self.learning_rate)   

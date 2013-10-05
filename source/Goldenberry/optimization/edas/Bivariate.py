@@ -13,8 +13,8 @@ class DependencyMethod:
 class Bmda(GbBaseEda):
     """Bivariate marginal distribution algorithm."""
 
-    def setup(self, var_size = 10, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1, callback_func = None, dependency_method = DependencyMethod.chi2_test, **kwargs):
-        return super(Bmda, self).setup(var_size, cand_size, max_evals, selection_rate, learning_rate, callback_func, dependency_method = DependencyMethod.chi2_test, **kwargs)
+    def setup(self, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1, callback_func = None, dependency_method = DependencyMethod.chi2_test, **kwargs):
+        return super(Bmda, self).setup(cand_size, max_evals, selection_rate, learning_rate, callback_func, dependency_method = DependencyMethod.chi2_test, **kwargs)
     
     def initialize(self):
         self.distr = BivariateBinomial( n = self.var_size)
