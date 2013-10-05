@@ -7,16 +7,15 @@ class GbDynamicFunctionWidget(OWWidget):
     functions = {}
     func_sel_index = []
 
-    def __init__(self, func_module , func_type, parent=None, signalManager=None, title = 'Function Builder', output_channel = "Function"):
+    def __init__(self, func_module , parent=None, signalManager=None, title = 'Function Builder', output_channel = "Function"):
         OWWidget.__init__(self, parent, signalManager, title)
         self.output_channel = output_channel
-        self.setup_interfaces()
         self.setup_ui()
+        self.setup_interfaces()
         self.functions = dict(inspect.getmembers(func_module, lambda member: inspect.isfunction(member)))
-        self.func_type = func_type
     
     def setup_interfaces(self):
-        self.outputs = [(self.output_channel, GbDynamicFunction)]
+        raise NotImplementedError()
 
     def setup_ui(self):
         """Configures the user interface"""
@@ -52,15 +51,17 @@ class GbDynamicFunctionWidget(OWWidget):
             if len(self.func_sel_index) > 0:
                 func = self.functions.values()[self.func_sel_index[0]]
                 self.accept()
-                self.send(self.output_channel, (func, None))        
+                self.send(self.output_channel, lambda _: self.create_function(func = func))        
         else: 
             if len(self.custom_text.toPlainText())  > 0:
                 func_text = str(self.custom_text.toPlainText()).strip()
-
-                cost_func = self.func_type(script = func_text)
+                func = self.create_function(script = func_text)
                 self.accept()
-                self.send(self.output_channel, (None, func_text))
+                self.send(self.output_channel, lambda _: self.create_function(script = func_text))
 
+    def create_function(self, func = None, script = None):
+        raise NotImplementedError()
+                
     def rejected(self):
         self.reject()
 

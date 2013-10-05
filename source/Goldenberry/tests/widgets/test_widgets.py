@@ -30,7 +30,7 @@ class WidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((OneMax, None))
+        widget.set_cost_function(lambda _: GbCostFunction(func = OneMax))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -44,7 +44,7 @@ class WidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((OneMax, None))
+        widget.set_cost_function(lambda _: GbCostFunction(func = OneMax))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -58,7 +58,7 @@ class WidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((OneMax, None))
+        widget.set_cost_function(lambda _: GbCostFunction(func = OneMax))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -72,7 +72,7 @@ class WidgetsTest(TestCase):
         widget.apply()
         
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((OneMax, None))
+        widget.set_cost_function(lambda _: GbCostFunction(func = OneMax))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
@@ -85,7 +85,7 @@ class WidgetsTest(TestCase):
         widget = GbBmdaWidget()
         widget.apply()
         self.assertFalse(widget.runButton.isEnabled())
-        widget.set_cost_function((OneMax, None))
+        widget.set_cost_function(lambda _: GbCostFunction(func = OneMax))
 
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   

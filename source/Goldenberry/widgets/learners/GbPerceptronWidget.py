@@ -70,7 +70,7 @@ class GbPerceptronWidget(OWWidget):
         self.preprocessor = pp
 
     def set_kernel(self, kernel):
-        self.kernel = kernel
+        self.kernel = kernel(None)
 
     def apply_settings(self):
         self.classifier = None

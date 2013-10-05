@@ -47,14 +47,10 @@ class GbBaseEdaWidget(OWWidget):
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
         
-    def set_cost_function(self, func):
+    def set_cost_function(self, cost_func):
         self.optimizer.cost_func = None
-        if None is not func:
-            if type(func) is tuple:
-                self.optimizer.cost_func = GbCostFunction(*func)
-            elif type(func) is GbCostFunction or issubclass(type(func), GbCostFunction):
-                func.reset_statistics()
-                self.optimizer.cost_func = func
+        if None is not cost_func:
+            self.optimizer.cost_func = cost_func(None)
             self.runButton.setEnabled(self.optimizer.ready())
 
     def setup_optimizer(self):
