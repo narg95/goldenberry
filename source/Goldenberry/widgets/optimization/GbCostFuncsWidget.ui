@@ -157,7 +157,7 @@ p, li { white-space: pre-wrap; }
      <height>51</height>
     </rect>
    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    <layout class="QFormLayout" name="verticalLayout_2"/>
   </widget>
  </widget>
  <resources/>

@@ -76,7 +76,8 @@ class BmdaTest(TestCase):
         self.assertEqual(chi_matrix.shape, (4,4))
         expected = np.array([[0, 0, 0, 0],[0, 0, 0, 0], [0, 0, 0 , 0],[0, 0, 0, 0]])
         #Test for a total independent chi matrix.
-        self.assertTrue((chi_matrix < 3.84).all())
+        chi_matrix = chi_matrix * (np.eye(4,4)*-1+1)
+        self.assertTrue((chi_matrix == 0.0).all())
 
     """Test the max chi square algorithm"""
     def test_max_chisquare_base(self):
