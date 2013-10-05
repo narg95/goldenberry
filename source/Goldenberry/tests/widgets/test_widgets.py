@@ -134,13 +134,13 @@ class WidgetsTest(TestCase):
         var_size, cand_size = 10, 20
         widget = GbBlackBoxWidget()
         optimizer1 = Cga()
-        optimizer1.cost_func = GbCostFunction(OneMax)
-        optimizer1.setup(var_size, cand_size)
+        optimizer1.cost_func = GbCostFunction(OneMax, var_size = var_size)
+        optimizer1.setup(cand_size)
         widget.set_optimizer((optimizer1, 'Cga'),0)
 
         optimizer2 = Tilda()
-        optimizer2.cost_func = GbCostFunction(OneMax)
-        optimizer2.setup(var_size, cand_size)
+        optimizer2.cost_func = GbCostFunction(OneMax,  var_size = var_size)
+        optimizer2.setup(cand_size)
         widget.set_optimizer((optimizer2, 'Tilda'),1)
 
         widget.execute()

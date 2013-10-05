@@ -11,8 +11,8 @@ class CgaTest(TestCase):
     """Test class for the Cga algorithm"""
     def test_basic(self):
         cga = Cga()
-        cga.setup(10, 20)
-        cga.cost_func = GbCostFunction(OneMax)
+        cga.setup(20)
+        cga.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = cga.search()
         self.assertTrue(result.params.all())
         self.assertGreaterEqual(result.cost, 8)
@@ -20,8 +20,8 @@ class CgaTest(TestCase):
     """Test if the reset function allows a new algorithm execution."""    
     def test_reset(self):
         cga = Cga()
-        cga.setup(10, 20)
-        cga.cost_func = GbCostFunction(OneMax)
+        cga.setup(20)
+        cga.cost_func = GbCostFunction(OneMax, var_size = 10)
         cga.search()
         cga.reset()
         self.assertEqual(cga.iters, 0)
@@ -32,17 +32,17 @@ class CgaTest(TestCase):
     algorithm is ready to search."""
     def test_ready(self):
         cga = Cga()
-        cga.setup(10, 20)
+        cga.setup(20)
         self.assertFalse(cga.ready())
-        cga.cost_func = GbCostFunction(OneMax)
+        cga.cost_func = GbCostFunction(OneMax, var_size = 10)
         self.assertTrue(cga.ready())
 
 class PbilTest(TestCase):
     """Test class for the pbil algorithm"""
     def test_basic(self):
         pbil = Pbil()
-        pbil.setup(10, 20)
-        pbil.cost_func = GbCostFunction(OneMax)
+        pbil.setup(20)
+        pbil.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = pbil.search()
         self.assertTrue(result.params.all())
         self.assertGreaterEqual(result.cost, 8)
@@ -50,8 +50,8 @@ class PbilTest(TestCase):
     """Test if the reset function allows a new algorithm execution."""    
     def test_reset(self):
         pbil = Pbil()
-        pbil.setup(10, 20)
-        pbil.cost_func = GbCostFunction(OneMax)
+        pbil.setup(20)
+        pbil.cost_func = GbCostFunction(OneMax, var_size = 10)
         pbil.search()
         pbil.reset()
         self.assertEqual(pbil.iters, 0)
@@ -62,9 +62,9 @@ class PbilTest(TestCase):
     algorithm is ready to search."""
     def test_ready(self):
         pbil = Pbil()
-        pbil.setup(10, 20)
+        pbil.setup(20)
         self.assertFalse(pbil.ready())
-        pbil.cost_func = GbCostFunction(OneMax)
+        pbil.cost_func = GbCostFunction(OneMax, var_size = 10)
         self.assertTrue(pbil.ready())
 
 class BmdaTest(TestCase):
@@ -119,8 +119,8 @@ class BmdaTest(TestCase):
     def test_basic_search_onemax_sim_method(self):
         """Test class for the Bmda algorithm"""
         bmda = Bmda()
-        bmda.setup(10, 40, dependency_method = DependencyMethod.sim)
-        bmda.cost_func = GbCostFunction(OneMax)
+        bmda.setup(40, dependency_method = DependencyMethod.sim)
+        bmda.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = bmda.search()
         self.assertGreaterEqual(result.params.sum(), 8.0)
         self.assertGreaterEqual(result.cost, 8.0)
@@ -137,8 +137,8 @@ class BmdaTest(TestCase):
     def test_basic_search_zero(self):
         """Test class for the Bmda algorithm"""
         bmda = Bmda()
-        bmda.setup(10, 40)
-        bmda.cost_func = GbCostFunction(ZeroMax)
+        bmda.setup(40)
+        bmda.cost_func = GbCostFunction(ZeroMax, var_size = 10)
         result = bmda.search()
         self.assertTrue((result.params + 1).all())
         self.assertGreaterEqual(result.cost, 8.0)
@@ -147,8 +147,8 @@ class BmdaTest(TestCase):
         """Test class for the Bmda algorithm"""
         var_size = 10
         bmda = Bmda()
-        bmda.setup(var_size, 40)
-        bmda.cost_func = GbCostFunction(OneMax)
+        bmda.setup(40)
+        bmda.cost_func = GbCostFunction(OneMax, var_size = var_size)
         result = bmda.search()
         self.assertTrue((result.params + 1).all())
         self.assertGreaterEqual(result.cost, var_size*0.8)
@@ -156,8 +156,8 @@ class BmdaTest(TestCase):
     def test_reset(self):
         """Test if the reset function allows a new algorithm execution."""    
         bmda = Bmda()
-        bmda.setup(10, 40)
-        bmda.cost_func = GbCostFunction(OneMax)
+        bmda.setup(40)
+        bmda.cost_func = GbCostFunction(OneMax, var_size = 10)
         bmda.search()
         bmda.reset()
         self.assertEqual(bmda.iters, 0)
@@ -168,16 +168,16 @@ class TildaTest(TestCase):
     """Test class for the tilda algorithm"""
     def test_basic(self):
         tilda = Tilda()
-        tilda.setup(10, 40, learning_rate = 0.3, max_evals = 10000)
-        tilda.cost_func = GbCostFunction(OneMax)
+        tilda.setup(40, learning_rate = 0.3, max_evals = 10000)
+        tilda.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = tilda.search()
         self.assertGreaterEqual(result.cost, 8.0)
 
     """Test if the reset function allows a new algorithm execution."""    
     def test_reset(self):
         tilda = Tilda()
-        tilda.setup(10, 20)
-        tilda.cost_func = GbCostFunction(OneMax)
+        tilda.setup(20)
+        tilda.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = tilda.search()
         tilda.reset()
         self.assertEqual(tilda.iters, 0)
@@ -214,16 +214,16 @@ class PbilcTest(TestCase):
     """Test class for the pbilc algorithm"""
     def test_basic(self):
         pbilc = Pbilc()
-        pbilc.setup(10, 30, learning_rate = 0.5, max_evals = 1000)
-        pbilc.cost_func = GbCostFunction(OneMax)
+        pbilc.setup(30, learning_rate = 0.5, max_evals = 1000)
+        pbilc.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = pbilc.search()        
         self.assertGreaterEqual(result.cost, 8)
 
     """Test if the reset function allows a new algorithm execution."""    
     def test_reset(self):
         pbilc = Pbilc()
-        pbilc.setup(10, 20)
-        pbilc.cost_func = GbCostFunction(OneMax)
+        pbilc.setup(20)
+        pbilc.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = pbilc.search()
         pbilc.reset()
         self.assertEqual(pbilc.iters, 0)
@@ -236,8 +236,8 @@ class OptmizerTesterTest(TestCase):
         total_runs = 10
         opttester = GbBlackBoxTester()
         optimizer = Cga()
-        optimizer.setup(10, 20)
-        optimizer.cost_func = GbCostFunction(OneMax)
+        optimizer.setup(20)
+        optimizer.cost_func = GbCostFunction(OneMax, var_size = 10)
         run_results, test_results = opttester.test(optimizer, total_runs)
         self.assertEqual(len(run_results), total_runs)
         self.assertEqual(12, len(test_results))
