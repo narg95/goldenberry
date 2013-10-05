@@ -14,10 +14,18 @@ class GbCostFuncsWidget(GbDynamicFunctionWidget):
     """Provides a cost function."""
    
     def __init__(self, parent=None, signalManager=None):
-        super(GbCostFuncsWidget, self).__init__(cost_functions, GbCostFunction, parent, signalManager, 'Cost Function', "Cost Function")
+        self.var_size = 10
+        super(GbCostFuncsWidget, self).__init__(cost_functions, parent, signalManager, 'Cost Function', "Cost Function")
 
     def setup_interfaces(self):
         self.outputs = [("Cost Function", GbCostFunction)]
+
+    def setup_ui(self):
+        super(GbCostFuncsWidget, self).setup_ui()
+        self.varsizewidget.layout().addWidget(OWGUI.lineEdit(self, self, "var_size", label="Number of Variables", valueType = int, validator = QIntValidator(2,1000000, self.controlArea)))
+
+    def create_function(self, func = None, script = None):
+        return GbCostFunction(func= func, script = script, var_size = self.var_size)
 
 if __name__=="__main__":
     test_widget()
