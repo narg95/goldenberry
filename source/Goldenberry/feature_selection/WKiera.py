@@ -12,7 +12,7 @@ class WKieraCostFunction(GbCostFunction):
         self.kernel = kernel
         self.learner = learner
         self.data = data
-        self.var_size = len(data.domain.features)
+        self.var_size = len(data.domain.attributes)
 
     def execute(self, solutions):
         #TODO Omptimize for parallel execution
