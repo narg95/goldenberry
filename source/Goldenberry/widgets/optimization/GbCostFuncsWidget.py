@@ -22,7 +22,8 @@ class GbCostFuncsWidget(GbDynamicFunctionWidget):
 
     def setup_ui(self):
         super(GbCostFuncsWidget, self).setup_ui()
-        self.varsizewidget.layout().addWidget(OWGUI.lineEdit(self, self, "var_size", label="Number of Variables", valueType = int, validator = QIntValidator(2,1000000, self.controlArea)))
+        var_editor = OWGUI.lineEdit(self, self, "var_size", label="Number of Variables", valueType = int, validator = QIntValidator(2,1000000, self.controlArea))
+        self.varsizewidget.layout().addRow(var_editor.box, var_editor)
 
     def create_function(self, func = None, script = None):
         return GbCostFunction(func= func, script = script, var_size = self.var_size)
