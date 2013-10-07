@@ -1,14 +1,19 @@
 from Orange.core import Learner
 import orngSVM
+from orngSVM import SVMLearner
+import numpy as np
 
-class SvmLearner(Learner):
+class SvmLearner(SVMLearner):
     """SVM Learner algorithm"""
 
     def __init__(self, C=1.0, nu=0.5, p=0.1, gamma=0.0, degree=3,
                  coef0=0, shrinking=True, probability=True, verbose=False,
                  cache_size=200, eps=0.001, normalization=True,
                  weight=[], **kwargs):
-        super(SvmLearner, self).__init__(orngSVM.SVMLearner.Nu_SVC, orngSVM.SVMLearner.Custom, C, nu, p, gamma, degree, coef0, shrinking, probability, verbose,cache_size, eps, normalization,weight,**kwargs)
+        super(SvmLearner, self).__init__(svm_type= orngSVM.SVMLearner.Nu_SVC, kernel_type = orngSVM.SVMLearner.Custom, 
+                                         C=C, nu=nu, p=p, gamma=gamma, degree=degree, coef0=coef0, shrinking=shrinking, 
+                                         probability=probability, verbose=verbose,cache_size=cache_size, eps=eps, 
+                                         normalization=normalization,weight=weight,**kwargs)
 
     @property
     def kernel(self):
@@ -22,7 +27,7 @@ class SvmLearner(Learner):
         if None is kernel_func:
             return None
 
-        kernel = kernel_func(None)
+        kernel = kernel_func
         return orngSVM.KernelWrapper(lambda x,y: kernel(*to_numpy(x,y)))
 
 def to_numpy(i1, i2):
