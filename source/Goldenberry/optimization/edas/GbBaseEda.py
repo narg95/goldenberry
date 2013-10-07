@@ -15,6 +15,7 @@ class GbBaseEda(GbBaseOptimizer):
     learning_rate = None
     callback_func = None
     _cost_func = None
+    stop = False
 
     def setup(self, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1.0, callback_func = None, **kwargs):
         """Configure a Eda instance"""
@@ -25,6 +26,7 @@ class GbBaseEda(GbBaseOptimizer):
         self.learning_rate = learning_rate
         self.callback_func = callback_func
         self.__dict__.update(**kwargs)
+        stop = False
 
         self.reset()
 
@@ -46,6 +48,7 @@ class GbBaseEda(GbBaseOptimizer):
 
     def reset(self):
         self.iters = 0
+        self.stop = False
         if None is not self.cost_func:
             self.cost_func.reset_statistics()
             self.initialize()            
@@ -91,7 +94,7 @@ class GbBaseEda(GbBaseOptimizer):
         return best
 
     def done(self):
-        finish = (self.cost_func.evals > self.max_evals)
+        finish = (self.cost_func.evals > self.max_evals or self.stop)
         
         if finish:
             return True

@@ -31,7 +31,7 @@ class GbBaseEdaWidget(OWWidget):
         # Subscribe to signals
         QObject.connect(self.applyButton,QtCore.SIGNAL("clicked()"), self.apply)
         QObject.connect(self.runButton,QtCore.SIGNAL("clicked()"), self.run)
-
+        QObject.connect(self.stopButton,QtCore.SIGNAL("clicked()"), self.stop)
         #set new binding controls
         nameEditor = OWGUI.lineEdit(self, self, "name", label="Name")
         popEditor = OWGUI.lineEdit(self, self, "cand_size", label="# Candidates", valueType = int, validator = QIntValidator(4,1000000, self.controlArea))        
@@ -42,6 +42,7 @@ class GbBaseEdaWidget(OWWidget):
         self.paramBox.layout().addRow(popEditor.box, popEditor)
         self.paramBox.layout().addRow(maxEditor.box, maxEditor)
         self.runButton.setEnabled(False)        
+        self.stopButton.setEnabled(False)
 
     def setup_interfaces(self):
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
@@ -70,15 +71,23 @@ class GbBaseEdaWidget(OWWidget):
             search = Search(self.optimizer)
             self.connect(search, QtCore.SIGNAL('progress(PyQt_PyObject)'), self.search_progress)
             self.runButton.setEnabled(False)
+            self.stopButton.setEnabled(True)
             self.applyButton.setEnabled(False)
             search.start()
-            
+    
+    def stop(self):
+        if self.optimizer is None:
+            return
+
+        self.optimizer.stop = True
+              
     def search_progress(self, progress_args):
         self.resultTextEdit.setText(progress_args.text)
         self.progressBarSet(int(progress_args.progress * 100))
         
         if progress_args.progress == 1.0:
             self.runButton.setEnabled(True)
+            self.stopButton.setEnabled(False)
             self.applyButton.setEnabled(True)       
             self.progressBarFinished() 
             self.send("Solution", progress_args.result)
