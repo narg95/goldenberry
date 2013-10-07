@@ -1,6 +1,7 @@
 import Orange
 from unittest import *
 from Goldenberry.widgets import QtCore, Kernels
+from Goldenberry.classification.base.GbKernel import GbKernel
 from Goldenberry.optimization.cost_functions import *
 from Goldenberry.optimization.edas.Univariate import *
 from Goldenberry.optimization.base.GbCostFunction import *
@@ -163,8 +164,11 @@ class WidgetsTest(TestCase):
         #self.app.exec_()
 
     def test_perceptron_basic(self):        
-        widget = GbSvmWidget()        
-
+        widget = GbSvmWidget()
+        widget.set_kernel(lambda _: GbKernel(func = Linear))    
+        widget.kernel_type = 4
+        widget.setData(data = Orange.data.Table('Iris'))
+        widget.parameterSearch()
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()
