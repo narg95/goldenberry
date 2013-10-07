@@ -20,7 +20,7 @@ class WKieraCostFunction(GbCostFunction):
         for idx, weight in enumerate(solutions):
             weighted_kernel = WeightedKernel(weight, self.kernel)
             learner = deepcopy(self.learner)
-            learner.kernel = weighted_kernel
+            learner.kernel_func = weighted_kernel
             learners[idx] = learner
 
         results = np.array(CA(cross_validation(learners, self.data, folds = 10)))
