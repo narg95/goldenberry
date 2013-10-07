@@ -67,6 +67,7 @@
     <Compile Include="classification\base\__init__.py" />
     <Compile Include="classification\Kernels.py" />
     <Compile Include="classification\MulticlassLearner.py" />
+    <Compile Include="classification\SvmLearner.py" />
     <Compile Include="classification\Perceptron.py" />
     <Compile Include="classification\__init__.py" />
     <Compile Include="feature_selection\WKiera.py" />
@@ -95,6 +96,7 @@
     <Compile Include="tests\classification\test_kernel_perceptron.py">
       <Publish>False</Publish>
     </Compile>
+    <Compile Include="tests\classification\test_svm.py" />
     <Compile Include="tests\classification\test_perceptron.py">
       <Publish>False</Publish>
     </Compile>
@@ -204,6 +206,7 @@
     <Content Include="widgets\learners\GbKernelBuilderWidget.ui">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="widgets\learners\GbSvmWidget.ui" />
     <Content Include="widgets\learners\GbPerceptronWidget.ui">
       <SubType>Content</SubType>
     </Content>

@@ -165,10 +165,9 @@ class WidgetsTest(TestCase):
 
     def test_perceptron_basic(self):        
         widget = GbSvmWidget()
-        widget.set_kernel(lambda _: GbKernel(func = Linear))    
-        widget.kernel_type = 4
+        widget.set_kernel(lambda _: GbKernel(func = Kernels.LinealKernel))    
         widget.setData(data = Orange.data.Table('Iris'))
-        widget.parameterSearch()
+        widget.applySettings()
         #Uncomment only when testing the widget UI
         #widget.show()
         #self.app.exec_()

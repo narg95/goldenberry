@@ -24,6 +24,7 @@ if __name__ == "__main__":
                     'statistics.test_distributions.GaussianTest',
                     'statistics.test_distributions.GaussianTruncTest',
                     'classification.test_perceptron.PerceptronTest',
+                    'classification.test_svm.SvmTest',
                     'classification.test_multiclass_learner.MulticlassLearnerTest',
                     'classification.test_kernels.KernelsTest',
                     'widgets.test_widgets.WidgetsTest'

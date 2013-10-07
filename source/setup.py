@@ -6,7 +6,7 @@ DESCRIPTION = 'A supplementary Machine Learning and Evolutionary Computation sui
 AUTHOR = 'Nestor Andres Rodriguez, Sergio G. Rojas, District University FJC, Bogota, Colombia.'
 AUTHOR_EMAIL = 'nearodriguezg@correo.udistrital.edu.co, srojas@udistrital.edu.co'
 URL = 'http://Goldenberry.codeplex.com'
-DOWNLOAD_URL = 'https://goldenberry.codeplex.com/releases'
+DOWNLOAD_URL = 'https://Goldenberry.codeplex.com/releases'
 LICENSE = 'GPLv2'
 KEYWORDS = (
 'data mining',
@@ -28,7 +28,7 @@ INSTALL_REQUIRES = ('Orange',
                     'setuptools',
                     'numpy',
                     'scipy')
-ENTRY_POINTS = {'orange.addons': ('goldenberry = Goldenberry'),
+ENTRY_POINTS = {'orange.addons': ('Goldenberry = Goldenberry'),
                 'orange.widgets': ('Optimization = Goldenberry.widgets.optimization','Learners = Goldenberry.widgets.learners' )}
 
 if __name__ == '__main__':

@@ -13,14 +13,16 @@ from orange import ExampleTable, Learner, Classifier
 from orngWrap import PreprocessedLearner
 from Orange.OrangeWidgets.OWWidget import Default
 import orange, orngSVM
+from Goldenberry.classification.SvmLearner import SvmLearner
 import numpy as np
 
 class GbSvmWidget(OWSVM):
     
-    kernel_func = None
+    kernel = None
+    kernel_type = orngSVM.SVMLearner.Custom
 
     def __init__(self, parent=None, signalManager=None):
-        super(GbSvmWidget, self).__init__(parent=parent, signalManager=None, name="SVM")
+        super(GbSvmWidget, self).__init__(parent=parent, signalManager=signalManager, name="SVM")
         appendRadioButton(self.kernelradio, self,"kernel_type","Custom")
         self.inputs = [('Kernel Function', GbKernel, self.set_kernel), ("Data", ExampleTable, self.setData),
                        ("Preprocess", PreprocessedLearner, self.setPreprocessor)]
@@ -29,14 +31,20 @@ class GbSvmWidget(OWSVM):
                         ("Classifier", Classifier, Default),
                         ("Support Vectors", ExampleTable)]
 
-        self.settingsList.append("kernel_func")        
+        self.settingsList.append("kernel") 
+        self.controlArea.layout().removeWidget(self.kernelradio)
+        self.kernelradio.close()
+        self.kernel_type = orngSVM.SVMLearner.Custom
 
     def set_kernel(self, kernel):
-        self.kernel_func = orngSVM.KernelWrapper(lambda x,y: kernel(None).execute(*to_numpy(x,y)))
+        self.kernel = kernel
 
-    def applySettings(self):
-        self.learner=orngSVM.SVMLearner()
-        for attr in ("name", "kernel_type", "kernel_func", "degree", "shrinking", "probability", "normalization"):
+    def applySettings(self):        
+
+        self.learner= SvmLearner()
+        self.kernel_type = orngSVM.SVMLearner.Custom
+
+        for attr in ("name", "kernel_type", "kernel", "degree", "shrinking", "probability", "normalization"):
             setattr(self.learner, attr, getattr(self, attr))
 
         for attr in ("gamma", "coef0", "C", "p", "eps", "nu"):
@@ -55,8 +63,7 @@ class GbSvmWidget(OWSVM):
         if self.data:
             if self.data.domain.classVar.varType==orange.VarTypes.Continuous:
                 self.learner.svm_type+=3
-
-            self.learner.kernel_func = self.kernel_func
+            
             self.classifier=self.learner(self.data)
             self.supportVectors=self.classifier.supportVectors
             self.classifier.name=self.name
@@ -64,16 +71,30 @@ class GbSvmWidget(OWSVM):
         self.send("Learner", self.learner)
         self.send("Classifier", self.classifier)
         self.send("Support Vectors", self.supportVectors)
-      
+    
     def search_(self):
-        learner=orngSVM.SVMLearner()
-        learner.kernel_func = self.kernel_func
-        learner.kernel_type = 4
-        learner.progressCallback = self.progres
+        learner=SvmLearner()
+        for attr in ("name", "kernel_type", "degree", "kernel" ,"shrinking", "probability", "normalization"):
+            setattr(learner, attr, getattr(self, attr))
 
-        self.finishSearch()
+        for attr in ("gamma", "coef0", "C", "p", "eps", "nu"):
+            setattr(learner, attr, float(getattr(self, attr)))
 
-def to_numpy(i1, i2):
-    x = np.array([i for i in i1 if i.native() != i1.get_class().native()], dtype = float)
-    y = np.array([i for i in i2 if i.native() != i2.get_class().native()], dtype = float)
-    return x,y
+        learner.svm_type=0
+
+        if self.useNu:
+            learner.svm_type=1
+        params=[]
+        if self.useNu:
+            params.append("nu")
+        else:
+            params.append("C")
+        try:
+            learner.tuneParameters(self.data, params, 4, verbose=0,
+                                   progressCallback=self.progres)
+        except UnhandledException:
+            pass
+        for param in params:
+            setattr(self, param, getattr(learner, param))
+            
+        self.finishSearch()  
