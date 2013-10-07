@@ -37,7 +37,7 @@ class GbSvmWidget(OWSVM):
         self.kernel_type = orngSVM.SVMLearner.Custom
 
     def set_kernel(self, kernel):
-        self.kernel = kernel
+        self.kernel = kernel(None)
 
     def applySettings(self):        
 
@@ -60,7 +60,7 @@ class GbSvmWidget(OWSVM):
         self.classifier=None
         self.supportVectors=None
         
-        if self.data:
+        if self.data and self.kernel:
             if self.data.domain.classVar.varType==orange.VarTypes.Continuous:
                 self.learner.svm_type+=3
             

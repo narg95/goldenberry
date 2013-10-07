@@ -10,6 +10,6 @@ class SvmTest(TestCase):
 
     def test_basic(self):
         svm = SvmLearner()
-        svm.kernel = lambda _: GbKernel(func = LinealKernel)
-        self.assertTrue(svm.kernel is orngSVM.KernelWrapper)
+        svm.kernel = GbKernel(func = LinealKernel)
+        self.assertTrue(type(svm.kernel) is orngSVM.KernelFunc)
         svm(data = Orange.data.Table("iris"))
