@@ -3,7 +3,7 @@ from orngWrap import PreprocessedLearner
 from Orange.OrangeWidgets.OWWidget import OWWidget, Multiple
 from Orange.OrangeWidgets.OWBaseWidget import AttributeList
 from Orange.OrangeWidgets import OWGUI
-from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget, QClipboard, QStandardItemModel, QStandardItem, QIcon
+from PyQt4.QtGui import QApplication, QIntValidator, QLabel, QWidget, QFormLayout, QAbstractButton, QDoubleValidator, QTableWidget, QClipboard, QStandardItemModel, QStandardItem, QIcon, QHeaderView
 from PyQt4.QtCore import QObject, Qt, pyqtSignal, QString
 from PyQt4 import QtCore, QtGui, uic
 import os

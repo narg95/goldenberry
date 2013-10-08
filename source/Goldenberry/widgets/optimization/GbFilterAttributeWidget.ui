@@ -1,83 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-  <author>Nestor Rodriguez</author>
-  <class>Dialog</class>
-  <widget class="QDialog" name="Dialog">
-    <property name="windowModality">
-      <enum>Qt::NonModal</enum>
-    </property>
-    <property name="geometry">
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>505</width>
-        <height>510</height>
-      </rect>
-    </property>
-    <property name="windowTitle">
-      <string>Filter Attributes</string>
-    </property>
-    <widget class="QGroupBox" name="attributesBox">
-      <property name="geometry">
-        <rect>
-          <x>5</x>
-          <y>5</y>
-          <width>245</width>
-          <height>500</height>
-        </rect>
+ <author>Nestor Rodriguez</author>
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>505</width>
+    <height>510</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Filter Attributes</string>
+  </property>
+  <widget class="QGroupBox" name="attributesBox">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>5</y>
+     <width>245</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Attributes</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalAttributesLayout">
+    <item>
+     <widget class="QTreeView" name="attributesTree">
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
       </property>
-      <property name="title">
-        <string>Attributes</string>
+      <property name="headerHidden">
+       <bool>true</bool>
       </property>
-      <layout class="QVBoxLayout" name="verticalAttributesLayout">
-        <item>
-          <widget class="QTreeView" name="attributesTree">
-            <property name="geometry">
-              <rect>
-                <x>10</x>
-                <y>20</y>
-                <width>230</width>
-                <height>500</height>
-              </rect>
-            </property>
-          </widget>
-        </item>
-        <item>
-          <widget class="QWidget" name="actionswidget">
-            <layout class="QFormLayout" name="formlayoutattributes">
-            </layout>
-          </widget>
-        </item>
-      </layout>
-    </widget>    
-    <widget class="QGroupBox" name="filterAttributesBox">
-      <property name="geometry">
-        <rect>
-          <x>255</x>
-          <y>5</y>
-          <width>245</width>
-          <height>500</height>
-        </rect>
-      </property>
-      <property name="title">
-        <string>Filtered Attributes</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalFilterLayout">
-        <item>
-          <widget class="QTreeView" name="filteredTree">
-            <property name="geometry">
-              <rect>
-                <x>260</x>
-                <y>20</y>
-                <width>230</width>
-                <height>450</height>
-              </rect>
-            </property>
-          </widget>
-        </item>        
-      </layout>
-    </widget> 
+      <attribute name="headerStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+    </item>
+    <item>
+     <layout class="QFormLayout" name="actionswidgetlayout"/>
+    </item>
+   </layout>
   </widget>
-  <resources/>
-  <connections/>
+  <widget class="QGroupBox" name="filterAttributesBox">
+   <property name="geometry">
+    <rect>
+     <x>255</x>
+     <y>5</y>
+     <width>245</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Filtered Attributes</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalFilterLayout">
+    <item>
+     <widget class="QTreeView" name="filteredTree">
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAsNeeded</enum>
+      </property>
+      <property name="headerHidden">
+       <bool>true</bool>
+      </property>
+      <attribute name="headerStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>

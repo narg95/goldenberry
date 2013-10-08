@@ -8,7 +8,7 @@
 """
 
 from Goldenberry.widgets.optimization.GbBaseEdaWidget import GbBaseEdaWidget
-from Goldenberry.widgets import Bmda, GbCostFunction, GbBaseOptimizer, OWGUI, Qt, DependencyMethod, GbSolution
+from Goldenberry.widgets import Bmda, GbCostFunction, GbBaseOptimizer, OWGUI, Qt, DependencyMethod, GbSolution, QStandardItem, QStandardItemModel, QString, QHeaderView
 
 class GbBmdaWidget(GbBaseEdaWidget):
     """Widget for Bmda algorithm"""
@@ -25,6 +25,40 @@ class GbBmdaWidget(GbBaseEdaWidget):
               box = "Dependency Method",
               btnLabels = ["Chi Square", "SIM"])
         self.verticalLayoutWidget.layout().addWidget(radio_box)
+        self.attributesTree.header().setResizeMode(QHeaderView.ResizeToContents)
+
 
     def setup_optimizer(self):
         self.optimizer.setup(self.cand_size, max_evals = self.max_evals, dependency_method = DependencyMethod.chi2_test if self.method == 0 else DependencyMethod.sim)
+
+    def search_progress(self, progress_args):
+        super(GbBmdaWidget, self).search_progress(progress_args)
+        self.update_attributes_navigation(progress_args.result, self.attributesTree)
+        
+    def update_attributes_navigation(self, solution, qtree):
+        if solution is None:
+            return
+
+        model = QStandardItemModel()
+        root_node = model.invisibleRootItem()
+        
+        # If there is a list of relevant attributes also known as the 'solution'
+        att_items_list = [QStandardItem(QString('%1 (%L2)').arg(idx).arg(score)) \
+                     for idx, score in enumerate(solution)]
+            
+        # Links roots with the invisible root node from the QStandardItemModel
+        for root in solution.roots:
+            root_node.appendRow(att_items_list[root])
+            att_items_list[root].parent = root_node
+
+        # Links children and parents
+        for idx, children in enumerate(solution.children):
+            for child_idx in children:
+                parent = att_items_list[idx]
+                child = att_items_list[child_idx]
+                parent.appendRow(child)
+                child.parent = parent
+        
+        #updates the navigation view
+        qtree.setModel(model)
+        qtree.expandAll()
