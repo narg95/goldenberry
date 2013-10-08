@@ -6,7 +6,7 @@
 <priority>1</priority>
 """
 
-from Goldenberry.widgets import OWWidget, Orange, os, inspect, OWGUI
+from Goldenberry.widgets import OWWidget, Orange, os, inspect, OWGUI, QHeaderView
 from Goldenberry.widgets import GbSolution, AttributeList, load_widget_ui, QStandardItem, QStandardItemModel, QString, QIcon, QDoubleValidator, QIntValidator
 import numpy as np
 
@@ -34,13 +34,13 @@ class GbFilterAttributeWidget(OWWidget):
         thresholdEditor = OWGUI.lineEdit(self, self, "threshold", "Threshold", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
         filter_button = OWGUI.button(self, self, "Filter",callback = self.filter_attributes)        
         
-        self.actionswidget.layout().addRow(parttionEditor.box, parttionEditor)
-        self.actionswidget.layout().addRow(thresholdEditor.box, thresholdEditor)        
-        self.attributesBox.layout().addWidget(filter_button)
+        self.actionswidgetlayout.addRow(parttionEditor.box, parttionEditor)
+        self.actionswidgetlayout.addRow(thresholdEditor.box, thresholdEditor)        
+        self.actionswidgetlayout.addWidget(filter_button)
 
         #tree views config
-        self.attributesTree.setHeaderHidden(True)
-        self.filteredTree.setHeaderHidden(True)
+        self.attributesTree.header().setResizeMode(QHeaderView.ResizeToContents)
+        self.filteredTree.header().setResizeMode(QHeaderView.ResizeToContents)
 
     def setup_interfaces(self):
         self.inputs = [("Data", Orange.core.ExampleTable, self.set_data), ("Attributes Filter", GbSolution, self.set_solution)]
