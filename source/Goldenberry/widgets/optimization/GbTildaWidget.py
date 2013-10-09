@@ -15,10 +15,10 @@ class GbTildaWidget(GbBaseEdaWidget):
     
     learning_rate = 1.0
 
-    def __init__(self, parent=None, signalManager=None):
+    def __init__(self, parent=None, signalManager=None, title = None):
         self.optimizer = Tilda()
         self.settingsList.append("learning_rate")
-        GbBaseEdaWidget.__init__(self, parent, signalManager, 'TILDA')
+        super(GbTildaWidget, self).__init__(parent, signalManager, 'TILDA')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
     

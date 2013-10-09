@@ -206,7 +206,6 @@
     <Content Include="widgets\learners\GbKernelBuilderWidget.ui">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="widgets\learners\GbSvmWidget.ui" />
     <Content Include="widgets\learners\GbPerceptronWidget.ui">
       <SubType>Content</SubType>
     </Content>
@@ -243,6 +242,7 @@
     <Content Include="widgets\optimization\GbUmdaCWidget.ui">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="widgets\optimization\GbWKieraWidget.ui" />
     <Content Include="widgets\optimization\GbUmdaWidget.ui">
       <SubType>Content</SubType>
     </Content>

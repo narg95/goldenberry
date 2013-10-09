@@ -11,11 +11,11 @@ from Goldenberry.widgets import Pbil, GbCostFunction, GbBaseOptimizer, GbSolutio
 class GbUmdaWidget(GbBaseEdaWidget):
     """Widget for umda algorithm"""
     
-    def __init__(self, parent=None, signalManager=None):
+    def __init__(self, parent=None, signalManager=None, title = None):
         self.optimizer = Pbil()
-        GbBaseEdaWidget.__init__(self, parent, signalManager, 'UMDA')
+        super(GbUmdaWidget, self).__init__(parent, signalManager, 'UMDA')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
-    
+        
     def setup_optimizer(self):
         self.optimizer.setup(self.cand_size, max_evals = self.max_evals, learning_rate = 1.0)   

@@ -8,10 +8,12 @@ from copy import deepcopy
 class WKieraCostFunction(GbCostFunction):
     """WKiera cost function."""
 
-    def __init__(self, kernel, data,  learner):
+    def __init__(self, kernel, data,  learner, solution_weight = 0.1):
+        self.reset_statistics()
         self.kernel = kernel
         self.learner = learner
         self.data = data
+        self.solution_weight = solution_weight
         self.var_size = len(data.domain.attributes)
 
     def execute(self, solutions):
@@ -25,7 +27,7 @@ class WKieraCostFunction(GbCostFunction):
 
         results = np.array(CA(cross_validation(learners, self.data, folds = 10)))
         self._update_statistics(results)
-        return results
+        return results*(1 - self.solution_weight) + (1 - np.average(solutions, axis = 1)) * self.solution_weight
 
     def _update_statistics(self, results):
         for result in results:
