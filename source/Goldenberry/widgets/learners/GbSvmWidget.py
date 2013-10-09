@@ -7,7 +7,7 @@
 """
 
 from Orange.OrangeWidgets.Classify.OWSVM import OWSVM, UnhandledException
-from Goldenberry.widgets import GbKernel
+from Goldenberry.widgets import GbKernel, QCheckBox, QString
 from Orange.OrangeWidgets.OWGUI import appendRadioButton
 from orange import ExampleTable, Learner, Classifier
 from orngWrap import PreprocessedLearner
@@ -35,6 +35,10 @@ class GbSvmWidget(OWSVM):
         self.controlArea.layout().removeWidget(self.kernelradio)
         self.kernelradio.close()
         self.kernel_type = orngSVM.SVMLearner.Custom
+        self.normalization=0
+        for check in self.findChildren(QCheckBox):
+            if check.text() == QString("Normalize data"):
+                check.close()
 
     def set_kernel(self, kernel):
         self.kernel = kernel(None)

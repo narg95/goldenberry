@@ -1,5 +1,5 @@
 """
-<name>Filter Attribute</name>
+<name>Feature subset and dependencies</name>
 <description>Filters dataset's attributes.</description>
 <contact>Nestor Rodriguez</contact>
 <icon>icons/FilterAttributes.svg</icon>
@@ -11,9 +11,9 @@ from Goldenberry.widgets import GbSolution, AttributeList, load_widget_ui, QStan
 import numpy as np
 
 class GbFilterAttributeWidget(OWWidget):
-    """Provides a Filter Attributes widget."""
+    """Provides a Feature subset and dependencies widget."""
 
-    def __init__(self, parent=None, signalManager=None, title = "Filter Attribute"):
+    def __init__(self, parent=None, signalManager=None, title = "Feature subset and dependencies"):
         OWWidget.__init__(self, parent, signalManager, title)
         self.threshold = 0.0
         self.parttition_level = 1
@@ -29,6 +29,7 @@ class GbFilterAttributeWidget(OWWidget):
         path = os.path.dirname(inspect.getfile(type(self)))
         self.disabled_icon = QIcon(path + '/icons/disabled.png')
         self.enabled_icon = QIcon(path + '/icons/enabled.png')
+        self.warning_label.setStyleSheet('color: red')
 
         parttionEditor = OWGUI.lineEdit(self, self, "parttition_level", "Partition Level",valueType = int, validator = QIntValidator(1,10000, self.controlArea))
         thresholdEditor = OWGUI.lineEdit(self, self, "threshold", "Threshold", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
@@ -37,7 +38,7 @@ class GbFilterAttributeWidget(OWWidget):
         self.actionswidgetlayout.addRow(parttionEditor.box, parttionEditor)
         self.actionswidgetlayout.addRow(thresholdEditor.box, thresholdEditor)        
         self.actionswidgetlayout.addWidget(filter_button)
-
+        
         #tree views config
         self.attributesTree.header().setResizeMode(QHeaderView.ResizeToContents)
         self.filteredTree.header().setResizeMode(QHeaderView.ResizeToContents)
@@ -55,8 +56,15 @@ class GbFilterAttributeWidget(OWWidget):
         self.update_navigation()
 
     def update_navigation(self):
-        if None is self.data:
+        if None is self.data or None is self.solution:
             return
+
+        #check whether the amount of features is the same as scores.
+        if len(self.data.domain.attributes) != len(self.solution.params):
+            self.warning_label.setText("Number of features and scores does not match.")            
+            return
+        else:
+            self.warning_label.setText("")
         
         self.update_attributes_navigation()
         self.update_filter_navigation()

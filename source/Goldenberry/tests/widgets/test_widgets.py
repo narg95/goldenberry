@@ -16,6 +16,7 @@ from Goldenberry.widgets.optimization.GbBlackBoxWidget import GbBlackBoxWidget
 from Goldenberry.widgets.learners.GbKernelBuilderWidget import GbKernelBuilderWidget
 from Goldenberry.widgets.learners.GbPerceptronWidget import GbPerceptronWidget
 from Goldenberry.widgets.learners.GbSvmWidget import GbSvmWidget
+from Goldenberry.widgets.optimization.GbWKieraWidget import GbWKieraWidget
 from Goldenberry.widgets.optimization.GbFilterAttributeWidget import GbFilterAttributeWidget
 
 import sys
@@ -43,10 +44,8 @@ class WidgetsTest(TestCase):
     def test_umda_basic(self):        
         widget = GbUmdaWidget()
         widget.apply()
-        
         self.assertFalse(widget.runButton.isEnabled())
         widget.set_cost_function(lambda _: GbCostFunction(func = OneMax))
-
         self.assertTrue(widget.runButton.isEnabled())
         widget.run()   
         
@@ -137,7 +136,7 @@ class WidgetsTest(TestCase):
         optimizer1 = Cga()
         optimizer1.cost_func = GbCostFunction(OneMax, var_size = var_size)
         optimizer1.setup(cand_size)
-        widget.set_optimizer((optimizer1, 'Cga'),0)
+        widget.set_optimizer((optimizer1, 'cGA'),0)
 
         optimizer2 = Tilda()
         optimizer2.cost_func = GbCostFunction(OneMax,  var_size = var_size)
@@ -172,6 +171,14 @@ class WidgetsTest(TestCase):
         #widget.show()
         #self.app.exec_()
     
+    def test_wkiera_basic(self):
+        widget = GbWKieraWidget()
+        widget.set_data(Orange.data.Table('Iris'))
+        widget.apply()
+        #Uncomment only when testing the widget UI
+        #widget.show()
+        #self.app.exec_()
+
     def test_filter_attributes_basic(self):        
         data = Orange.data.Table('Iris')
         att_len = len(data.domain.attributes)

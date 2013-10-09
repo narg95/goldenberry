@@ -46,6 +46,10 @@
     <item>
      <layout class="QFormLayout" name="actionswidgetlayout"/>
     </item>
+     <item>
+       <widget class="QLabel" name="warning_label">
+       </widget>
+     </item>
    </layout>
   </widget>
   <widget class="QGroupBox" name="filterAttributesBox">
@@ -73,7 +77,7 @@
        <bool>false</bool>
       </attribute>
      </widget>
-    </item>
+    </item>     
    </layout>
   </widget>
  </widget>
