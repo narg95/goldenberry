@@ -137,6 +137,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tests\widgets\__init__.py" />
+    <Compile Include="tests\__init__.py" />
     <Compile Include="widgets\learners\GbKernelBuilderWidget.py">
       <SubType>Code</SubType>
     </Compile>
