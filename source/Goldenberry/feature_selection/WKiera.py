@@ -1,16 +1,15 @@
 from Goldenberry.optimization.base.GbCostFunction import GbCostFunction
-from Goldenberry.classification.Kernels import WeightedKernel
 from Orange.evaluation.testing import cross_validation
 from Orange.evaluation.scoring import CA
 import numpy as np
 from copy import deepcopy
+import Orange
 
 class WKieraCostFunction(GbCostFunction):
     """WKiera cost function."""
 
-    def __init__(self, kernel, data,  learner, solution_weight = 0.1):
+    def __init__(self, data,  learner, solution_weight = 0.1):
         self.reset_statistics()
-        self.kernel = kernel
         self.learner = learner
         self.data = data
         self.solution_weight = solution_weight
@@ -18,17 +17,18 @@ class WKieraCostFunction(GbCostFunction):
 
     def execute(self, solutions):
         #TODO Omptimize for parallel execution
-        learners = [None]*len(solutions)
+        results = np.empty(len(solutions))
         for idx, weight in enumerate(solutions):
-            weighted_kernel = WeightedKernel(weight, self.kernel)
-            learner = deepcopy(self.learner)
-            learner.kernel = weighted_kernel
-            learners[idx] = learner
-
-        results = np.array(CA(cross_validation(learners, self.data, folds = 10)))
+            #transforms the data base on the weigths given by each solution.
+            weighted_data = self.data.to_numpy("ac")[0] * np.concatenate((weight, [1]))
+            results[idx] = CA(cross_validation([deepcopy(self.learner)], Orange.data.Table(self.data.domain, weighted_data), folds = 10))[0]
+        
         self._update_statistics(results)
         return results*(1 - self.solution_weight) + (1 - np.average(solutions, axis = 1)) * self.solution_weight
 
     def _update_statistics(self, results):
         for result in results:
             super(WKieraCostFunction, self)._update_statistics(result)
+
+    def weight_data(self, data, solution):
+        new_data = data.to_numpy("ac") * np.concatenate((solution,[1]))

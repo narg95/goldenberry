@@ -23,7 +23,7 @@ class GbBmdaWidget(GbBaseEdaWidget):
         #UI Buttons
         radio_box = OWGUI.radioButtonsInBox(self, self, "method",
               box = "Dependency Method",
-              btnLabels = ["Chi Square", "SIM"])
+              btnLabels = ["Chi Square", "Combined mutual information and p-value"])
         self.verticalLayoutWidget.layout().addWidget(radio_box)
         self.attributesTree.header().setResizeMode(QHeaderView.ResizeToContents)
 

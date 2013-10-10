@@ -15,28 +15,7 @@ class KernelsTest(TestCase):
         y = np.array([1,2,3])
         self.assertEqual(PolynomialKernel(x, y), (20.0**2))
 
-    def test_integration_SVM(self):
-        data = orange.ExampleTable("iris.tab")
-        l1 = orngSVM.SVMLearner()
-        l1.kernel_func = orngSVM.KernelWrapper(MyKernel().my_kernel)
-        l1.kernel_type =orange.SVMLearner.Custom
-        l1.probability = True
-        c1 = l1(data)    
-
-def my_kernel(i1, i2):
-        x = np.array([i for i in i1 if i.native() != i1.get_class().native()], dtype = float)
-        y = np.array([i for i in i2 if i.native() != i2.get_class().native()], dtype = float)
-        return x.dot(y)
-
-class MyKernel:
     
-    def __call__(self, i1, i2):
-        return self.my_kernel(i1, i2)
-
-    def my_kernel(self, i1, i2):
-        x = np.array([i for i in i1 if i.native() != i1.get_class().native()], dtype = float)
-        y = np.array([i for i in i2 if i.native() != i2.get_class().native()], dtype = float)
-        return x.dot(y)
 
     
     

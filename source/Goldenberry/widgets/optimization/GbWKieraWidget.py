@@ -4,19 +4,17 @@
 <contact>Nestor Rodriguez</contact>
 <icon>icons/Pbil.svg</icon>
 <priority>200</priority>
-
 """
 
-from Goldenberry.widgets import OWWidget, GbCostFunction, GbKernel, WKieraCostFunction, GbKernel, QFormLayout, OWGUI, load_widget_ui
+from Goldenberry.widgets import OWWidget, GbCostFunction, WKieraCostFunction, QFormLayout, OWGUI, load_widget_ui
 from Orange.core import Learner
 from orange import ExampleTable
 class GbWKieraWidget(OWWidget):
     """WKiera cost function widget."""
     data = None
-    kernel = None
     learner = None
     var_size = None
-    weight = 0.1
+    weight = 1
 
     settingsList = ['weight', 'var_size']
 
@@ -27,7 +25,7 @@ class GbWKieraWidget(OWWidget):
 
     def setup_ui(self):
         load_widget_ui(self)
-        weight_control = OWGUI.hSlider(self, self, 'weight', minValue = 0, maxValue = 100, step = 1, divideFactor = 100.0, labelFormat = "%.3f", label = "Weight")
+        weight_control = OWGUI.hSlider(self, self, 'weight', minValue = 0, maxValue = 1000, step = 1, divideFactor = 1000.0, labelFormat = "%.3f", label = "Weight")
         self.varEdit = OWGUI.lineEdit(self, self, "var_size", label="Variables")
         applyButton = OWGUI.button(self, self, label = "Apply", callback = self.apply)
         self.varEdit.setEnabled(False)
@@ -37,13 +35,8 @@ class GbWKieraWidget(OWWidget):
 
     def setup_interfaces(self):
         self.outputs = [("Cost Function", GbCostFunction)]
-        self.inputs = [("Kernel Function", GbKernel, self.set_kernel),
-                       ("Learner", Learner, self.set_learner ),
+        self.inputs = [("Learner", Learner, self.set_learner ),
                        ("Data", ExampleTable, self.set_data)]        
-
-    def set_kernel(self, kernel):
-        self.kernel = kernel(None)
-        self.apply()
 
     def set_learner(self, learner):
         self.learner = learner
@@ -55,8 +48,8 @@ class GbWKieraWidget(OWWidget):
         self.apply()
 
     def apply(self):
-        if self.kernel is not None and self.learner is not None and self.data is not None:
-            wkiera_cost_func = lambda _: WKieraCostFunction(GbKernel(self.kernel), self.data, self.learner, solution_weight = self.weight)
+        if self.learner is not None and self.data is not None:
+            wkiera_cost_func = lambda _: WKieraCostFunction(self.data, self.learner, solution_weight = self.weight/1000.0)
             self.send("Cost Function", wkiera_cost_func)
             
     
