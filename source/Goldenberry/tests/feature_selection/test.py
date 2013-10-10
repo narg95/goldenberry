@@ -11,7 +11,9 @@ class WKieraTest(TestCase):
     
     def test_basic(self):
         data = Orange.data.Table("zoo")
-        cost_func = WKieraCostFunction(GbKernel(func = LinealKernel), data, PerceptronLearner(max_iter = 1), solution_weight = 0.2)
+        learner =  PerceptronLearner(max_iter = 1)
+        learner.kernel = GbKernel(func = LinealKernel)
+        cost_func = WKieraCostFunction(data, learner, solution_weight = 0.3)
         solutions = np.ones((2, len(data.domain.attributes)))
         cost = cost_func(solutions)
         self.assertTrue(((cost - np.array([0.61818182, 0.61818182])) < 0.001).all())

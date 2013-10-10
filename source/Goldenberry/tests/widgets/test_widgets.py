@@ -6,6 +6,7 @@ from Goldenberry.optimization.cost_functions import *
 from Goldenberry.optimization.edas.Univariate import *
 from Goldenberry.optimization.base.GbCostFunction import *
 from PyQt4.QtGui import QApplication
+from Goldenberry.classification.Perceptron import PerceptronLearner
 from Goldenberry.widgets.optimization.GbCgaWidget import GbCgaWidget
 from Goldenberry.widgets.optimization.GbBmdaWidget import GbBmdaWidget
 from Goldenberry.widgets.optimization.GbUmdaWidget import GbUmdaWidget
@@ -174,6 +175,7 @@ class WidgetsTest(TestCase):
     def test_wkiera_basic(self):
         widget = GbWKieraWidget()
         widget.set_data(Orange.data.Table('Iris'))
+        widget.set_learner(PerceptronLearner())
         widget.apply()
         #Uncomment only when testing the widget UI
         #widget.show()
