@@ -10,8 +10,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
-    <height>120</height>
+    <width>300</width>
+    <height>250</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,8 +25,8 @@
        <rect>
          <x>5</x>
          <y>5</y>
-         <width>190</width>
-         <height>115</height>
+         <width>295</width>
+         <height>245</height>
        </rect>
      </property>     
      <layout class="QFormLayout" name="paramslayout"/>
