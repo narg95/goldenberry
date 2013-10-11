@@ -13,9 +13,11 @@ import numpy as np
 class GbFilterAttributeWidget(OWWidget):
     """Provides a Feature subset and dependencies widget."""
 
+    settingsList = ['threshold', 'parttition_level']
+
     def __init__(self, parent=None, signalManager=None, title = "Feature subset and dependencies"):
         OWWidget.__init__(self, parent, signalManager, title)
-        self.threshold = 0.0
+        self.threshold = 1
         self.parttition_level = 1
         self.solution = None
         self.data = None
@@ -31,8 +33,8 @@ class GbFilterAttributeWidget(OWWidget):
         self.enabled_icon = QIcon(path + '/icons/enabled.png')
         self.warning_label.setStyleSheet('color: red')
 
-        parttionEditor = OWGUI.lineEdit(self, self, "parttition_level", "Partition Level",valueType = int, validator = QIntValidator(1,10000, self.controlArea))
-        thresholdEditor = OWGUI.lineEdit(self, self, "threshold", "Threshold", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
+        parttionEditor = OWGUI.hSlider(self, self, 'parttition_level', minValue = 1, maxValue = 100, step = 1, label = "Threshold")
+        thresholdEditor = OWGUI.hSlider(self, self, 'threshold', minValue = 0, maxValue = 100, step = 1, divideFactor = 100.0, labelFormat = "%.3f", label = "Threshold")
         filter_button = OWGUI.button(self, self, "Filter",callback = self.filter_attributes)        
         
         self.actionswidgetlayout.addRow(parttionEditor.box, parttionEditor)
@@ -115,7 +117,7 @@ class GbFilterAttributeWidget(OWWidget):
         self.scores = np.zeros(len(self.solution.params), dtype=int)
         for parent in self.solution.roots:
             for att_idx in self.list_attributes(parent, 1):
-                if self.solution.params[att_idx] >= self.threshold:
+                if self.solution.params[att_idx] >= self.threshold/100.0:
                     item = QStandardItem(self.data.domain.attributes[att_idx].name)
                     root_node.appendRow(item)
                     item.parent = root_node

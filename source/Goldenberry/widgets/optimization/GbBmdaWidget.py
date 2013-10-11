@@ -19,17 +19,18 @@ class GbBmdaWidget(GbBaseEdaWidget):
         GbBaseEdaWidget.__init__(self, parent, signalManager, 'BMDA')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
+        self.settingsList.append('method')
 
         #UI Buttons
         radio_box = OWGUI.radioButtonsInBox(self, self, "method",
               box = "Dependency Method",
-              btnLabels = ["Chi Square", "Combined mutual information and p-value"])
+              btnLabels = ["Chi square", "Mutual information", "Combined mutual information and p-value"])
         self.verticalLayoutWidget.layout().addWidget(radio_box)
         self.attributesTree.header().setResizeMode(QHeaderView.ResizeToContents)
 
 
     def setup_optimizer(self):
-        self.optimizer.setup(self.cand_size, max_evals = self.max_evals, dependency_method = DependencyMethod.chi2_test if self.method == 0 else DependencyMethod.sim)
+        self.optimizer.setup(self.cand_size, max_evals = self.max_evals, dependency_method = DependencyMethod()[self.method])
 
     def search_progress(self, progress_args):
         super(GbBmdaWidget, self).search_progress(progress_args)
@@ -44,7 +45,7 @@ class GbBmdaWidget(GbBaseEdaWidget):
         
         # If there is a list of relevant attributes also known as the 'solution'
         att_items_list = [QStandardItem(QString('%1 (%L2)').arg(idx).arg(score)) \
-                     for idx, score in enumerate(solution)]
+                     for idx, score in enumerate(solution.params)]
             
         # Links roots with the invisible root node from the QStandardItemModel
         for root in solution.roots:

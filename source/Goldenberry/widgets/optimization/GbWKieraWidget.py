@@ -15,8 +15,9 @@ class GbWKieraWidget(OWWidget):
     learner = None
     var_size = None
     weight = 1
+    folds = 10
 
-    settingsList = ['weight', 'var_size']
+    settingsList = ['weight', 'var_size', 'folds']
 
     def __init__(self, parent=None, signalManager=None, title="WKiera Cost Function"):
         OWWidget.__init__(self, parent, signalManager, title)
@@ -27,10 +28,12 @@ class GbWKieraWidget(OWWidget):
         load_widget_ui(self)
         weight_control = OWGUI.hSlider(self, self, 'weight', minValue = 0, maxValue = 1000, step = 1, divideFactor = 1000.0, labelFormat = "%.3f", label = "Weight")
         self.varEdit = OWGUI.lineEdit(self, self, "var_size", label="Variables")
+        foldsEdit = OWGUI.lineEdit(self, self, "folds", label="Cross Validation Folds")
         applyButton = OWGUI.button(self, self, label = "Apply", callback = self.apply)
         self.varEdit.setEnabled(False)
         self.paramslayout.addRow(self.varEdit.box, self.varEdit)
         self.paramslayout.addRow(weight_control.box, weight_control)
+        self.paramslayout.addRow(foldsEdit.box, foldsEdit)
         self.paramslayout.addRow(applyButton)
 
     def setup_interfaces(self):
@@ -49,7 +52,7 @@ class GbWKieraWidget(OWWidget):
 
     def apply(self):
         if self.learner is not None and self.data is not None:
-            wkiera_cost_func = lambda _: WKieraCostFunction(self.data, self.learner, solution_weight = self.weight/1000.0)
+            wkiera_cost_func = lambda _: WKieraCostFunction(self.data, self.learner, solution_weight = self.weight/1000.0, folds = self.folds)
             self.send("Cost Function", wkiera_cost_func)
             
     

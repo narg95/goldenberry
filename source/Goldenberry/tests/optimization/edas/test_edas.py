@@ -72,12 +72,12 @@ class BmdaTest(TestCase):
     """Test the generation of the chi square matrix"""
     def test_shape_calculate_chisquare_matrix(self):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1],  [1,1,0,0]]))
-        chi_matrix = Bmda.build_chi2_dependency_matrix(pop)
+        chi_matrix = Bmda.chi2_dependency_matrix(pop)
         self.assertEqual(chi_matrix.shape, (4,4))
         expected = np.array([[0, 0, 0, 0],[0, 0, 0, 0], [0, 0, 0 , 0],[0, 0, 0, 0]])
         #Test for a total independent chi matrix.
         chi_matrix = chi_matrix * (np.eye(4,4)*-1+1)
-        self.assertTrue((chi_matrix == 0.0).all())
+        self.assertTrue((chi_matrix == 0.0).all())    
 
     """Test the max chi square algorithm"""
     def test_max_chisquare_base(self):
@@ -121,6 +121,15 @@ class BmdaTest(TestCase):
         """Test class for the Bmda algorithm"""
         bmda = Bmda()
         bmda.setup(40, dependency_method = DependencyMethod.sim)
+        bmda.cost_func = GbCostFunction(OneMax, var_size = 10)
+        result = bmda.search()
+        self.assertGreaterEqual(result.params.sum(), 8.0)
+        self.assertGreaterEqual(result.cost, 8.0)
+
+    def test_basic_search_onemax_mi_method(self):
+        """Test class for the Bmda algorithm"""
+        bmda = Bmda()
+        bmda.setup(40, dependency_method = DependencyMethod.mi)
         bmda.cost_func = GbCostFunction(OneMax, var_size = 10)
         result = bmda.search()
         self.assertGreaterEqual(result.params.sum(), 8.0)
