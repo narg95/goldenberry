@@ -35,7 +35,7 @@ class GbBaseEdaWidget(OWWidget):
         nameEditor = OWGUI.lineEdit(self, self, "name", label="Name")
         popEditor = OWGUI.lineEdit(self, self, "cand_size", label="# Candidates", valueType = int, validator = QIntValidator(4,1000000, self.controlArea))        
         maxEditor = OWGUI.lineEdit(self, self, "max_evals", label="Max Evals.", valueType = int, validator = QIntValidator(0, 1000000, self.controlArea))
-        self.varEditor = OWGUI.lineEdit(self, self, "var_size", label="Variables")
+        self.varEditor = OWGUI.lineEdit(self, self, "var_size", label="Variables", valueType = int)
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(nameEditor.box, nameEditor)        
         self.paramBox.layout().addRow(popEditor.box, popEditor)
