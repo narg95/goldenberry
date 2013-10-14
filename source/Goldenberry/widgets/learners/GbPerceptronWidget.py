@@ -12,9 +12,9 @@ class GbPerceptronWidget(OWWidget):
     """Widget for the perceptron algorithm"""
     
     #attributes
-    settingsList = ['learning_rate', 'max_evals', 'name']
-    learning_rate = 1.0
-    max_evals = 10
+    settingsList = ['lr', 'max_iter', 'name']
+    lr = 1.0
+    max_iter = 10
     learner = None
     classifier = None
     preprocessor = None
@@ -30,10 +30,10 @@ class GbPerceptronWidget(OWWidget):
 
     def setup_interfaces(self):
         self.inputs = [("Data", Orange.core.ExampleTable, self.set_data),
-                       ("Preprocess", PreprocessedLearner, self.set_preprocessor),
                        ("Kernel Function", GbKernel, self.set_kernel)]
         self.outputs = [("Learner", Orange.core.Learner),
-                        ("Classifier", Orange.core.Classifier)]
+                        ("Classifier", Orange.core.Classifier),
+                        ("Learner Factory", GbFactory)]
 
     def setup_ui(self):
         # Loads the UI from an .ui file.
@@ -46,8 +46,8 @@ class GbPerceptronWidget(OWWidget):
 
         #set new binding controls
         nameEditor = OWGUI.lineEdit(self, self, "name", label="Name")
-        learningEditor = OWGUI.lineEdit(self, self, "learning_rate", label="Learning Rage", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
-        maxiterEditor = OWGUI.lineEdit(self, self, "max_evals", label="Max. Evaluations", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
+        learningEditor = OWGUI.lineEdit(self, self, "lr", label="Learning Rage", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
+        maxiterEditor = OWGUI.lineEdit(self, self, "max_iter", label="Max. Evaluations", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
         
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(nameEditor.box, nameEditor)
@@ -74,18 +74,22 @@ class GbPerceptronWidget(OWWidget):
 
     def apply_settings(self):
         self.classifier = None
-        self.learner = PerceptronLearner(self.kernel, self.max_evals, self.learning_rate)        
+        self.learner = PerceptronLearner(self.kernel, self.max_iter, self.lr)        
         
         if self.preprocessor:
             self.learner = self.preprocessor.wrapLearner(self.learner)
 
         if None is not self.data:
             self.classifier = self.learner(self.data)
+
+        parameters = {}
+        for attr in ("kernel", "max_iter", "lr"):
+            parameters[attr] = getattr(self, attr)
         
         self.send("Learner", self.learner)
         self.send("Classifier", self.classifier)
-        print "Learner and classifier was sent"
-
+        self.send("Learner Factory", GbFactory(PerceptronLearner, parameters))
+        
     def handleNewSignals(self):
         self.apply_settings()
 

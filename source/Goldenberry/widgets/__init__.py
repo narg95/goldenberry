@@ -16,6 +16,7 @@ from Goldenberry.optimization.base.GbCostFunction import *
 from Goldenberry.optimization.base.GbSolution import GbSolution
 from Goldenberry.base.GbDynamicFunction import *
 from Goldenberry.classification.base.GbKernel import GbKernel
+from Goldenberry.classification.base.GbFactory import GbFactory
 import Goldenberry.classification.Kernels as Kernels
 from Goldenberry.optimization.base.GbBaseOptimizer import *
 from Goldenberry.optimization.edas.GbBlackBoxTester import GbBlackBoxTester

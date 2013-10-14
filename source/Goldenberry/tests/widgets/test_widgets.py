@@ -2,6 +2,7 @@ import Orange
 from unittest import *
 from Goldenberry.widgets import QtCore, Kernels
 from Goldenberry.classification.base.GbKernel import GbKernel
+from Goldenberry.classification.base.GbFactory import GbFactory
 from Goldenberry.optimization.cost_functions import *
 from Goldenberry.optimization.edas.Univariate import *
 from Goldenberry.optimization.base.GbCostFunction import *
@@ -163,7 +164,7 @@ class WidgetsTest(TestCase):
         #widget.show()
         #self.app.exec_()
 
-    def test_perceptron_basic(self):        
+    def test_Svm_basic(self):        
         widget = GbSvmWidget()
         widget.set_kernel(lambda _: GbKernel(func = Kernels.LinealKernel))    
         widget.setData(data = Orange.data.Table('Iris'))
@@ -175,7 +176,7 @@ class WidgetsTest(TestCase):
     def test_wkiera_basic(self):
         widget = GbWKieraWidget()
         widget.set_data(Orange.data.Table('Iris'))
-        widget.set_learner(PerceptronLearner())
+        widget.set_factory(GbFactory(PerceptronLearner, {}))
         widget.apply()
         #Uncomment only when testing the widget UI
         #widget.show()
