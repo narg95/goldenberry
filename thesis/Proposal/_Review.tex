@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% A Dependency Network+Weigthed Kernel Approach for Feature Selection
+%%% Proposal for a MSc Project
+%%% Nestor Rodriguez + Sergio A. Rojas (c) 2010
+%%%
+%%% Chapter 3: Acknowledgements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Literature Review}
+\label{sec:lecrev}
+In this section we provide a summarized review of the main elements involved in this proposal, namely feature selection techniques, kernel classification machines, and estimation of distribution algorithms.
+
+\subsection{Feature Selection Techniques}
+\label{sec:feat1}
+\subsubsection{The problem of feature selection}
+\label{sec:feat11}
+Nowadays the advances in technologies for data collection (the genome project, particle colliders, internet-based social networks) pose increased challenges for data analysis due to larger sizes and higher dimensionality of the observed samples.  It is reasonable however to assume that the collected variables may exhibit redundancy, inconsistency, noisy and irrelevant data and therefore will be difficult to analyze by the human eye. New automated mechanisms are required to identify significant variables for pattern discovery and data mining.
+
+Feature selection is gaining in importance and has recently become an active field of research in disciplines such as knowledge discovery, machine learning, pattern recognition, bioinformatics, geoinformatics, etc.  While FSS are techniques for dimensionality reduction, they maintain the original variables compared to other entropy-based, data compression or statistical methods that modify the original data representation instead of providing a subset of significant features with useful information for the domain experts \cite{larranaga07}. The main goal of these techniques is to obtain a better understanding of the data for visualization purposes or to speed up data analysis.
+
+FSS techniques are helpful in improving prediction models for supervised learning, detecting dimensions of tight data conglomeration in clustering tasks and a deeper understanding of process for data generation. Nonetheless, the design of novel FSS techniques aimed to provide more useful information also incurs in new levels of complexity giving rise to new challenges pertaining to feasible and efficient computational techniques.  
+
+In the classification context, feature selection techniques are categorized in three main groups depending on how they interact with a classification model (see Figure ~\ref{fig:im09}):  filters, wrappers and embedded. A detailed description of this categorization is given below (based on the study in \cite{larranaga08}).
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[scale=0.8]{Images/fss.png}
+	\caption[A feature selection taxonomy.]%
+	{A feature selection taxonomy.  The feature selector category depends on how the feature and hypothesis space are combined during classifier learning (left and right box taken from \cite{larranaga07}).}
+	\label{fig:im09}
+\end{figure}
+
+\subsubsection{Filter Approach}
+Methods in this category assess the relevance of variables based on the intrinsic properties of data.  The search in feature space is separated from the search in the space of classification hypothesis.  In most cases a feature relevance score is calculated (i.e. using mutual-information or data correlation) and low-scoring features are removed.  These methods have the ability to scale to higher dimensions since they exhibit a low computational cost.
+\subsubsection{Wrapper Approach}
+Wrappers establish a symbiotic relationship between the feature subset search and the classification algorithm.  The aim of these type of methods is not only to find relevant features but also to find the best suited classification model to those features.  However the interaction with the classifier may induce new problems such as a higher risk of overfitting and a higher demand of computational resources. 
+\subsubsection{Embedded Approach}
+Embedded methods incorporate the feature selection and the classification model construction as a single process.  As a result feature and hypothesis spaces are combined providing a richer source of information during the search although incurring as well in additional computational costs.  
+\subsection{Machine Learning}
+Supervised learning aims to find optimal learning algorithms with high generalization and prediction performance to produce classification models of the training set of examples and their associated labels.  The prediction accuracy of the resulting classifier is then evaluated with a test set.  Among these techniques, linear classifiers are widely used because of their theoretically simplicity and computational efficiency.  Application of linear classifiers, in real world problems where nonlinearities arise, has been possible due to the advances in kernel machines\cite{cristianini04}.
+\subsubsection{Kernel Machines}
+\label{subsub:kern}
+These algorithms use kernel functions to compute similarity measures of the input samples in a feature space where nonlinearities might be easier to solve by linear classifiers.  Figure ~\ref{fig:im10} shows an example of feature mapping where in the original space data can only be separated with a nonlinear function but becomes linearly separable if the data is transformed into a feature space.  When using the linear classifier the feature space mapping is implicit since the machine only uses inner products of the transformed examples which are computed using kernel function.   
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[scale=1.2]{Images/kernel.png}
+	\caption[Transformation from input space to a feature space simplifies the classification task.]%
+	{Transformation from input space to a feature space simplifies the classification task (taken from\cite{cristianini04}).}
+	\label{fig:im10}
+\end{figure}
+
+A kernel is a function \(K\) such that for all \(\bar{x},\bar{z} \in X\) \[K(\bar{x},\bar{z})=\langle \phi(\bar{x}) ,\phi(\bar{z}) \rangle,\] where \(\phi\) is a mapping from the input space \(X\) to an (inner product) feature space. In order to be a kernel, the function must comply with the conditions defined by Mercer's theorem \cite{cristianini04}.  Eq. (1-4) are examples of kernel functions.
+
+\subsubsection{Linear Learning Machines}
+A linear classifier is a linear function \(f(\bar{x})\) where \(\bar{x} \in X\) and \(\bar{w} \in \mathbb{R}^\mathcal{D}\), that can be written as:
+
+\begin{equation}
+	f(\bar{x})=\text{sgn}(\langle \bar{w}, \bar{x} \rangle) = \text{sgn} \Big( \sum_{i} w_i x_i\Big)
+\label{eq:eq05}
+\end{equation}
+
+A given sample \(\bar{x}\) 
+\pdfcomment[avatar={reviewer}, id = 8]{A sample take the name of the whole sample space and there are other typos in this section.}.
+\pdfreply[avatar=me, id=80, replyto=8]{These mistakes where fixed e.g. x represents the sample instead of the whole sample space X}
+ is assigned to the positive class if \(f(\bar{x})=0\) or otherwise to the negative class.  There are number of training algorithms to learn a classification vector \(\bar{w}\), including the perceptron\cite{rosenblatt58} and the linear support vector machine\cite{cristianini00}.  For illustration purposes, Algorithm ~\ref{alg:percep} shows the learning procedure of the perceptron.
+
+The kernelized version of the linear classifier allows for classification of nonlinearly separable datasets, as mentioned before.  The classification function is written consequently as:
+
+\begin{equation}
+	f(\bar{x}) = \text{sgn}\Big( \sum_{k} \alpha_k K(\bar{x_k},\bar{x}) \Big),
+\label{eq:eq06}
+\end{equation}
+
+where \(K\) represents a kernel function and \(\alpha_k\) the classifier parameters that can be learned in this case using the kernel perceptron\cite{freund99} or the support vector machine\cite{vapnik95, cristianini00}. 
+
+\begin{algorithm}[ht]
+	\caption{\textsf{The Perceptron}} 
+	\begin{algorithmic}
+		\REQUIRE Given a linearly separable training set $S$ and learning rate $\eta \in \mathbb{R}^+$ 
+		\STATE $w \gets 0$; $k \gets 0$
+		\REPEAT 
+				\FOR{ $i=1, 2, \ldots \ell$}
+					\IF{$y_i (\langle w_k, x_i \rangle) \leq 0$}
+						\STATE $w_{k+1} \gets w_k + \eta y_i x_i$
+						\STATE $k \gets k + 1$
+					\ENDIF
+				\ENDFOR				
+		\UNTIL{no mistake made within the \emph{for} loop}
+		\ENSURE $(w_k)$ where $k$ is the number of mistakes
+	\end{algorithmic}
+  \label{alg:percep}
+\end{algorithm}
+
+\subsection{Evolutionary Estimation  of Probabilistic Distributions}
+Genetic algorithms (GA) are search stochastic methods inspired in the theory of natural selection of Darwin.  The idea is to evolve a population of candidates coding the parameters for the solution of an optimization problem, using genetic operations such as chromosome recombination and mutation \cite{goldberg89}. A novel technique known as Estimation of Distribution Algorithms (EDAs) has recently emerged motivated by GAs but from a statistical viewpoint. They have proven to be better suited in many applications than canonical GAs\cite{larranaga01}.  
+
+The main distinctive aspect of EDAs is that they search for a probabilistic distribution model representing the population of candidates. Instead of using genetic operations, these algorithms are based on well-known statistical techniques to estimate the parameters of a distribution function, and the evolution is guided by sampling the evolving probabilistic model. The complexity of the algorithm lies in the robustness of this probability model and in how it is iteratively re-estimated.  The probabilistic models can be as simple as a marginal distribution or as complex as a joint multivariate distribution expressing high order interactions among the observed variables. These categories are briefly described below following the review in \cite{larranaga08}.
+
+\subsubsection{Univariate EDAs}
+Univariate algorithms use a marginal probability model encoded in a probability vector.  They are not computational intensive because they assume no interaction between variables. The probability vector is re-estimated using the fittest subset of the population of candidates, as depicted in Figure ~\ref{fig:im04}. There are three widely used algorithms for this category: Univariate Marginal Distribution Algorithm (UMDA\cite{muhlen96}), Popupation-based Incremental Learning (PBIL\cite{baluja94}) and the Compact Genetic Algorithm (cGA\cite{baluja95, harik98}).  
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics{Images/edas.png}
+	\caption{Univariate Estimation of Distribution Algorithm flowchart.}
+	\label{fig:im04}
+\end{figure}
+
+UMDA estimates the entire probability vector every iteration.  The probability distribution is factorized as a product of independent univariate marginal distributions, which are estimated from marginal frequencies.  The probability of the \(i\)-th variable being relevant is given by the Eq.(\ref{eq:eq07}), where \(S\) is the subpopulation of \(N\) fittest candidates, and \(\delta\) is the Kronecker delta.
+
+\begin{equation}
+	p(x_i)= \prod_{j} \frac {\sum_{j}^{N} \delta(X_i=x_i|S)} {N}
+\label{eq:eq07}
+\end{equation}
+
+PBIL was designed to work in a \(n\)-dimensional binary space \(\{0,1\}^n\).  Unlike UMDA, PBIL does not estimate a new probability vector every iteration \(t\). Instead, fittest candidates are chosen to update the probability vector at a learning rate \(\alpha=(0,1]\). The updating rule is shown in Eq.(\ref{eq:eq08}). Notice that PBIL becomes UMDA when \(\alpha=1\). 
+
+\begin{equation}
+	p_{t}(x_i)= (1-\alpha)p_{t-1}(x_i)+\alpha \frac{1}{N} \sum_{k}^{N} S_{ki} 
+\label{eq:eq08}
+\end{equation}
+
+
+Lastly, cGA has become popular for the higher efficiency to solve very large scale problems with millions to billions of variables with a lower computational demand than canonic GA\cite{goldberg07}.  cGA has a low memory consumption because only two candidates per iteration are generated.  Both compete and the winner updates the probability vector at a learning rate \(1/n\) where \(n\) is the population size parameter. 
+\pdfcomment[avatar={reviewer}, id = 9]{In algorithm 3, the increment 1/n is not defined}
+\pdfreply[avatar=me, id=90, replyto=9]{As you can see in the cGA explanation, the increment 1/n represents a learning rate for the probability model where n is the population size.}
+Algorithm \ref{alg:cga} shows the pseudocode of the cGA .
+
+\begin{algorithm}[ht]
+	\caption{\textsf{The Compact Genetic Algorithm}} 
+	\begin{algorithmic}
+		\REQUIRE Population size $n$ and chromosome lenght $\ell$
+		\STATE $p \gets$ initialize a uniform probability vector.
+		\REPEAT
+			\STATE $[a,b] \gets$ generateTwoIndividuals$(p)$
+			\STATE $[winner, loser] \gets $compete$(a,b)$
+			\FOR { $i=1, 2, \ldots \ell$}
+				\IF {$winner[i] \neq loser[i]$}
+					\IF{$winner[i] = 1$}
+						\STATE $p[i] \gets p[i] + \frac{1}{n}$
+					\ELSE
+						\STATE $p[i] \gets p[i] - \frac{1}{n}$
+					\ENDIF
+				\ENDIF
+			\ENDFOR
+	\UNTIL $p$ has converged
+	\ENSURE $p$ represents the final solution
+	\end{algorithmic}
+	\label{alg:cga}
+\end{algorithm}
+\subsubsection{Multivariate EDAs}
+Multivariate EDAs use joint statistics models of higher order to represent interaction among variables. These models are usually represented as probabilistic graphical models (see Figure \ref{fig:im05}). As mentioned above, EDA's complexity increases when a higher order of interaction among variables are desired. Factorized Distribution Algorithm (FDA \cite{muhlen99}), Estimation of Bayesian Networks Algorithm (EBNA \cite{larranaga00}) and Bayesian optimization algorithm (BOA \cite{pelikan99}) belong to this category.  BOA and EBNA both use Bayesian network structures but differs in the score metric they use to select the appropriate network structure.  BOA uses Bayesian Dirichlet equivalence score (BDe) while EBNA uses K2+Penalization and Bayesian Information Criterion (BIC).  Similarly, FDA uses Boltzmann selection for Boltzman distribution.
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics{Images/medas.png}
+	\caption[Diagram of probability models used in most popular multivariate EDAs.]%
+	{Diagram of probability models used in most popular multivariate EDAs( taken from \cite{larranaga08}).}
+	\label{fig:im05}
+\end{figure}
+
+ 
+\subsection{Feature Selection Techniques Using Estimation of Distribution Algorithms}
+Estimation of Distribution Algorithms for feature subset selection and feature relevance estimation has been proposed with promising results in large scale domains such as bionformatics \cite{inza00,saeys03}. Among these techniques, particularly FSS-EBNA \cite{larranaga00FSS} and wKIERA\cite{rojas08} have been used for selection of relevant feature subsets.  
+FSS-EBNA uses a multivariate estimation of distribution algorithm (EBNA) as the search engine for exploring the feature space and a Naive-Bayes classifier (NB) to predict the class for each instance; Figure \ref{fig:im06} illustrates the main components for this algorithm.
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[scale=1.3]{Images/FSSEBNA.png}
+	\caption{Main components of the FSS-EBNA algorithm.}
+	\label{fig:im06}
+\end{figure}
+ 
+On the other hand wKIERA uses a univariate estimation of distribution algorithm for searching the best suited representation of features relevance and a RBF weighted kernel machine with a perceptron classifier as the learning algorithm; Figure \ref{fig:im07} illustrates the main components of this algorithm.
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[scale=1.3]{Images/wkiera.png}
+	\caption{Main components of the wKIERA algorithm.}
+	\label{fig:im07}
+\end{figure}

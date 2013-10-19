@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Thesis.aux
+Case mismatch error between cite keys baluja95 and Baluja95
+---line 95 of file Thesis.aux
+ : \citation{baluja95
+ :                   ,harik98}
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys pelikan99 and Pelikan99
+---line 110 of file Thesis.aux
+ : \citation{pelikan99
+ :                    }
+I'm skipping whatever remains of this command
+The style file: plain.bst
+Database file #1: biblio.bib
+Warning--I didn't find a database entry for "guyon03"
+Warning--I didn't find a database entry for "heckerman99"
+Warning--I didn't find a database entry for "cristianini04"
+Warning--I didn't find a database entry for "lipton08"
+Warning--I didn't find a database entry for "larranaga08"
+Warning--I didn't find a database entry for "rojas05"
+Warning--I didn't find a database entry for "vapnik02"
+Warning--I didn't find a database entry for "rojas08"
+Warning--I didn't find a database entry for "larranaga01"
+Warning--I didn't find a database entry for "goldberg89"
+Warning--I didn't find a database entry for "Rojas2012"
+Warning--I didn't find a database entry for "Rojas2013"
+Warning--I didn't find a database entry for "Harik99"
+Warning--I didn't find a database entry for "Muhlenbein97"
+Warning--I didn't find a database entry for "Baluja95"
+Warning--I didn't find a database entry for "Sebag98"
+Warning--I didn't find a database entry for "Larranaga02"
+Warning--I didn't find a database entry for "Pelikan99"
+Warning--I didn't find a database entry for "?"
+Warning--I didn't find a database entry for "larranaga07"
+Warning--I didn't find a database entry for "rosenblatt58"
+Warning--I didn't find a database entry for "cristianini00"
+Warning--I didn't find a database entry for "freund99"
+Warning--I didn't find a database entry for "vapnik95"
+Warning--I didn't find a database entry for "muhlen96"
+Warning--I didn't find a database entry for "baluja94"
+Warning--I didn't find a database entry for "goldberg07"
+Warning--I didn't find a database entry for "muhlen99"
+Warning--I didn't find a database entry for "larranaga00"
+Warning--I didn't find a database entry for "inza00"
+Warning--I didn't find a database entry for "saeys03"
+Warning--I didn't find a database entry for "larranaga00FSS"
+(There were 2 error messages)

@@ -1,0 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% A Dependency Network+Weigthed Kernel Approach for Feature Selection
+%%% Proposal for a MSc Project
+%%% Nestor Rodriguez + Sergio A. Rojas (c) 2010
+%%%
+%%% This is the title page for the proposal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\singlespacing
+\title{Feature relevance estimation by evolving probabilistic dependency networks with weighted kernel machines
+\footnote{\tiny A MSc thesis proposal}}
+\date{\today}
+\author{Nestor Rodriguez \pdfcomment[avatar={me}]{The comments inside the whole document contain your observations together with their respective corrections and clarifications.} \footnote{\tiny Engineering School, District University of Bogota, Colombia}  \\ \small{\textbf{Advisor:} Sergio A. Rojas, PhD.}}
+
+\maketitle
+
+\begin{abstract}
+\addtocounter{footnote}{2}
+This thesis proposal focuses on the problem of estimating relevance of observed variables for a classification task in high dimensional spaces, which is known as feature subset selection or feature relevance determination by the machine learning community. The main goal of the thesis is the design of a novel feature relevance estimation method by combining techniques for estimation of probabilistic dependency networks with weighted kernel machines\footnote{\tiny The topics of feature selection methods, estimation of probability distribution algorithms and kernel machines are briefly reviewed in section \ref{sec:lecrev}. The interested reader is referred to \cite{guyon03,heckerman99, cristianini04} for details.}. The method is intended to work within a population-based stochastic search framework where relevant (but unknown) variables from a given dataset\footnote{\tiny In the context of this paper \emph{dataset} means data arranged in a tabular way where columns represent variables and rows represents instances.  Other types of formats (such as text, images, graphs, etc.) are not considered.} are found by iteratively evolving a set of relevance estimation candidates. These candidates will consist of parameters of multivariate conditional probability distributions. The distributions could be seen as dependency networks of how variables influence each other.  With this information a subset of the most relevant features from the original sample can be selected to perform classification, the suitability of the subset being assessed as its predictive classification accuracy. Weighted kernel classifiers would be used for this purpose. It is expected that the method may provide additional information about dependency among such variables as a byproduct of the selection process.
+\end{abstract}
+
+

@@ -1,0 +1,94 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Feature relevance estimation by evolving probabilistic dependency networks with weighted kernel machines
+%%% Dissertation for a MSc Project
+%%% Nestor Rodriguez + Sergio A. Rojas (c) 2010
+%%%
+%%% Main file for the MSc dissertation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Set document type: MSc report
+\documentclass[a4paper,twoside,12pt]{report}
+\usepackage{graphicx}             	     % For including graphics in EPS
+\usepackage[english, spanish]{babel}
+\usepackage{amsmath,amssymb,amsthm}      % For American Maths Society math
+\usepackage{setspace}                    % For line spacing
+\usepackage{cite}                        % For doing citations
+\usepackage[vcentering,dvips]{geometry}  % For layout and margins settings
+\usepackage{algorithm,algorithmic}	  	 % Needed for algorithms	
+\usepackage{subfigure}  				 % Needed for subfigures
+
+
+% Notation
+\newcommand{\Orange}{\texttt{Orange}}
+\newcommand{\GB}{\texttt{Goldenberry}}
+\newcommand{\PBIL}{\texttt{PBIL}}
+\newcommand{\UMDA}{\texttt{UMDA}}
+\newcommand{\BMDA}{\texttt{BMDA}}
+\newcommand{\PBILc}{\texttt{PBIL$_c$}}
+\newcommand{\UMDAc}{\texttt{UMDA$_c$}}
+\newcommand{\cGA}{\texttt{cGA}}
+\newcommand{\EDA}{\texttt{EDA}}
+\newcommand{\TILDA}{\texttt{TILDA}}
+\newcommand{\WKII}{\texttt{wKieraII}}
+\newcommand{\Learner}{\texttt{Learner}}
+\newcommand{\WK}{\texttt{wKiera}}
+\newcommand{\CostFunction}{\texttt{CostFunctionBuilder}}
+\newcommand{\BBTester}{\texttt{BlackBoxTester}}
+\newcommand{\KPerceptron}{\texttt{Kernel Perceptron}}
+\newcommand{\SVM}{\texttt{SVM}}
+\newcommand{\BFSS}{\texttt{BivariateFeatureSubset}}
+\newcommand{\WKCostFunc}{\texttt{WkieraCostFunction}}
+\newcommand{\KBuilder}{\texttt{KernelBuilder}}
+\newcommand{\figref}[1]{\mbox{Figure \ref{#1}}}
+\newcommand{\TILDAC}{\texttt{@TILDA}}
+\newcommand{\bs}{{\mathbf s}}
+\newcommand{\bx}{{\mathbf x}}
+\newcommand{\bw}{{\mathbf w}}
+\newcommand{\bl}{{\mathbf l}}
+\renewcommand{\bf}{{\mathbf f}}
+\newcommand{\bone}[2]{\mathbf{1}_{#1}(#2)}
+\newcommand{\bones}{\mathbf{1}}
+\newcommand{\bzero}{\mathbf{0}}
+\newcommand{\bmu}{{\boldsymbol \mu}}
+\newcommand{\bsigma}{{\boldsymbol \Sigma}}
+\newcommand{\bbeta}{{\boldsymbol \beta}}
+\newcommand{\gauss}[2]{{\cal N}(#1, #2)}
+\newcommand{\Rdom}{\mbox{$\mathbb{R}$}}
+\newcommand{\cR}{{\cal R}}
+\newcommand{\cE}{{\cal E}}
+\newcommand{\cA}{{\cal A}}
+\newcommand{\cB}{{\cal B}}
+\newcommand{\cD}{{\cal D}}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\cN}{{\cal N}}
+
+\newcommand{\bomega}{{\boldsymbol{\omega}}}
+\floatname{algorithm}{Algorithm}
+\renewcommand{\algorithmicrequire}{\textbf{Requires:}}
+\renewcommand{\algorithmicensure}{\textbf{Outputs:}}
+\renewcommand{\algorithmicfor}{\textbf{repeat}}
+\renewcommand{\algorithmicwhile}{\textbf{repeat until convergence}}
+\renewcommand{\algorithmicdo}{\textbf{}}
+\renewcommand{\algorithmiccomment}[1]{#1}
+\algsetup{indent=1em}
+\graphicspath{{figs/}}
+\doublespacing
+
+\begin{document}
+\selectlanguage{english}
+\input{Title}
+\tableofcontents
+\listoffigures
+\listoftables
+\input{Abstract_Acknow}
+\input{Intro}
+\input{Proposal}
+\input{Tilda}
+\input{Goldenberry}
+\input{wKiera}
+\input{Conslusion}
+\input{Bibliography}
+ 
+\end{document}
+

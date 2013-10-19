@@ -1,0 +1,32 @@
+\chapter{\TILDA}
+\label{ch:tilda}
+
+\TILDA~ is novel method that is able to compactly solve regular and noisy versions of these problems with minimal memory requirements, regardless of problem or population size. This feature allows the algorithm to be run in a conventional desktop machine upon the compact Genetic Algorithm (\cGA) and the continuous domain Population-Based Incremental Learning algorithm (\PBILc) together with its arithmetic-coding version. \TILDA~ iteratively by means of 2-way tournaments (like \cGA) estimates a Gaussian distribution with the fittest candidate whose parameters are $(\mu_i, \sigma_i)_{i=1}^{\ell}$ for both the mean and standard deviation of each input variable as depicted in algorithm \ref{alg:TILDA}.  The Gaussian distribution for each input variable in each are estimated incrementally  with a fraction of each tournament's winner, as the formula in Equation (\ref{eq:mu}) and (\ref{eq:sigma}) indicate for $\mu_i$ and $\sigma_i$ respectively, where $x^{t}_i$ is the $i$-th component of the candidate $\bx_{t}$, $n$ the number of candidates and $\mu_i$ and $\sigma_i$ are initialized with $0$.
+\begin{eqnarray}
+\mu&=&\mu+\tfrac{1}{n} x_i^{t} \label{eq:mu} \\
+\sigma_i^2 &=& \sigma_i^2-\mu_i^2 \label{eq:sigma} \\
+\quad t&=&1,\ldots,n. \nonumber
+\end{eqnarray}
+
+
+\begin{algorithm}
+	\caption{\TILDA} 
+	\begin{algorithmic}[1]
+	\REQUIRE{$\ell>0$, fitness function $f(\cdot)$}
+	\ENSURE{best candidate $\bbeta$}
+		\STATE $\bmu=\bzero, \bsigma=\bones, \bbeta=\bzero, \gamma=0.5, \epsilon=0.01$
+		\WHILE{\textbf{ending citeria not met}} \label{tilda:genloop}
+			\STATE $\tilde{\bmu}=\tilde{\bsigma}=\bzero$
+			\FOR{$n$ \textbf{times}} \label{tilda:poploop}
+				\STATE $\{\bx^{\prime},\bx^{\prime\prime}\} \sim \gauss{\bmu}{\bsigma}$ \label{acGA:sampling} \label{tilda:sampling}
+				\STATE $\hat{\bx} = \mathsf{argmax}(f(\bx^{\prime}), f(\bx^{\prime\prime}))$ \label{tilda:2way}
+				\STATE $\bbeta = \mathsf{argmax}(f(\bbeta), f(\hat{\bx}))$ \label{tilda:beta}
+				\STATE $\tilde{\bmu} = \tilde{\bmu} + \frac{1}{n}(\hat{x}_1,\hat{x}_2,\ldots,\hat{x}_{\ell})$ \label{tilda:muhat}
+				\STATE \vspace{1mm}$\tilde{\bsigma} = \tilde{\bsigma} + \frac{1}{n}(\hat{x}_1^2,\hat{x}_2^2,\ldots,\hat{x}_{\ell}^2)$	 \label{tilda:sigmahat}
+			\ENDFOR			
+			\STATE $\bmu=\bmu-\gamma(\bmu-\frac{1}{2}(\bbeta+\tilde{\bmu}))$ \label{tilda:mu}
+			\STATE $\bsigma=\bsigma-\gamma(\bsigma-(\tilde{\bsigma}-(\tilde{\mu}_0^2, \tilde{\mu}_1^2,\ldots, \tilde{\mu}_{\ell}^2))+\epsilon$	 \label{tilda:sigma}		
+		\ENDWHILE
+	\end{algorithmic}  
+	\label{alg:TILDA}
+\end{algorithm}

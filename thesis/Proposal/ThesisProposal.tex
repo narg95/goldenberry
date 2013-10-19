@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% A Dependency Network+Weigthed Kernel Approach for Feature Selection
+%%% Proposal for a MSc Project
+%%% Nestor Rodriguez + Sergio A. Rojas (c) 2010
+%%%
+%%% Main file for the MSc proposal 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------ Document header -----------------------------
+
+% Set document type: MSc report
+\documentclass[a4paper,twoside,12pt]{article}
+
+% Include needed packages
+\usepackage{graphicx}             	    % For including graphics in EPS
+\usepackage{amsmath,amssymb,amsthm}      % For American Maths Society math
+\usepackage{setspace}                    % For line spacing
+\usepackage{cite}                        % For doing citations
+\usepackage[vcentering,dvips]{geometry}  % For layout and margins settings
+\usepackage{algorithm,algorithmic}		% For algorithms	
+\usepackage{pdfcomment}
+\usepackage{pdflscape}
+\usepackage{hyperref}
+\usepackage[svgnames,rgb]{xcolor}%
+
+% Set layout and margins
+\geometry{a4paper,left=1.0in,right=1.0in,top=1.0in,bottom=1.0in}
+\bibliographystyle{plain}
+
+% Set figures path
+\graphicspath{{figs/}}
+
+% Notation
+\newcommand{\cD}{{\cal D}}
+\newcommand{\cA}{{\cal A}}
+\newcommand{\bomega}{{\boldsymbol{\omega}}}
+\newcommand{\cN}{{\cal N}}
+\floatname{algorithm}{Algorithm}
+\renewcommand{\algorithmicrequire}{\textbf{Inputs:}}
+\renewcommand{\algorithmicensure}{\textbf{Outputs:}}
+\renewcommand{\algorithmicrepeat}{\textbf{repeat}}
+\renewcommand{\algorithmicuntil}{\textbf{until}}
+\renewcommand{\algorithmicfor}{\textbf{for}}
+\renewcommand{\algorithmicdo}{\textbf{do}}
+\renewcommand{\algorithmicend}{\textbf{end}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\pdfcommentsetup{icon=Comment,color=Khaki, open=true}
+\defineavatar{reviewer}{author=Marco A. Alzate}
+\defineavatar{me}{author=Nestor Andres Rodriguez}
+
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+
+%------------------------------ Document body -------------------------------
+\begin{document}
+\input{_Title}
+\clearpage
+\tableofcontents 
+\listofalgorithms \listoffigures %\listoftables 
+\clearpage
+\setlength{\parskip}{5mm plus1mm minus2mm} 
+\input{_Problem_Hypothesis}
+\clearpage
+\input{_Idea}
+\clearpage
+\input{_Goals}
+\clearpage
+\input{_Methodology_TimeLine}
+\clearpage
+\input{_Review}
+\clearpage
+\pdfcomment[avatar={reviewer}, id=4]{Although the list of references is appropriate and updated, there are five references that are not cited within the document.  They should be either cited or excluded from the list.}
+\pdfreply[id=40,avatar=me,replyto=4]{We have checked all references and they have at least one citation otherwise they would not appear in the bibliography.  May be a confusion could be raised when continued citations appear because we placed them inside square brackets separated by comma e.g. [5, 8, 10]. }
+\bibliography{biblio}
+\end{document}
+%------------------------------- That's it! ---------------------------------
