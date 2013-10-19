@@ -1,0 +1,758 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.14)  19 OCT 2013 11:57
+entering extended mode
+**Thesis.tex
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Thesis.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\base\report.cls
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\base\size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\pdftex-def\pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+) (C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\babel\babel.sty
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\00miktex\bblopts.cfg
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\babel\english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\babel\babel.def
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count89
+\U@D=\dimen105
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\babel\spanish.ldf
+Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
+\es@datefmt=\count90
+\es@quottoks=\toks15
+\es@quotdepth=\count91
+Package babel Info: Making " an active character on input line 492.
+Package babel Info: Making . an active character on input line 585.
+Package babel Info: Making < an active character on input line 630.
+Package babel Info: Making > an active character on input line 630.
+))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen106
+))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen107
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count92
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count93
+\leftroot@=\count94
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count95
+\DOTSCASE@=\count96
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count97
+\c@MaxMatrixCols=\count98
+\dotsspace@=\muskip10
+\c@parentequation=\count99
+\dspbrk@lvl=\count100
+\tag@help=\toks17
+\row@=\count101
+\column@=\count102
+\maxfields@=\count103
+\andhelp@=\toks18
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amscls\amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks26
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\setspace\setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\geometry\geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\ifxetex\ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count104
+\Gm@cntv=\count105
+\c@Gm@tempcnt=\count106
+\Gm@bindingoffset=\dimen115
+\Gm@wd@mp=\dimen116
+\Gm@odd@mp=\dimen117
+\Gm@even@mp=\dimen118
+\Gm@layoutwidth=\dimen119
+\Gm@layoutheight=\dimen120
+\Gm@layouthoffset=\dimen121
+\Gm@layoutvoffset=\dimen122
+\Gm@dimlist=\toks27
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\geometry\geometry.cfg))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\algorithms\algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count107
+\float@exts=\toks28
+\float@box=\box28
+\@float@everytoks=\toks29
+\@floatcapt=\box29
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\base\ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks30
+\c@algorithm=\count108
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\algorithms\algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count109
+\c@ALC@line=\count110
+\c@ALC@rem=\count111
+\c@ALC@depth=\count112
+\ALC@tlm=\skip49
+\algorithmicindent=\skip50
+) (C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\subfigure\subfigure.sty
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip51
+\subfigcapskip=\skip52
+\subfigcaptopadj=\dimen123
+\subfigbottomskip=\skip53
+\subfigcapmargin=\dimen124
+\subfiglabelskip=\skip54
+\c@subfigure=\count113
+\c@lofdepth=\count114
+\c@subtable=\count115
+\c@lotdepth=\count116
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\subfigure\subfigure.cfg)
+\subfig@top=\skip55
+\subfig@bottom=\skip56
+)
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Thesis.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count117
+\scratchdimen=\dimen125
+\scratchbox=\box30
+\nofMPsegments=\count118
+\nofMParguments=\count119
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen126
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
+\everyMPtoPDFconversion=\toks32
+)
+*geometry* detected driver: dvips
+*geometry* verbose mode - [ preamble ] result:
+* driver: dvips
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* vratio: 1:1
+* modes: twoside 
+* h-part:(L,W,R)=(71.70166pt, 418.25368pt, 107.55254pt)
+* v-part:(T,H,B)=(126.75832pt, 591.5302pt, 126.75833pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=418.25368pt
+* \textheight=591.5302pt
+* \oddsidemargin=-0.56833pt
+* \evensidemargin=35.28255pt
+* \topmargin=17.48833pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=85.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Title.tex
+LaTeX Font Info:    Try loading font information for U+msa on input line 18.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 18.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+Non-PDF special ignored!
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2{C:/Users/nrgamboa/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [3])
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Thesis.toc
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 25.
+ [4
+
+])
+\tf@toc=\write3
+ [5]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Thesis.lof)
+\tf@lof=\write4
+ [6
+
+]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Thesis.lot)
+\tf@lot=\write5
+
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Abstract_Acknow.tex [7
+
+]
+[8
+
+]
+
+LaTeX Warning: Citation `guyon03' on page \es@scroman {i} undefined on input li
+ne 3.
+
+
+LaTeX Warning: Citation `heckerman99' on page \es@scroman {i} undefined on inpu
+t line 3.
+
+
+LaTeX Warning: Citation `cristianini04' on page \es@scroman {i} undefined on in
+put line 3.
+
+[1]
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ± in font cmr12!
+ [1]) (C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Intro.tex
+Chapter 1.
+[1
+
+] <figs/example01.png, id=45, 421.575pt x 250.536pt>
+File: figs/example01.png Graphic file (type png)
+
+<use figs/example01.png>
+Package pdftex.def Info: figs/example01.png used on input line 15.
+(pdftex.def)             Requested size: 421.57396pt x 250.53537pt.
+
+Overfull \hbox (3.32028pt too wide) in paragraph at lines 15--17
+ [][] 
+ []
+
+[2 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/example01.png>]
+<figs/example02.png, id=51, 388.8126pt x 218.2554pt>
+File: figs/example02.png Graphic file (type png)
+ <use figs/example02.png>
+Package pdftex.def Info: figs/example02.png used on input line 25.
+(pdftex.def)             Requested size: 388.81165pt x 218.25485pt.
+
+
+LaTeX Warning: Citation `lipton08' on page 3 undefined on input line 30.
+
+[3 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/example02.png>]
+
+LaTeX Warning: Reference `sec:xxx' on page 4 undefined on input line 32.
+
+
+LaTeX Warning: Citation `larranaga08' on page 4 undefined on input line 32.
+
+
+LaTeX Warning: Citation `guyon03' on page 4 undefined on input line 32.
+
+
+LaTeX Warning: Citation `rojas05' on page 4 undefined on input line 32.
+
+
+LaTeX Warning: Citation `cristianini04' on page 4 undefined on input line 34.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+
+LaTeX Warning: Citation `vapnik02' on page 5 undefined on input line 43.
+
+
+LaTeX Warning: Citation `rojas08' on page 5 undefined on input line 55.
+
+
+LaTeX Warning: Citation `larranaga01' on page 5 undefined on input line 55.
+
+
+LaTeX Warning: Citation `goldberg89' on page 5 undefined on input line 55.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+
+LaTeX Warning: Citation `Rojas2012' on page 6 undefined on input line 60.
+
+
+LaTeX Warning: Citation `Rojas2013' on page 6 undefined on input line 61.
+
+
+LaTeX Warning: Citation `Harik99' on page 6 undefined on input line 61.
+
+
+LaTeX Warning: Citation `Muhlenbein97' on page 6 undefined on input line 61.
+
+
+LaTeX Warning: Citation `Baluja95' on page 6 undefined on input line 61.
+
+
+LaTeX Warning: Citation `Rojas2012' on page 6 undefined on input line 61.
+
+
+LaTeX Warning: Citation `Sebag98' on page 6 undefined on input line 61.
+
+
+LaTeX Warning: Citation `Larranaga02' on page 6 undefined on input line 61.
+
+
+LaTeX Warning: Citation `Pelikan99' on page 6 undefined on input line 61.
+
+
+Overfull \hbox (19.78514pt too wide) in paragraph at lines 61--62
+\OT1/cmr/m/n/12 util-ity com-po-nents (\OT1/cmtt/m/n/12 CostFunctionBuilder \OT
+1/cmr/m/n/12 , \OT1/cmtt/m/n/12 KernelBuilder\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12
+ BlackBoxTester\OT1/cmr/m/n/12 ). 
+ []
+
+
+LaTeX Warning: Citation `?' on page 6 undefined on input line 62.
+
+[6]
+
+LaTeX Warning: Citation `larranaga07' on page 7 undefined on input line 75.
+
+[7]
+
+LaTeX Warning: Citation `larranaga08' on page 8 undefined on input line 79.
+
+<figs/fss.png, id=75, 562.7424pt x 123.3408pt>
+File: figs/fss.png Graphic file (type png)
+ <use figs/fss.png>
+Package pdftex.def Info: figs/fss.png used on input line 83.
+(pdftex.def)             Requested size: 450.19453pt x 98.67276pt.
+
+Overfull \hbox (31.94086pt too wide) in paragraph at lines 83--85
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `larranaga07' on page 8 undefined on input line 85.
+
+
+LaTeX Warning: Citation `larranaga07' on page 8 undefined on input line 85.
+
+[8]
+
+LaTeX Warning: Citation `cristianini04' on page 9 undefined on input line 96.
+
+
+Underfull \vbox (badness 4886) has occurred while \output is active []
+
+ [9 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/fss.png>]
+<figs/kernel.png, id=84, 362.7954pt x 158.5122pt>
+File: figs/kernel.png Graphic file (type png)
+ <use figs/kernel.png>
+Package pdftex.def Info: figs/kernel.png used on input line 103.
+(pdftex.def)             Requested size: 435.3523pt x 190.21368pt.
+
+Overfull \hbox (17.09862pt too wide) in paragraph at lines 103--105
+ [][] 
+ []
+
+
+LaTeX Warning: Citation `cristianini04' on page 10 undefined on input line 105.
+
+
+
+LaTeX Warning: Citation `cristianini04' on page 10 undefined on input line 105.
+
+
+
+LaTeX Warning: Citation `cristianini04' on page 10 undefined on input line 109.
+
+
+[10]
+
+LaTeX Warning: Citation `rosenblatt58' on page 11 undefined on input line 119.
+
+
+LaTeX Warning: Citation `cristianini00' on page 11 undefined on input line 119.
+
+
+
+Underfull \vbox (badness 2205) has occurred while \output is active []
+
+ [11 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/kernel.png>]
+
+LaTeX Warning: Citation `freund99' on page 12 undefined on input line 128.
+
+
+LaTeX Warning: Citation `vapnik95' on page 12 undefined on input line 128.
+
+
+LaTeX Warning: Citation `cristianini00' on page 12 undefined on input line 128.
+
+
+
+LaTeX Warning: Citation `goldberg89' on page 12 undefined on input line 149.
+
+
+LaTeX Warning: Citation `larranaga01' on page 12 undefined on input line 149.
+
+
+LaTeX Warning: Citation `larranaga08' on page 12 undefined on input line 151.
+
+[12]
+
+LaTeX Warning: Citation `muhlen96' on page 13 undefined on input line 154.
+
+
+LaTeX Warning: Citation `baluja94' on page 13 undefined on input line 154.
+
+
+LaTeX Warning: Citation `baluja95' on page 13 undefined on input line 154.
+
+
+LaTeX Warning: Citation `harik98' on page 13 undefined on input line 154.
+
+<figs/edas.png, id=97, 393.6306pt x 184.0476pt>
+File: figs/edas.png Graphic file (type png)
+ <use figs/edas.png>
+Package pdftex.def Info: figs/edas.png used on input line 158.
+(pdftex.def)             Requested size: 393.62964pt x 184.04715pt.
+
+Underfull \vbox (badness 2538) has occurred while \output is active []
+
+ [13]
+
+LaTeX Warning: Citation `goldberg07' on page 14 undefined on input line 178.
+
+
+Underfull \vbox (badness 1565) has occurred while \output is active []
+
+ [14 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/edas.png>]
+
+LaTeX Warning: Citation `?' on page 15 undefined on input line 204.
+
+
+LaTeX Warning: Citation `?' on page 15 undefined on input line 204.
+
+
+LaTeX Warning: Citation `?' on page 15 undefined on input line 204.
+
+[15] <figs/bedas.png, id=109, 377.15906pt x 82.80937pt>
+File: figs/bedas.png Graphic file (type png)
+ <use figs/bedas.png>
+Package pdftex.def Info: figs/bedas.png used on input line 208.
+(pdftex.def)             Requested size: 377.15814pt x 82.80916pt.
+
+
+LaTeX Warning: Citation `muhlen99' on page 16 undefined on input line 215.
+
+
+LaTeX Warning: Citation `larranaga00' on page 16 undefined on input line 215.
+
+
+LaTeX Warning: Citation `pelikan99' on page 16 undefined on input line 215.
+
+[16 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/bedas.png>]
+<figs/medas.png, id=114, 257.46187pt x 110.66344pt>
+File: figs/medas.png Graphic file (type png)
+ <use figs/medas.png>
+Package pdftex.def Info: figs/medas.png used on input line 219.
+(pdftex.def)             Requested size: 257.46123pt x 110.66315pt.
+
+
+LaTeX Warning: Citation `larranaga08' on page 17 undefined on input line 221.
+
+
+LaTeX Warning: Citation `larranaga08' on page 17 undefined on input line 221.
+
+
+LaTeX Warning: Citation `inza00' on page 17 undefined on input line 227.
+
+
+LaTeX Warning: Citation `saeys03' on page 17 undefined on input line 227.
+
+
+LaTeX Warning: Citation `larranaga00FSS' on page 17 undefined on input line 227
+.
+
+
+LaTeX Warning: Citation `rojas08' on page 17 undefined on input line 227.
+
+<figs/FSSEBNA.png, id=115, 294.336pt x 117.2745pt>
+File: figs/FSSEBNA.png Graphic file (type png)
+ <use figs/FSSEBNA.png>
+Package pdftex.def Info: figs/FSSEBNA.png used on input line 232.
+(pdftex.def)             Requested size: 382.63673pt x 152.45682pt.
+
+[17 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/medas.png>]
+<figs/wkiera.png, id=119, 363.321pt x 124.83pt>
+File: figs/wkiera.png Graphic file (type png)
+ <use figs/wkiera.png>
+Package pdftex.def Info: figs/wkiera.png used on input line 241.
+(pdftex.def)             Requested size: 472.31723pt x 162.27896pt.
+
+Overfull \hbox (54.06355pt too wide) in paragraph at lines 241--242
+ [][] 
+ []
+
+) (C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Proposal.tex [18 <C:/Users/nr
+gamboa/Documents/Andres/Thesis/Book/figs/FSSEBNA.png> <C:/Users/nrgamboa/Docume
+nts/Andres/Thesis/Book/figs/wkiera.png>]
+Chapter 2.
+<figs/components.png, id=125, 307.90031pt x 159.59625pt>
+File: figs/components.png Graphic file (type png)
+
+<use figs/components.png>
+Package pdftex.def Info: figs/components.png used on input line 9.
+(pdftex.def)             Requested size: 307.89955pt x 159.59584pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+
+ []
+
+
+Underfull \vbox (badness 1688) has occurred while \output is active []
+
+ [19
+
+]
+<figs/flowchart.png, id=129, 479.391pt x 257.763pt>
+File: figs/flowchart.png Graphic file (type png)
+ <use figs/flowchart.png>
+Package pdftex.def Info: figs/flowchart.png used on input line 20.
+(pdftex.def)             Requested size: 335.57141pt x 180.43286pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/components.png>]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 45.
+)
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Tilda.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21 <C:/Users/nrgamboa/Documents/Andres/Thesis/Book/figs/flowchart.png>] [22]
+Chapter 3.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23
+
+])
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Goldenberry.tex [24]
+Chapter 4.
+) (C:\Users\nrgamboa\Documents\Andres\Thesis\Book\wKiera.tex [25
+
+]
+Chapter 5.
+) (C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Conslusion.tex [26
+
+]
+Chapter 6.
+) (C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Bibliography.tex
+(C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Thesis.bbl [27
+
+]
+
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
+
+)) [28
+
+] (C:\Users\nrgamboa\Documents\Andres\Thesis\Book\Thesis.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4041 strings out of 493921
+ 53743 string characters out of 3141658
+ 118974 words of memory out of 3000000
+ 7214 multiletter control sequences out of 15000+200000
+ 18527 words of font info for 70 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,9n,27p,2010b,652s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/
+cm/cmbx6.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsf
+onts/cm/cmcsc10.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/font
+s/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/nrgamboa/Documents/Andres/M
+iktex/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/nrgamboa/Documents/A
+ndres/Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/nrgamboa/Docume
+nts/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/nrgamboa/D
+ocuments/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/nrgamb
+oa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/nr
+gamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/User
+s/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmss12.pfb><C
+:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/c
+msy8.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts
+/cm/cmti12.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/am
+sfonts/cm/cmti7.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/publ
+ic/amsfonts/cm/cmtt12.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type
+1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Thesis.pdf (38 pages, 833064 bytes).
+PDF statistics:
+ 228 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,796 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.10.14)  18 OCT 2013 17:03
+entering extended mode
+**ThesisProposal.tex
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\base\article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\base\size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\pdftex-def\pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+) (C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen105
+))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsmath\amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks16
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks17
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amscls\amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks20
+\thm@bodyfont=\toks21
+\thm@headfont=\toks22
+\thm@notefont=\toks23
+\thm@headpunct=\toks24
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks25
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\setspace\setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\geometry\geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\ifxetex\ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count100
+\Gm@cntv=\count101
+\c@Gm@tempcnt=\count102
+\Gm@bindingoffset=\dimen114
+\Gm@wd@mp=\dimen115
+\Gm@odd@mp=\dimen116
+\Gm@even@mp=\dimen117
+\Gm@layoutwidth=\dimen118
+\Gm@layoutheight=\dimen119
+\Gm@layouthoffset=\dimen120
+\Gm@layoutvoffset=\dimen121
+\Gm@dimlist=\toks26
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\geometry\geometry.cfg))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\algorithms\algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count103
+\float@exts=\toks27
+\float@box=\box28
+\@float@everytoks=\toks28
+\@floatcapt=\box29
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\base\ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks29
+\c@algorithm=\count104
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\algorithms\algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count105
+\c@ALC@line=\count106
+\c@ALC@rem=\count107
+\c@ALC@depth=\count108
+\ALC@tlm=\skip49
+\algorithmicindent=\skip50
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\pdfcomment\pdfcomment.sty
+Package: pdfcomment 2012/09/28 pdfcomment.sty v2.3a - Josef Kleber (C) 2008-201
+2
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\xkeyval\xkeyval.sty
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\xkeyval\xkeyval.tex
+\XKV@toks=\toks30
+\XKV@tempa@toks=\toks31
+\XKV@depth=\count109
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
+))
+\c@pc@count@i=\count110
+\c@pc@count@ii=\count111
+\c@pc@count@iii=\count112
+\c@pc@count@iv=\count113
+\pc@mathannot@box=\box30
+\pc@dima=\skip51
+\pc@dimb=\skip52
+\pc@Sposx=\skip53
+\pc@Sposy=\skip54
+\pc@Eposx=\skip55
+\pc@Eposy=\skip56
+\pc@column=\skip57
+\pc@box@width=\skip58
+\pc@box@height=\skip59
+\pc@box@depth=\skip60
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\oberdiek\zref-savepos.sty
+Package: zref-savepos 2012/04/04 v2.24 Module savepos for zref (HO)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\oberdiek\zref-base.sty
+Package: zref-base 2012/04/04 v2.24 Module base for zref (HO)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\kvdefinekeys.st
+y
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\oberdiek\auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+Package zref Info: New property list: main on input line 759.
+Package zref Info: New property: default on input line 760.
+Package zref Info: New property: page on input line 761.
+)
+Package zref Info: New property list: savepos on input line 75.
+Package zref Info: New property: posx on input line 76.
+Package zref Info: New property: posy on input line 77.
+)
+\c@zref@unique=\count114
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\oberdiek\refcount.sty
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\tools\calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count115
+\calc@Bcount=\count116
+\calc@Adimen=\dimen122
+\calc@Bdimen=\dimen123
+\calc@Askip=\skip61
+\calc@Bskip=\skip62
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count117
+\calc@Cskip=\skip63
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\marginnote\marginnote.sty
+Package: marginnote 2012/03/29 v1.1i non floating margin notes for LaTeX
+\c@mn@abspage=\count118
+) (C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\datetime\datetime.sty
+Package: datetime 2013/09/10 v2.59 Date Time Package
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\etoolbox\etoolbox.sty
+Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\misc\etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count119
+)
+\etb@tempcnta=\count120
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\fmtcount\fmtcount.sty
+Package: fmtcount 2013/08/17 v2.03
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\fmtcount\fcprefix.sty
+Package: fcprefix 2012/09/28
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\fmtcount\fcnumparser.sty
+Package: fcnumparser 2012/09/28
+\fc@digit@counter=\count121
+))
+\c@padzeroesN=\count122
+\fc@tmpcatcode=\count123
+\@DT@modctr=\count124
+\@ordinalctr=\count125
+\@orgargctr=\count126
+\@strctr=\count127
+\@tmpstrctr=\count128
+\@DT@loopN=\count129
+\@DT@X=\count130
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\fmtcount\fc-english.def
+File: fc-english.def 2013/08/17
+))
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\datetime\datetime-defaults
+.sty
+Package: datetime-defaults 2013/09/10
+)
+\@day=\count131
+\@month=\count132
+\@year=\count133
+\c@HOUR=\count134
+\c@HOURXII=\count135
+\c@MINUTE=\count136
+\c@TOHOUR=\count137
+\c@TOMINUTE=\count138
+\c@SECOND=\count139
+\currenthour=\count140
+\currentminute=\count141
+\currentsecond=\count142
+Package datetime Info: No datetime.cfg file found, using default settings on in
+put line 308.
+\@dtctr=\count143
+\dayofyear=\count144
+\dayofweek=\count145
+LaTeX Info: Redefining \today on input line 736.
+\dt@a=\toks32
+\dt@b=\toks33
+) (C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\bezos\soulpos.sty
+Package: soulpos 2012/02/25 v1.0 Fancy underlining
+\ulp@subcnt=\count146
+\ulp@cnt=\count147
+\ulp@out=\write3
+\ulp@in=\read1
+\ulwidth=\dimen124
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\hyperref\hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\hobsub-hyperref
+.sty
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\hobsub-generic.
+sty
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package hobsub Info: Skipping package `refcount' (already loaded).
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\oberdiek\kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen125
+\Hy@linkcounter=\count148
+\Hy@pagecounter=\count149
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\hyperref\pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count150
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\00miktex\hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count151
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\ltxmisc\url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen126
+\Fld@menulength=\count152
+\Field@Width=\dimen127
+\Fld@charsize=\dimen128
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count153
+\c@Item=\count154
+\c@Hfootnote=\count155
+)
+
+Package hyperref Message: Driver: hpdftex.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\hyperref\hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count156
+\c@bookmark@seq@number=\count157
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\oberdiek\rerunfilecheck.st
+y
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip64
+)
+Package zref Info: New property list: pdfcomment on input line 2714.
+Package zref Info: New property: PCPDFOBJID on input line 2715.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\oberdiek\pdflscape.sty
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\graphics\lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
+)
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\xcolor\xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\00miktex\color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\xcolor\svgnam.def
+File: svgnam.def 2007/01/21 v2.11 Predefined colors according to SVG 1.1 (UK)
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 57.
+
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count158
+\scratchdimen=\dimen129
+\scratchbox=\box31
+\nofMPsegments=\count159
+\nofMParguments=\count160
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count161
+\MPscratchDim=\dimen130
+\MPnumerator=\count162
+\makeMPintoPDFobject=\count163
+\everyMPtoPDFconversion=\toks35
+)
+*geometry* detected driver: dvips
+*geometry* verbose mode - [ preamble ] result:
+* driver: dvips
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* vratio: 1:1
+* modes: twoside 
+* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=85.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package marginnote Info: \pdfoutput not 0 and \pdflastxpos available.
+(marginnote)             Extended position detection mode activated.
+Package soulpos Info: Loading soulutf8 on input line 61.
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\soulutf8.sty
+Package: soulutf8 2007/09/09 v1.0 Permit use of UTF-8 characters in soul (HO)
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\soul\soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks36
+\SOUL@lasttoken=\toks37
+\SOUL@cmds=\toks38
+\SOUL@buffer=\toks39
+\SOUL@token=\toks40
+\SOUL@spaceskip=\skip65
+\SOUL@ttwidth=\dimen131
+\SOUL@uldp=\dimen132
+\SOUL@ulht=\dimen133
+))
+\AtBeginShipoutBox=\box32
+Package hyperref Info: Link coloring ON on input line 61.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\hyperref\nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\generic\oberdiek\gettitlestring.
+sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count164
+)
+LaTeX Info: Redefining \ref on input line 61.
+LaTeX Info: Redefining \pageref on input line 61.
+LaTeX Info: Redefining \nameref on input line 61.
+ (C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.out)
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.out)
+\@outlinefile=\write4
+
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\_Title.tex
+LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Package hyperref Info: bookmark level for unknown lpcsec defaults to 0 on input
+ line 16.
+)
+[1
+Non-PDF special ignored!
+
+{C:/Users/nrgamboa/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.toc)
+\tf@toc=\write5
+
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.loa)
+\tf@loa=\write6
+
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.lof [2
+
+])
+\tf@lof=\write7
+
+[3] (C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\_Problem_Hypothesis.tex
+<Images/example01.png, id=204, 421.575pt x 250.536pt>
+File: Images/example01.png Graphic file (type png)
+
+<use Images/example01.png>
+Package pdftex.def Info: Images/example01.png used on input line 18.
+(pdftex.def)             Requested size: 421.57396pt x 250.53537pt.
+ [4
+
+ <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/example01.png>]
+<Images/example02.png, id=213, 388.8126pt x 218.2554pt>
+File: Images/example02.png Graphic file (type png)
+
+<use Images/example02.png>
+Package pdftex.def Info: Images/example02.png used on input line 28.
+(pdftex.def)             Requested size: 388.81165pt x 218.25485pt.
+ [5 <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/example02.png>] 
+[6]) [7]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\_Idea.tex
+<Images/components.jpg, id=271, 419.31656pt x 228.10219pt>
+File: Images/components.jpg Graphic file (type jpg)
+
+<use Images/components.jpg>
+Package pdftex.def Info: Images/components.jpg used on input line 16.
+(pdftex.def)             Requested size: 419.31552pt x 228.10161pt.
+
+<Images/flowchart.png, id=274, 446.6286pt x 230.3004pt>
+File: Images/flowchart.png Graphic file (type png)
+
+<use Images/flowchart.png>
+Package pdftex.def Info: Images/flowchart.png used on input line 27.
+(pdftex.def)             Requested size: 446.6275pt x 230.29984pt.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 33.
+) [8
+
+ <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/components.jpg>] [9
+ <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/flowchart.png>]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\_Goals.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 21.
+
+(C:\Users\nrgamboa\Documents\Andres\Miktex\tex\latex\base\omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
+) [10
+
+]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\_Methodology_TimeLine.tex
+[11
+
+] [12] <Images/Timeline.pdf, id=326, 776.78206pt x 595.62527pt>
+File: Images/Timeline.pdf Graphic file (type pdf)
+
+<use Images/Timeline.pdf>
+Package pdftex.def Info: Images/Timeline.pdf used on input line 43.
+(pdftex.def)             Requested size: 388.39008pt x 297.8119pt.
+) [13
+
+ <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/Timeline.pdf>]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\_Review.tex
+<Images/fss.png, id=799, 562.7424pt x 123.3408pt>
+File: Images/fss.png Graphic file (type png)
+ <use Images/fss.png>
+Package pdftex.def Info: Images/fss.png used on input line 27.
+(pdftex.def)             Requested size: 450.19453pt x 98.67276pt.
+ [14
+
+]
+<Images/kernel.png, id=809, 362.7954pt x 158.5122pt>
+File: Images/kernel.png Graphic file (type png)
+ <use Images/kernel.png>
+Package pdftex.def Info: Images/kernel.png used on input line 47.
+(pdftex.def)             Requested size: 435.3523pt x 190.21368pt.
+
+[15 <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/fss.png>]
+[16 <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/kernel.png>]
+<Images/edas.png, id=844, 393.6306pt x 184.0476pt>
+File: Images/edas.png Graphic file (type png)
+ <use Images/edas.png>
+Package pdftex.def Info: Images/edas.png used on input line 105.
+(pdftex.def)             Requested size: 393.62964pt x 184.04715pt.
+
+[17] [18 <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/edas.png>]
+<Images/medas.png, id=884, 257.46187pt x 110.66344pt>
+File: Images/medas.png Graphic file (type png)
+ <use Images/medas.png>
+Package pdftex.def Info: Images/medas.png used on input line 157.
+(pdftex.def)             Requested size: 257.46123pt x 110.66315pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/medas.png>]
+<Images/FSSEBNA.png, id=913, 294.336pt x 117.2745pt>
+File: Images/FSSEBNA.png Graphic file (type png)
+ <use Images/FSSEBNA.png>
+Package pdftex.def Info: Images/FSSEBNA.png used on input line 170.
+(pdftex.def)             Requested size: 382.63673pt x 152.45682pt.
+
+<Images/wkiera.png, id=915, 363.321pt x 124.83pt>
+File: Images/wkiera.png Graphic file (type png)
+ <use Images/wkiera.png>
+Package pdftex.def Info: Images/wkiera.png used on input line 179.
+(pdftex.def)             Requested size: 472.31723pt x 162.27896pt.
+
+Overfull \hbox (19.34933pt too wide) in paragraph at lines 179--180
+ [][] 
+ []
+
+) [20 <C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/FSSEBNA.png> <
+C:/Users/nrgamboa/Documents/Andres/Thesis/proposal/Images/wkiera.png>]
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.bbl
+Missing character: There is no — in font cmti12!
+ [21
+
+]
+Missing character: There is no é in font cmr12!
+Missing character: There is no í in font cmr12!
+Missing character: There is no – in font cmr12!
+
+[22])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
+ [23]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
+
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.aux
+* soulpos - computing points - it may take a few seconds *
+(C:\Users\nrgamboa\Documents\Andres\Thesis\proposal\ThesisProposal.upa))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 81.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 81.
+Package rerunfilecheck Info: File `ThesisProposal.out' has not changed.
+(rerunfilecheck)             Checksum: 26C23BE7FCA432A7E584AAE2E739D875;1896.
+ ) 
+Here is how much of TeX's memory you used:
+ 10691 strings out of 493921
+ 168047 string characters out of 3141658
+ 279231 words of memory out of 3000000
+ 13582 multiletter control sequences out of 15000+200000
+ 19929 words of font info for 75 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 42i,13n,54p,1856b,780s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/ams
+fonts/cm/cmex10.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type
+1/public/amsfonts/cm/cmmi6.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/
+fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/nrgamboa/Documents/Andres/
+Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/nrgamboa/Documents/An
+dres/Miktex/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/nrgamboa/Documen
+ts/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/nrgamboa/Do
+cuments/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/nrgambo
+a/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/nrg
+amboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Use
+rs/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts/cm/c
+msy8.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/amsfonts
+/cm/cmti12.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/public/am
+sfonts/cm/cmti7.pfb><C:/Users/nrgamboa/Documents/Andres/Miktex/fonts/type1/publ
+ic/amsfonts/symbols/msbm10.pfb>
+Output written on ThesisProposal.pdf (23 pages, 1299284 bytes).
+PDF statistics:
+ 1032 PDF objects out of 1200 (max. 8388607)
+ 150 named destinations out of 1000 (max. 500000)
+ 264 words of extra memory for PDF output out of 10000 (max. 10000000)
+
