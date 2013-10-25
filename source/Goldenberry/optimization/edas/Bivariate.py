@@ -14,14 +14,13 @@ class DependencyMethod:
     _values_ = [chi2_test, mi, sim]
 
     def __getitem__(self, index):
-        return self._values_[index]
-    
+        return self._values_[index]    
 
 class Bmda(GbBaseEda):
     """Bivariate marginal distribution algorithm."""
 
-    def setup(self, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1, callback_func = None, dependency_method = DependencyMethod.chi2_test, **kwargs):
-        return super(Bmda, self).setup(cand_size, max_evals, selection_rate, learning_rate, callback_func, dependency_method = dependency_method, **kwargs)
+    def setup(self, cand_size = 20, max_evals = 100, selection_rate = 50, learning_rate = 1, callback_func = None, dependency_method = DependencyMethod.chi2_test, independence_threshold = 3.84):
+        return super(Bmda, self).setup(cand_size, max_evals, selection_rate, learning_rate, callback_func, dependency_method = dependency_method, independence_threshold =  independence_threshold)
     
     def initialize(self):
         self.distr = BivariateBinomial( n = self.var_size)
@@ -39,21 +38,21 @@ class Bmda(GbBaseEda):
     def estimate(self, top_ranked, best):
         marginals = np.average(top_ranked, axis = 0)
         entropy =  - marginals * np.log2(marginals) - (1 - marginals) * np.log2(1 - marginals)
-        roots, children, cond_props = Bmda.build_graph(top_ranked, entropy, self.dependency_method)        
+        roots, children, cond_props = Bmda.build_graph(top_ranked, entropy, self.dependency_method, self.independence_threshold)        
         self.distr = BivariateBinomial(p = marginals, cond_props = cond_props, children = children, roots = roots)
 
     @staticmethod
-    def calc_dependency_matrix(candidates, method):
+    def calc_dependency(ctable, method):
         if method == DependencyMethod.chi2_test:
-            return Bmda.chi2_dependency_matrix(candidates)
+            return ctable.chisquare()
         elif method == DependencyMethod.mi:
-            return Bmda.mi_dependency_matrix(candidates)
-        return Bmda.sim_dependency_matrix(candidates)
+            return ctable.mutual_inf()
+        return ctable.sim()
 
     @staticmethod
-    def build_graph(candidates, sort, method):
+    def build_graph(candidates, sort, method, independence_threshold):
         var_size = candidates.shape[1]
-        dependency_matrix = Bmda.calc_dependency_matrix(candidates, method)
+        dependency_matrix = Bmda.calc_dependency_matrix(candidates, method, independence_threshold)
         
         #Check if there are vertices.
         if var_size < 1:
@@ -93,34 +92,14 @@ class Bmda(GbBaseEda):
         return roots, children, cond_props
 
     @staticmethod
-    def chi2_dependency_matrix(candidates):
+    def calc_dependency_matrix(candidates, method, independence_threshold):
         _, length = candidates.shape
-        chi_matrix = np.empty((length, length))
+        dep_matrix = np.empty((length, length))
         for x,y in itr.combinations(xrange(length), 2):
             ctable = BinomialContingencyTable(candidates[:,[x]], candidates[:, [y]])
-            chisquare = ctable.chisquare()
-            chi_matrix[x,y] = chi_matrix[y,x] = chisquare if chisquare >= 3.84 else 0.0
-        return chi_matrix
-
-    @staticmethod
-    def mi_dependency_matrix(candidates):
-        _, length = candidates.shape
-        mi_matrix = np.empty((length, length))
-        for x,y in itr.combinations(xrange(length), 2):
-            ctable = BinomialContingencyTable(candidates[:,[x]], candidates[:, [y]])
-            mi =  ctable.mutual_inf()
-            mi_matrix[x,y] = mi_matrix[y,x] = mi if mi > 1e-3 else 0.0
-        return mi_matrix
-
-    @staticmethod
-    def sim_dependency_matrix(candidates):
-        _, length = candidates.shape
-        sim_matrix = np.empty((length, length))
-        for x,y in itr.combinations(xrange(length), 2):
-            ctable = BinomialContingencyTable(candidates[:,[x]], candidates[:, [y]])
-            sim =  ctable.sim()
-            sim_matrix[x,y] = sim_matrix[y,x] = sim if sim > 1e-3 else 0.0
-        return sim_matrix
+            dependency = Bmda.calc_dependency(ctable, method)
+            dep_matrix[x,y] = dep_matrix[y,x] = dependency[0] if (dependency[0] - independence_threshold) >= 1e-3 else 0.0
+        return dep_matrix
 
     @staticmethod
     def get_max_dependency(X, Y, dependency_matrix):
