@@ -8,34 +8,49 @@
 """
 
 from Goldenberry.widgets.optimization.GbBaseEdaWidget import GbBaseEdaWidget
-from Goldenberry.widgets import Bmda, GbCostFunction, GbBaseOptimizer, OWGUI, Qt, DependencyMethod, GbSolution, QStandardItem, QStandardItemModel, QString, QHeaderView
+from Goldenberry.widgets import Bmda, GbCostFunction, GbBaseOptimizer, OWGUI, Qt, DependencyMethod, GbSolution, QStandardItem, QStandardItemModel, QString, QHeaderView, QDoubleValidator
 
 class GbBmdaWidget(GbBaseEdaWidget):
     """Widget for Bmda algorithm"""
     
     def __init__(self, parent=None, signalManager=None):
         self.method = 0
+        self.threshold = 3.84
         self.optimizer = Bmda()
         GbBaseEdaWidget.__init__(self, parent, signalManager, 'BMDA')
         self.inputs = [("Cost Function", GbCostFunction, self.set_cost_function)]
         self.outputs = [("Optimizer", GbBaseOptimizer), ("Solution", GbSolution)]
         self.settingsList.append('method')
 
-        #UI Buttons
         radio_box = OWGUI.radioButtonsInBox(self, self, "method",
               box = "Dependency Method",
-              btnLabels = ["Chi square", "Mutual information", "Combined mutual information and p-value"])
+              btnLabels = ["Chi square", "Mutual information", "Combined mutual information and p-value"], callback = self.method_changed)
+        self.threshold_textbox = OWGUI.lineEdit(radio_box, self, "threshold", label="Threshold",valueType = float, validator = QDoubleValidator(0.0, 10000.0, 4, self.controlArea))
+        #radio_box.layout().addWidget(self.threshold_textbox.box)
         self.verticalLayoutWidget.layout().addWidget(radio_box)
         self.attributesTree.header().setResizeMode(QHeaderView.ResizeToContents)
 
 
     def setup_optimizer(self):
-        self.optimizer.setup(self.cand_size, max_evals = self.max_evals, dependency_method = DependencyMethod()[self.method])
+        self.optimizer.setup(self.cand_size, max_evals = self.max_evals, dependency_method = DependencyMethod()[self.method], independence_threshold = self.threshold)
+
+    def method_changed(self):
+        if self.method == 0:
+            self.threshold_textbox.setText("3.84")
+        else:
+            self.threshold_textbox.setText("0.0")
 
     def search_progress(self, progress_args):
         super(GbBmdaWidget, self).search_progress(progress_args)
         self.update_attributes_navigation(progress_args.result, self.attributesTree)
-        
+    
+    def run(self):
+        super(GbBmdaWidget, self).run()
+        self._clean_tree()
+
+    def _clean_tree(self):
+        self.attributesTree.setModel(None)
+          
     def update_attributes_navigation(self, solution, qtree):
         if solution is None:
             return

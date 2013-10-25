@@ -26,7 +26,7 @@ class GbWKieraWidget(OWWidget):
 
     def setup_ui(self):
         load_widget_ui(self)
-        weight_control = OWGUI.hSlider(self, self, 'weight', minValue = 0, maxValue = 1000, step = 1, divideFactor = 1000.0, labelFormat = "%.3f", label = "Weight")
+        weight_control = OWGUI.hSlider(self, self, 'weight', minValue = 0, maxValue = 1000, step = 1, divideFactor = 1000.0, labelFormat = "%.3f", label = "Accuracy/Subset-size tradeoff")
         self.varEdit = OWGUI.lineEdit(self, self, "var_size", label="Variables", valueType = int)
         foldsEdit = OWGUI.hSlider(self, self, 'folds', minValue = 2, maxValue = 20, step = 1, label = "Folds")
         applyButton = OWGUI.button(self, self, label = "Apply", callback = self.apply)

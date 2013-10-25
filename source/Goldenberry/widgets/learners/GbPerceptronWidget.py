@@ -47,7 +47,7 @@ class GbPerceptronWidget(OWWidget):
         #set new binding controls
         nameEditor = OWGUI.lineEdit(self, self, "name", label="Name")
         learningEditor = OWGUI.lineEdit(self, self, "lr", label="Learning Rage", valueType = float, validator = QDoubleValidator(0.0,1.0, 4, self.controlArea))
-        maxiterEditor = OWGUI.lineEdit(self, self, "max_iter", label="Max. Evaluations", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
+        maxiterEditor = OWGUI.lineEdit(self, self, "max_iter", label="Epochs", valueType = int, validator = QIntValidator(1,10000, self.controlArea))
         
         self.paramBox.setLayout(QFormLayout(self.paramBox))
         self.paramBox.layout().addRow(nameEditor.box, nameEditor)

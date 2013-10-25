@@ -33,7 +33,7 @@ class GbFilterAttributeWidget(OWWidget):
         self.enabled_icon = QIcon(path + '/icons/enabled.png')
         self.warning_label.setStyleSheet('color: red')
 
-        parttionEditor = OWGUI.hSlider(self, self, 'parttition_level', minValue = 1, maxValue = 100, step = 1, label = "Threshold")
+        parttionEditor = OWGUI.hSlider(self, self, 'parttition_level', minValue = 1, maxValue = 100, step = 1, label = "Partition Level")
         thresholdEditor = OWGUI.hSlider(self, self, 'threshold', minValue = 0, maxValue = 100, step = 1, divideFactor = 100.0, labelFormat = "%.3f", label = "Threshold")
         filter_button = OWGUI.button(self, self, "Filter",callback = self.filter_attributes)        
         

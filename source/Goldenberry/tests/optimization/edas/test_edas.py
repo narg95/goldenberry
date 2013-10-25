@@ -72,7 +72,7 @@ class BmdaTest(TestCase):
     """Test the generation of the chi square matrix"""
     def test_shape_calculate_chisquare_matrix(self):
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1],  [1,1,0,0]]))
-        chi_matrix = Bmda.chi2_dependency_matrix(pop)
+        chi_matrix = Bmda.calc_dependency_matrix(pop, DependencyMethod.chi2_test, 3.84)
         self.assertEqual(chi_matrix.shape, (4,4))
         expected = np.array([[0, 0, 0, 0],[0, 0, 0, 0], [0, 0, 0 , 0],[0, 0, 0, 0]])
         #Test for a total independent chi matrix.
@@ -106,14 +106,14 @@ class BmdaTest(TestCase):
     def test_generate_graph_all_independent(self):
         """Test that the algorithm generates no graph, all variables independent"""
         pop = np.array(([[0, 0, 0, 1], [1, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 0], [0, 0, 1, 1]]))
-        roots, _, _ = Bmda.build_graph(pop, np.zeros(4), DependencyMethod.chi2_test)
+        roots, _, _ = Bmda.build_graph(pop, np.zeros(4), DependencyMethod.chi2_test, 3.84)
         roots.sort()
         self.assertTrue(np.equal(roots, [0,1,2,3]).all())
 
     def test_generate_graph_with_dependencies(self):
         """Test that the algorithm generates a graph with two root nodes"""
         pop = np.array(([[0, 0, 1, 0], [1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 0], [1, 1, 0, 0]]))
-        roots, _, _ = Bmda.build_graph(pop, np.zeros(4), DependencyMethod.chi2_test)
+        roots, _, _ = Bmda.build_graph(pop, np.zeros(4), DependencyMethod.chi2_test, 3.84)
         self.assertEqual(len(roots), 2)
         self.assertTrue(np.equal(roots, 3).any())
 

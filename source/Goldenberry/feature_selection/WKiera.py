@@ -24,15 +24,13 @@ class WKieraCostFunction(GbCostFunction):
         results = np.empty(len(solutions), dtype = float)
         threads = [None] * len(solutions)
         for idx, weight in enumerate(solutions):                    
-            #thread = th.Thread(target = test_solution, args = [self.factory, weight, self.data, results, idx, self.folds])
-            #thread.start()
-            #threads[idx] = thread
-            #
-            test_solution(self.factory, weight, self.data, results, idx, self.folds)            
-        
+            thread = th.Thread(target = test_solution, args = [self.factory, weight, self.data, results, idx, self.folds])
+            thread.start()
+            threads[idx] = thread
+                    
         #sync all threads
-        #for thread in threads:
-        #    thread.join()
+        for thread in threads:
+            thread.join()
 
         self._update_statistics(results)
         return results*(1 - self.solution_weight) + (1 - np.average(solutions, axis = 1)) * self.solution_weight
