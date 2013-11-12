@@ -1,15 +1,15 @@
 """
-<name>WKiera Cost Function</name>
-<description>This is a cost function to facilitate the creation of a WKiera algorithm.</description>
+<name>Wrapper Cost Function</name>
+<description>This is a cost function to create wrapper features selection methods.</description>
 <contact>Nestor Rodriguez</contact>
 <icon>icons/Pbil.svg</icon>
 <priority>200</priority>
 """
 
-from Goldenberry.widgets import OWWidget, GbCostFunction, WKieraCostFunction, QFormLayout, OWGUI, load_widget_ui, GbFactory
+from Goldenberry.widgets import OWWidget, GbCostFunction, GbWrapperCostFunction, QFormLayout, OWGUI, load_widget_ui, GbFactory
 from orange import ExampleTable
 class GbWKieraWidget(OWWidget):
-    """WKiera cost function widget."""
+    """Wrapper cost function widget."""
     data = None
     factory = None
     var_size = None
@@ -54,7 +54,7 @@ class GbWKieraWidget(OWWidget):
 
     def apply(self):
         if self.factory is not None and self.data is not None:
-            wkiera_cost_func = lambda _: WKieraCostFunction(self.data, self.factory, solution_weight = (self.weight/1000.0), folds = self.folds, normalization = self.normalization)
+            wkiera_cost_func = lambda _: GbWrapperCostFunction(self.data, self.factory, solution_weight = (self.weight/1000.0), folds = self.folds, normalization = self.normalization)
             self.send("Cost Function", wkiera_cost_func)
             
     

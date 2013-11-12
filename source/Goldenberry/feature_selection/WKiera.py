@@ -9,7 +9,7 @@ import Orange
 import threading as th
 from orngSVM import SVMLearner
 
-class WKieraCostFunction(GbCostFunction):
+class GbWrapperCostFunction(GbCostFunction):
     """WKiera cost function."""
 
     def __init__(self, data,  factory, solution_weight = 0.1, folds = 10, normalization = True):
@@ -37,7 +37,7 @@ class WKieraCostFunction(GbCostFunction):
 
     def _update_statistics(self, results):
         for result in results:
-            super(WKieraCostFunction, self)._update_statistics(result)
+            super(GbWrapperCostFunction, self)._update_statistics(result)
 
     def _normalize(self, data):
         dc = DomainContinuizer()
@@ -48,7 +48,7 @@ class WKieraCostFunction(GbCostFunction):
         return data.translate(newdomain)
 
 def test_solution(factory, weight, data, results, idx, folds):  
-    weighted_data = data.to_numpy("ac")[0] * np.concatenate((weight, [1]))
+    weighted_data = data.to_numpy("ac")[0] * np.concatenate((np.sqrt(weight), [1]))
     new_data = Orange.data.Table(data.domain, weighted_data)
     learner = factory()
     results[idx] = CA(cross_validation([learner], new_data, folds = folds))[0]
