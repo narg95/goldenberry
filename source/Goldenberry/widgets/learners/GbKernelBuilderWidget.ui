@@ -40,7 +40,7 @@
    </property>
    <widget class="QWidget" name="benchmark_tab">
     <attribute name="title">
-     <string>Benchmarks</string>
+     <string>Kernel Functions</string>
     </attribute>
     <widget class="QTextEdit" name="benchmark_text">
      <property name="enabled">
@@ -108,8 +108,8 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; color:#5500ff;&quot;&gt;def&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; my_kernel_function(self, X, Y):&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;    &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#5500ff;&quot;&gt;return&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; np.sum(solution)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; color:#5500ff;&quot;&gt;def&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; my_kernel_function(x, y):&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;    &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#5500ff;&quot;&gt;return&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; np.sum(x*y)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">
@@ -127,7 +127,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Instructions:&lt;br/&gt;Define a function with parameters &lt;span style=&quot; font-style:italic;&quot;&gt;self &lt;/span&gt;, &lt;span style=&quot; font-style:italic;&quot;&gt;X and Y.  &amp;quot;X and Y&amp;quot; &lt;/span&gt; are 2D numpy array and it represents the parameters to calculate the kernel.&lt;br/&gt;Use &lt;span style=&quot; font-style:italic;&quot;&gt;np&lt;/span&gt; as prefix for using numpy functions e.g. &lt;span style=&quot; font-style:italic;&quot;&gt;np.sum()&lt;br/&gt;&lt;/span&gt;use &lt;span style=&quot; color:#0000ff;&quot;&gt;return &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;as the final statement to return the cost of a solution.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Instructions:&lt;br/&gt;Define a kernel function with parameters &lt;span style=&quot; font-style:italic;&quot;&gt;x and y.  &amp;quot;Both &amp;quot; &lt;/span&gt; are 2D numpy array and it represents the parameters to calculate the kernel.&lt;br/&gt;Use &lt;span style=&quot; font-style:italic;&quot;&gt;np&lt;/span&gt; as prefix for using numpy functions e.g. &lt;span style=&quot; font-style:italic;&quot;&gt;np.sum()&lt;br/&gt;&lt;/span&gt;use &lt;span style=&quot; color:#0000ff;&quot;&gt;return &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;as the final statement to return the kernel computation.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

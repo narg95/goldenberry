@@ -25,7 +25,7 @@ class GbBmdaWidget(GbBaseEdaWidget):
         radio_box = OWGUI.radioButtonsInBox(self, self, "method",
               box = "Dependency Method",
               btnLabels = ["Chi square", "Mutual information", "Combined mutual information and p-value"], callback = self.method_changed)
-        self.threshold_textbox = OWGUI.lineEdit(radio_box, self, "threshold", label="Threshold",valueType = float, validator = QDoubleValidator(0.0, 10000.0, 4, self.controlArea))
+        self.threshold_textbox = OWGUI.lineEdit(radio_box, self, "threshold", label="Dependency strength threshold",valueType = float, validator = QDoubleValidator(0.0, 10000.0, 4, self.controlArea))
         #radio_box.layout().addWidget(self.threshold_textbox.box)
         self.verticalLayoutWidget.layout().addWidget(radio_box)
         self.attributesTree.header().setResizeMode(QHeaderView.ResizeToContents)

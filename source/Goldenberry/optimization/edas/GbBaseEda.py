@@ -27,7 +27,6 @@ class GbBaseEda(GbBaseOptimizer):
         self.callback_func = callback_func
         self.__dict__.update(**kwargs)
         stop = False
-
         self.reset()
 
     @property
@@ -73,10 +72,9 @@ class GbBaseEda(GbBaseOptimizer):
     def search(self):
         """Search for an optimal solution."""        
         if not self.ready():
-            raise Exception("The optimizer is not ready for being executed.  Please check if you have configured all the required parameters.")
+            raise Exception("Optimizer not ready.")
         best = GbSolution(None, float('-Inf'))
         top_ranked = None
-
         while not self.done():
             self.iters += 1
             candidates = self.sample(self.sample_size, top_ranked, best)

@@ -1,6 +1,6 @@
 """
-<name>Perceptron</name>
-<description>Canonical Perceptron Algorithm</description>
+<name>Kernel Perceptron</name>
+<description>Kernel Perceptron Algorithm</description>
 <contact>Nestor Rodriguez</contact>
 <icon>icons/perceptron.svg</icon>
 <priority>50</priority>
