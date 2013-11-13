@@ -65,8 +65,8 @@
          <property name="text">
           <string>Run</string>
          </property>
-        </widget>
-       </item>
+        </widget>         
+       </item>        
       </layout>
      </widget>
     </item>

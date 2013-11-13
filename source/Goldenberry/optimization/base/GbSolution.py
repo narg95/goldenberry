@@ -15,5 +15,5 @@ class GbSolution(object):
         return self.params[i]    
 
     def __str__(self):
-        return "[cost: " + str(self.cost) + "]\n[parameters:" + str(self.params) + "]"
+        return "[cost: " + str(self.cost) + "]\n[parameters:" + str(self.params) + "]\n [roots:" + str(self.roots) + "]\n [children:" + str(self.children) + "]"
    

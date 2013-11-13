@@ -68,7 +68,6 @@ class GbBaseEdaWidget(OWWidget):
     def run(self):
         self.progressBarInit()
         self.progressBarSet(0)
-        self.optimizer.reset()
         self.resultTextEdit.setText("")
         if self.optimizer.ready():
             search = Search(self.optimizer)
