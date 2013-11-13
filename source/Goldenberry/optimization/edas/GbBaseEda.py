@@ -71,8 +71,10 @@ class GbBaseEda(GbBaseOptimizer):
 
     def search(self):
         """Search for an optimal solution."""        
+        self.reset()
         if not self.ready():
             raise Exception("Optimizer not ready.")
+        
         best = GbSolution(None, float('-Inf'))
         top_ranked = None
         while not self.done():

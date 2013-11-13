@@ -13,7 +13,7 @@ class GbWKieraWidget(OWWidget):
     data = None
     factory = None
     var_size = None
-    weight = 1
+    weight = 100
     folds = 10
     normalization = 1
 

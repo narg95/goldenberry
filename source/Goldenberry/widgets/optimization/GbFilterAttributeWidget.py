@@ -52,6 +52,7 @@ class GbFilterAttributeWidget(OWWidget):
     def set_data(self, data):
         self.data = data
         self.update_navigation()
+        self.apply()
 
     def set_solution(self, solution):
         self.solution = solution

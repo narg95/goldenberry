@@ -29,9 +29,11 @@ class GbBlackBoxWidget(OWWidget):
         self.layout().addWidget(self.main_widget)
         OWGUI.spin(self.paramBox, self, "total_runs", 1, 1000)
         self.define_tables()
+        OWGUI.button(self.details_tab, self, "Send", self.send_candidate)
 
         # Subscribe to signals
         QObject.connect(self.run_button,QtCore.SIGNAL("clicked()"), self.execute)
+        #QObject.connect(self.stop_button,QtCore.SIGNAL("clicked()"), self.stop)
         QObject.connect(self.copy_button,QtCore.SIGNAL("clicked()"), self.copy_table)
 
     def clean_layout(self):
@@ -39,7 +41,7 @@ class GbBlackBoxWidget(OWWidget):
             self.layout().removeItem(self.layout().takeAt(0))
 
     def define_tables(self):        
-        self.experiments_table = OWGUI.table(self.summary_tab, selectionMode=QTableWidget.MultiSelection)
+        self.experiments_table = OWGUI.table(self.summary_tab, selectionMode=QTableWidget.SingleSelection)
         self.experiments_table.setColumnCount(12)
         self.experiments_table.setHorizontalHeaderLabels(["Name",\
             "Cost(max)", "Cost(avg)", "#Evals(avg)", "Time[s](avg)", \
@@ -48,12 +50,14 @@ class GbBlackBoxWidget(OWWidget):
             "#Evals(max)", "Time[s](max)"])
         self.experiments_table.resizeColumnsToContents()
 
-        self.runs_table = OWGUI.table(self.details_tab, selectionMode=QTableWidget.MultiSelection)
+        self.runs_table = OWGUI.table(self.details_tab, selectionMode=QTableWidget.SingleSelection)
         self.runs_table.setColumnCount(12)
+        self.runs_table.setSelectionBehavior(QTableWidget.SelectRows)
         self.runs_table.setHorizontalHeaderLabels([\
             "Name","Best","Cost","#Evals", "Time[s]",\
-            "Avg", "Std", "Min", "Max", "Min(idx.)", "Max(idx.)", "#Run"])
-        self.runs_table.setSortingEnabled(True)
+            "Avg", "Std", "Min", "Max", "Min(idx.)", "Max(idx.)", "#Run", "Roots", "Children"])
+        #Disabled until the current Item can be obtained when the grid has been sorted. See method send_candidate
+        #self.runs_table.setSortingEnabled(True)
         self.runs_table.resizeColumnsToContents()
 
     def set_optimizer(self, optimizer, id=None):
@@ -62,16 +66,34 @@ class GbBlackBoxWidget(OWWidget):
         
         if None is not optimizer:
             self.optimizers[id] = optimizer
-        
-    def execute(self):        
+
+    #def stop(self):
+    #    self.test.terminate()
+    #    self.disconnect(self.test, QtCore.SIGNAL('progress(PyQt_PyObject)'), self.progress)
+    #    self.run_button.setEnabled(True)
+    #    self.stop_button.setEnabled(False)
+            
+    def execute(self):
+        self.progressBarInit()
+        self.run_button.setEnabled(False)
+        #self.stop_button.setEnabled(True)
+        self.progressBarSet(0)
+        self.test = Search(self)
+        self.connect(self.test, QtCore.SIGNAL('progress(PyQt_PyObject)'), self.progress)
+        self.test.start()
+
+    def run_tests(self, callback = None):        
         self.experiment_results=[]
         self.runs_results = []
+        self.candidates = []
         self.experiments_table.setRowCount(0)
-        self.runs_table.setRowCount(0)
-        
-        for idx , (optimizer, optimizer_name) in enumerate([(opt, name) for opt, name in self.optimizers.values() if opt.ready()]):
+        self.runs_table.setRowCount(0)        
+
+        optimizers = [(opt, name) for opt, name in self.optimizers.values() if opt.ready()]
+        for idx , (optimizer, optimizer_name) in enumerate(optimizers):
             tester = GbBlackBoxTester()
-            run_results, test_results = tester.test(optimizer, self.total_runs)
+            run_results, test_results, candidates = tester.test(optimizer, self.total_runs, lambda best, progress: callback(best, (progress  + idx)/float(len(optimizers))))
+            self.candidates += candidates
             self.runs_results += [(optimizer_name,) + item for item in run_results]
             self.experiment_results.append((optimizer_name, ) + test_results)
             
@@ -121,6 +143,37 @@ class GbBlackBoxWidget(OWWidget):
                 text = text + '\t'+item.text()
                 rows.append(item.text() if item else '')
         return text + '\n'
+
+    def send_candidate(self):
+        if self.runs_table.currentRow() >=0 :
+            self.send("Solution", self.candidates[self.runs_table.currentRow()])
+
+    def progress(self, progressArgs):
+        progress = int(progressArgs.progress * 100)
+        self.progressBarSet(progress)
+        if progress >= 100:
+            self.progressBarFinished()
+            self.run_button.setEnabled(True)
+            #self.stop_button.setEnabled(False)
+
+class Search(QtCore.QThread, QObject):
+    
+    def __init__(self, widget):    
+        QtCore.QThread.__init__(self)       
+        self.widget = widget
+
+    progress = pyqtSignal(object)
+     
+    def run(self):
+        self.widget.run_tests(callback = self.current_progress)
+
+    def current_progress(self, result, progress):
+        self.progress.emit(ProgressArgs(result, progress))
+
+class ProgressArgs:
+    def __init__(self, result, progress):
+        self.result = result
+        self.progress = progress
 
 if __name__=="__main__":
     test_widget()
