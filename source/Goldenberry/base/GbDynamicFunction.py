@@ -17,12 +17,12 @@ class GbDynamicFunction:
         else:
             raise Exception("Please provide either a function or function script.")
 
-    def __call__(self, *args):
+    def __call__(self, *args, **kwargs):
         """This is the base class for all the cost functions"""
-        return self.execute(*args)
+        return self.execute(*args, **kwargs)
 
-    def execute(self, *args):
-        result = self._dynamic_function_(*args)
+    def execute(self, *args, **kwargs):
+        result = self._dynamic_function_(*args, **kwargs)
         self._update_statistics(result)
         return result
 

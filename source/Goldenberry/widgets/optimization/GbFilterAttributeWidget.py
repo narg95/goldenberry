@@ -57,6 +57,7 @@ class GbFilterAttributeWidget(OWWidget):
     def set_solution(self, solution):
         self.solution = solution
         self.update_navigation()
+        self.apply()
 
     def update_navigation(self):
         if None is self.data or None is self.solution:
@@ -144,12 +145,14 @@ class GbFilterAttributeWidget(OWWidget):
         if self.data is None or self.solution is None or self.scores is None:
             return
         
+        weighted_data = self.data.to_numpy("ac")[0] * np.concatenate((np.sqrt(self.solution.params), [1]))
+        weighted_data = Orange.data.Table(self.data.domain, weighted_data)
         if self.scores.all():
-            newdata = self.data
+            newdata = weighted_data            
         else:
             #filters the dataset
             score = [ (att.name, self.scores[i])  for i, att in enumerate(self.data.domain.attributes)]
-            newdata = Orange.feature.selection.select_above_threshold(self.data, score, 1.0)
+            newdata = Orange.feature.selection.select_above_threshold(weighted_data, score, 1.0)
         
         #sends the signals with the data filtered
         self.send("Data", newdata)

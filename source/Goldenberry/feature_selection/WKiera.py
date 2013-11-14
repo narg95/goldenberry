@@ -12,19 +12,29 @@ from orngSVM import SVMLearner
 class GbWrapperCostFunction(GbCostFunction):
     """WKiera cost function."""
 
-    def __init__(self, data,  factory, solution_weight = 0.1, folds = 10, normalization = True):
+    def __init__(self, data, test_data, factory, solution_weight = 0.1, folds = 10, test_folds = 10, normalization = True):
+        self.retest_last = True
         self.reset_statistics()
         self.factory = factory
         self.data = self._normalize(data) if normalization else data
+        self.test_data = self._normalize(test_data) if normalization else test_data
         self.folds = folds
+        self.test_folds = test_folds
         self.solution_weight = solution_weight
         self.var_size = len(data.domain.attributes)
         
-    def execute(self, solutions):
+    def execute(self, solutions, is_last = False):
+        if not is_last:
+           data = self.data
+           folds = self.folds
+        else :
+            data = self.test_data
+            folds = self.test_folds
+            
         results = np.empty(len(solutions), dtype = float)
         threads = [None] * len(solutions)
         for idx, weight in enumerate(solutions):                    
-            thread = th.Thread(target = test_solution, args = [self.factory, weight, self.data, results, idx, self.folds])
+            thread = th.Thread(target = test_solution, args = [self.factory, weight, data, results, idx, folds])
             thread.start()
             threads[idx] = thread
                     

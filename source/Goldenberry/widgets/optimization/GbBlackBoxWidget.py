@@ -79,7 +79,7 @@ class GbBlackBoxWidget(OWWidget):
         #self.stop_button.setEnabled(True)
         self.progressBarSet(0)
         self.test = Search(self)
-        self.connect(self.test, QtCore.SIGNAL('progress(PyQt_PyObject)'), self.progress)
+        self.connect(self.test, QtCore.SIGNAL('progress(PyQt_PyObject)'), self.update_progress)
         self.test.start()
 
     def run_tests(self, callback = None):        
@@ -148,7 +148,7 @@ class GbBlackBoxWidget(OWWidget):
         if self.runs_table.currentRow() >=0 :
             self.send("Solution", self.candidates[self.runs_table.currentRow()])
 
-    def progress(self, progressArgs):
+    def update_progress(self, progressArgs):
         progress = int(progressArgs.progress * 100)
         self.progressBarSet(progress)
         if progress >= 100:
