@@ -89,6 +89,9 @@ class GbBaseEda(GbBaseOptimizer):
             if self.callback_func is not None:
                 self.callback_func(best, self.cost_func.evals / float(self.max_evals))
         
+        if self.cost_func.retest_last:
+            best.cost = self.cost_func(np.array([best.params]), is_last = True)[0]
+        
         if self.callback_func is not None:
                 self.callback_func(best, 1.0)    
         return best
