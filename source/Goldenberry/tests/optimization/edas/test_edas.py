@@ -248,7 +248,7 @@ class OptmizerTesterTest(TestCase):
         optimizer = Cga()
         optimizer.setup(20)
         optimizer.cost_func = GbCostFunction(OneMax, var_size = 10)
-        run_results, test_results = opttester.test(optimizer, total_runs)
+        run_results, test_results, candidates = opttester.test(optimizer, total_runs)
         self.assertEqual(len(run_results), total_runs)
         self.assertEqual(12, len(test_results))
 
