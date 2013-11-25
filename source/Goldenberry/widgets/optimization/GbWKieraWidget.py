@@ -18,16 +18,18 @@ class GbWKieraWidget(OWWidget):
     folds = 10
     test_folds = 10
     normalization = 1
+    title = "Wrapper Cost Function"
 
     settingsList = ['weight', 'var_size', 'folds', 'normalization']
 
-    def __init__(self, parent=None, signalManager=None, title="WKiera Cost Function"):
+    def __init__(self, parent=None, signalManager=None, title="Wrapper Cost Function"):
         OWWidget.__init__(self, parent, signalManager, title)
         self.setup_interfaces()
         self.setup_ui()
 
     def setup_ui(self):
         load_widget_ui(self)
+        nameEditor = OWGUI.lineEdit(self, self, "title", label="Title", callback=self.change_title)
         weight_control = OWGUI.hSlider(self, self, 'weight', minValue = 0, maxValue = 1000, step = 1, divideFactor = 1000.0, labelFormat = "%.3f", label = "Accuracy/Subset-size tradeoff")
         self.varEdit = OWGUI.lineEdit(self, self, "var_size", label="Variables", valueType = int)
         foldsEdit = OWGUI.hSlider(self, self, 'folds', minValue = 2, maxValue = 20, step = 1, label = "Training Folds")
@@ -35,12 +37,17 @@ class GbWKieraWidget(OWWidget):
         applyButton = OWGUI.button(self, self, label = "Apply", callback = self.apply)
         normalizCheck = OWGUI.checkBox(self, self, "normalization", label="Normalize data", tooltip="Use data normalization")
         self.varEdit.setEnabled(False)
+        self.paramslayout.addRow(nameEditor.box, nameEditor)
         self.paramslayout.addRow(self.varEdit.box, self.varEdit)
         self.paramslayout.addRow(weight_control.box, weight_control)
         self.paramslayout.addRow(foldsEdit.box, foldsEdit)
         self.paramslayout.addRow(testfoldsEdit.box, testfoldsEdit)
         self.paramslayout.addRow(normalizCheck)
         self.paramslayout.addRow(applyButton)
+
+    def change_title(self):
+        self.setCaption(self.title)
+        self.setWindowTitle(self.title)
 
     def setup_interfaces(self):
         self.outputs = [("Cost Function", GbCostFunction)]
