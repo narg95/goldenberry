@@ -46,8 +46,7 @@ class KernelPerceptronTest(TestCase):
         prediction = kernelperceptron.predict(Xdata, (sv_x, sv_y * sv_alpha))
         for yp, yi in zip(prediction, Yclass):
             self.assertEqual(yp[0], yi)
-
-        print("\n KernelPerceptron ends after {0} iterations ".format(iterations))
+        
 
     def test_perceptor_learner(self):
         fileName = "test_3classes_separable_data.tab"

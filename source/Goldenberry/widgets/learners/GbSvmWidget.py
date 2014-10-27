@@ -31,7 +31,7 @@ class GbSvmWidget(OWSVM):
                         ("Support Vectors", ExampleTable)]
 
         self.settingsList.append("kernel_func") 
-        self.kernel_type = orngSVM.SVMLearner.Custom
+        self.kernel_type = orngSVM.SVMLearner.Linear
         self.normalization=0
         for check in self.findChildren(QCheckBox):
             if check.text() == QString("Normalize data"):

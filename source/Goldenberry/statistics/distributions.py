@@ -69,7 +69,7 @@ class BivariateBinomial(GbBaseDistribution):
             if len(cond_props) != len(children):
                 raise AttributeError("Join probability must be the same size than the number of edges")
             self.n = p.size
-            self.p = p
+            self.p = p.reshape(1, -1)
             self.cond_props = cond_props
             self.children = children
             self.vertex = range(self.n)

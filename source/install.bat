@@ -1,2 +1,2 @@
 @cd /d "%~dp0"
-python setup.py
+python setup.py develop
