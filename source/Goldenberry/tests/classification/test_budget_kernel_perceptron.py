@@ -47,4 +47,4 @@ class BudgetKernelPerceptronTest(TestCase):
         self.logger.info("End classifying... " )
         msg = "BudgetKernelPerceptron ends with {0} errors and {1} successes using {2} learning iterations. File: {3} Learner {4} Budget {5} \n".format(errors, success, max_iter,fileName, learner.__class__.__name__, budget)
         self.logger.info(msg)
-        print(msg)
+        
