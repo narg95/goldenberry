@@ -33,7 +33,6 @@ class GbBlackBoxWidget(OWWidget):
 
         # Subscribe to signals
         QObject.connect(self.run_button,QtCore.SIGNAL("clicked()"), self.execute)
-        #QObject.connect(self.stop_button,QtCore.SIGNAL("clicked()"), self.stop)
         QObject.connect(self.copy_button,QtCore.SIGNAL("clicked()"), self.copy_table)
 
     def clean_layout(self):
@@ -51,13 +50,11 @@ class GbBlackBoxWidget(OWWidget):
         self.experiments_table.resizeColumnsToContents()
 
         self.runs_table = OWGUI.table(self.details_tab, selectionMode=QTableWidget.SingleSelection)
-        self.runs_table.setColumnCount(12)
+        self.runs_table.setColumnCount(14)
         self.runs_table.setSelectionBehavior(QTableWidget.SelectRows)
         self.runs_table.setHorizontalHeaderLabels([\
             "Name","Best","Cost","#Evals", "Time[s]",\
             "Avg", "Std", "Min", "Max", "Min(idx.)", "Max(idx.)", "#Run", "Roots", "Children"])
-        #Disabled until the current Item can be obtained when the grid has been sorted. See method send_candidate
-        #self.runs_table.setSortingEnabled(True)
         self.runs_table.resizeColumnsToContents()
 
     def set_optimizer(self, optimizer, id=None):
@@ -67,12 +64,6 @@ class GbBlackBoxWidget(OWWidget):
         if None is not optimizer:
             self.optimizers[id] = optimizer
 
-    #def stop(self):
-    #    self.test.terminate()
-    #    self.disconnect(self.test, QtCore.SIGNAL('progress(PyQt_PyObject)'), self.progress)
-    #    self.run_button.setEnabled(True)
-    #    self.stop_button.setEnabled(False)
-            
     def execute(self):
         self.progressBarInit()
         self.run_button.setEnabled(False)
@@ -122,8 +113,7 @@ class GbBlackBoxWidget(OWWidget):
         num_rows=0
         num_cols=0
         num_rows, num_cols = table.rowCount(), table.columnCount()
-        #text=''
-        text=self.get_table_header(table)
+        text = self.get_table_header(table)
         for row in range(num_rows):
             rows = []
             for col in range(num_cols):
