@@ -8,25 +8,28 @@
 
 from Orange.OrangeWidgets.Classify.OWSVM import OWSVM, UnhandledException
 from Goldenberry.widgets import GbKernel, QCheckBox, QString, GbFactory
-from Orange.OrangeWidgets.OWGUI import appendRadioButton
+from Orange.OrangeWidgets.OWGUI import appendRadioButton, lineEdit
 from orange import ExampleTable, Learner, Classifier
 from orngWrap import PreprocessedLearner
 from Orange.OrangeWidgets.OWWidget import Default
 import orange, orngSVM
 import numpy as np
+import ast
 
 class GbSvmWidget(OWSVM):
     
     kernel_func = None
     kernel_type = orngSVM.SVMLearner.Linear
-
+    weight = "[]"
     def __init__(self, parent=None, signalManager=None):
         super(GbSvmWidget, self).__init__(parent=parent, signalManager=signalManager, name="SVM")
         appendRadioButton(self.kernelradio, self,"kernel_type","Custom")
+        lineEdit(self.optionsBox, self, "weight", label="Weight") 
+        
         self.inputs = [('Kernel Function', GbKernel, self.set_kernel), ("Data", ExampleTable, self.setData)]
 
         self.outputs = [("Learner", Learner, Default),
-                        ("Learner Factory", GbFactory, Default),
+                        ("Learner Factory", object, Default),
                         ("Classifier", Classifier, Default),
                         ("Support Vectors", ExampleTable)]
 
@@ -55,6 +58,8 @@ class GbSvmWidget(OWSVM):
             setattr(self.learner, attr, float(getattr(self, attr)))
             parameters[attr] = getattr(self, attr)
 
+        self.learner.weight = ast.literal_eval(self.weight)
+
         self.learner.svm_type=orngSVM.SVMLearner.C_SVC
 
         if self.useNu:
@@ -68,7 +73,7 @@ class GbSvmWidget(OWSVM):
             if self.data.domain.classVar.varType==orange.VarTypes.Continuous:
                 self.learner.svm_type+=3
             self.classifier=self.learner(self.data)
-            self.supportVectors=self.classifier.supportVectors
+            self.supportVectors = self.classifier.supportVectors
             self.classifier.name=self.name
             
         self.send("Learner", self.learner)
