@@ -1,7 +1,7 @@
 """
 <name>Black Box Tester</name>
 <description>Evaluates the performance of a set of optimizers.</description>
-<contact>Leidy Garzon</contact>
+<contact>Nestor Rodriguez</contact>
 <icon>icons/Blackbox.svg</icon>
 <priority>1020</priority>
 """
@@ -49,12 +49,13 @@ class GbBlackBoxWidget(OWWidget):
             "#Evals(max)", "Time[s](max)"])
         self.experiments_table.resizeColumnsToContents()
 
-        self.runs_table = OWGUI.table(self.details_tab, selectionMode=QTableWidget.SingleSelection)
-        self.runs_table.setColumnCount(14)
-        self.runs_table.setSelectionBehavior(QTableWidget.SelectRows)
-        self.runs_table.setHorizontalHeaderLabels([\
+        header_labels = [\
             "Name","Best","Cost","#Evals", "Time[s]",\
-            "Avg", "Std", "Min", "Max", "Min(idx.)", "Max(idx.)", "#Run", "Roots", "Children"])
+            "Avg", "Std", "Min", "Max", "Min(idx.)", "Max(idx.)", "#Run", "Roots", "Children", "Tree"];
+        self.runs_table = OWGUI.table(self.details_tab, selectionMode=QTableWidget.SingleSelection)
+        self.runs_table.setColumnCount(len(header_labels))
+        self.runs_table.setSelectionBehavior(QTableWidget.SelectRows)
+        self.runs_table.setHorizontalHeaderLabels(header_labels)
         self.runs_table.resizeColumnsToContents()
 
     def set_optimizer(self, optimizer, id=None):

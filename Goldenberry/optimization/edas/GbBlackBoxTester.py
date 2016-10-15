@@ -29,7 +29,7 @@ class GbBlackBoxTester(object):
             result = optimizer.search()
             toc= time.time()- tic
             eval, argmin, argmax, min, max, mean, std = optimizer.cost_func.statistics()
-            run_results.append((result.params, result.cost, eval, toc, mean, std, min, max, argmin, argmax, run_id, result.roots, result.children))
+            run_results.append((result.params, result.cost, eval, toc, mean, std, min, max, argmin, argmax, run_id, result.roots, result.children, get_tree(result.children)))
             candidates.append(result)
             times.append(toc) 
             means.append(mean)
@@ -43,3 +43,10 @@ class GbBlackBoxTester(object):
                        np.max(evals), np.max(times))
 
         return run_results, test_results, candidates
+    
+def get_tree(children):
+    tree = [None]*len(children)
+    for parent, child_list in enumerate(children):
+        for child in child_list:
+            tree[child] = parent
+    return tree
