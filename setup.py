@@ -4,9 +4,9 @@ NAME = 'Goldenberry'
 VERSION = '1.0'
 DESCRIPTION = 'A supplementary Machine Learning and Evolutionary Computation suite for Orange.'
 AUTHOR = 'Nestor Andres Rodriguez, Sergio G. Rojas, District University FJC, Bogota, Colombia.'
-AUTHOR_EMAIL = 'nearodriguezg@correo.udistrital.edu.co, srojas@udistrital.edu.co'
-URL = 'http://Goldenberry.codeplex.com'
-DOWNLOAD_URL = 'https://Goldenberry.codeplex.com/releases'
+AUTHOR_EMAIL = 'nesterran@gmail.com, srojas@udistrital.edu.co'
+URL = 'https://github.com/narg95/goldenberry'
+DOWNLOAD_URL = 'https://github.com/narg95/goldenberry'
 LICENSE = 'GPLv2'
 KEYWORDS = (
 'data mining',
@@ -21,6 +21,7 @@ KEYWORDS = (
 'orange',
 'orange add-on',
 )
+git 
 PACKAGES = find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"])
 PACKAGE_DATA =  {'': ['icons/*.svg','icons/*.png', '*.ui']}
 SETUP_REQUIRES = ('setuptools',)
