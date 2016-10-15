@@ -21,7 +21,7 @@ KEYWORDS = (
 'orange',
 'orange add-on',
 )
-git 
+
 PACKAGES = find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"])
 PACKAGE_DATA =  {'': ['icons/*.svg','icons/*.png', '*.ui']}
 SETUP_REQUIRES = ('setuptools',)
