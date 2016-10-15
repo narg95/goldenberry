@@ -29,7 +29,7 @@ INSTALL_REQUIRES = ('Orange',
                     'numpy',
                     'scipy')
 ENTRY_POINTS = {'orange.addons': ('Goldenberry = Goldenberry'),
-                'orange.widgets': ('Optimization = Goldenberry.widgets.Optimization','Learners = Goldenberry.widgets.Learners' )}
+                'orange.widgets': ('Optimization = Goldenberry.widgets.optimization','Learners = Goldenberry.widgets.learners' )}
 
 if __name__ == '__main__':
     setup(
