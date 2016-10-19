@@ -8,5 +8,5 @@ Orange 2.7.*: http://orange.biolab.si/orange2/
 
 # Install
 
-1. Clone this repository
+1. Download  or clone this repository
 2. Execute `python setup.py install`
