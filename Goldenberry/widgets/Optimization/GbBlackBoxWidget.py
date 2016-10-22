@@ -88,7 +88,8 @@ class GbBlackBoxWidget(OWWidget):
             run_results, test_results, candidates, dependencyMatrix = tester.test(optimizer, self.total_runs, lambda best, progress: callback(best, (progress  + idx)/float(len(optimizers))))
             self.candidates += candidates
             self.runs_results += [(optimizer_name,) + item for item in run_results]
-            self.dependencyMatrix = dependencyMatrix
+            # TODO: Supports multiple Optimizers with dependencies. Currently it sends the last one 
+            self.dependencyMatrix = dependencyMatrix or self.dependencyMatrix
             self.experiment_results.append((optimizer_name, ) + test_results)
             
         self.show_results(self.experiments_table, self.experiment_results)

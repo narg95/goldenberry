@@ -61,7 +61,7 @@ def get_tree(children):
 
 def get_accumulative_matrix(trees):
     if not len(trees):
-        return [0][0]
+        return None
     
     tree_len = len(trees[0])
     matrix = np.zeros((tree_len, tree_len))
