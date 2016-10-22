@@ -5,7 +5,7 @@
 <icon>icons/Blackbox.svg</icon>
 <priority>1020</priority>
 """
-
+from Orange.core import SymMatrix
 from Goldenberry.widgets import *
 
 class GbBlackBoxWidget(OWWidget):
@@ -21,7 +21,7 @@ class GbBlackBoxWidget(OWWidget):
         
     def setup_interfaces(self):
          self.inputs = [("Optimizer", GbBaseOptimizer, self.set_optimizer, Multiple)]
-         self.outputs = [("Solution", GbSolution)]
+         self.outputs = [("Solution", GbSolution), ("DependencyMatrix", SymMatrix)]
     
     def setup_ui(self):
         load_widget_ui(self)
@@ -78,15 +78,17 @@ class GbBlackBoxWidget(OWWidget):
         self.experiment_results=[]
         self.runs_results = []
         self.candidates = []
+        self.dependencyMatrix = None
         self.experiments_table.setRowCount(0)
         self.runs_table.setRowCount(0)        
 
         optimizers = [(opt, name) for opt, name in self.optimizers.values() if opt.ready()]
         for idx , (optimizer, optimizer_name) in enumerate(optimizers):
             tester = GbBlackBoxTester()
-            run_results, test_results, candidates = tester.test(optimizer, self.total_runs, lambda best, progress: callback(best, (progress  + idx)/float(len(optimizers))))
+            run_results, test_results, candidates, dependencyMatrix = tester.test(optimizer, self.total_runs, lambda best, progress: callback(best, (progress  + idx)/float(len(optimizers))))
             self.candidates += candidates
             self.runs_results += [(optimizer_name,) + item for item in run_results]
+            self.dependencyMatrix = dependencyMatrix
             self.experiment_results.append((optimizer_name, ) + test_results)
             
         self.show_results(self.experiments_table, self.experiment_results)
@@ -157,6 +159,7 @@ class Search(QtCore.QThread, QObject):
      
     def run(self):
         self.widget.run_tests(callback = self.current_progress)
+        self.widget.send("DependencyMatrix", self.widget.dependencyMatrix)    
 
     def current_progress(self, result, progress):
         self.progress.emit(ProgressArgs(result, progress))
