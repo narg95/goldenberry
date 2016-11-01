@@ -22,6 +22,7 @@ class GbBlackBoxTester(object):
         times=[] 
         candidates = []
         trees=[]
+        weights=[]
         
         for run_id in range(num_evals):
             if callback is not None:
@@ -35,6 +36,7 @@ class GbBlackBoxTester(object):
             tree = get_tree(result.children)
             run_results.append((result.params, result.cost, eval, toc, mean, std, min, max, argmin, argmax, run_id, result.roots, result.children, tree))
             candidates.append(result)
+            weights.append(result.params)
             times.append(toc) 
             means.append(mean)
             stds.append(std)
@@ -45,9 +47,9 @@ class GbBlackBoxTester(object):
         test_results =(np.max(costs), np.average(costs), np.average(evals), np.average(times), \
                        np.std(costs), np.std(evals), np.std(times), \
                        np.min(costs), np.min(evals), np.min(times), \
-                       np.max(evals), np.max(times))
+                       np.max(evals), np.max(times), np.average(weights, axis=0), get_accumulative_matrix(trees) )
 
-        return run_results, test_results, candidates, get_accumulative_matrix(trees)
+        return run_results, test_results, candidates
     
 def get_tree(children):
     if children is None or len(children) == 0:

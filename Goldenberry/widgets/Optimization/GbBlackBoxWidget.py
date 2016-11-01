@@ -34,19 +34,21 @@ class GbBlackBoxWidget(OWWidget):
         # Subscribe to signals
         QObject.connect(self.run_button,QtCore.SIGNAL("clicked()"), self.execute)
         QObject.connect(self.copy_button,QtCore.SIGNAL("clicked()"), self.copy_table)
+        QObject.connect(self.export_matrix_button,QtCore.SIGNAL("clicked()"), self.export_matrix)
 
     def clean_layout(self):
         while(self.layout().count() > 0):
             self.layout().removeItem(self.layout().takeAt(0))
 
     def define_tables(self):        
-        self.experiments_table = OWGUI.table(self.summary_tab, selectionMode=QTableWidget.SingleSelection)
-        self.experiments_table.setColumnCount(12)
-        self.experiments_table.setHorizontalHeaderLabels(["Name",\
+        columns = ["Name",\
             "Cost(max)", "Cost(avg)", "#Evals(avg)", "Time[s](avg)", \
             "Cost(std)", "#Evals(std)", "Time[s](std)", \
             "Cost(min)", "#Evals(min)", "Time[s](min)", \
-            "#Evals(max)", "Time[s](max)"])
+            "#Evals(max)", "Time[s](max)", "Best(avg)", "Dependency Matrix"]
+        self.experiments_table = OWGUI.table(self.summary_tab, selectionMode=QTableWidget.SingleSelection)
+        self.experiments_table.setColumnCount(len(columns))
+        self.experiments_table.setHorizontalHeaderLabels(columns)
         self.experiments_table.resizeColumnsToContents()
 
         header_labels = [\
@@ -78,18 +80,16 @@ class GbBlackBoxWidget(OWWidget):
         self.experiment_results=[]
         self.runs_results = []
         self.candidates = []
-        self.dependencyMatrix = None
         self.experiments_table.setRowCount(0)
         self.runs_table.setRowCount(0)        
 
         optimizers = [(opt, name) for opt, name in self.optimizers.values() if opt.ready()]
         for idx , (optimizer, optimizer_name) in enumerate(optimizers):
             tester = GbBlackBoxTester()
-            run_results, test_results, candidates, dependencyMatrix = tester.test(optimizer, self.total_runs, lambda best, progress: callback(best, (progress  + idx)/float(len(optimizers))))
+            run_results, test_results, candidates = tester.test(optimizer, self.total_runs, lambda best, progress: callback(best, (progress  + idx)/float(len(optimizers))))
             self.candidates += candidates
             self.runs_results += [(optimizer_name,) + item for item in run_results]
             # TODO: Supports multiple Optimizers with dependencies. Currently it sends the last one 
-            self.dependencyMatrix = dependencyMatrix or self.dependencyMatrix
             self.experiment_results.append((optimizer_name, ) + test_results)
             
         self.show_results(self.experiments_table, self.experiment_results)
@@ -113,6 +113,10 @@ class GbBlackBoxWidget(OWWidget):
         text=text + self.selectTableItems(self.runs_table)
         QApplication.clipboard().setText(text, QClipboard.Clipboard)
 
+    def export_matrix(self):
+        if self.experiments_table.currentRow() >=0 :
+            self.send("DependencyMatrix", self.experiment_results[self.experiments_table.currentRow()][14])
+    
     def selectTableItems(self, table):
         num_rows=0
         num_cols=0

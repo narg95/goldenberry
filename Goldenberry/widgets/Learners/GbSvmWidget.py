@@ -29,7 +29,7 @@ class GbSvmWidget(OWSVM):
         self.inputs = [('Kernel Function', GbKernel, self.set_kernel), ("Data", ExampleTable, self.setData)]
 
         self.outputs = [("Learner", Learner, Default),
-                        ("Learner Factory", object, Default),
+                        ("Learner Factory", GbFactory, Default),
                         ("Classifier", Classifier, Default),
                         ("Support Vectors", ExampleTable)]
 
