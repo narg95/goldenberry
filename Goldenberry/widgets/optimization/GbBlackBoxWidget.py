@@ -164,8 +164,7 @@ class Search(QtCore.QThread, QObject):
      
     def run(self):
         self.widget.run_tests(callback = self.current_progress)
-        self.widget.send("DependencyMatrix", self.widget.dependencyMatrix)    
-
+        
     def current_progress(self, result, progress):
         self.progress.emit(ProgressArgs(result, progress))
 

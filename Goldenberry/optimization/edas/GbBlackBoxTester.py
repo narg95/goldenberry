@@ -70,6 +70,6 @@ def get_accumulative_matrix(trees):
     for tree in trees:
         for node, parent in enumerate(tree):
             if parent is not None:
-                matrix[node][parent] += 1
+                matrix[node][parent] += 1.0 / len(tree)
                 matrix[parent][node] = matrix[node][parent]
     return SymMatrix(matrix)
