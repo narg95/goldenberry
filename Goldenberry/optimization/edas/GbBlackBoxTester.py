@@ -64,15 +64,12 @@ def get_tree(children):
 def get_accumulative_matrix(trees):
     if not len(trees):
         return None
-        
+    
     tree_len = len(trees[0])
     matrix = np.zeros((tree_len, tree_len))
     for tree in trees:
         for node, parent in enumerate(tree):
             if parent is not None:
-                matrix[node][parent] += 1.0
+                matrix[node][parent] += 1.0 / len(trees)
                 matrix[parent][node] = matrix[node][parent]
-    
-    matrix =  np.array(matrix)
-    matrix = matrix / float(np.max(matrix))
-    return SymMatrix(matrix.tolist())
+    return SymMatrix(matrix)
